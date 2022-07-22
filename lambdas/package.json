@@ -93,7 +93,8 @@
       "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
       "^@app/user(|/.*)$": "<rootDir>/libs/user/src/$1",
       "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
-      "^@app/plant(|/.*)$": "<rootDir>/libs/plant/src/$1"
+      "^@app/plant(|/.*)$": "<rootDir>/libs/plant/src/$1",
+      "^@app/schedule(|/.*)$": "<rootDir>/libs/schedule/src/$1"
     }
   }
 }

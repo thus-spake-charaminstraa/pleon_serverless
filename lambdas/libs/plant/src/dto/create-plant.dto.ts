@@ -14,9 +14,6 @@ export class CreatePlantDto {
   @IsString()
   adopt_date: string;
 
-  @IsArray()
-  water_date: Array<string>;
-
   @IsString()
   thumbnail: string;
 

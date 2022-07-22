@@ -26,16 +26,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
     private readonly authRepository: AuthRepository,
-  ) {
-    const params = {
-      attributes: {
-        DefaultSMSType: 'Transactional',
-      },
-    };
-    snsClient
-      .send(new SetSMSAttributesCommand(params))
-      .then((data) => console.log(data));
-  }
+  ) { }
 
   async login(user: User): Promise<CreateTokenResDto> {
     const uuid = uuid4();

@@ -43,6 +43,12 @@
       ],
       "@app/plant/*": [
         "libs/plant/src/*"
+      ],
+      "@app/schedule": [
+        "libs/schedule/src"
+      ],
+      "@app/schedule/*": [
+        "libs/schedule/src/*"
       ]
     }
   }

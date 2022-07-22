@@ -5,7 +5,12 @@ export type PlantDocument = Plant & Document;
 
 @Schema()
 export class Plant {
-  @Prop({ type: mongoSchema.Types.ObjectId, required: true, auto: true, unique: true })
+  @Prop({
+    type: mongoSchema.Types.ObjectId,
+    required: true,
+    auto: true,
+    unique: true,
+  })
   id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true })
@@ -19,9 +24,6 @@ export class Plant {
 
   @Prop({ required: true })
   adopt_date: string;
-
-  @Prop({ required: true })
-  water_date: Array<string>
 
   @Prop({ required: true })
   thumbnail: string;

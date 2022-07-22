@@ -9,9 +9,7 @@ import { AuthModule } from '@app/auth/auth.module';
 import { AuthLambdaController } from './auth-lambda.controller';
 import { PlantModule } from '@app/plant/plant.module';
 import { PlantLambdaController } from './plant-lambda.controller';
-import { GuideNotiController } from './guide-noti.controller';
 import { ScheduleModule } from '@app/schedule/schedule.module';
-import { ScheduleLambdaController } from './schedule-lambda.controller';
 
 @Module({
   imports: [
@@ -36,8 +34,6 @@ import { ScheduleLambdaController } from './schedule-lambda.controller';
     UserLambdaController,
     AuthLambdaController,
     PlantLambdaController,
-    ScheduleLambdaController,
-    GuideNotiController,
   ],
   providers: [
     {
@@ -46,4 +42,4 @@ import { ScheduleLambdaController } from './schedule-lambda.controller';
     },
   ],
 })
-export class MonolithicAppModule {}
+export class MonoLambdaModule {}

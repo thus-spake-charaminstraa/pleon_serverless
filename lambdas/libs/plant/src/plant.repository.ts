@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Schema as mongoSchema } from 'mongoose';
 import { Plant, PlantDocument } from './entities/plant.entity';
 import { CreatePlantDto } from './dto/create-plant.dto';
 import { UpdatePlantDto } from './dto/update-plant.dto';
+import { plantInfoForGuide } from '@app/common/types';
 
 @Injectable()
 export class PlantRepository {
@@ -18,6 +19,13 @@ export class PlantRepository {
 
   async findAll(): Promise<Plant[]> {
     return await this.plantModel.find().exec();
+  }
+
+  async findAllInfo(): Promise<plantInfoForGuide[]> {
+    return await this.plantModel
+      .find()
+      .select({ id: 1, owner: 1, species: 1 })
+      .exec();
   }
 
   async findOne(id: string): Promise<Plant> {
