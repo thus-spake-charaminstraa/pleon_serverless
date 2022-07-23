@@ -13,7 +13,11 @@ import {
   Req,
 } from '@nestjs/common';
 import { PlantService } from '@app/plant';
-import { CreatePlantDto, UpdatePlantDto } from '@app/plant/dto';
+import {
+  CreatePlantApiDto,
+  CreatePlantDto,
+  UpdatePlantDto,
+} from '@app/plant/dto';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -25,7 +29,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory } from '@app/common';
+import { CaslAbilityFactory, ScheduleKind } from '@app/common';
 import { PlantByParamsIdInterceptor } from '@app/common/interceptors';
 import {
   CreatePlantResponse,
@@ -36,12 +40,14 @@ import {
   UnauthorizedResponse,
   NotFoundResponse,
 } from '@app/common/dto';
+import { ScheduleService } from '@app/schedule';
 
 @ApiTags('Plant')
 @Controller('plant')
 export class PlantLambdaController {
   constructor(
     private readonly plantService: PlantService,
+    private readonly scheduleService: ScheduleService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -61,9 +67,15 @@ export class PlantLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  async create(@Body() createPlantDto: CreatePlantDto, @Req() req) {
+  async create(@Body() createPlantDto: CreatePlantApiDto, @Req() req) {
     createPlantDto.owner = req.user.id;
-    return await this.plantService.create(createPlantDto);
+    const plant = await this.plantService.create(createPlantDto);
+    await this.scheduleService.create({
+      plantId: plant.id.toString(),
+      timestamp: new Date(createPlantDto.water_date),
+      kind: ScheduleKind.WATER,
+    });
+    return plant;
   }
 
   /**

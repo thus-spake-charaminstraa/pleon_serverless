@@ -13,7 +13,7 @@ export class ScheduleRepository {
   ) {}
 
   async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {
-    const createdSchedule = new this.scheduleModel(CreateScheduleDto);
+    const createdSchedule = new this.scheduleModel(createScheduleDto);
     return await createdSchedule.save();
   }
 

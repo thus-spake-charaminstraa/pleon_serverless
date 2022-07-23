@@ -29,6 +29,7 @@ export class CommonService {
         .setDescription('The API description')
         .setVersion('1.0')
         .addServer(process.env.HOST, 'server')
+        .addServer('http://localhost:8000', 'local server')
         .addBearerAuth()
         .build(),
     );

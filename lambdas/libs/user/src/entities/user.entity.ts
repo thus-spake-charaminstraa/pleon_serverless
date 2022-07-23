@@ -3,7 +3,22 @@ import { Document, Schema as mongoSchema } from 'mongoose';
 
 export type UserDocument = User & Document;
 
-@Schema()
+@Schema({
+  toObject: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    },
+  },
+  toJSON: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    },
+  },
+})
 export class User {
   @Prop({
     type: mongoSchema.Types.ObjectId,

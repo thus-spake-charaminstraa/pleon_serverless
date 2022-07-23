@@ -1,9 +1,25 @@
+import { PlantAir, PlantLight } from '@app/common/types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as mongoSchema } from 'mongoose';
 
 export type PlantDocument = Plant & Document;
 
-@Schema()
+@Schema({
+  toObject: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    }
+  },
+  toJSON: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    }
+  }
+})
 export class Plant {
   @Prop({
     type: mongoSchema.Types.ObjectId,
@@ -29,7 +45,10 @@ export class Plant {
   thumbnail: string;
 
   @Prop({ required: true })
-  location: string;
+  light: PlantLight;
+
+  @Prop({ required: true })
+  air: PlantAir;
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);

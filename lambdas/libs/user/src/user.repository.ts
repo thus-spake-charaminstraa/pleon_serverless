@@ -15,20 +15,20 @@ export class UserRepository {
   }
 
   async findAll(): Promise<User[]> {
-    return this.userModel.find().lean().exec();
+    return this.userModel.find().exec();
   }
 
   async findByPhone(phone: string): Promise<User> {
-    return this.userModel.findOne({ phone }).lean().exec();
+    return this.userModel.findOne({ phone }).exec();
   }
 
   async findOne(id: string): Promise<User> {
-    return this.userModel.findOne({ id }).lean().exec();
+    return this.userModel.findOne({ id }).exec();
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     return this.userModel
-      .findByIdAndUpdate(id, updateUserDto, { new: true })
+      .findOneAndUpdate({ id }, updateUserDto, { new: true })
       .exec();
   }
 }

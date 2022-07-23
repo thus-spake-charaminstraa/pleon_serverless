@@ -4,7 +4,22 @@ import { ScheduleKind } from '@app/common/types';
 
 export type ScheduleDocument = Schedule & Document;
 
-@Schema()
+@Schema({
+  toObject: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    },
+  },
+  toJSON: {
+    transform: (doc, ret) => {
+      delete ret.__v;
+      delete ret._id;
+      return ret;
+    },
+  },
+})
 export class Schedule {
   @Prop({
     type: mongoSchema.Types.ObjectId,
