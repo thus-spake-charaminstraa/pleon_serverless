@@ -35,7 +35,7 @@ export class PlantByBodyIdInterceptor implements NestInterceptor {
     next: CallHandler,
   ): Promise<Observable<any>> {
     const request = context.switchToHttp().getRequest();
-    const id = request.body.plantId;
+    const id = request.body.plant_id;
     const entity = await this.plantRepository.findOne(id);
     if (!entity) {
       throw new NotFoundException('존재하지 않는 식물입니다.');

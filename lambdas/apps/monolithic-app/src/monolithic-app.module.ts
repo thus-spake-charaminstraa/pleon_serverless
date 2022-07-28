@@ -4,14 +4,16 @@ import { APP_FILTER } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AllExceptionsFilter, CommonModule } from '@app/common';
 import { UserModule } from '@app/user/user.module';
-import { UserLambdaController } from './user-lambda.controller';
+import { UserLambdaController } from '../../mono-lambda/src/user-lambda.controller';
 import { AuthModule } from '@app/auth/auth.module';
-import { AuthLambdaController } from './auth-lambda.controller';
+import { AuthLambdaController } from '../../mono-lambda/src/auth-lambda.controller';
 import { PlantModule } from '@app/plant/plant.module';
-import { PlantLambdaController } from './plant-lambda.controller';
-import { GuideNotiController } from './guide-noti.controller';
+import { PlantLambdaController } from '../../mono-lambda/src/plant-lambda.controller';
 import { ScheduleModule } from '@app/schedule/schedule.module';
-import { ScheduleLambdaController } from './schedule-lambda.controller';
+import { ScheduleLambdaController } from '../../mono-lambda/src/schedule-lambda.controller';
+import { GuideNotiController } from './guide-noti.controller';
+import { ImageLambdaController } from '../../mono-lambda/src/image-lambda.controller';
+import { ImageModule } from '@app/image';
 
 @Module({
   imports: [
@@ -30,6 +32,7 @@ import { ScheduleLambdaController } from './schedule-lambda.controller';
     AuthModule,
     UserModule,
     PlantModule,
+    ImageModule,
     ScheduleModule,
   ],
   controllers: [
@@ -37,6 +40,7 @@ import { ScheduleLambdaController } from './schedule-lambda.controller';
     AuthLambdaController,
     PlantLambdaController,
     ScheduleLambdaController,
+    ImageLambdaController,
     GuideNotiController,
   ],
   providers: [

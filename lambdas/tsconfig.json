@@ -49,6 +49,18 @@
       ],
       "@app/schedule/*": [
         "libs/schedule/src/*"
+      ],
+      "@app/feed": [
+        "libs/feed/src"
+      ],
+      "@app/feed/*": [
+        "libs/feed/src/*"
+      ],
+      "@app/image": [
+        "libs/image/src"
+      ],
+      "@app/image/*": [
+        "libs/image/src/*"
       ]
     }
   }

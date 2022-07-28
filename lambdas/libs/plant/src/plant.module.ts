@@ -3,7 +3,6 @@ import { PlantService } from './plant.service';
 import { PlantRepository } from './plant.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Plant, PlantSchema } from './entities/plant.entity';
-import { CommonModule } from '../../common/src/common.module';
 
 @Module({
   imports: [

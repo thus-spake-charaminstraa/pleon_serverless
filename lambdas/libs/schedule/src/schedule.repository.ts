@@ -29,7 +29,7 @@ export class ScheduleRepository {
     let ret = {};
     for (let kind of Object.keys(ScheduleKind)) {
       ret[kind] = await this.scheduleModel
-        .find({ plant: plantId, kind })
+        .find({ plant_id: plantId, kind })
         .sort({ timestamp: -1 })
         .exec();
     }

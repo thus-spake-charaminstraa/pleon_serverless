@@ -65,7 +65,7 @@ export class ScheduleService {
   }
 
   async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {
-    const plant = await this.plantRepository.findOne(createScheduleDto.plantId);
+    const plant = await this.plantRepository.findOne(createScheduleDto.plant_id);
     if (!plant) {
       throw new NotFoundException('plant not found');
     }

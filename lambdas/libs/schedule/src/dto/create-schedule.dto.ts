@@ -3,7 +3,7 @@ import { IsDate, IsDateString, IsEnum, IsMongoId } from "class-validator";
 
 export class CreateScheduleDto {
   @IsMongoId()
-  plantId: string;
+  plant_id: string;
 
   @IsDateString()
   timestamp: Date;

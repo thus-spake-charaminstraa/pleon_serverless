@@ -7,7 +7,6 @@ import { ConfigService } from '@nestjs/config';
 import { AuthRepository } from './auth.repository';
 import {
   PublishCommand,
-  SetSMSAttributesCommand,
   SNSClient,
 } from '@aws-sdk/client-sns';
 import { VerifySmsDto, SendSmsDto, VerifySmsResDto } from './dto/sms-auth.dto';
@@ -46,7 +45,7 @@ export class AuthService {
   async refresh(user: any): Promise<CreateTokenResDto> {
     const savedToken = await this.authRepository.find(user.uuid);
     if (!savedToken) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('리프레시 토큰이 만료되었습니다.');
     }
     await this.authRepository.delete(user.uuid);
     return this.login(user);

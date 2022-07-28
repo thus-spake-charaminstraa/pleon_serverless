@@ -30,7 +30,7 @@ export class Schedule {
   id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true, ref: 'Plant' })
-  plantId: mongoSchema.Types.ObjectId;
+  plant_id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true })
   timestamp: Date;

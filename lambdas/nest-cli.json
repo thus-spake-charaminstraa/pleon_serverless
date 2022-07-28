@@ -34,6 +34,24 @@
         "deleteOutDir": true
       }
     },
+    "mono-lambda": {
+      "type": "application",
+      "root": "apps/mono-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/mono-lambda/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "webpack": true,
+        "tsConfigPath": "apps/mono-lambda/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",
@@ -119,11 +137,11 @@
         "tsConfigPath": "libs/schedule/tsconfig.lib.json"
       }
     },
-    "mono-lambda": {
-      "type": "application",
-      "root": "apps/mono-lambda",
-      "entryFile": "main",
-      "sourceRoot": "apps/mono-lambda/src",
+    "feed": {
+      "type": "library",
+      "root": "libs/feed",
+      "entryFile": "index",
+      "sourceRoot": "libs/feed/src",
       "compilerOptions": {
         "plugins": [
           {
@@ -133,8 +151,24 @@
             }
           }
         ],
-        "webpack": true,
-        "tsConfigPath": "apps/mono-lambda/tsconfig.app.json"
+        "tsConfigPath": "libs/feed/tsconfig.lib.json"
+      }
+    },
+    "image": {
+      "type": "library",
+      "root": "libs/image",
+      "entryFile": "index",
+      "sourceRoot": "libs/image/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "tsConfigPath": "libs/image/tsconfig.lib.json"
       }
     }
   }

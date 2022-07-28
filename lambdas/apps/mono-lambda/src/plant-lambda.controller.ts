@@ -71,7 +71,7 @@ export class PlantLambdaController {
     createPlantDto.owner = req.user.id;
     const plant = await this.plantService.create(createPlantDto);
     await this.scheduleService.create({
-      plantId: plant.id.toString(),
+      plant_id: plant.id.toString(),
       timestamp: new Date(createPlantDto.water_date),
       kind: ScheduleKind.WATER,
     });

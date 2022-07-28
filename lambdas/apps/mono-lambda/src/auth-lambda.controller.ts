@@ -11,6 +11,7 @@ import {
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
+  ApiBody,
   ApiHeader,
   ApiOkResponse,
   ApiTags,
@@ -22,8 +23,9 @@ import {
   VerifySmsDto,
   VerifySmsResDto,
   CreateTokenResDto,
-} from '@app/auth';
-import { JwtAuthGuard } from '@app/auth';
+  RefreshTokenDto,
+} from '@app/auth/dto';
+import { JwtAuthGuard, RefreshJwtAuthGuard } from '@app/auth';
 import { PhonePipe } from '@app/common/pipes';
 import {
   BadRequestResponse,
@@ -41,7 +43,7 @@ export class AuthLambdaController {
 
   /**
    * send sms, verity sms 의 결과로 주어진 토큰의 유효성을 확인하고,
-   * id로 사용자를 찾아서 access_token과 refresh_token을 반환한다.
+   * id로 사용자를 찾아서 access_token과 refresh_token을 반환합니다.
    */
   @ApiUnauthorizedResponse({
     description: '유효하지 않은 verify token입니다.',
@@ -62,6 +64,27 @@ export class AuthLambdaController {
   @Post('login')
   async login(@Req() req): Promise<CreateTokenResDto> {
     return await this.authService.login(req.user);
+  }
+
+  /**
+   * 요청 바디로 보내주는 리프레시 토큰으로 토큰을 재발급합니다.
+   */
+  @ApiOkResponse({
+    description: '토큰을 재발급합니다.',
+    type: LoginResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유효하지 않은 refresh token입니다.',
+    type: UnauthorizedResponse,
+  })
+  @UseGuards(RefreshJwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('refresh')
+  async refresh(
+    @Body() _refreshTokenDto: RefreshTokenDto,
+    @Req() req,
+  ): Promise<CreateTokenResDto> {
+    return await this.authService.refresh(req.user);
   }
 
   /**
