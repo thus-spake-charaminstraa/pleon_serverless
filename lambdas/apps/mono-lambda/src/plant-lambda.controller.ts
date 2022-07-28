@@ -11,11 +11,13 @@ import {
   UseGuards,
   UseInterceptors,
   Req,
+  Query,
 } from '@nestjs/common';
 import { PlantService } from '@app/plant';
 import {
   CreatePlantApiDto,
   CreatePlantDto,
+  GetPlantQuery,
   UpdatePlantDto,
 } from '@app/plant/dto';
 import {
@@ -24,6 +26,7 @@ import {
   ApiForbiddenResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiQuery,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
@@ -38,9 +41,10 @@ import {
   ForbiddenResponse,
   UnauthorizedResponse,
   NotFoundResponse,
+  SuccessResponse,
 } from '@app/common/dto';
 import { ScheduleService } from '@app/schedule';
-import { SuccessResponse } from '../../../libs/common/src/dto/success-response.dto';
+import { queryParser } from '@app/common/utils';
 
 @ApiTags('Plant')
 @Controller('plant')
@@ -89,12 +93,19 @@ export class PlantLambdaController {
     description: '유저 확인 실패',
     type: UnauthorizedResponse,
   })
+  @ApiQuery({
+    name: 'owner',
+    description: '식물의 소유자',
+    type: String,
+    required: false,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll() {
-    return await this.plantService.findAll();
+  async findAll(@Query('owner') owner: string) {
+    const query: GetPlantQuery = queryParser({ owner }, GetPlantQuery);
+    return await this.plantService.findAll(query);
   }
 
   /**

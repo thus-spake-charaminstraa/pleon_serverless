@@ -1,6 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreatePlantDto } from './dto/create-plant.dto';
-import { UpdatePlantDto } from './dto/update-plant.dto';
+import { CreatePlantDto, GetPlantQuery, UpdatePlantDto } from './dto/plant.dto';
 import { Plant } from './entities/plant.entity';
 import { PlantRepository } from './plant.repository';
 
@@ -12,8 +11,8 @@ export class PlantService {
     return await this.plantRepository.create(createPlantDto);
   }
 
-  async findAll(): Promise<Plant[]> {
-    return await this.plantRepository.findAll();
+  async findAll(query: GetPlantQuery): Promise<Plant[]> {
+    return await this.plantRepository.findAll(query);
   }
 
   async findOne(id: string): Promise<Plant> {

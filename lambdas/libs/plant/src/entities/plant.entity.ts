@@ -9,16 +9,26 @@ export type PlantDocument = Plant & Document;
     transform: (doc, ret) => {
       delete ret.__v;
       delete ret._id;
+      ret.d_day =
+        Math.round(
+          (Date.now() - new Date(ret.adopt_date).getTime()) /
+            (1000 * 60 * 60 * 24),
+        ) + 1;
       return ret;
-    }
+    },
   },
   toJSON: {
     transform: (doc, ret) => {
       delete ret.__v;
       delete ret._id;
+      ret.d_day =
+        Math.round(
+          (Date.now() - new Date(ret.adopt_date).getTime()) /
+            (1000 * 60 * 60 * 24),
+        ) + 1;
       return ret;
-    }
-  }
+    },
+  },
 })
 export class Plant {
   @Prop({

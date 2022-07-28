@@ -6,3 +6,4 @@ export * from './interceptors';
 export * from './pipes';
 export * from './dto';
 export * from './types';
+export * from './utils';

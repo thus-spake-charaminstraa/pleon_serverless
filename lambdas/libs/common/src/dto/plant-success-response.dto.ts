@@ -1,19 +1,19 @@
-import { Plant } from "@app/plant";
+import { GetPlantResDto } from "@app/plant";
 import { SuccessResponse } from "./success-response.dto";
 
 export class GetPlantResponse extends SuccessResponse {
-  data: Plant;
+  data: GetPlantResDto;
 }
 
 export class GetPlantsResponse extends SuccessResponse {
-  data: Plant[];
+  data: GetPlantResDto[];
 }
 
 export class CreatePlantResponse extends SuccessResponse {
-  data: Plant;
+  data: GetPlantResDto;
   statusCode = 201;
 }
 
 export class UpdatePlantResponse extends SuccessResponse {
-  data: Plant;
+  data: GetPlantResDto;
 }
