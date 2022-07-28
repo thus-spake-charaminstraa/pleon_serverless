@@ -12,7 +12,7 @@ export class CreateFeedDto {
   plant_id: string;
 
   @IsDateString()
-  pubilsh_date: string;
+  publish_date: Date;
 
   @IsEnum(FeedKind)
   kind: FeedKind;
@@ -20,8 +20,8 @@ export class CreateFeedDto {
   @IsString()
   content: string;
 
-  @IsString({ each: true })
-  image_urls: string[];
+  @IsString()
+  image_url: string;
 }
 
 export class UpdateFeedDto extends PartialType(CreateFeedDto) {}

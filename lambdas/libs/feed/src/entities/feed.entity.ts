@@ -45,7 +45,7 @@ export class Feed {
   content: string;
 
   @Prop({ required: true })
-  image_urls: string[];
+  image_url: string;
 
   @Prop({ required: true })
   comments: Array<mongoSchema.Types.ObjectId>;

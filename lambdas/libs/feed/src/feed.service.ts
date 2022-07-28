@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFeedDto, UpdateFeedDto } from './dto/feed.dto';
 import { Feed } from './entities/feed.entity';
 import { FeedRepository } from './feed.repository';
@@ -18,14 +18,25 @@ export class FeedService {
   }
 
   async findOne(id: string): Promise<Feed> {
-    return await this.feedRepository.findOne(id);
+    const ret = await this.feedRepository.findOne(id);
+    if (!ret) {
+      throw new NotFoundException(`Feed with id ${id} not found`);
+    }
+    return ret;
   }
 
   async update(id: string, updateFeedDto: UpdateFeedDto): Promise<Feed> {
-    return await this.feedRepository.update(id, updateFeedDto);
+    const ret = await this.feedRepository.update(id, updateFeedDto);
+    if (!ret) {
+      throw new NotFoundException(`Feed with id ${id} not found`);
+    }
+    return ret;
   }
 
-  async delete(id: string): Promise<Feed> {
-    return await this.feedRepository.delete(id);
+  async delete(id: string): Promise<void> {
+    const ret = await this.feedRepository.delete(id);
+    if (!ret) {
+      throw new NotFoundException(`Feed with id ${id} not found`);
+    }
   }
 }

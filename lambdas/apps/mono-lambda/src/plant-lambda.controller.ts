@@ -22,7 +22,6 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiForbiddenResponse,
-  ApiNoContentResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiTags,
@@ -41,6 +40,7 @@ import {
   NotFoundResponse,
 } from '@app/common/dto';
 import { ScheduleService } from '@app/schedule';
+import { SuccessResponse } from '../../../libs/common/src/dto/success-response.dto';
 
 @ApiTags('Plant')
 @Controller('plant')
@@ -157,8 +157,9 @@ export class PlantLambdaController {
   /**
    * 식물을 삭제합니다. 인증 정보의 유저가 소유자인지 확인하고, 식물을 삭제합니다.
    */
-  @ApiNoContentResponse({
+  @ApiOkResponse({
     description: '식물 삭제 성공',
+    type: SuccessResponse,
   })
   @ApiNotFoundResponse({
     description: '식물을 찾을 수 없음',
@@ -175,7 +176,7 @@ export class PlantLambdaController {
   @ApiBearerAuth()
   @UseInterceptors(PlantByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
-  @HttpCode(HttpStatus.NO_CONTENT)
+  @HttpCode(HttpStatus.OK)
   @Delete(':id')
   async remove(@Param('id') id: string, @Req() req) {
     const ability = this.caslAbilityFactory.createForEntity();

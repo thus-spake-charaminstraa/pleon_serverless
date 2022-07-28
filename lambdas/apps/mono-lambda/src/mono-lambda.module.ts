@@ -10,8 +10,11 @@ import { AuthLambdaController } from './auth-lambda.controller';
 import { PlantModule } from '@app/plant/plant.module';
 import { PlantLambdaController } from './plant-lambda.controller';
 import { ScheduleModule } from '@app/schedule/schedule.module';
+import { ScheduleLambdaController } from './schedule-lambda.controller';
 import { ImageModule } from '@app/image';
 import { ImageLambdaController } from './image-lambda.controller';
+import { FeedLambdaController } from './feed-lambda.controller';
+import { FeedModule } from '@app/feed';
 
 @Module({
   imports: [
@@ -32,12 +35,15 @@ import { ImageLambdaController } from './image-lambda.controller';
     PlantModule,
     ScheduleModule,
     ImageModule,
+    FeedModule,
   ],
   controllers: [
     UserLambdaController,
     AuthLambdaController,
     PlantLambdaController,
     ImageLambdaController,
+    FeedLambdaController,
+    ScheduleLambdaController,
   ],
   providers: [
     {

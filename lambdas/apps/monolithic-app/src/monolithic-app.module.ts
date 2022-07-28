@@ -14,6 +14,8 @@ import { ScheduleLambdaController } from '../../mono-lambda/src/schedule-lambda.
 import { GuideNotiController } from './guide-noti.controller';
 import { ImageLambdaController } from '../../mono-lambda/src/image-lambda.controller';
 import { ImageModule } from '@app/image';
+import { FeedModule } from '@app/feed';
+import { FeedLambdaController } from '../../mono-lambda/src/feed-lambda.controller';
 
 @Module({
   imports: [
@@ -32,16 +34,17 @@ import { ImageModule } from '@app/image';
     AuthModule,
     UserModule,
     PlantModule,
-    ImageModule,
     ScheduleModule,
+    ImageModule,
+    FeedModule,
   ],
   controllers: [
     UserLambdaController,
     AuthLambdaController,
     PlantLambdaController,
-    ScheduleLambdaController,
     ImageLambdaController,
-    GuideNotiController,
+    FeedLambdaController,
+    ScheduleLambdaController,
   ],
   providers: [
     {
