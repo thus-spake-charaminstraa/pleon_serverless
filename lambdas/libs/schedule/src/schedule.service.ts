@@ -3,7 +3,7 @@ import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant';
 import { plantInfoForGuide, ScheduleKind } from '@app/common/types';
 import { SNSClient } from '@aws-sdk/client-sns';
-import { CreateScheduleDto } from './dto/create-schedule.dto';
+import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';
 
 const snsClient = new SNSClient({ region: process.env.AWS_REGION });
@@ -72,8 +72,8 @@ export class ScheduleService {
     return await this.scheduleRepository.create(createScheduleDto);
   }
 
-  async findAll(): Promise<Schedule[]> {
-    return await this.scheduleRepository.findAll();
+  async findAll(query: GetScheduleQuery): Promise<Schedule[]> {
+    return await this.scheduleRepository.findAll(query);
   }
 
   async delete(id: string): Promise<void> {

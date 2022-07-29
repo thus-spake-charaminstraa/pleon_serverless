@@ -31,7 +31,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory, ScheduleKind } from '@app/common';
+import { CaslAbilityFactory, ParseDatePipe, ScheduleKind } from '@app/common';
 import { PlantByParamsIdInterceptor } from '@app/common/interceptors';
 import {
   CreatePlantResponse,
@@ -44,7 +44,7 @@ import {
   SuccessResponse,
 } from '@app/common/dto';
 import { ScheduleService } from '@app/schedule';
-import { queryParser } from '@app/common/utils';
+import { DateStrFormat, queryParser } from '@app/common/utils';
 
 @ApiTags('Plant')
 @Controller('plant')
@@ -71,12 +71,15 @@ export class PlantLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  async create(@Body() createPlantDto: CreatePlantApiDto, @Req() req) {
+  async create(
+    @Body(ParseDatePipe) createPlantDto: CreatePlantApiDto,
+    @Req() req,
+  ) {
     createPlantDto.owner = req.user.id;
     const plant = await this.plantService.create(createPlantDto);
     await this.scheduleService.create({
       plant_id: plant.id.toString(),
-      timestamp: new Date(createPlantDto.water_date),
+      timestamp: new Date(DateStrFormat(new Date(createPlantDto.water_date))),
       kind: ScheduleKind.WATER,
     });
     return plant;

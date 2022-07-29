@@ -2,8 +2,7 @@ import { ScheduleKind } from '@app/common/types';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateScheduleDto } from './dto/create-schedule.dto';
-import { UpdateScheduleDto } from './dto/update-schedule.dto';
+import { CreateScheduleDto, UpdateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule, ScheduleDocument } from './entities/schedule.entity';
 
 @Injectable()
@@ -17,8 +16,8 @@ export class ScheduleRepository {
     return await createdSchedule.save();
   }
 
-  async findAll(): Promise<Schedule[]> {
-    return await this.scheduleModel.find().exec();
+  async findAll(query: GetScheduleQuery): Promise<Schedule[]> {
+    return await this.scheduleModel.find(query).exec();
   }
 
   async findOne(id: string): Promise<Schedule> {

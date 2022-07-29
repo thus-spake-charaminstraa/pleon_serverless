@@ -1,4 +1,5 @@
 import { ScheduleKind } from "@app/common/types";
+import { PartialType } from "@nestjs/swagger";
 import { IsDate, IsDateString, IsEnum, IsMongoId } from "class-validator";
 
 export class CreateScheduleDto {
@@ -10,4 +11,10 @@ export class CreateScheduleDto {
 
   @IsEnum(ScheduleKind)
   kind: ScheduleKind;
+}
+
+export class UpdateScheduleDto extends PartialType(CreateScheduleDto) {}
+
+export class GetScheduleQuery {
+  plant_id: string;
 }

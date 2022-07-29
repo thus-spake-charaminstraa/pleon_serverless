@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateFeedDto, UpdateFeedDto } from './dto/feed.dto';
+import { CreateFeedDto, GetFeedQuery, UpdateFeedDto } from './dto/feed.dto';
 import { Feed } from './entities/feed.entity';
 import { FeedRepository } from './feed.repository';
 
@@ -13,8 +13,8 @@ export class FeedService {
     return await this.feedRepository.create(createFeedDto);
   }
 
-  async findAll(): Promise<Feed[]> {
-    return await this.feedRepository.findAll();
+  async findAll(query: GetFeedQuery): Promise<Feed[]> {
+    return await this.feedRepository.findAll(query);
   }
 
   async findOne(id: string): Promise<Feed> {

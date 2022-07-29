@@ -11,18 +11,28 @@ import {
   UnauthorizedResponse,
   UpdateFeedResponse,
 } from '@app/common/dto';
-import { FeedByParamsIdInterceptor } from '@app/common/interceptors/feedById.interceptor';
-import { CreateFeedDto, FeedService, UpdateFeedDto } from '@app/feed';
+import { FeedByParamsIdInterceptor } from '@app/common/interceptors';
+import {
+  CreateFeedDto,
+  FeedService,
+  GetFeedOrderBy,
+  GetFeedQuery,
+  UpdateFeedDto,
+} from '@app/feed';
 import {
   Body,
   Controller,
+  DefaultValuePipe,
   Delete,
   Get,
   HttpCode,
   HttpStatus,
   Param,
+  ParseEnumPipe,
+  ParseIntPipe,
   Patch,
   Post,
+  Query,
   Req,
   UseGuards,
   UseInterceptors,
@@ -34,9 +44,13 @@ import {
   ApiForbiddenResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
+  ApiQuery,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { FeedKind } from '@app/common/types';
+import { queryParser } from '@app/common/utils';
+import { ParseDatePipe } from '@app/common/pipes';
 
 @ApiTags('Feed')
 @Controller('feed')
@@ -66,13 +80,13 @@ export class FeedLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  async create(@Body() createFeedDto: CreateFeedDto, @Req() req) {
+  async create(@Body(ParseDatePipe) createFeedDto: CreateFeedDto, @Req() req) {
     createFeedDto.owner = req.user.id;
     return await this.feedService.create(createFeedDto);
   }
 
   /**
-   * 피드 목록을 조회합니다. 
+   * 피드 목록을 조회합니다.
    */
   @ApiUnauthorizedResponse({
     description: '유저 확인 실패',
@@ -82,12 +96,68 @@ export class FeedLambdaController {
     description: '피드들의 정보를 성공적으로 가져옴',
     type: GetFeedsResponse,
   })
+  @ApiQuery({
+    name: 'plant_id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'kind',
+    enum: FeedKind,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'publish_date',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'limit',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'offset',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'order_by',
+    enum: GetFeedOrderBy,
+    required: false,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll() {
-    return await this.feedService.findAll();
+  async findAll(
+    @Query('plant_id') plant_id: string,
+    @Query('kind') kind: FeedKind,
+    @Query('publish_date') publish_date: string,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
+    @Query('order_by') order_by: GetFeedOrderBy,
+    @Req() req,
+  ) {
+    if (publish_date) publish_date = new Date(publish_date).toISOString();
+    const query: GetFeedQuery = queryParser(
+      {
+        owner: req.user.id,
+        plant_id,
+        kind,
+        publish_date,
+        limit,
+        offset,
+        order_by,
+      },
+      GetFeedQuery,
+    );
+    const result = await this.feedService.findAll(query);
+    return {
+      result,
+      count: result.length,
+      next_offset: offset + result.length,
+    }
   }
 
   /**
@@ -168,7 +238,7 @@ export class FeedLambdaController {
   })
   @ApiOkResponse({
     description: '피드를 성공적으로 삭제함',
-    type: SuccessResponse
+    type: SuccessResponse,
   })
   @ApiBearerAuth()
   @UseInterceptors(FeedByParamsIdInterceptor)

@@ -7,6 +7,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
+  Query,
   Req,
   UseGuards,
   UseInterceptors,
@@ -15,11 +16,14 @@ import {
   ApiBearerAuth,
   ApiCreatedResponse,
   ApiOkResponse,
+  ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
 import { CreateScheduleResponse, GetSchedulesResponse } from '@app/common/dto';
 import { PlantByBodyIdInterceptor } from '@app/common/interceptors';
-import { CaslAbilityFactory } from '@app/common';
+import { CaslAbilityFactory, ParseDatePipe } from '@app/common';
+import { queryParser } from '@app/common/utils';
+import { GetScheduleQuery } from '../../../libs/schedule/src/dto/schedule.dto';
 
 @ApiTags('Schedule')
 @Controller('schedule')
@@ -41,24 +45,34 @@ export class ScheduleLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  async create(@Body() createScheduleDto: CreateScheduleDto, @Req() req) {
+  async create(
+    @Body(ParseDatePipe) createScheduleDto: CreateScheduleDto,
+    @Req() req,
+  ) {
     const ability = this.caslAbilityFactory.createForEntity();
     ability.checkCanModify(req.user, req.entity);
     return await this.scheduleService.create(createScheduleDto);
   }
 
-  /** 
+  /**
    * 스케줄 목록을 조회합니다.
    */
   @ApiOkResponse({
     description: '스케줄 조회 성공',
     type: GetSchedulesResponse,
   })
+  @ApiQuery({
+    name: 'plant_id',
+    description: '스케줄을 조회할 식물의 id',
+    type: String,
+    required: false,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll() {
-    return await this.scheduleService.findAll();
+  async findAll(@Query('plant_id') plant_id: string) {
+    const query: GetScheduleQuery = queryParser({ plant_id }, GetScheduleQuery);
+    return await this.scheduleService.findAll(query);
   }
 }
