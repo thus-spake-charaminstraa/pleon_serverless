@@ -1,11 +1,12 @@
-import { FeedKind } from "@app/common/types";
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Schema as mongoSchema } from "mongoose";
+import { FeedKind } from '@app/common/types';
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { Schema as mongoSchema } from 'mongoose';
 
 export type FeedDocument = Feed & Document;
 
 @Schema({
   toObject: {
+    virtuals: true,
     transform: (doc, ret) => {
       delete ret.__v;
       delete ret._id;
@@ -13,6 +14,7 @@ export type FeedDocument = Feed & Document;
     },
   },
   toJSON: {
+    virtuals: true,
     transform: (doc, ret) => {
       delete ret.__v;
       delete ret._id;
@@ -52,3 +54,10 @@ export class Feed {
 }
 
 export const FeedSchema = SchemaFactory.createForClass(Feed);
+
+FeedSchema.virtual('plant', {
+  ref: 'Plant',
+  localField: 'plant_id',
+  foreignField: 'id',
+  justOne: true,
+});

@@ -136,7 +136,7 @@ export class FeedLambdaController {
     @Query('publish_date') publish_date: string,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
     @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
-    @Query('order_by') order_by: GetFeedOrderBy,
+    @Query('order_by', new DefaultValuePipe(GetFeedOrderBy.DESC), new ParseEnumPipe(GetFeedOrderBy)) order_by: GetFeedOrderBy,
     @Req() req,
   ) {
     if (publish_date) publish_date = new Date(publish_date).toISOString();

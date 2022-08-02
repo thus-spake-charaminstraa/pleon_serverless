@@ -23,6 +23,7 @@ export class FeedRepository {
       .sort({ publish_date: order_by === 'asc' ? 1 : -1 })
       .skip(offset)
       .limit(limit)
+      .populate('plant')
       .exec();
   }
 

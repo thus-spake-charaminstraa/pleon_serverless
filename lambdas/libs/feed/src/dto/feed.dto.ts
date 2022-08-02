@@ -1,6 +1,6 @@
 import { FeedKind } from "@app/common/types";
 import { ApiHideProperty, PartialType } from "@nestjs/swagger";
-import { IsDateString, IsEnum, IsMongoId, IsOptional, IsString } from "class-validator";
+import { IsDateString, IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreateFeedDto {
   @ApiHideProperty()
@@ -17,9 +17,12 @@ export class CreateFeedDto {
   @IsEnum(FeedKind)
   kind: FeedKind;
 
+  @IsNotEmpty()
   @IsString()
   content: string;
 
+  @IsOptional()
+  @IsNotEmpty()
   @IsString()
   image_url: string;
 }
