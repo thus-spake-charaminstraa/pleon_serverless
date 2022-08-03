@@ -13,7 +13,7 @@ export class AuthRepository {
     return this.cacheManager.get(uuid);
   }
 
-  async delete(uuid: string): Promise<void> {
+  async deleteOne(uuid: string): Promise<void> {
     await this.cacheManager.del(uuid);
   }
 

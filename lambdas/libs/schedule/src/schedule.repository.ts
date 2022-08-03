@@ -28,7 +28,7 @@ export class ScheduleRepository {
     let ret = {};
     for (let kind of Object.keys(ScheduleKind)) {
       ret[kind] = await this.scheduleModel
-        .find({ plant_id: plantId, kind })
+        .find({ plant_id: plantId, kind: ScheduleKind[kind] })
         .sort({ timestamp: -1 })
         .exec();
     }
@@ -44,7 +44,7 @@ export class ScheduleRepository {
       .exec();
   }
 
-  async remove(id: string): Promise<any> {
-    return await this.scheduleModel.deleteOne({ id }).exec();
+  async deleteOne(id: string): Promise<any> {
+    return await this.scheduleModel.findOneAndDelete({ id }).exec();
   }
 }

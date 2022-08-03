@@ -192,9 +192,9 @@ export class PlantLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
-  async remove(@Param('id') id: string, @Req() req) {
+  async deleteOne(@Param('id') id: string, @Req() req) {
     const ability = this.caslAbilityFactory.createForEntity();
     ability.checkCanModify(req.user, req.entity);
-    return await this.plantService.remove(id);
+    return await this.plantService.deleteOne(id);
   }
 }

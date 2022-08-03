@@ -1,4 +1,5 @@
 import { Feed } from '@app/feed/entities/feed.entity';
+import { Plant } from '@app/plant/entities/plant.entity';
 import { SuccessResponse } from './success-response.dto';
 
 export class CreateFeedResponse extends SuccessResponse {
@@ -11,7 +12,15 @@ export class GetFeedResponse extends SuccessResponse {
 }
 
 export class GetFeedsResponse extends SuccessResponse {
-  data: Feed[];
+  data: {
+    result: FeedRes[];
+    count: number;
+    next_offset: number;
+  };
+}
+
+class FeedRes extends Feed {
+  plant: Plant;
 }
 
 export class UpdateFeedResponse extends SuccessResponse {

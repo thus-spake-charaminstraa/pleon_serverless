@@ -2,11 +2,8 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant';
 import { plantInfoForGuide, ScheduleKind } from '@app/common/types';
-import { SNSClient } from '@aws-sdk/client-sns';
 import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';
-
-const snsClient = new SNSClient({ region: process.env.AWS_REGION });
 
 @Injectable()
 export class ScheduleService {
@@ -21,12 +18,12 @@ export class ScheduleService {
 
   getPlantGuide(species: string): any {
     return {
-      water: new Date(7 * 24 * 60 * 60 * 1000),
-      air: new Date(3 * 24 * 60 * 60 * 1000),
-      repot: new Date(180 * 24 * 60 * 60 * 1000),
-      prune: new Date(21 * 24 * 60 * 60 * 1000),
-      spray: new Date(4 * 24 * 60 * 60 * 1000),
-      fertilize: new Date(31 * 24 * 60 * 60 * 1000),
+      WATER: new Date(60 * 60 * 1000),
+      AIR: new Date(60 * 60 * 1000),
+      REPOT: new Date(60 * 60 * 1000),
+      PRUNE: new Date(60 * 60 * 1000),
+      SPRAY: new Date(60 * 60 * 1000),
+      FERTILIZE: new Date(60 * 60 * 1000),
     };
   }
 
@@ -39,8 +36,9 @@ export class ScheduleService {
     let ret = {};
     for (let kind of Object.keys(ScheduleKind)) {
       let overdue = false;
-      for (let schedule of scheduleOfPlantByKind[kind]) {
-        if (schedule[0].timestamp + guide[kind] <= Date.now()) {
+      const schedule = scheduleOfPlantByKind[kind];
+      if (schedule.length > 0) {
+        if (schedule[0].timestamp.getTime() + guide[kind].getTime() <= Date.now()) {
           overdue = true;
         }
       }
@@ -49,23 +47,10 @@ export class ScheduleService {
     return ret;
   }
 
-  async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
-    const overdue = await this.checkScheduleOverdue(plantInfo);
-    if (overdue.water) {
-      console.log('water');
-      // aws sns publish
-    }
-  }
-
-  async sendNotiForPlants(): Promise<void> {
-    const plantInfos = await this.getAllPlantInfo();
-    for (let plant of plantInfos) {
-      await this.sendNotiForPlant(plant);
-    }
-  }
-
   async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {
-    const plant = await this.plantRepository.findOne(createScheduleDto.plant_id);
+    const plant = await this.plantRepository.findOne(
+      createScheduleDto.plant_id,
+    );
     if (!plant) {
       throw new NotFoundException('plant not found');
     }
@@ -76,7 +61,7 @@ export class ScheduleService {
     return await this.scheduleRepository.findAll(query);
   }
 
-  async delete(id: string): Promise<void> {
-    await this.scheduleRepository.remove(id);
+  async deleteOne(id: string): Promise<void> {
+    await this.scheduleRepository.deleteOne(id);
   }
 }

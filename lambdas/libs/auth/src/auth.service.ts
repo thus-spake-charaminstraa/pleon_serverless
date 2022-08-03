@@ -47,12 +47,12 @@ export class AuthService {
     if (!savedToken) {
       throw new UnauthorizedException('리프레시 토큰이 만료되었습니다.');
     }
-    await this.authRepository.delete(user.uuid);
+    await this.authRepository.deleteOne(user.uuid);
     return this.login(user);
   }
 
   async logout(user: any): Promise<void> {
-    await this.authRepository.delete(user.uuid);
+    await this.authRepository.deleteOne(user.uuid);
   }
 
   async sendSms(sendSmsDto: SendSmsDto): Promise<void> {

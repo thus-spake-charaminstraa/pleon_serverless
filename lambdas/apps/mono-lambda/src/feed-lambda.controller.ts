@@ -113,16 +113,19 @@ export class FeedLambdaController {
   })
   @ApiQuery({
     name: 'limit',
+    description: '최대 개수이고, 기본값은 10입니다. optional입니다.',
     type: Number,
     required: false,
   })
   @ApiQuery({
     name: 'offset',
+    description: '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
     type: Number,
     required: false,
   })
   @ApiQuery({
     name: 'order_by',
+    description: '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
     enum: GetFeedOrderBy,
     required: false,
   })
@@ -245,9 +248,9 @@ export class FeedLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
-  async delete(@Param('id') id: string, @Req() req) {
+  async deleteOne(@Param('id') id: string, @Req() req) {
     const ability = this.caslAbilityFactory.createForEntity();
     ability.checkCanModify(req.user, req.entity);
-    return await this.feedService.delete(id);
+    return await this.feedService.deleteOne(id);
   }
 }
