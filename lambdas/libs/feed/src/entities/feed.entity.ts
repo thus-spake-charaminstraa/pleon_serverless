@@ -4,22 +4,24 @@ import { Schema as mongoSchema } from 'mongoose';
 
 export type FeedDocument = Feed & Document;
 
+const transform = (doc, ret) => {
+  delete ret.__v;
+  delete ret._id;
+  return ret;
+};
+
 @Schema({
   toObject: {
     virtuals: true,
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
   },
   toJSON: {
     virtuals: true,
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
+  },
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
   },
 })
 export class Feed {
@@ -51,6 +53,12 @@ export class Feed {
 
   @Prop({ required: true })
   comments: Array<mongoSchema.Types.ObjectId>;
+
+  @Prop({ required: false })
+  created_at: Date;
+
+  @Prop({ required: false })
+  updated_at: Date;
 }
 
 export const FeedSchema = SchemaFactory.createForClass(Feed);

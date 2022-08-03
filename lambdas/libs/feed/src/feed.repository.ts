@@ -20,7 +20,7 @@ export class FeedRepository {
     const { offset, limit, order_by, ...q } = query;
     return await this.model
       .find(q)
-      .sort({ publish_date: order_by === 'asc' ? 1 : -1 })
+      .sort({ publish_date: order_by === 'asc' ? 1 : -1, created_at: -1})
       .skip(offset)
       .limit(limit)
       .populate('plant')
