@@ -5,10 +5,8 @@ import { FeedRepository } from './feed.repository';
 
 @Injectable()
 export class FeedService {
-  constructor(
-    private readonly feedRepository: FeedRepository,
-  ) { }
-  
+  constructor(private readonly feedRepository: FeedRepository) {}
+
   async create(createFeedDto: CreateFeedDto): Promise<Feed> {
     return await this.feedRepository.create(createFeedDto);
   }
@@ -33,8 +31,8 @@ export class FeedService {
     return ret;
   }
 
-  async delete(id: string): Promise<void> {
-    const ret = await this.feedRepository.delete(id);
+  async deleteOne(id: string): Promise<void> {
+    const ret = await this.feedRepository.deleteOne(id);
     if (!ret) {
       throw new NotFoundException(`Feed with id ${id} not found`);
     }

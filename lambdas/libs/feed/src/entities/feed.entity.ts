@@ -46,7 +46,7 @@ export class Feed {
   @Prop({ required: true })
   content: string;
 
-  @Prop({ required: true })
+  @Prop({ required: false })
   image_url: string;
 
   @Prop({ required: true })

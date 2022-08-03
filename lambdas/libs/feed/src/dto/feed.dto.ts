@@ -30,19 +30,29 @@ export class CreateFeedDto {
 export class UpdateFeedDto extends PartialType(CreateFeedDto) {}
 
 export class GetFeedQuery {
-  owner: string;
+  owner?: string;
 
-  plant_id: string;
+  plant_id?: string;
 
-  publish_date: string;
+  publish_date?: string;
 
-  kind: FeedKind;
+  kind?: FeedKind;
 
   limit: number;
 
   offset: number;
 
   order_by: GetFeedOrderBy;
+}
+
+export class DeleteFeedQuery {
+  owner?: string;
+
+  plant_id?: string;
+
+  publish_date?: string;
+
+  kind?: FeedKind;
 }
 
 export enum GetFeedOrderBy {

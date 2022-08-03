@@ -26,7 +26,7 @@ export class PlantRepository {
   async findAllInfo(): Promise<plantInfoForGuide[]> {
     return await this.plantModel
       .find()
-      .select({ id: 1, owner: 1, species: 1 })
+      .select({ id: 1, owner: 1, species: 1, name: 1 })
       .exec();
   }
 
@@ -40,7 +40,7 @@ export class PlantRepository {
       .exec();
   }
 
-  async remove(id: string): Promise<any> {
-    return await this.plantModel.deleteOne({ id }).exec();
+  async deleteOne(id: string): Promise<any> {
+    return await this.plantModel.findOneAndDelete({ id }).exec();
   }
 }

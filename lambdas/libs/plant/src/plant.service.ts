@@ -31,8 +31,8 @@ export class PlantService {
     return await this.plantRepository.update(id, updatePlantDto);
   }
 
-  async remove(id: string): Promise<void> {
-    const ret = await this.plantRepository.remove(id);
+  async deleteOne(id: string): Promise<void> {
+    const ret = await this.plantRepository.deleteOne(id);
     if (!ret) {
       throw new NotFoundException('존재하지 않는 식물입니다.');
     }
