@@ -80,7 +80,7 @@ export class PlantLambdaController {
     await this.scheduleService.create({
       plant_id: plant.id.toString(),
       timestamp: new Date(DateStrFormat(new Date(createPlantDto.water_date))),
-      kind: ScheduleKind.WATER,
+      kind: ScheduleKind.water,
     });
     return plant;
   }

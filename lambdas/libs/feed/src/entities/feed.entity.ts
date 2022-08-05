@@ -39,6 +39,9 @@ export class Feed {
   @Prop({ required: true, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
+  @Prop({ required: false, ref: 'Schedule', default: null})
+  schedule_id: mongoSchema.Types.ObjectId;
+
   @Prop({ required: true })
   publish_date: Date;
 

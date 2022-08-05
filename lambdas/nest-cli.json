@@ -4,17 +4,6 @@
   "monorepo": true,
   "sourceRoot": "apps/monolithic-app/src",
   "root": "apps/monolithic-app",
-  "compilerOptions": {
-    "plugins": [
-      {
-        "name": "@nestjs/swagger",
-        "options": {
-          "introspectComments": true
-        }
-      }
-    ],
-    "deleteOutDir": true
-  },
   "projects": {
     "monolithic-app": {
       "type": "application",
@@ -50,6 +39,24 @@
         ],
         "webpack": true,
         "tsConfigPath": "apps/mono-lambda/tsconfig.app.json"
+      }
+    },
+    "noti-lambda": {
+      "type": "application",
+      "root": "apps/noti-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/noti-lambda/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "webpack": true,
+        "tsConfigPath": "apps/noti-lambda/tsconfig.app.json"
       }
     },
     "common": {
@@ -169,6 +176,40 @@
           }
         ],
         "tsConfigPath": "libs/image/tsconfig.lib.json"
+      }
+    },
+    "guide": {
+      "type": "library",
+      "root": "libs/guide",
+      "entryFile": "index",
+      "sourceRoot": "libs/guide/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "tsConfigPath": "libs/guide/tsconfig.lib.json"
+      }
+    },
+    "noti": {
+      "type": "library",
+      "root": "libs/noti",
+      "entryFile": "index",
+      "sourceRoot": "libs/noti/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "tsConfigPath": "libs/noti/tsconfig.lib.json"
       }
     }
   }

@@ -6,4 +6,6 @@ export type plantInfoForGuide = {
   species: string;
 
   owner: mongoSchema.Types.ObjectId;
+  
+  name: string;
 };

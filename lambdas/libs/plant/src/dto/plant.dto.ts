@@ -1,7 +1,13 @@
-import { PlantAir, PlantLight } from "@app/common/types";
-import { ApiHideProperty, PartialType } from "@nestjs/swagger";
-import { IsArray, IsDateString, IsEnum, IsMongoId, IsOptional, IsString } from "class-validator";
-import { Plant } from "../entities/plant.entity";
+import { PlantAir, PlantLight } from '@app/common/types';
+import { ApiHideProperty, PickType } from '@nestjs/swagger';
+import {
+  IsDateString,
+  IsEnum,
+  IsMongoId,
+  IsOptional,
+  IsString,
+} from 'class-validator';
+import { Plant } from '../entities/plant.entity';
 
 export class CreatePlantDto {
   @IsString()
@@ -33,7 +39,12 @@ export class CreatePlantApiDto extends CreatePlantDto {
   water_date: Date;
 }
 
-export class UpdatePlantDto extends PartialType(CreatePlantDto) { }
+export class UpdatePlantDto extends PickType(CreatePlantDto, [
+  'name',
+  'thumbnail',
+  'light',
+  'air',
+] as const) {}
 
 export class GetPlantResDto extends Plant {
   d_day: number;

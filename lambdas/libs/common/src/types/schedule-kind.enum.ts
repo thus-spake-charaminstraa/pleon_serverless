@@ -1,8 +1,8 @@
 export enum ScheduleKind {
-  WATER = 'water',
-  AIR = 'air',
-  REPOT = 'repot',
-  PRUNE = 'prune',
-  SPRAY = 'spray',
-  FERTILIZE = 'fertilize',
+  water = 'water',
+  air = 'air',
+  repot = 'repot',
+  prune = 'prune',
+  spray = 'spray',
+  fertilize = 'fertilize',
 }

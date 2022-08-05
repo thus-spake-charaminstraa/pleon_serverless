@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { PlantService } from './plant.service';
 import { PlantRepository } from './plant.repository';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Plant, PlantSchema } from './entities/plant.entity';
-import { FeedModule, FeedSchema, FeedRepository, GetFeedOrderBy } from '@app/feed';
+import { FeedModule, FeedRepository } from '@app/feed';
 
 @Module({
   imports: [

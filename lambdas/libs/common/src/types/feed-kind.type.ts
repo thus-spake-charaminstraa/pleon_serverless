@@ -1,13 +1,12 @@
-export enum FeedKind{
-  TODAY = 'today',
-  LEAF = 'leaf',
-  FLOWER = 'flower',
-  FRUIT = 'fruit',
-  WATER = 'water',
-  AIR = 'air',
-  REPOT = 'repot',
-  PRUNE = 'prune',
-  SPRAY = 'spray',
-  FERTILIZE = 'fertilize',
-  ETC = 'etc',
+import { ScheduleKind } from '@app/common';
+
+export enum FeedOnlyKind {
+  today = 'today',
+  leaf = 'leaf',
+  flower = 'flower',
+  fruit = 'fruit',
+  etc = 'etc',
 }
+
+export type FeedKind = FeedOnlyKind | ScheduleKind;
+export const FeedKind = { ...FeedOnlyKind, ...ScheduleKind };

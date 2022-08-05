@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant';
 import { plantInfoForGuide, ScheduleKind } from '@app/common/types';
@@ -8,22 +8,19 @@ import { Schedule } from './entities/schedule.entity';
 @Injectable()
 export class ScheduleService {
   constructor(
+    @Inject(forwardRef(() => PlantRepository))
     private readonly plantRepository: PlantRepository,
     private readonly scheduleRepository: ScheduleRepository,
-  ) {}
-
-  async getAllPlantInfo(): Promise<plantInfoForGuide[]> {
-    return await this.plantRepository.findAllInfo();
-  }
-
+  ) { }
+  
   getPlantGuide(species: string): any {
     return {
-      WATER: new Date(60 * 60 * 1000),
-      AIR: new Date(60 * 60 * 1000),
-      REPOT: new Date(60 * 60 * 1000),
-      PRUNE: new Date(60 * 60 * 1000),
-      SPRAY: new Date(60 * 60 * 1000),
-      FERTILIZE: new Date(60 * 60 * 1000),
+      water: new Date(7 * 24 * 60 * 60 * 1000),
+      air: new Date(2 * 24 * 60 * 60 * 1000),
+      repot: new Date(90 * 24 * 60 * 60 * 1000),
+      prune: new Date(30 * 24 * 60 * 60 * 1000),
+      spray: new Date(3 * 24 * 60 * 60 * 1000),
+      fertilize: new Date(120 * 24 * 60 * 60 * 1000),
     };
   }
 

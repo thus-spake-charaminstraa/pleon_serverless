@@ -15,6 +15,7 @@ import { ImageModule } from '@app/image';
 import { ImageLambdaController } from './image-lambda.controller';
 import { FeedLambdaController } from './feed-lambda.controller';
 import { FeedModule } from '@app/feed';
+import { NotiModule } from '@app/noti';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { FeedModule } from '@app/feed';
     ScheduleModule,
     ImageModule,
     FeedModule,
+    NotiModule,
   ],
   controllers: [
     UserLambdaController,
