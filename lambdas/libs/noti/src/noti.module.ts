@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { NotiService } from './noti.service';
 import { NotiRepository } from './noti.repository';
 import { ScheduleModule } from '@app/schedule';
@@ -10,7 +10,7 @@ import { PlantModule } from '@app/plant';
   imports: [
     MongooseModule.forFeature([{ name: 'Noti', schema: NotiSchema }]),
     ScheduleModule,
-    PlantModule,
+    forwardRef(() => PlantModule),
   ],
   providers: [NotiService, NotiRepository],
   exports: [NotiService, NotiRepository],

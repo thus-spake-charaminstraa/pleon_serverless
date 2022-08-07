@@ -11,11 +11,13 @@ import { PlantModule } from '@app/plant/plant.module';
 import { PlantLambdaController } from '../../mono-lambda/src/plant-lambda.controller';
 import { ScheduleModule } from '@app/schedule/schedule.module';
 import { ScheduleLambdaController } from '../../mono-lambda/src/schedule-lambda.controller';
-import { GuideNotiController } from './guide-noti.controller';
 import { ImageLambdaController } from '../../mono-lambda/src/image-lambda.controller';
 import { ImageModule } from '@app/image';
 import { FeedModule } from '@app/feed';
 import { FeedLambdaController } from '../../mono-lambda/src/feed-lambda.controller';
+import { NotiModule } from '@app/noti';
+import { NotiLambdaController } from 'apps/mono-lambda/src/noti-lambda.controller';
+import { GuideNotiController } from './guide-noti.controller';
 
 @Module({
   imports: [
@@ -37,6 +39,7 @@ import { FeedLambdaController } from '../../mono-lambda/src/feed-lambda.controll
     ScheduleModule,
     ImageModule,
     FeedModule,
+    NotiModule,
   ],
   controllers: [
     UserLambdaController,
@@ -45,6 +48,8 @@ import { FeedLambdaController } from '../../mono-lambda/src/feed-lambda.controll
     ImageLambdaController,
     FeedLambdaController,
     ScheduleLambdaController,
+    NotiLambdaController,
+    GuideNotiController,
   ],
   providers: [
     {

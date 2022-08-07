@@ -1,24 +1,26 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
 import { NotiKind } from '@app/common/types';
 
 export type NotiDocument = Noti & Document;
 
+const transform = (doc, ret) => {
+  delete ret.__v;
+  delete ret._id;
+  return ret;
+};
+
 @Schema({
   toObject: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
   },
   toJSON: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
   },
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
+  }
 })
 export class Noti {
   @Prop({
@@ -32,7 +34,7 @@ export class Noti {
   @Prop({ required: true, ref: 'User' })
   owner: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: true, ref: 'Plant', default: "" })
+  @Prop({ required: true, ref: 'Plant', default: '' })
   plant_id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true })
@@ -40,6 +42,12 @@ export class Noti {
 
   @Prop({ required: true })
   kind: NotiKind;
+
+  @Prop({ required: false })
+  created_at: Date;
+
+  @Prop({ required: false })
+  updated_at: Date;
 }
 
 export const NotiSchema = SchemaFactory.createForClass(Noti);

@@ -1,5 +1,5 @@
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory } from '@app/common';
+import { CaslAbilityFactory, GetFeedsWithNotiResponse } from '@app/common';
 import {
   BadRequestResponse,
   CreateFeedResponse,
@@ -10,6 +10,7 @@ import {
   SuccessResponse,
   UnauthorizedResponse,
   UpdateFeedResponse,
+  FeedViewKind,
 } from '@app/common/dto';
 import { FeedByParamsIdInterceptor } from '@app/common/interceptors';
 import {
@@ -28,6 +29,7 @@ import {
   HttpCode,
   HttpStatus,
   Param,
+  ParseBoolPipe,
   ParseEnumPipe,
   ParseIntPipe,
   Patch,
@@ -49,14 +51,16 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { FeedKind } from '@app/common/types';
-import { queryParser } from '@app/common/utils';
+import { DateStrFormat, queryParser } from '@app/common/utils';
 import { ParseDatePipe } from '@app/common/pipes';
+import { NotiService } from '@app/noti';
 
 @ApiTags('Feed')
 @Controller('feed')
 export class FeedLambdaController {
   constructor(
     private readonly feedService: FeedService,
+    private readonly notiService: NotiService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -97,6 +101,11 @@ export class FeedLambdaController {
     type: GetFeedsResponse,
   })
   @ApiQuery({
+    name: 'include_noti',
+    type: Boolean,
+    required: false,
+  })
+  @ApiQuery({
     name: 'plant_id',
     type: String,
     required: false,
@@ -113,19 +122,21 @@ export class FeedLambdaController {
   })
   @ApiQuery({
     name: 'limit',
-    description: '최대 개수이고, 기본값은 10입니다. optional입니다.',
+    description: '최대 개수이고, 기본값은 100000입니다. optional입니다.',
     type: Number,
     required: false,
   })
   @ApiQuery({
     name: 'offset',
-    description: '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
+    description:
+      '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
     type: Number,
     required: false,
   })
   @ApiQuery({
     name: 'order_by',
-    description: '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
+    description:
+      '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
     enum: GetFeedOrderBy,
     required: false,
   })
@@ -137,12 +148,20 @@ export class FeedLambdaController {
     @Query('plant_id') plant_id: string,
     @Query('kind') kind: FeedKind,
     @Query('publish_date') publish_date: string,
-    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('limit', new DefaultValuePipe(100000), ParseIntPipe) limit: number,
     @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
-    @Query('order_by', new DefaultValuePipe(GetFeedOrderBy.DESC), new ParseEnumPipe(GetFeedOrderBy)) order_by: GetFeedOrderBy,
+    @Query(
+      'order_by',
+      new DefaultValuePipe(GetFeedOrderBy.DESC),
+      new ParseEnumPipe(GetFeedOrderBy),
+    )
+    order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    if (publish_date) publish_date = new Date(publish_date).toISOString();
+    if (publish_date)
+      publish_date = new Date(
+        DateStrFormat(new Date(publish_date)),
+      ).toISOString();
     const query: GetFeedQuery = queryParser(
       {
         owner: req.user.id,
@@ -155,12 +174,96 @@ export class FeedLambdaController {
       },
       GetFeedQuery,
     );
-    const result = await this.feedService.findAll(query);
+    const feeds = await this.feedService.findAll(query);
+    let result: any = feeds;
     return {
       result,
       count: result.length,
       next_offset: offset + result.length,
-    }
+    };
+  }
+
+  /**
+   * 피드 화면에서 보여줄 목록을 조회합니다. response type에서 result array의 각 요소는
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '피드들의 정보를 성공적으로 가져옴',
+    type: GetFeedsWithNotiResponse,
+  })
+  @ApiQuery({
+    name: 'plant_id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'limit',
+    description: '최대 개수이고, 기본값은 100000입니다. optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'offset',
+    description:
+      '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'order_by',
+    description:
+      '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
+    enum: GetFeedOrderBy,
+    required: false,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('list')
+  async findAllWithNoti(
+    @Query('plant_id') plant_id: string,
+    @Query('limit', new DefaultValuePipe(100000), ParseIntPipe) limit: number,
+    @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
+    @Query(
+      'order_by',
+      new DefaultValuePipe(GetFeedOrderBy.DESC),
+      new ParseEnumPipe(GetFeedOrderBy),
+    )
+    order_by: GetFeedOrderBy,
+    @Req() req,
+  ) {
+    const query: GetFeedQuery = queryParser(
+      {
+        owner: req.user.id,
+        plant_id,
+        limit,
+        offset,
+        order_by,
+      },
+      GetFeedQuery,
+    );
+    const feeds = await this.feedService.findAll(query);
+    const notis = await this.notiService.findAll({
+      owner: req.user.id.toString(),
+    });
+    let result: any = notis.map((noti) => ({
+      viewType: FeedViewKind.noti,
+      viewObject: noti,
+    }));
+    result.concat(
+      feeds.map((feed) => ({
+        viewType: FeedViewKind.feed,
+        viewObject: feed,
+      })),
+    );
+    return {
+      result,
+      count: result.length,
+      next_offset: offset + result.length,
+    };
   }
 
   /**

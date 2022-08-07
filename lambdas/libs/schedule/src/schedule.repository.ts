@@ -2,7 +2,12 @@ import { ScheduleKind } from '@app/common/types';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateScheduleDto, UpdateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
+import {
+  CreateScheduleDto,
+  UpdateScheduleDto,
+  GetScheduleQuery,
+  DeleteScheduleQuery,
+} from './dto/schedule.dto';
 import { Schedule, ScheduleDocument } from './entities/schedule.entity';
 
 @Injectable()
@@ -46,5 +51,9 @@ export class ScheduleRepository {
 
   async deleteOne(id: string): Promise<any> {
     return await this.scheduleModel.findOneAndDelete({ id }).exec();
+  }
+
+  async deleteAll(query: DeleteScheduleQuery): Promise<void> {
+    await this.scheduleModel.deleteMany(query).exec();
   }
 }

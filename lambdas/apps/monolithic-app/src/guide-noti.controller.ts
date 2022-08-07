@@ -1,14 +1,16 @@
-import { ScheduleService } from "@app/schedule";
-import { Controller, Post } from "@nestjs/common";
-import { ApiTags } from "@nestjs/swagger";
+import { Controller, Post } from '@nestjs/common';
+import { NotiService } from '@app/noti';
+import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('guide-noti')
-@Controller('guide')
+@ApiTags('Noti')
+@Controller('guide-noti')
 export class GuideNotiController {
-  constructor(private readonly scheduleService: ScheduleService) {}
-
+  constructor(
+    private readonly notiService: NotiService,
+  ) { }
+  
   @Post()
-  async sendGuideNoti(): Promise<void> {
-    await this.scheduleService.sendNotiForPlants();
+  async sendGuideNoti() {
+    return await this.notiService.sendNotiForPlants();
   }
 }

@@ -1,8 +1,13 @@
-import { Injectable } from "@nestjs/common";
-import { InjectModel } from "@nestjs/mongoose";
+import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Noti, NotiDocument } from "./entities";
-import { CreateNotiDto, GetNotiQuery, UpdateNotiDto } from './dto';
+import { Noti, NotiDocument } from './entities';
+import {
+  CreateNotiDto,
+  DeleteNotiQuery,
+  GetNotiQuery,
+  UpdateNotiDto,
+} from './dto';
 
 @Injectable()
 export class NotiRepository {
@@ -17,7 +22,7 @@ export class NotiRepository {
 
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
     const { ...q } = query;
-    return this.model.find(q).exec();
+    return this.model.find(q).sort({ created_at: -1 }).exec();
   }
 
   async findOne(id: string): Promise<Noti> {
@@ -32,5 +37,9 @@ export class NotiRepository {
 
   async deleteOne(id: string): Promise<Noti> {
     return this.model.findOneAndDelete({ id }).exec();
+  }
+
+  async deleteAll(query: DeleteNotiQuery): Promise<void> {
+    await this.model.deleteMany(query).exec();
   }
 }

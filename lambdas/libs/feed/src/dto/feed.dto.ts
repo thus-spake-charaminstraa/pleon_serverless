@@ -1,4 +1,4 @@
-import { FeedKind } from '@app/common/types';
+import { FeedKind, ScheduleKind } from '@app/common/types';
 import { ApiHideProperty, PickType } from '@nestjs/swagger';
 import {
   IsDateString,
