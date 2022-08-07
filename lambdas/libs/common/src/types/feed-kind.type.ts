@@ -1,12 +1,13 @@
-import { ScheduleKind } from '@app/common';
-
-export enum FeedOnlyKind {
+export enum FeedKind {
+  water = 'water',
+  air = 'air',
+  repot = 'repot',
+  prune = 'prune',
+  spray = 'spray',
+  fertilize = 'fertilize',
   today = 'today',
   leaf = 'leaf',
   flower = 'flower',
   fruit = 'fruit',
   etc = 'etc',
 }
-
-export type FeedKind = FeedOnlyKind | ScheduleKind;
-export const FeedKind = { ...FeedOnlyKind, ...ScheduleKind };

@@ -1,8 +1,9 @@
-import { ScheduleKind } from "./schedule-kind.enum";
-
-export enum NotiOnlyKind {
+export enum NotiKind {
+  water = 'water',
+  air = 'air',
+  repot = 'repot',
+  prune = 'prune',
+  spray = 'spray',
+  fertilize = 'fertilize',
   photo = 'photo',
 }
-
-export type NotiKind = NotiOnlyKind | ScheduleKind;
-export const NotiKind = { ...NotiOnlyKind, ...ScheduleKind };
