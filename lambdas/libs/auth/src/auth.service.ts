@@ -36,9 +36,13 @@ export class AuthService {
     );
     const refresh_token = this.jwtService.sign(payload, { expiresIn });
     this.authRepository.save(uuid, refresh_token, expiresIn);
-    return {
+    const token = {
       access_token,
       refresh_token,
+    }
+    return {
+      user,
+      token,
     };
   }
 

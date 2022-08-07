@@ -9,3 +9,7 @@ export class GetUserResponse extends SuccessResponse {
 export class CreateUserResponse extends SuccessResponse {
   data: CreateUserResDto;
 }
+
+export class UpdateUserResponse extends SuccessResponse {
+  data: User;
+}

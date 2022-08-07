@@ -3,20 +3,18 @@ import { Document, Schema as mongoSchema } from 'mongoose';
 
 export type UserDocument = User & Document;
 
+const transform = (doc, ret) => {
+  delete ret._id;
+  delete ret.__v;
+  return ret;
+};
+
 @Schema({
   toObject: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
   },
   toJSON: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
+    transform,
   },
 })
 export class User {
@@ -33,6 +31,9 @@ export class User {
 
   @Prop({ required: true, unique: true })
   phone: string;
+
+  @Prop({ required: true, default: '' })
+  thumbnail: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

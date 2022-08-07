@@ -1,7 +1,7 @@
-import { BadRequestException, forwardRef, Inject, Injectable } from '@nestjs/common';
-import { CreateUserDto, CreateUserResDto } from './dto/create-user.dto';
+import { BadRequestException, forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import { CreateUserDto, CreateUserResDto, UpdateUserDto } from './dto/user.dto';
 import { UserRepository } from './user.repository';
-import { AuthService, CreateTokenResDto } from '@app/auth';
+import { AuthService, TokenResDto } from '@app/auth';
 import { parsePhoneNumber } from 'libphonenumber-js';
 import { User } from './entities/user.entity';
 
@@ -21,15 +21,24 @@ export class UserService {
       throw new BadRequestException('이미 존재하는 휴대전화번호입니다.');
     }
     if (phone == parsePhoneNumber('010-1111-1111', 'KR').format('E.164')) {
-      const res = { user: new User(), token: new CreateTokenResDto() };
+      const res = { user: new User(), token: new TokenResDto() };
       return res;
     } // for testing
     const user = await this.userRepository.create({ ...createUserDto, phone });
-    const token = await this.authService.login(user);
-    return {
-      user,
-      token,
-    };
+    const ret = await this.authService.login(user);
+    return ret;
+  }
+
+  async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    const ret = await this.userRepository.update(id, updateUserDto);
+    if (!ret) {
+      throw new NotFoundException('사용자를 찾을 수 없습니다.');
+    }
+    return ret;
+  }
+
+  async findAll(): Promise<User[]> {
+    return await this.userRepository.findAll();
   }
 
   async checkPhoneDuplicate(phone: string): Promise<boolean> {

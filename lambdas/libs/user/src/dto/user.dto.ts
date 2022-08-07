@@ -1,7 +1,7 @@
 import { IsString, IsPhoneNumber, IsOptional } from 'class-validator';
-import { CreateTokenResDto } from '@app/auth';
+import { TokenResDto } from '@app/auth';
 import { User } from '../entities/user.entity';
-import { ApiHideProperty } from '@nestjs/swagger';
+import { ApiHideProperty, PickType } from '@nestjs/swagger';
 
 export class CreateUserDto {
   @IsString()
@@ -13,7 +13,14 @@ export class CreateUserDto {
   phone: string;
 }
 
+export class UpdateUserDto extends PickType(CreateUserDto, [
+  'nickname',
+] as const) {
+  @IsString()
+  thumbnail: string;
+}
+
 export class CreateUserResDto {
   user: User;
-  token: CreateTokenResDto;
+  token: TokenResDto;
 }
