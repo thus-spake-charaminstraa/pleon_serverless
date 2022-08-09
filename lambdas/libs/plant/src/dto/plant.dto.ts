@@ -1,5 +1,5 @@
 import { PlantAir, PlantLight } from '@app/common/types';
-import { ApiHideProperty, PickType } from '@nestjs/swagger';
+import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import {
   IsDateString,
   IsEnum,
@@ -39,12 +39,12 @@ export class CreatePlantApiDto extends CreatePlantDto {
   water_date: Date;
 }
 
-export class UpdatePlantDto extends PickType(CreatePlantDto, [
+export class UpdatePlantDto extends PartialType(PickType(CreatePlantDto, [
   'name',
   'thumbnail',
   'light',
   'air',
-] as const) {}
+] as const)) {}
 
 export class GetPlantResDto extends Plant {
   d_day: number;

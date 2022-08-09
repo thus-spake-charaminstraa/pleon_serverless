@@ -110,14 +110,14 @@ export class UserLambdaController {
   @ApiBearerAuth()
   @UseGuards(JwtCheckGuard)
   @HttpCode(HttpStatus.OK)
-  @Patch(':id')
+  @Patch()
   update(
-    @Param('id') id: string,
     @Body() updateUserDto: UpdateUserDto,
     @Req() req,
   ) {
-    const ability = this.caslAbilityFactory.createForUser(req.user);
-    ability.checkCanModify(id);
+    const id = req.user.id.toString();
+    // const ability = this.caslAbilityFactory.createForUser(req.user);
+    // ability.checkCanModify(id);
     return this.userService.update(id, updateUserDto);
   }
 }

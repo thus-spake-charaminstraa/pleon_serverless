@@ -17,7 +17,10 @@ export class CommonService {
     });
     
     // use validation pipe
-    app.useGlobalPipes(new ValidationPipe());
+    app.useGlobalPipes(new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }));
 
     // use response interceptor
     app.useGlobalInterceptors(new TransformInterceptor());

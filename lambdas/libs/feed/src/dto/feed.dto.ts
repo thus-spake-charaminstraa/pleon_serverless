@@ -1,5 +1,5 @@
 import { FeedKind, ScheduleKind } from '@app/common/types';
-import { ApiHideProperty, PickType } from '@nestjs/swagger';
+import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import {
   IsDateString,
   IsEnum,
@@ -39,11 +39,9 @@ export class CreateFeedDto {
   image_url?: string;
 }
 
-export class UpdateFeedDto extends PickType(CreateFeedDto, [
-  'content',
-  'image_url',
-  'publish_date',
-] as const) {}
+export class UpdateFeedDto extends PartialType(
+  PickType(CreateFeedDto, ['content', 'image_url', 'publish_date'] as const),
+) {}
 
 export class GetFeedQuery {
   owner?: string;
