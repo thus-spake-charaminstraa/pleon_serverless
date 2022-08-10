@@ -1,25 +1,12 @@
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory, GetFeedsWithNotiResponse } from '@app/common';
+import { CaslAbilityFactory } from '@app/common';
 import {
   BadRequestResponse,
-  CreateFeedResponse,
   ForbiddenResponse,
-  GetFeedResponse,
-  GetFeedsResponse,
   NotFoundResponse,
   SuccessResponse,
   UnauthorizedResponse,
-  UpdateFeedResponse,
-  FeedViewKind,
 } from '@app/common/dto';
-import { FeedByParamsIdInterceptor } from '@app/common/interceptors';
-import {
-  CreateFeedDto,
-  FeedService,
-  GetFeedOrderBy,
-  GetFeedQuery,
-  UpdateFeedDto,
-} from '@app/feed';
 import {
   Body,
   Controller,
@@ -50,10 +37,23 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { FeedKind } from '@app/common/types';
 import { DateStrFormat, queryParser } from '@app/common/utils';
 import { ParseDatePipe } from '@app/common/pipes';
 import { NotiService } from '@app/noti';
+import { FeedByParamsIdInterceptor, FeedService } from '@app/feed';
+import {
+  CreateFeedDto,
+  CreateFeedResponse,
+  FeedViewKind,
+  GetFeedOrderBy,
+  GetFeedQuery,
+  GetFeedResponse,
+  GetFeedsResponse,
+  GetFeedsWithNotiResponse,
+  UpdateFeedDto,
+  UpdateFeedResponse,
+} from '@app/feed/dto';
+import { FeedKind } from '@app/feed/types';
 
 @ApiTags('Feed')
 @Controller('feed')
@@ -253,7 +253,7 @@ export class FeedLambdaController {
       viewType: FeedViewKind.noti,
       viewObject: noti,
     }));
-    result.concat(
+    result = result.concat(
       feeds.map((feed) => ({
         viewType: FeedViewKind.feed,
         viewObject: feed,

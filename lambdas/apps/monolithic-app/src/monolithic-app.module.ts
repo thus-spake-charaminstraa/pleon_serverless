@@ -18,6 +18,8 @@ import { FeedLambdaController } from '../../mono-lambda/src/feed-lambda.controll
 import { NotiModule } from '@app/noti';
 import { NotiLambdaController } from 'apps/mono-lambda/src/noti-lambda.controller';
 import { GuideNotiController } from './guide-noti.controller';
+import { CommentLambdaController } from 'apps/mono-lambda/src/comment-lambda.controller';
+import { CommentModule } from '@app/comment';
 
 @Module({
   imports: [
@@ -40,6 +42,7 @@ import { GuideNotiController } from './guide-noti.controller';
     ImageModule,
     FeedModule,
     NotiModule,
+    CommentModule,
   ],
   controllers: [
     UserLambdaController,
@@ -49,6 +52,7 @@ import { GuideNotiController } from './guide-noti.controller';
     FeedLambdaController,
     ScheduleLambdaController,
     NotiLambdaController,
+    CommentLambdaController,
     GuideNotiController,
   ],
   providers: [

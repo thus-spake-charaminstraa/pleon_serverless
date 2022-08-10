@@ -211,6 +211,23 @@
         ],
         "tsConfigPath": "libs/noti/tsconfig.lib.json"
       }
+    },
+    "comment": {
+      "type": "library",
+      "root": "libs/comment",
+      "entryFile": "index",
+      "sourceRoot": "libs/comment/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "tsConfigPath": "libs/comment/tsconfig.lib.json"
+      }
     }
   }
 }

@@ -17,6 +17,8 @@ import { FeedLambdaController } from './feed-lambda.controller';
 import { FeedModule } from '@app/feed';
 import { NotiModule } from '@app/noti';
 import { NotiLambdaController } from './noti-lambda.controller';
+import { CommentLambdaController } from './comment-lambda.controller';
+import { CommentModule } from '@app/comment';
 
 @Module({
   imports: [
@@ -39,6 +41,7 @@ import { NotiLambdaController } from './noti-lambda.controller';
     ImageModule,
     FeedModule,
     NotiModule,
+    CommentModule,
   ],
   controllers: [
     UserLambdaController,
@@ -48,6 +51,7 @@ import { NotiLambdaController } from './noti-lambda.controller';
     FeedLambdaController,
     ScheduleLambdaController,
     NotiLambdaController,
+    CommentLambdaController,
   ],
   providers: [
     {

@@ -73,6 +73,12 @@
       ],
       "@app/noti/*": [
         "libs/noti/src/*"
+      ],
+      "@app/comment": [
+        "libs/comment/src"
+      ],
+      "@app/comment/*": [
+        "libs/comment/src/*"
       ]
     }
   }

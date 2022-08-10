@@ -103,7 +103,8 @@
       "^@app/feed(|/.*)$": "<rootDir>/libs/feed/src/$1",
       "^@app/image(|/.*)$": "<rootDir>/libs/image/src/$1",
       "^@app/guide(|/.*)$": "<rootDir>/libs/guide/src/$1",
-      "^@app/noti(|/.*)$": "<rootDir>/libs/noti/src/$1"
+      "^@app/noti(|/.*)$": "<rootDir>/libs/noti/src/$1",
+      "^@app/comment(|/.*)$": "<rootDir>/libs/comment/src/$1"
     }
   }
 }
