@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
-import { NotiKind } from '@app/common/types';
+import { NotiKind } from '../types';
 
 export type NotiDocument = Noti & Document;
 

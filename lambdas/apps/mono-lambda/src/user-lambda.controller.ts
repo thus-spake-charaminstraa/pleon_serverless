@@ -32,11 +32,10 @@ import { PhonePipe } from '@app/common/pipes';
 import {
   BadRequestResponse,
   UnauthorizedResponse,
-  CreateUserResponse,
-  UpdateUserResponse,
   ForbiddenResponse,
 } from '@app/common/dto';
 import { CaslAbilityFactory } from '@app/common';
+import { CreateUserResponse, UpdateUserResponse } from '@app/user/dto';
 
 @ApiTags('User')
 @Controller('user')
@@ -111,10 +110,7 @@ export class UserLambdaController {
   @UseGuards(JwtCheckGuard)
   @HttpCode(HttpStatus.OK)
   @Patch()
-  update(
-    @Body() updateUserDto: UpdateUserDto,
-    @Req() req,
-  ) {
+  update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
     const id = req.user.id.toString();
     // const ability = this.caslAbilityFactory.createForUser(req.user);
     // ability.checkCanModify(id);

@@ -2,9 +2,8 @@ import { Feed } from '@app/feed/entities/feed.entity';
 import { Noti } from '@app/noti';
 import { Plant } from '@app/plant/entities/plant.entity';
 import { ApiExtraModels, ApiProperty, getSchemaPath } from '@nestjs/swagger';
-import { SuccessResponse } from './success-response.dto';
-import { UserSchema } from '../../../user/src/entities/user.entity';
-import { FeedByParamsIdInterceptor } from '../interceptors/feedById.interceptor';
+import { Comment } from '@app/comment/entities';
+import { SuccessResponse } from '@app/common/dto';
 
 export class CreateFeedResponse extends SuccessResponse {
   data: Feed;
@@ -17,6 +16,7 @@ export class GetFeedResponse extends SuccessResponse {
 
 export class FeedRes extends Feed {
   plant: Plant;
+  comment_list: Comment[];
 }
 
 export class GetFeedsResponse extends SuccessResponse {

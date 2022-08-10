@@ -1,6 +1,6 @@
-import { ScheduleKind } from '@app/common/types';
 import { PartialType } from '@nestjs/swagger';
 import { IsDateString, IsEnum, IsMongoId } from 'class-validator';
+import { ScheduleKind } from '../types';
 
 export class CreateScheduleDto {
   @IsMongoId()

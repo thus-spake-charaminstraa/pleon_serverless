@@ -24,17 +24,17 @@ import {
   VerifySmsResDto,
   CreateTokenResDto,
   RefreshTokenDto,
+  LoginResponse,
+  VerifySmsResponse,
 } from '@app/auth/dto';
 import { JwtAuthGuard, RefreshJwtAuthGuard } from '@app/auth';
 import { PhonePipe } from '@app/common/pipes';
 import {
   BadRequestResponse,
   UnauthorizedResponse,
-  GetUserResponse,
-  LoginResponse,
   SuccessResponse,
-  VerifySmsResponse,
 } from '@app/common/dto';
+import { GetUserResponse } from '@app/user/dto';
 
 @ApiTags('Auth')
 @Controller('auth')

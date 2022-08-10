@@ -2,8 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateFeedDto, GetFeedQuery, UpdateFeedDto } from './dto/feed.dto';
 import { Feed } from './entities/feed.entity';
 import { FeedRepository } from './feed.repository';
-import { ScheduleKind } from '@app/common/types';
-import { ScheduleRepository, CreateScheduleDto } from '@app/schedule';
+import { ScheduleRepository, CreateScheduleDto, ScheduleKind } from '@app/schedule';
 
 @Injectable()
 export class FeedService {

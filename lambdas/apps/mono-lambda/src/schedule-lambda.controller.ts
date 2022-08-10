@@ -19,11 +19,14 @@ import {
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
-import { CreateScheduleResponse, GetSchedulesResponse } from '@app/common/dto';
-import { PlantByBodyIdInterceptor } from '@app/common/interceptors';
 import { CaslAbilityFactory, ParseDatePipe } from '@app/common';
 import { queryParser } from '@app/common/utils';
 import { GetScheduleQuery } from '../../../libs/schedule/src/dto/schedule.dto';
+import {
+  CreateScheduleResponse,
+  GetSchedulesResponse,
+} from '@app/schedule/dto';
+import { PlantByBodyIdInterceptor } from '@app/plant';
 
 @ApiTags('Schedule')
 @Controller('schedule')

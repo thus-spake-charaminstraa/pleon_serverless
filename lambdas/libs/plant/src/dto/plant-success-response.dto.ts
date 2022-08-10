@@ -1,5 +1,5 @@
+import { SuccessResponse } from "@app/common/dto";
 import { GetPlantResDto } from "@app/plant";
-import { SuccessResponse } from "./success-response.dto";
 
 export class GetPlantResponse extends SuccessResponse {
   data: GetPlantResDto;

@@ -1,11 +1,11 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
 import { Plant } from '@app/plant';
 import { User } from '@app/user';
-
-type T = Plant;
+import { Feed } from '@app/feed';
+import { Comment } from '@app/comment';
 
 class EntityPolicy {
-  checkCanModify(user: User, resource: T): void {
+  checkCanModify(user: User, resource: any): void {
     if (user.id.toString() !== resource.owner.toString()) {
       throw new ForbiddenException('리소스를 수정할 권한이 없습니다.');
     };

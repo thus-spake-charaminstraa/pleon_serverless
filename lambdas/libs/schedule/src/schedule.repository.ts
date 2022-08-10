@@ -1,4 +1,3 @@
-import { ScheduleKind } from '@app/common/types';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -9,6 +8,7 @@ import {
   DeleteScheduleQuery,
 } from './dto/schedule.dto';
 import { Schedule, ScheduleDocument } from './entities/schedule.entity';
+import { ScheduleKind } from './types';
 
 @Injectable()
 export class ScheduleRepository {

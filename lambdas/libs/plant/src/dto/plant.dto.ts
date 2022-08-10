@@ -1,4 +1,3 @@
-import { PlantAir, PlantLight } from '@app/common/types';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import {
   IsDateString,
@@ -8,6 +7,7 @@ import {
   IsString,
 } from 'class-validator';
 import { Plant } from '../entities/plant.entity';
+import { PlantAir, PlantLight } from '../types';
 
 export class CreatePlantDto {
   @IsString()

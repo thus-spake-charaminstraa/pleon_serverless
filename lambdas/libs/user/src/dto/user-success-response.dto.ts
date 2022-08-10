@@ -1,6 +1,5 @@
+import { SuccessResponse } from "@app/common/dto";
 import { CreateUserResDto, User } from "@app/user";
-import { SuccessResponse } from "./success-response.dto";
-
 
 export class GetUserResponse extends SuccessResponse {
   data: User;

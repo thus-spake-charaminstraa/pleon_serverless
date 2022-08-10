@@ -1,4 +1,3 @@
-import { FeedKind, ScheduleKind } from '@app/common/types';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import {
   IsDateString,
@@ -8,6 +7,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
+import { FeedKind } from '../types';
 
 export class CreateFeedDto {
   @ApiHideProperty()

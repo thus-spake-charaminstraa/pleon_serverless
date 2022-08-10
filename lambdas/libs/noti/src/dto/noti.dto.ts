@@ -1,6 +1,6 @@
-import { NotiKind } from '@app/common/types';
 import { PartialType } from '@nestjs/swagger';
 import { IsEnum } from 'class-validator';
+import { NotiKind } from '../types';
 
 export class CreateNotiDto {
   owner: string;

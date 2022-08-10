@@ -1,12 +1,13 @@
 import { Injectable, BadRequestException, Inject, forwardRef } from '@nestjs/common';
 import { NotiRepository } from './noti.repository';
 import { ScheduleService } from '@app/schedule';
-import { NotiKind, plantInfoForGuide } from '@app/common/types';
+import { plantInfoForGuide } from '@app/common/types';
 import { SNSClient } from '@aws-sdk/client-sns';
 import { Noti } from './entities';
 import { GetNotiQuery, NotiManageDto, NotiManageKind } from './dto';
 import { PlantRepository } from '@app/plant';
 import { CreateFeedDto } from '@app/feed/dto';
+import { NotiKind } from './types';
 
 const snsClient = new SNSClient({ region: process.env.AWS_REGION });
 

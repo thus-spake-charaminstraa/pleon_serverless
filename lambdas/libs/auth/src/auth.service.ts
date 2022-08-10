@@ -59,7 +59,7 @@ export class AuthService {
     await this.authRepository.deleteOne(user.uuid);
   }
 
-  async sendSms(sendSmsDto: SendSmsDto): Promise<void> {
+  async sendSms(sendSmsDto: SendSmsDto): Promise<any> {
     const code = this.generateAuthCode();
     await this.authRepository.save(
       sendSmsDto.phone,
@@ -74,6 +74,7 @@ export class AuthService {
     if (result.$metadata.httpStatusCode >= 400) {
       throw new InternalServerErrorException('SMS 전송에 실패했습니다.');
     }
+    return result;
   }
 
   async verifySms(verifySmsDto: VerifySmsDto): Promise<VerifySmsResDto> {

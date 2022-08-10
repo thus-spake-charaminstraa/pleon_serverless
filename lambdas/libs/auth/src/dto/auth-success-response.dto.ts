@@ -1,5 +1,5 @@
 import { CreateTokenResDto, VerifySmsResDto } from "@app/auth";
-import { SuccessResponse } from "./success-response.dto";
+import { SuccessResponse } from "@app/common/dto";
 
 export class LoginResponse extends SuccessResponse {
   data: CreateTokenResDto;

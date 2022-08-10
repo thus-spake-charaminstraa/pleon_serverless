@@ -1,6 +1,5 @@
+import { SuccessResponse } from "@app/common/dto";
 import { Schedule } from "@app/schedule";
-import { SuccessResponse } from "./success-response.dto";
-
 
 export class CreateScheduleResponse extends SuccessResponse {
   data: Schedule;

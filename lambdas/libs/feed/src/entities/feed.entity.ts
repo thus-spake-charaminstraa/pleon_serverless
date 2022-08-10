@@ -1,6 +1,6 @@
-import { FeedKind } from '@app/common/types';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
+import { FeedKind } from '../types';
 
 export type FeedDocument = Feed & Document;
 
@@ -54,9 +54,6 @@ export class Feed {
   @Prop({ required: false })
   image_url: string;
 
-  @Prop({ required: true })
-  comments: Array<mongoSchema.Types.ObjectId>;
-
   @Prop({ required: false })
   created_at: Date;
 
@@ -72,3 +69,9 @@ FeedSchema.virtual('plant', {
   foreignField: 'id',
   justOne: true,
 });
+
+FeedSchema.virtual('comments', {
+  ref: 'Comment',
+  localField: 'id',
+  foreignField: 'feed_id',
+})

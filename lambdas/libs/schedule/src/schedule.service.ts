@@ -1,9 +1,10 @@
 import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant';
-import { plantInfoForGuide, ScheduleKind } from '@app/common/types';
+import { plantInfoForGuide } from '@app/common/types';
 import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';
+import { ScheduleKind } from './types';
 
 @Injectable()
 export class ScheduleService {

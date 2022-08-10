@@ -1,5 +1,10 @@
 import { NotiService } from '@app/noti';
-import { GetNotiQuery, NotiManageDto } from '@app/noti/dto';
+import {
+  GetNotiQuery,
+  GetNotisResponse,
+  ManageNotiResponse,
+  NotiManageDto,
+} from '@app/noti/dto';
 import {
   Body,
   Controller,
@@ -12,7 +17,6 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { NotiKind } from '@app/common/types';
 import { JwtAuthGuard } from '@app/auth';
 import { queryParser } from '@app/common/utils';
 import {
@@ -23,12 +27,8 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import {
-  BadRequestResponse,
-  GetNotisResponse,
-  ManageNotiResponse,
-  UnauthorizedResponse,
-} from '@app/common/dto';
+import { BadRequestResponse, UnauthorizedResponse } from '@app/common/dto';
+import { NotiKind } from '@app/noti/types';
 
 @ApiTags('Noti')
 @Controller('noti')
