@@ -59,6 +59,10 @@ export class ScheduleService {
     return await this.scheduleRepository.findAll(query);
   }
 
+  async findAllAndGroupBy(query: GetScheduleQuery): Promise<any> {
+    return await this.scheduleRepository.findAllAndGroupBy(query);
+  }
+
   async deleteOne(id: string): Promise<void> {
     await this.scheduleRepository.deleteOne(id);
   }

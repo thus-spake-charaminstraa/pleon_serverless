@@ -35,7 +35,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory, ParseDatePipe } from '@app/common';
+import { CaslAbilityFactory, ParseDateInBodyPipe } from '@app/common';
 import {
   ForbiddenResponse,
   UnauthorizedResponse,
@@ -71,7 +71,7 @@ export class PlantLambdaController {
   @HttpCode(HttpStatus.CREATED)
   @Post()
   async create(
-    @Body(ParseDatePipe) createPlantDto: CreatePlantApiDto,
+    @Body(ParseDateInBodyPipe) createPlantDto: CreatePlantApiDto,
     @Req() req,
   ) {
     createPlantDto.owner = req.user.id;

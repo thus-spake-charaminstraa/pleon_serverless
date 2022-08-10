@@ -16,7 +16,6 @@ import {
   HttpCode,
   HttpStatus,
   Param,
-  ParseBoolPipe,
   ParseEnumPipe,
   ParseIntPipe,
   Patch,
@@ -38,7 +37,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { DateStrFormat, queryParser } from '@app/common/utils';
-import { ParseDatePipe } from '@app/common/pipes';
+import { ParseDateInBodyPipe } from '@app/common/pipes';
 import { NotiService } from '@app/noti';
 import { FeedByParamsIdInterceptor, FeedService } from '@app/feed';
 import {
@@ -84,7 +83,10 @@ export class FeedLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  async create(@Body(ParseDatePipe) createFeedDto: CreateFeedDto, @Req() req) {
+  async create(
+    @Body(ParseDateInBodyPipe) createFeedDto: CreateFeedDto,
+    @Req() req,
+  ) {
     createFeedDto.owner = req.user.id;
     return await this.feedService.create(createFeedDto);
   }

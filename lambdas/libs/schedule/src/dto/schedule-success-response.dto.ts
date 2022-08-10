@@ -1,5 +1,5 @@
 import { SuccessResponse } from "@app/common/dto";
-import { Schedule } from "@app/schedule";
+import { Schedule, ScheduleKind } from "@app/schedule";
 
 export class CreateScheduleResponse extends SuccessResponse {
   data: Schedule;
@@ -11,5 +11,11 @@ export class GetScheduleResponse extends SuccessResponse {
 }
 
 export class GetSchedulesResponse extends SuccessResponse {
-  data: Schedule[];
+  data: GetScheduleRes[];
+}
+
+export class GetScheduleRes {
+  _id: string;
+  timestamp: Date;
+  kinds: ScheduleKind[];
 }

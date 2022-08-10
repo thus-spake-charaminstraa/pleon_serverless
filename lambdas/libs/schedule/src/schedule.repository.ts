@@ -25,6 +25,20 @@ export class ScheduleRepository {
     return await this.scheduleModel.find(query).exec();
   }
 
+  async findAllAndGroupBy(query: GetScheduleQuery): Promise<any> {
+    let ret = await this.scheduleModel
+      .aggregate()
+      .match({ timestamp: { $gte: query.start, $lte: query.end } })
+      .group({
+        _id: '$timestamp',
+        timestamp: { $first: '$timestamp' },
+        kinds: { $push: '$kind' },
+      })
+      .sort({ timestamp: 1 })
+      .exec();
+    return ret;
+  }
+
   async findOne(id: string): Promise<Schedule> {
     return await this.scheduleModel.findOne({ id }).exec();
   }

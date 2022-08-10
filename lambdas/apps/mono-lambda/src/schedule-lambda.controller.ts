@@ -6,6 +6,7 @@ import {
   Get,
   HttpCode,
   HttpStatus,
+  ParseIntPipe,
   Post,
   Query,
   Req,
@@ -19,9 +20,14 @@ import {
   ApiQuery,
   ApiTags,
 } from '@nestjs/swagger';
-import { CaslAbilityFactory, ParseDatePipe } from '@app/common';
+import {
+  CaslAbilityFactory,
+  ParseDateInBodyPipe,
+  ParseMonthPipe,
+  ParseYearPipe,
+} from '@app/common';
 import { queryParser } from '@app/common/utils';
-import { GetScheduleQuery } from '../../../libs/schedule/src/dto/schedule.dto';
+import { GetScheduleQuery } from '@app/schedule/dto';
 import {
   CreateScheduleResponse,
   GetSchedulesResponse,
@@ -49,7 +55,7 @@ export class ScheduleLambdaController {
   @HttpCode(HttpStatus.CREATED)
   @Post()
   async create(
-    @Body(ParseDatePipe) createScheduleDto: CreateScheduleDto,
+    @Body(ParseDateInBodyPipe) createScheduleDto: CreateScheduleDto,
     @Req() req,
   ) {
     const ability = this.caslAbilityFactory.createForEntity();
@@ -70,12 +76,35 @@ export class ScheduleLambdaController {
     type: String,
     required: false,
   })
+  @ApiQuery({
+    name: 'year',
+    description: '스케줄을 조회할 년도, (예: 2020)',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'month',
+    description: '스케줄을 조회할 달, (1~12)로 주세요',
+    type: Date,
+    required: false,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll(@Query('plant_id') plant_id: string) {
-    const query: GetScheduleQuery = queryParser({ plant_id }, GetScheduleQuery);
-    return await this.scheduleService.findAll(query);
+  async findAll(
+    @Query('plant_id') plant_id: string,
+    @Query('year', ParseIntPipe, ParseYearPipe) year: number,
+    @Query('month', ParseIntPipe, ParseMonthPipe) month: number,
+  ) {
+    const start = new Date(year, 0, 1);
+    start.setMonth(month - 2);
+    const end = new Date(year, 0, 31);
+    end.setMonth(month);
+    let query: GetScheduleQuery = queryParser(
+      { plant_id, year, month, start, end },
+      GetScheduleQuery,
+    );
+    return await this.scheduleService.findAllAndGroupBy(query);
   }
 }
