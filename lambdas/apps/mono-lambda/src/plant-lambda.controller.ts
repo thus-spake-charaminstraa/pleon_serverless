@@ -159,7 +159,7 @@ export class PlantLambdaController {
   @Patch(':id')
   async update(
     @Param('id') id: string,
-    @Body() updatePlantDto: UpdatePlantDto,
+    @Body(ParseDateInBodyPipe) updatePlantDto: UpdatePlantDto,
     @Req() req,
   ) {
     const ability = this.caslAbilityFactory.createForEntity();

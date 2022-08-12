@@ -11,7 +11,7 @@ export class ParseDateInBodyPipe implements PipeTransform {
     else if (value.timestamp)
       value.timestamp = DateStrFormat(new Date(value.timestamp));
     else
-      value = new Date(value);
+      throw new BadRequestException('Invalid date format');
     return value;
   }
 }

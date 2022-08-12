@@ -23,6 +23,7 @@ export class CommentRepository {
   async findAll(query: GetCommentQuery): Promise<Comment[]> {
     return await this.model
       .find(query)
+      .sort({ created_at: 1 })
       .populate('plant')
       .populate('user')
       .exec();
@@ -31,6 +32,7 @@ export class CommentRepository {
   async findAllInFeed(feedId: string): Promise<Comment[]> {
     return await this.model
       .find({ feed_id: feedId })
+      .sort({ created_at: 1 })
       .populate('plant')
       .populate('user')
       .exec();

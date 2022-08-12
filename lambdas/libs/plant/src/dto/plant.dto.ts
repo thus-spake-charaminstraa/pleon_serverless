@@ -44,6 +44,7 @@ export class UpdatePlantDto extends PartialType(PickType(CreatePlantDto, [
   'thumbnail',
   'light',
   'air',
+  'adopt_date',
 ] as const)) {}
 
 export class GetPlantResDto extends Plant {
