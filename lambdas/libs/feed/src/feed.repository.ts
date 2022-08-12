@@ -30,6 +30,7 @@ export class FeedRepository {
       .limit(limit)
       .populate('plant')
       .populate('comments')
+      .populate('user')
       .exec();
   }
 
@@ -38,6 +39,7 @@ export class FeedRepository {
       .findOne({ id })
       .populate('plant')
       .populate('comments')
+      .populate('user')
       .exec();
   }
 

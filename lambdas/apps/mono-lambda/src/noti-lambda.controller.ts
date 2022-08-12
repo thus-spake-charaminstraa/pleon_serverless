@@ -1,5 +1,6 @@
 import { NotiService } from '@app/noti';
 import {
+  CreateNotiDto,
   GetNotiQuery,
   GetNotisResponse,
   ManageNotiResponse,
@@ -34,6 +35,16 @@ import { NotiKind } from '@app/noti/types';
 @Controller('noti')
 export class NotiLambdaController {
   constructor(private readonly notiService: NotiService) {}
+
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @Post()
+  async create(@Body() createNotiDto: CreateNotiDto, @Req() req) {
+    createNotiDto.owner = req.user.id.toString();
+    return await this.notiService.create(createNotiDto);
+  }
 
   /**
    * 알림을 가져옵니다.

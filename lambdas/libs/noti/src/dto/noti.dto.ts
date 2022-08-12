@@ -1,14 +1,21 @@
-import { PartialType } from '@nestjs/swagger';
-import { IsEnum } from 'class-validator';
+import { ApiHideProperty, PartialType } from '@nestjs/swagger';
+import { IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 import { NotiKind } from '../types';
 
 export class CreateNotiDto {
+  @ApiHideProperty()
+  @IsOptional()
+  @IsMongoId()
   owner: string;
 
+  @IsMongoId()
   plant_id: string;
 
+  @IsString()
+  @IsNotEmpty()
   content: string;
 
+  @IsEnum(NotiKind)
   kind: NotiKind;
 }
 

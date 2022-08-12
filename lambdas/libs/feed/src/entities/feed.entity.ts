@@ -39,7 +39,7 @@ export class Feed {
   @Prop({ required: true, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: false, ref: 'Schedule', default: null})
+  @Prop({ required: false, ref: 'Schedule' })
   schedule_id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true })
@@ -74,4 +74,11 @@ FeedSchema.virtual('comments', {
   ref: 'Comment',
   localField: 'id',
   foreignField: 'feed_id',
+});
+
+FeedSchema.virtual('user', {
+  ref: 'User',
+  localField: 'owner',
+  foreignField: 'id',
+  justOne: true,
 })

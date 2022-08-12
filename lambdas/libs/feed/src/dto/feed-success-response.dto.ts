@@ -4,6 +4,7 @@ import { Plant } from '@app/plant/entities/plant.entity';
 import { ApiExtraModels, ApiProperty, getSchemaPath } from '@nestjs/swagger';
 import { Comment } from '@app/comment/entities';
 import { SuccessResponse } from '@app/common/dto';
+import { User } from '@app/user';
 
 export class CreateFeedResponse extends SuccessResponse {
   data: Feed;
@@ -17,11 +18,12 @@ export class GetFeedResponse extends SuccessResponse {
 export class FeedRes extends Feed {
   plant: Plant;
   comment_list: Comment[];
+  user: User;
 }
 
 export class GetFeedsResponse extends SuccessResponse {
   data: {
-    result: FeedRes[];
+    result: FeedView[];
     count: number;
     next_offset: number;
   };

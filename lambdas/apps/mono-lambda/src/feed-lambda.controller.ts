@@ -177,7 +177,10 @@ export class FeedLambdaController {
       GetFeedQuery,
     );
     const feeds = await this.feedService.findAll(query);
-    let result: any = feeds;
+    let result = feeds.map((feed) => ({
+      viewType: FeedViewKind.feed,
+      viewObject: feed,
+    }))
     return {
       result,
       count: result.length,
@@ -186,7 +189,7 @@ export class FeedLambdaController {
   }
 
   /**
-   * 피드 화면에서 보여줄 목록을 조회합니다. response type에서 result array의 각 요소는
+   * 피드 화면에서 보여줄 목록을 조회합니다. 자신의 피드를 조회합니다.
    */
   @ApiUnauthorizedResponse({
     description: '유저 확인 실패',

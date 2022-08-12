@@ -4,7 +4,7 @@ import { ScheduleService } from '@app/schedule';
 import { plantInfoForGuide } from '@app/common/types';
 import { SNSClient } from '@aws-sdk/client-sns';
 import { Noti } from './entities';
-import { GetNotiQuery, NotiManageDto, NotiManageKind } from './dto';
+import { CreateNotiDto, GetNotiQuery, NotiManageDto, NotiManageKind } from './dto';
 import { PlantRepository } from '@app/plant';
 import { CreateFeedDto } from '@app/feed/dto';
 import { NotiKind } from './types';
@@ -36,6 +36,7 @@ export class NotiService {
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
+    console.log(overdue);
     for (let kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
         const ret = await this.notiRepository.create({
@@ -55,6 +56,10 @@ export class NotiService {
     for (let plant of plantInfos) {
       await this.sendNotiForPlant(plant);
     }
+  }
+
+  async create(createNotiDto: CreateNotiDto): Promise<Noti> {
+    return await this.notiRepository.create(createNotiDto);
   }
 
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
