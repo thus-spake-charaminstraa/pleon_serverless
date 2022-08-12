@@ -13,7 +13,7 @@ export const handler: Handler = async (
   const notiService = appContext.get(NotiService);
 
   return {
-    body: notiService.sendNotiForPlants(),
+    body: await notiService.sendNotiForPlants(),
     statusCode: HttpStatus.OK,
   };
 };

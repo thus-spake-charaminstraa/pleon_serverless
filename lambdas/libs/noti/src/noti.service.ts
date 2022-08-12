@@ -36,7 +36,6 @@ export class NotiService {
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
-    console.log(overdue);
     for (let kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
         const ret = await this.notiRepository.create({

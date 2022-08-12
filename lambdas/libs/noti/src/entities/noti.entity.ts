@@ -20,7 +20,7 @@ const transform = (doc, ret) => {
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
-  }
+  },
 })
 export class Noti {
   @Prop({
@@ -34,7 +34,7 @@ export class Noti {
   @Prop({ required: true, ref: 'User' })
   owner: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: true, ref: 'Plant', default: '' })
+  @Prop({ required: false, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
   @Prop({ required: true })
