@@ -27,7 +27,7 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { JwtCheckGuard } from '@app/auth';
+import { JwtAuthGuard, JwtCheckGuard } from '@app/auth';
 import { PhonePipe } from '@app/common/pipes';
 import {
   BadRequestResponse,
@@ -107,13 +107,14 @@ export class UserLambdaController {
     type: UpdateUserResponse,
   })
   @ApiBearerAuth()
-  @UseGuards(JwtCheckGuard)
+  @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Patch()
   update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
-    const id = req.user.id.toString();
+    const id = req.user.id;
     // const ability = this.caslAbilityFactory.createForUser(req.user);
     // ability.checkCanModify(id);
+    console.log(id);
     return this.userService.update(id, updateUserDto);
   }
 }
