@@ -12,7 +12,7 @@ export class UpdateCommentResponse extends SuccessResponse {
   data: CommentRes;
 }
 
-class CommentRes extends Comment {
+export class CommentRes extends Comment {
   plant: Plant;
 
   user: User;

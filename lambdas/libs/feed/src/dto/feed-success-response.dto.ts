@@ -2,7 +2,7 @@ import { Feed } from '@app/feed/entities/feed.entity';
 import { Noti } from '@app/noti';
 import { Plant } from '@app/plant/entities/plant.entity';
 import { ApiExtraModels, ApiProperty, getSchemaPath } from '@nestjs/swagger';
-import { Comment } from '@app/comment/entities';
+import { CommentRes } from '@app/comment/dto';
 import { SuccessResponse } from '@app/common/dto';
 import { User } from '@app/user';
 
@@ -16,8 +16,8 @@ export class GetFeedResponse extends SuccessResponse {
 }
 
 export class FeedRes extends Feed {
+  comment_list: CommentRes[];
   plant: Plant;
-  comment_list: Comment[];
   user: User;
 }
 
@@ -74,7 +74,7 @@ class FeedsWithNoti {
               example: 'feed',
             },
             viewObject: {
-              $ref: getSchemaPath(Feed),
+              $ref: getSchemaPath(FeedRes),
             },
           },
         },

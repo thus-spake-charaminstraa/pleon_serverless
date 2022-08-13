@@ -29,7 +29,10 @@ export class FeedRepository {
       .skip(offset)
       .limit(limit)
       .populate('plant')
-      .populate('comments')
+      .populate({
+        path: 'comments',
+        populate: ['user', 'plant'],
+      })
       .populate('user')
       .exec();
   }
@@ -38,7 +41,10 @@ export class FeedRepository {
     return await this.model
       .findOne({ id })
       .populate('plant')
-      .populate('comments')
+      .populate({
+        path: 'comments',
+        populate: ['user', 'plant'],
+      })
       .populate('user')
       .exec();
   }
