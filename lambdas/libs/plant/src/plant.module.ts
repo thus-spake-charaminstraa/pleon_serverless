@@ -6,6 +6,7 @@ import { Plant, PlantSchema } from './entities/plant.entity';
 import { FeedModule, FeedRepository } from '@app/feed';
 import { ScheduleModule, ScheduleRepository } from '@app/schedule';
 import { NotiModule, NotiRepository } from '@app/noti';
+import { Species, SpeciesSchema } from './entities/species.entity';
 
 @Module({
   imports: [
@@ -35,6 +36,10 @@ import { NotiModule, NotiRepository } from '@app/noti';
         },
         inject: [FeedRepository, ScheduleRepository, NotiRepository],
       },
+      {
+        name: Species.name,
+        useFactory: () => (SpeciesSchema),
+      }
     ]),
   ],
   providers: [PlantService, PlantRepository],

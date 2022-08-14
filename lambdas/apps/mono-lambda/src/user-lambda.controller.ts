@@ -114,7 +114,6 @@ export class UserLambdaController {
     const id = req.user.id;
     // const ability = this.caslAbilityFactory.createForUser(req.user);
     // ability.checkCanModify(id);
-    console.log(id);
     return this.userService.update(id, updateUserDto);
   }
 }

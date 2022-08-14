@@ -4,11 +4,14 @@ import { Model, Schema as mongoSchema } from 'mongoose';
 import { Plant, PlantDocument } from './entities/plant.entity';
 import { CreatePlantDto, GetPlantQuery, UpdatePlantDto } from './dto/plant.dto';
 import { plantInfoForGuide } from '@app/common/types';
+import { Species, SpeciesDocument } from './entities/species.entity';
+import { CreateSpeciesDto } from './dto';
 
 @Injectable()
 export class PlantRepository {
   constructor(
     @InjectModel(Plant.name) private plantModel: Model<PlantDocument>,
+    @InjectModel(Species.name) private speciesModel: Model<SpeciesDocument>,
   ) {}
 
   async create(createPlantDto: CreatePlantDto): Promise<Plant> {
@@ -42,5 +45,20 @@ export class PlantRepository {
 
   async deleteOne(id: string): Promise<any> {
     return await this.plantModel.findOneAndDelete({ id }).exec();
+  }
+
+  async createSpecies(createSpeciesDto: CreateSpeciesDto): Promise<Species> {
+    const createdEntity = new this.speciesModel({
+      ...createSpeciesDto,
+    });
+    return await createdEntity.save();
+  }
+
+  async findAllSpecies(): Promise<Species[]> {
+    const ret = await this.speciesModel
+      .find()
+      .select({ id: 1, name: 1 })
+      .exec();
+    return ret;
   }
 }

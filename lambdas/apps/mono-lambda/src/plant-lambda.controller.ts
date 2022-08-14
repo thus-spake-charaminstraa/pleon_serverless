@@ -16,11 +16,12 @@ import {
 import { PlantByParamsIdInterceptor, PlantService } from '@app/plant';
 import {
   CreatePlantApiDto,
-  CreatePlantDto,
   CreatePlantResponse,
+  CreateSpeciesDto,
   GetPlantQuery,
   GetPlantResponse,
   GetPlantsResponse,
+  GetSpeciesResponse,
   UpdatePlantDto,
   UpdatePlantResponse,
 } from '@app/plant/dto';
@@ -53,6 +54,30 @@ export class PlantLambdaController {
     private readonly scheduleService: ScheduleService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
+
+  @ApiOkResponse({
+    description: '식물 종 정보 조회 성공',
+    type: GetSpeciesResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('species')
+  async findAllSpecies() {
+    return await this.plantService.findAllSpecies();
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @Post('species')
+  async createSpecies(@Body() createSpeciesDto: CreateSpeciesDto) {
+    return await this.plantService.createSpecies(createSpeciesDto);
+  }
 
   /**
    * 식물을 생성합니다. 유저가 있는지 인증정보를 확인하고, 식물을 생성합니다.

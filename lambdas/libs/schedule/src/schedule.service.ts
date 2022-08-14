@@ -14,7 +14,7 @@ export class ScheduleService {
     private readonly scheduleRepository: ScheduleRepository,
   ) { }
   
-  getPlantGuide(species: string): any {
+  getPlantGuide(species: any): any {
     return {
       water: new Date(7 * 24 * 60 * 60 * 1000),
       air: new Date(2 * 24 * 60 * 60 * 1000),

@@ -1,6 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
+import { CreateSpeciesDto } from './dto';
 import { CreatePlantDto, GetPlantQuery, UpdatePlantDto } from './dto/plant.dto';
 import { Plant } from './entities/plant.entity';
+import { Species } from './entities/species.entity';
 import { PlantRepository } from './plant.repository';
 
 @Injectable()
@@ -36,5 +38,13 @@ export class PlantService {
     if (!ret) {
       throw new NotFoundException('존재하지 않는 식물입니다.');
     }
+  }
+
+  async createSpecies(createSpeciesDto: CreateSpeciesDto): Promise<Species> {
+    return await this.plantRepository.createSpecies(createSpeciesDto);
+  }
+
+  async findAllSpecies(): Promise<Species[]> {
+    return await this.plantRepository.findAllSpecies();
   }
 }
