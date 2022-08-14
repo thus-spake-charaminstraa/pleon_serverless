@@ -32,7 +32,11 @@ export class User {
   @Prop({ required: true, unique: true })
   phone: string;
 
-  @Prop({ required: true, default: '' })
+  @Prop({
+    required: true,
+    default:
+      'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/default_user_img.png',
+  })
   thumbnail: string;
 }
 
