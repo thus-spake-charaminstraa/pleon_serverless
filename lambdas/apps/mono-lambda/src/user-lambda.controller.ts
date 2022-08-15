@@ -11,6 +11,7 @@ import {
   Get,
   Patch,
   Param,
+  Delete,
 } from '@nestjs/common';
 import {
   UserService,
@@ -88,7 +89,7 @@ export class UserLambdaController {
   // }
 
   /**
-   * 유저 정보를 수정합니다. 유저 자신만 수정할 수 있습니다.
+   * 유저 정보를 수정합니다. 유저 자신만 수정할 수 있습니다. 썸네일을 수정할 때는 삭제하고 싶으면 빈 스트링으로 보내면 됩니다.
    */
   @ApiForbiddenResponse({
     description: '이 유저는 수정할 수 없습니다.',
@@ -110,10 +111,16 @@ export class UserLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Patch()
-  update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
+  async update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
     const id = req.user.id;
     // const ability = this.caslAbilityFactory.createForUser(req.user);
     // ability.checkCanModify(id);
     return this.userService.update(id, updateUserDto);
+  }
+
+
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return this.userService.deleteOne(id);
   }
 }

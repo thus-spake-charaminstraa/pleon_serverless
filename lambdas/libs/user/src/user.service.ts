@@ -1,4 +1,10 @@
-import { BadRequestException, forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto, CreateUserResDto, UpdateUserDto } from './dto/user.dto';
 import { UserRepository } from './user.repository';
 import { AuthService, TokenResDto } from '@app/auth';
@@ -30,6 +36,9 @@ export class UserService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
+    if (updateUserDto.thumbnail === '')
+      updateUserDto.thumbnail =
+        'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/default_user_img.png';
     const ret = await this.userRepository.update(id, updateUserDto);
     if (!ret) {
       throw new NotFoundException('사용자를 찾을 수 없습니다.');
@@ -39,6 +48,10 @@ export class UserService {
 
   async findAll(): Promise<User[]> {
     return await this.userRepository.findAll();
+  }
+
+  async deleteOne(id: string): Promise<void> {
+    await this.userRepository.deleteOne(id);
   }
 
   async checkPhoneDuplicate(phone: string): Promise<boolean> {

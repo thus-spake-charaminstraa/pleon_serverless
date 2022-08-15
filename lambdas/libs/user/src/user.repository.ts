@@ -30,4 +30,8 @@ export class UserRepository {
       .findOneAndUpdate({ id }, updateUserDto, { new: true })
       .exec();
   }
+
+  async deleteOne(id: string): Promise<void> {
+    await this.userModel.findOneAndDelete({ id }).exec();
+  }
 }
