@@ -110,7 +110,7 @@ export class PlantLambdaController {
   }
 
   /**
-   * 식물 목록을 조회합니다.
+   * 식물 목록을 조회합니다. 쿼리가 없을경우 요청자 본인의 식물 목록을 조회합니다.
    */
   @ApiOkResponse({
     description: '식물 목록 조회 성공',
@@ -130,8 +130,14 @@ export class PlantLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get()
-  async findAll(@Query('owner') owner: string) {
+  async findAll(@Query('owner') owner: string, @Req() req) {
+    console.log(owner);
+    if (!owner) {
+      owner = req.user.id.toString();
+    }
+    console.log(owner);
     const query: GetPlantQuery = queryParser({ owner }, GetPlantQuery);
+    console.log(query);
     return await this.plantService.findAll(query);
   }
 
