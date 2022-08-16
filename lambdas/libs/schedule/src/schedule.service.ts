@@ -1,10 +1,16 @@
-import { forwardRef, Inject, Injectable, NotFoundException } from '@nestjs/common';
+import {
+  forwardRef,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant';
 import { plantInfoForGuide } from '@app/common/types';
 import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';
 import { ScheduleKind } from './types';
+import { ScheduleRes } from './dto';
 
 @Injectable()
 export class ScheduleService {
@@ -12,8 +18,8 @@ export class ScheduleService {
     @Inject(forwardRef(() => PlantRepository))
     private readonly plantRepository: PlantRepository,
     private readonly scheduleRepository: ScheduleRepository,
-  ) { }
-  
+  ) {}
+
   getPlantGuide(species: any): any {
     return {
       water: new Date(7 * 24 * 60 * 60 * 1000),
@@ -36,7 +42,10 @@ export class ScheduleService {
       let overdue = false;
       const schedule = scheduleOfPlantByKind[kind];
       if (schedule.length > 0) {
-        if (schedule[0].timestamp.getTime() + guide[kind].getTime() <= Date.now()) {
+        if (
+          schedule[0].timestamp.getTime() + guide[kind].getTime() <=
+          Date.now()
+        ) {
           overdue = true;
         }
       }
@@ -55,7 +64,7 @@ export class ScheduleService {
     return await this.scheduleRepository.create(createScheduleDto);
   }
 
-  async findAll(query: GetScheduleQuery): Promise<Schedule[]> {
+  async findAll(query: GetScheduleQuery): Promise<ScheduleRes[]> {
     return await this.scheduleRepository.findAll(query);
   }
 

@@ -16,15 +16,15 @@ export class CreateScheduleDto {
 export class UpdateScheduleDto extends PartialType(CreateScheduleDto) {}
 
 export class GetScheduleQuery {
-  plant_id: string;
+  plant_id?: string;
 
-  year: number;
+  year?: number;
 
-  month: number;
+  month?: number;
 
-  start: Date;
+  start?: Date;
 
-  end: Date;
+  end?: Date;
 }
 
 export class DeleteScheduleQuery {

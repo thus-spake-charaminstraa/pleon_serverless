@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import {
   CreateScheduleDto,
   UpdateScheduleDto,
@@ -21,14 +21,17 @@ export class ScheduleRepository {
     return await createdSchedule.save();
   }
 
-  async findAll(query: GetScheduleQuery): Promise<Schedule[]> {
-    return await this.scheduleModel.find(query).exec();
+  async findAll(query: GetScheduleQuery): Promise<any[]> {
+    return await this.scheduleModel.find(query).populate('plant').exec();
   }
 
   async findAllAndGroupBy(query: GetScheduleQuery): Promise<any> {
     let ret = await this.scheduleModel
       .aggregate()
-      .match({ timestamp: { $gte: query.start, $lte: query.end } })
+      .match({
+        plant_id: new Types.ObjectId(query.plant_id),
+        timestamp: { $gte: query.start, $lte: query.end },
+      })
       .group({
         _id: '$timestamp',
         timestamp: { $first: '$timestamp' },

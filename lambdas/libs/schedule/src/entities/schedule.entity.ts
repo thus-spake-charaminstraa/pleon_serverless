@@ -4,21 +4,18 @@ import { ScheduleKind } from '../types';
 
 export type ScheduleDocument = Schedule & Document;
 
+const toObjectOptions = {
+  transform: (doc, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+  virtuals: true,
+}
+
 @Schema({
-  toObject: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
-  },
-  toJSON: {
-    transform: (doc, ret) => {
-      delete ret.__v;
-      delete ret._id;
-      return ret;
-    },
-  },
+  toObject: toObjectOptions,
+  toJSON: toObjectOptions,
 })
 export class Schedule {
   @Prop({
@@ -40,3 +37,10 @@ export class Schedule {
 }
 
 export const ScheduleSchema = SchemaFactory.createForClass(Schedule);
+
+ScheduleSchema.virtual('plant', {
+  ref: 'Plant',
+  localField: 'plant_id',
+  foreignField: 'id',
+  justOne: true,
+})
