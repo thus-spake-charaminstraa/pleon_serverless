@@ -1,4 +1,5 @@
 import { SuccessResponse } from "@app/common/dto";
+import { Plant } from "@app/plant";
 import { Schedule, ScheduleKind } from "@app/schedule";
 
 export class CreateScheduleResponse extends SuccessResponse {
@@ -18,4 +19,8 @@ export class GetScheduleRes {
   _id: string;
   timestamp: Date;
   kinds: ScheduleKind[];
+}
+
+export class ScheduleRes extends Schedule {
+  plant: Plant;
 }
