@@ -2,8 +2,11 @@ import { AuthModule } from '@app/auth/auth.module';
 import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from './entities/user.entity';
-import { UserRepository } from './user.repository';
-import { UserService } from './user.service';
+import { UserRepository } from './repositories/user.repository';
+import { UserService } from './services/user.service';
+import { DeviceTokenService } from './services/device-token.service';
+import { DeviceTokenRepository } from './repositories/device-token.repository';
+import { DeviceToken, DeviceTokenSchema } from './entities';
 
 @Module({
   imports: [
@@ -13,9 +16,23 @@ import { UserService } from './user.service';
         name: User.name,
         schema: UserSchema,
       },
+      {
+        name: DeviceToken.name,
+        schema: DeviceTokenSchema,
+      },
     ]),
   ],
-  providers: [UserService, UserRepository],
-  exports: [UserService, UserRepository],
+  providers: [
+    UserService,
+    UserRepository,
+    DeviceTokenService,
+    DeviceTokenRepository,
+  ],
+  exports: [
+    UserService,
+    UserRepository,
+    DeviceTokenService,
+    DeviceTokenRepository,
+  ],
 })
 export class UserModule {}

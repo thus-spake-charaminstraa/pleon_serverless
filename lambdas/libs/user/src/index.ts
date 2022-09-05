@@ -1,4 +1,4 @@
-export * from './user.service';
-export * from './user.repository';
-export * from './entities/user.entity';
+export * from './services';
+export * from './repositories';
+export * from './entities';
 export * from './dto';

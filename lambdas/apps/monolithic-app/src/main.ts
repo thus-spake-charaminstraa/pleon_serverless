@@ -1,11 +1,13 @@
 import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MonolithicAppModule } from './monolithic-app.module';
-import { CommonService } from '@app/common';
+import { CommonService, TransformInterceptor } from '@app/common';
 import { CreateSpeciesDto, PlantService } from '@app/plant';
 import * as fs from 'fs/promises';
 import { PlantDifficulty, PlantHumidity, PlantLight } from '@app/plant/types';
 import { ScheduleService } from '@app/schedule';
+import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/swagger';
+import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(MonolithicAppModule);
@@ -16,7 +18,41 @@ async function bootstrap() {
     optionsSuccessStatus: 204,
   });
 
-  CommonService.prepareNestApp(app);
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+  });
+
+  // use validation pipe
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
+
+  // use response interceptor
+  app.useGlobalInterceptors(new TransformInterceptor());
+
+  const document = SwaggerModule.createDocument(
+    app,
+    new DocumentBuilder()
+      .setTitle('PLeon API')
+      .setDescription('The API description')
+      .setVersion('1.0')
+      .addServer(process.env.HOST, 'server')
+      .addServer('http://localhost:8000', 'local server')
+      .addBearerAuth()
+      .build(),
+  );
+  const swaggerCustomOptions: SwaggerCustomOptions = {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  };
+  SwaggerModule.setup('api', app, document, swaggerCustomOptions);
 
   const configService = app.get(ConfigService);
   await app.listen(configService.get<string>('PORT'));

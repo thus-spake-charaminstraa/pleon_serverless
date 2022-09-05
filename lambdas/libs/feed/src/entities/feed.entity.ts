@@ -4,21 +4,18 @@ import { FeedKind } from '../types';
 
 export type FeedDocument = Feed & Document;
 
-const transform = (doc, ret) => {
-  delete ret.__v;
-  delete ret._id;
-  return ret;
+const toObjectOptions = {
+  transform: (doc, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+  virtuals: true,
 };
 
 @Schema({
-  toObject: {
-    virtuals: true,
-    transform,
-  },
-  toJSON: {
-    virtuals: true,
-    transform,
-  },
+  toJSON: toObjectOptions,
+  toObject: toObjectOptions,
   timestamps: {
     createdAt: 'created_at',
     updatedAt: 'updated_at',

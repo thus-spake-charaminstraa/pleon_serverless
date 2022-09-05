@@ -22,7 +22,7 @@ export class ScheduleService {
 
   getPlantGuide(species: any): any {
     return {
-      water: new Date(7 * 24 * 60 * 60 * 1000),
+      water: new Date(1 * 24 * 60 * 60 * 1000),
       air: new Date(2 * 24 * 60 * 60 * 1000),
       repot: new Date(90 * 24 * 60 * 60 * 1000),
       prune: new Date(30 * 24 * 60 * 60 * 1000),
@@ -49,6 +49,8 @@ export class ScheduleService {
           overdue = true;
         }
       }
+      if (ret[kind] === ScheduleKind.air) overdue = true;
+
       ret[kind] = overdue;
     }
     return ret;

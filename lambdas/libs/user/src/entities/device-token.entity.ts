@@ -1,8 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Schema as mongoSchema } from 'mongoose';
-import { NotiKind } from '../types';
+import { Document, Schema as mongoSchema } from 'mongoose';
 
-export type NotiDocument = Noti & Document;
+export type DeviceTokenDocument = DeviceToken & Document;
 
 const toObjectOptions = {
   transform: (doc, ret) => {
@@ -10,7 +9,6 @@ const toObjectOptions = {
     delete ret.__v;
     return ret;
   },
-  virtuals: true,
 };
 
 @Schema({
@@ -21,7 +19,7 @@ const toObjectOptions = {
     updatedAt: 'updated_at',
   },
 })
-export class Noti {
+export class DeviceToken {
   @Prop({
     type: mongoSchema.Types.ObjectId,
     required: true,
@@ -33,14 +31,8 @@ export class Noti {
   @Prop({ required: true, ref: 'User' })
   owner: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: false, ref: 'Plant' })
-  plant_id: mongoSchema.Types.ObjectId;
-
   @Prop({ required: true })
-  content: string;
-
-  @Prop({ required: true })
-  kind: NotiKind;
+  device_token: string;
 
   @Prop({ required: false })
   created_at: Date;
@@ -49,4 +41,4 @@ export class Noti {
   updated_at: Date;
 }
 
-export const NotiSchema = SchemaFactory.createForClass(Noti);
+export const DeviceTokenSchema = SchemaFactory.createForClass(DeviceToken);

@@ -26,10 +26,14 @@ export class PlantRepository {
     return await this.plantModel.find(query).exec();
   }
 
-  async findAllInfo(): Promise<plantInfoForGuide[]> {
+  async findAllInfo(): Promise<any[]> {
     return await this.plantModel
       .find()
       .select({ id: 1, owner: 1, species: 1, name: 1 })
+      .populate({
+        path: 'user',
+        populate: ['device_tokens'],
+      })
       .exec();
   }
 

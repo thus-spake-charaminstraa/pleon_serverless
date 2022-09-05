@@ -5,11 +5,11 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateUserDto, CreateUserResDto, UpdateUserDto } from './dto/user.dto';
-import { UserRepository } from './user.repository';
+import { CreateUserDto, CreateUserResDto, UpdateUserDto } from '../dto/user.dto';
+import { UserRepository } from '../repositories/user.repository';
 import { AuthService, TokenResDto } from '@app/auth';
 import { parsePhoneNumber } from 'libphonenumber-js';
-import { User } from './entities/user.entity';
+import { User } from '../entities/user.entity';
 
 @Injectable()
 export class UserService {

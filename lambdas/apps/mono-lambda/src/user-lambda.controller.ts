@@ -18,6 +18,7 @@ import {
   CreateUserDto,
   CreateUserResDto,
   UpdateUserDto,
+  DeviceTokenService,
 } from '@app/user';
 import {
   ApiBadRequestResponse,
@@ -37,6 +38,7 @@ import {
 } from '@app/common/dto';
 import { CaslAbilityFactory } from '@app/common';
 import { CreateUserResponse, UpdateUserResponse } from '@app/user/dto';
+import { CreateDeviceTokenDto } from '@app/user/dto/device-token.dto';
 
 @ApiTags('User')
 @Controller('user')
@@ -45,6 +47,7 @@ export class UserLambdaController {
     @Inject(forwardRef(() => UserService))
     private readonly userService: UserService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
+    private readonly deviceTokenService: DeviceTokenService
   ) {}
 
   /*
@@ -83,11 +86,6 @@ export class UserLambdaController {
     return await this.userService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.userService.findOne(id);
-  // }
-
   /**
    * 유저 정보를 수정합니다. 유저 자신만 수정할 수 있습니다. 썸네일을 수정할 때는 삭제하고 싶으면 빈 스트링으로 보내면 됩니다.
    */
@@ -113,8 +111,8 @@ export class UserLambdaController {
   @Patch()
   async update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
     const id = req.user.id;
-    // const ability = this.caslAbilityFactory.createForUser(req.user);
-    // ability.checkCanModify(id);
+    const ability = this.caslAbilityFactory.createForUser(req.user);
+    ability.checkCanModify(id);
     return this.userService.update(id, updateUserDto);
   }
 
@@ -122,5 +120,14 @@ export class UserLambdaController {
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.userService.deleteOne(id);
+  }
+
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post(':id/token')
+  async createToken(@Param('id') id: string, @Body() createDeviceTokenDto: CreateDeviceTokenDto) {
+    createDeviceTokenDto.owner = id;
+    return await this.deviceTokenService.create(createDeviceTokenDto);
   }
 }

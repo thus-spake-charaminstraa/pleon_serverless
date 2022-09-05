@@ -1,3 +1,4 @@
+import { GetUserDto } from '@app/user/dto';
 import { Schema as mongoSchema } from 'mongoose';
 
 export type plantInfoForGuide = {
@@ -8,4 +9,6 @@ export type plantInfoForGuide = {
   owner: mongoSchema.Types.ObjectId;
   
   name: string;
+
+  user: GetUserDto;
 };

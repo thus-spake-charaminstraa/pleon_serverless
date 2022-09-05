@@ -4,24 +4,23 @@ import { PlantAir, PlantLight } from '../types';
 
 export type PlantDocument = Plant & Document;
 
-const transform = (doc, ret) => {
-  delete ret.__v;
-  delete ret._id;
-  ret.d_day =
-    Math.round(
-      (Date.now() - new Date(ret.adopt_date).getTime()) /
-      (1000 * 60 * 60 * 24),
-    ) + 1;
-  return ret;
+const toObjectOptions = {
+  transform: (doc, ret) => {
+    delete ret.__v;
+    delete ret._id;
+    ret.d_day =
+      Math.round(
+        (Date.now() - new Date(ret.adopt_date).getTime()) /
+          (1000 * 60 * 60 * 24),
+      ) + 1;
+    return ret;
+  },
+  virtuals: true,
 };
 
 @Schema({
-  toObject: {
-    transform,
-  },
-  toJSON: {
-    transform,
-  },
+  toJSON: toObjectOptions,
+  toObject: toObjectOptions,
 })
 export class Plant {
   @Prop({
@@ -55,3 +54,10 @@ export class Plant {
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);
+
+PlantSchema.virtual('user', {
+  ref: 'User',
+  localField: 'owner',
+  foreignField: 'id',
+  justOne: true,
+});

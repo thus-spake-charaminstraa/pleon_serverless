@@ -4,19 +4,18 @@ import { PlantDifficulty, PlantHumidity, PlantLight } from '../types';
 
 export type SpeciesDocument = Species & Document;
 
-const transform = (doc, ret) => {
-  delete ret.__v;
-  delete ret._id;
-  return ret;
+const toObjectOptions = {
+  transform: (doc, ret) => {
+    delete ret._id;
+    delete ret.__v;
+    return ret;
+  },
+  virtuals: true,
 };
 
 @Schema({
-  toObject: {
-    transform,
-  },
-  toJSON: {
-    transform,
-  },
+  toJSON: toObjectOptions,
+  toObject: toObjectOptions,
 })
 export class Species {
   @Prop({

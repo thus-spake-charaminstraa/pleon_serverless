@@ -1,10 +1,24 @@
-import { Injectable, BadRequestException, Inject, forwardRef } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  Inject,
+  forwardRef,
+} from '@nestjs/common';
 import { NotiRepository } from './noti.repository';
 import { ScheduleService } from '@app/schedule';
 import { plantInfoForGuide } from '@app/common/types';
-import { SNSClient } from '@aws-sdk/client-sns';
+import {
+  SNSClient,
+  CreatePlatformEndpointCommand,
+  PublishCommand,
+} from '@aws-sdk/client-sns';
 import { Noti } from './entities';
-import { CreateNotiDto, GetNotiQuery, NotiManageDto, NotiManageKind } from './dto';
+import {
+  CreateNotiDto,
+  GetNotiQuery,
+  NotiManageDto,
+  NotiManageKind,
+} from './dto';
 import { PlantRepository } from '@app/plant';
 import { CreateFeedDto } from '@app/feed/dto';
 import { NotiKind } from './types';
@@ -34,6 +48,29 @@ export class NotiService {
     };
   }
 
+  async sendPushNoti(content: string, targetDevice: string): Promise<void> {
+    console.log(content, targetDevice);
+    const GCMPayload = {
+      notification: JSON.stringify({
+        title: 'PLeon 관리 가이드',
+        body: content,
+      }),
+    };
+    console.log(GCMPayload);
+    const payloadJSON = JSON.stringify(GCMPayload);
+    console.log(payloadJSON);
+    const params = {
+      TargetArn: targetDevice,
+      Message: JSON.stringify({
+        default: 'this is default message.',
+        GCM: payloadJSON,
+      }),
+      // MessageStructure: 'json',
+    };
+    const data = await snsClient.send(new PublishCommand(params));
+    console.log(data);
+  }
+
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
     for (let kind of Object.keys(NotiKind)) {
@@ -44,8 +81,13 @@ export class NotiService {
           kind: NotiKind.water,
           content: this.notiContentFormat(plantInfo.name, kind),
         });
-        console.log(ret);
-        // aws sns publish
+        console.log(plantInfo.user);
+        for (let device of plantInfo.user.device_tokens) {
+          await this.sendPushNoti(
+            this.notiContentFormat(plantInfo.name, kind),
+            device.device_token,
+          );
+        }
       }
     }
   }

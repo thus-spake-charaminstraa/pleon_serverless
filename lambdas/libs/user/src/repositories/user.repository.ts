@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User, UserDocument } from './entities/user.entity';
-import { CreateUserDto, UpdateUserDto } from './dto';
+import { User, UserDocument } from '../entities/user.entity';
+import { CreateUserDto, UpdateUserDto } from '../dto';
 
 @Injectable()
 export class UserRepository {
@@ -14,15 +14,21 @@ export class UserRepository {
   }
 
   async findAll(): Promise<User[]> {
-    return await this.userModel.find().exec();
+    return await this.userModel.find().populate('device_tokens').exec();
   }
 
   async findByPhone(phone: string): Promise<User> {
-    return await this.userModel.findOne({ phone }).exec();
+    return await this.userModel
+      .findOne({ phone })
+      .populate('device_tokens')
+      .exec();
   }
 
   async findOne(id: string): Promise<User> {
-    return await this.userModel.findOne({ id }).exec();
+    return await this.userModel
+      .findOne({ id })
+      .populate('device_tokens')
+      .exec();
   }
 
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
