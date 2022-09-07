@@ -47,16 +47,38 @@
       "entryFile": "main",
       "sourceRoot": "apps/noti-lambda/src",
       "compilerOptions": {
-        "plugins": [
-          {
-            "name": "@nestjs/swagger",
-            "options": {
-              "introspectComments": true
-            }
-          }
-        ],
         "webpack": true,
         "tsConfigPath": "apps/noti-lambda/tsconfig.app.json"
+      }
+    },
+    "chat-lambda": {
+      "type": "application",
+      "root": "apps/chat-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/chat-lambda/tsconfig.app.json"
+      }
+    },
+    "chat-connect": {
+      "type": "application",
+      "root": "apps/chat-connect",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat-connect/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/chat-connect/tsconfig.app.json"
+      }
+    },
+    "chat-disconnect": {
+      "type": "application",
+      "root": "apps/chat-disconnect",
+      "entryFile": "main",
+      "sourceRoot": "apps/chat-disconnect/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/chat-disconnect/tsconfig.app.json"
       }
     },
     "common": {
@@ -227,6 +249,23 @@
           }
         ],
         "tsConfigPath": "libs/comment/tsconfig.lib.json"
+      }
+    },
+    "chat": {
+      "type": "library",
+      "root": "libs/chat",
+      "entryFile": "index",
+      "sourceRoot": "libs/chat/src",
+      "compilerOptions": {
+        "plugins": [
+          {
+            "name": "@nestjs/swagger",
+            "options": {
+              "introspectComments": true
+            }
+          }
+        ],
+        "tsConfigPath": "libs/chat/tsconfig.lib.json"
       }
     }
   }

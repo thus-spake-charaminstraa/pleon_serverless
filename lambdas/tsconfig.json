@@ -79,6 +79,12 @@
       ],
       "@app/comment/*": [
         "libs/comment/src/*"
+      ],
+      "@app/chat": [
+        "libs/chat/src"
+      ],
+      "@app/chat/*": [
+        "libs/chat/src/*"
       ]
     }
   }

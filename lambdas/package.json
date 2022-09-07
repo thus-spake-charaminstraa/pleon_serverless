@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./apps/lambdas/test/jest-e2e.json"
   },
   "dependencies": {
+    "@aws-sdk/client-apigatewaymanagementapi": "^3.165.0",
     "@aws-sdk/client-s3": "^3.137.0",
     "@aws-sdk/client-sns": "^3.127.0",
     "@nestjs/common": "^9.0.0",
@@ -33,7 +34,6 @@
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/swagger": "^6.0.3",
     "@vendia/serverless-express": "^4.9.0",
-    "aws-lambda": "^1.0.7",
     "cache-manager": "^4.1.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.13.2",
@@ -105,7 +105,8 @@
       "^@app/image(|/.*)$": "<rootDir>/libs/image/src/$1",
       "^@app/guide(|/.*)$": "<rootDir>/libs/guide/src/$1",
       "^@app/noti(|/.*)$": "<rootDir>/libs/noti/src/$1",
-      "^@app/comment(|/.*)$": "<rootDir>/libs/comment/src/$1"
+      "^@app/comment(|/.*)$": "<rootDir>/libs/comment/src/$1",
+      "^@app/chat(|/.*)$": "<rootDir>/libs/chat/src/$1"
     }
   }
 }

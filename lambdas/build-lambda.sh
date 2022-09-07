@@ -1,11 +1,36 @@
-rm -rf ./dist/apps/mono-lambda
-npx nest build --webpack mono-lambda
-cd ./dist/apps/mono-lambda
-zip main.js.zip main.js
-cd ../../..
+#!/bin/bash
 
-rm -rf ./dist/apps/noti-lambda
-npx nest build --webpack noti-lambda
-cd ./dist/apps/noti-lambda
-zip main.js.zip main.js
-cd ../../..
+deploy() {
+  pwd=$(pwd)
+  aws lambda update-function-code \
+    --function-name $1 \
+    --zip-file fileb://$pwd/main.js.zip \
+    --region ap-northeast-2 \
+    > /dev/null
+}
+
+build() {
+  rm -rf ./dist/apps/$1
+  npx nest build --webpack $1
+}
+
+packageAndDeploy() {
+  cd ./dist/apps/$1
+  zip main.js.zip main.js
+  deploy $1
+  cd ../../..
+}
+
+
+declare -a array=(
+  "mono-lambda"
+  "noti-lambda"
+  "chat-lambda"
+  "chat-connect"
+  "chat-disconnect"
+)
+for i in "${array[@]}"
+do
+	build "$i"
+  packageAndDeploy "$i"
+done
