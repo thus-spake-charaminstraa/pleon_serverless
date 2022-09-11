@@ -1,6 +1,6 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { PlantService } from './plant.service';
-import { PlantRepository } from './plant.repository';
+import { Module } from '@nestjs/common';
+import { PlantService, SpeciesService } from './services';
+import { PlantRepository, SpeciesRepository } from './repositories';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Plant, PlantSchema } from './entities/plant.entity';
 import { FeedModule, FeedRepository } from '@app/feed';
@@ -38,11 +38,11 @@ import { Species, SpeciesSchema } from './entities/species.entity';
       },
       {
         name: Species.name,
-        useFactory: () => (SpeciesSchema),
-      }
+        useFactory: () => SpeciesSchema,
+      },
     ]),
   ],
-  providers: [PlantService, PlantRepository],
-  exports: [PlantService, PlantRepository],
+  providers: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
+  exports: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
 })
 export class PlantModule {}

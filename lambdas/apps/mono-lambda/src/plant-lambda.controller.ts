@@ -45,12 +45,14 @@ import {
 } from '@app/common/dto';
 import { ScheduleKind, ScheduleService } from '@app/schedule';
 import { DateStrFormat, queryParser } from '@app/common/utils';
+import { SpeciesService } from '@app/plant/services/species.service';
 
 @ApiTags('Plant')
 @Controller('plant')
 export class PlantLambdaController {
   constructor(
     private readonly plantService: PlantService,
+    private readonly speciesService: SpeciesService,
     private readonly scheduleService: ScheduleService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
@@ -68,7 +70,7 @@ export class PlantLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get('species')
   async findAllSpecies() {
-    return await this.plantService.findAllSpecies();
+    return await this.speciesService.findAllSpecies();
   }
 
   @ApiBearerAuth()
@@ -76,7 +78,7 @@ export class PlantLambdaController {
   @HttpCode(HttpStatus.CREATED)
   @Post('species')
   async createSpecies(@Body() createSpeciesDto: CreateSpeciesDto) {
-    return await this.plantService.createSpecies(createSpeciesDto);
+    return await this.speciesService.create(createSpeciesDto);
   }
 
   /**
