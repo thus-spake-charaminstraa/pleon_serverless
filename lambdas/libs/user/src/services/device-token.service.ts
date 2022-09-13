@@ -6,9 +6,6 @@ import {
   CreateDeviceTokenDto,
   GetDeviceTokenQuery,
 } from '../dto/device-token.dto';
-import { CreatePlatformEndpointCommand, SNSClient } from '@aws-sdk/client-sns';
-
-const snsClient = new SNSClient({ region: process.env.AWS_REGION });
 
 @Injectable()
 export class DeviceTokenService extends CommonService<
@@ -22,16 +19,6 @@ export class DeviceTokenService extends CommonService<
   }
 
   async create(createDeviceTokenDto: CreateDeviceTokenDto) {
-    const platformEndpointARN = await snsClient.send(
-      new CreatePlatformEndpointCommand({
-        PlatformApplicationArn:
-          process.env.AWS_SNS_AOS_PLATFORM_APPLICATION_ARN,
-        Token: createDeviceTokenDto.device_token,
-      }),
-    );
-    console.log(platformEndpointARN);
-    createDeviceTokenDto.device_token = platformEndpointARN.EndpointArn;
-
     return await this.deviceTokenRepository.create(createDeviceTokenDto);
   }
 }

@@ -7,11 +7,6 @@ import {
 import { NotiRepository } from './noti.repository';
 import { ScheduleService } from '@app/schedule';
 import { plantInfoForGuide } from '@app/common/types';
-import {
-  SNSClient,
-  CreatePlatformEndpointCommand,
-  PublishCommand,
-} from '@aws-sdk/client-sns';
 import { Noti } from './entities';
 import {
   CreateNotiDto,
@@ -22,12 +17,14 @@ import {
 import { PlantRepository } from '@app/plant';
 import { CreateFeedDto } from '@app/feed/dto';
 import { NotiKind } from './types';
-
-const snsClient = new SNSClient({ region: process.env.AWS_REGION });
+import { initializeApp } from 'firebase-admin/app';
+import { credential } from 'firebase-admin';
+import { getMessaging, Messaging } from 'firebase-admin/messaging';
 
 @Injectable()
 export class NotiService {
   private notiContentFormat: (name: string, kind: string) => string;
+  private fcmMessaging: Messaging;
 
   constructor(
     private readonly notiRepository: NotiRepository,
@@ -46,57 +43,53 @@ export class NotiService {
       };
       return contents[kind];
     };
+    initializeApp({
+      credential: credential.cert({
+        projectId: process.env.FIREBASE_PROJECT_ID,
+        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+        privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+      }),
+    });
+    this.fcmMessaging = getMessaging();
   }
 
-  async sendPushNoti(content: string, targetDevice: string): Promise<void> {
-    console.log(content, targetDevice);
+  async sendPushNoti(content: string, targetDevice: string): Promise<any> {
     const GCMPayload = {
-      notification: JSON.stringify({
-        title: 'PLeon 관리 가이드',
-        body: content,
-      }),
+      title: 'PLeon 관리 가이드',
+      body: content,
     };
-    console.log(GCMPayload);
-    const payloadJSON = JSON.stringify(GCMPayload);
-    console.log(payloadJSON);
-    const params = {
-      TargetArn: targetDevice,
-      Message: JSON.stringify({
-        default: 'this is default message.',
-        GCM: payloadJSON,
-      }),
-      // MessageStructure: 'json',
+    const message = {
+      token: targetDevice,
+      notification: GCMPayload,
     };
-    const data = await snsClient.send(new PublishCommand(params));
-    console.log(data);
+    return this.fcmMessaging.send(message);
   }
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
     for (let kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        const ret = await this.notiRepository.create({
-          owner: plantInfo.owner.toString(),
-          plant_id: plantInfo.id.toString(),
-          kind: NotiKind.water,
-          content: this.notiContentFormat(plantInfo.name, kind),
-        });
-        console.log(plantInfo.user);
-        for (let device of plantInfo.user.device_tokens) {
-          await this.sendPushNoti(
-            this.notiContentFormat(plantInfo.name, kind),
-            device.device_token,
-          );
-        }
+        await Promise.all([
+          this.notiRepository.create({
+            owner: plantInfo.owner.toString(),
+            plant_id: plantInfo.id.toString(),
+            kind: NotiKind.water,
+            content: this.notiContentFormat(plantInfo.name, kind),
+          }),
+          ...plantInfo.user.device_tokens.map((device) =>
+            this.sendPushNoti(
+              this.notiContentFormat(plantInfo.name, kind),
+              device.device_token,
+            ),
+          ),
+        ]);
       }
     }
   }
 
   async sendNotiForPlants(): Promise<void> {
     const plantInfos = await this.plantRepository.findAllInfo();
-    for (let plant of plantInfos) {
-      await this.sendNotiForPlant(plant);
-    }
+    await Promise.all(plantInfos.map((plant) => this.sendNotiForPlant(plant)));
   }
 
   async create(createNotiDto: CreateNotiDto): Promise<Noti> {
