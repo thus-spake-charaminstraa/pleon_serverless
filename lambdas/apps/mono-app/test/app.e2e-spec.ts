@@ -1,14 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
-import { MonoLambdaModule } from './../src/mono-lambda.module';
+import request from 'supertest';
+import { MonoAppModule } from '../src/mono-app.module';
 
-describe('MonoLambdaController (e2e)', () => {
+describe('MonoAppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [MonoLambdaModule],
+      imports: [MonoAppModule],
     }).compile();
 
     app = moduleFixture.createNestApplication();

@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { configure as serverlessExpress } from '@vendia/serverless-express';
 import { Callback, Context, Handler } from 'aws-lambda';
-import { MonoLambdaModule } from './mono-lambda.module';
+import { MonoAppModule } from './mono-app.module';
 import { CommonService, TransformInterceptor } from '@app/common';
 import { ValidationPipe } from '@nestjs/common';
 import {
@@ -13,7 +13,7 @@ import {
 let server: Handler;
 
 async function bootstrap(): Promise<Handler> {
-  const app = await NestFactory.create(MonoLambdaModule);
+  const app = await NestFactory.create(MonoAppModule);
 
   app.enableCors({
     origin: '*',

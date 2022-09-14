@@ -60,4 +60,4 @@ import { CommentModule } from '@app/comment';
     },
   ],
 })
-export class MonoLambdaModule {}
+export class MonoAppModule {}

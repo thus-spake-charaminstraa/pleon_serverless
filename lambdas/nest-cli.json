@@ -23,11 +23,11 @@
         "deleteOutDir": true
       }
     },
-    "mono-lambda": {
+    "mono-app": {
       "type": "application",
-      "root": "apps/mono-lambda",
+      "root": "apps/mono-app",
       "entryFile": "main",
-      "sourceRoot": "apps/mono-lambda/src",
+      "sourceRoot": "apps/mono-app/src",
       "compilerOptions": {
         "plugins": [
           {
@@ -38,7 +38,7 @@
           }
         ],
         "webpack": true,
-        "tsConfigPath": "apps/mono-lambda/tsconfig.app.json"
+        "tsConfigPath": "apps/mono-app/tsconfig.app.json"
       }
     },
     "noti-lambda": {

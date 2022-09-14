@@ -23,7 +23,7 @@ packageAndDeploy() {
 
 
 declare -a array=(
-  "mono-lambda"
+  "mono-app"
   "noti-lambda"
   "chat-lambda"
   "chat-connect"
