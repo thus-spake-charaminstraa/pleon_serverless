@@ -70,19 +70,15 @@ export class ChatLambdaService {
   async handle(event: APIGatewayProxyWebsocketEventV2) {
     if (event.body) {
       const body = JSON.parse(event.body);
-      console.log(body);
       if (body.action === 'sendMessage') {
         const { connectionId } = event.requestContext;
-        console.log(connectionId);
         try {
           const chatRoomId = await this.chatConnService.getChatRoomIdByConnId(
             connectionId,
           );
-          console.log(chatRoomId);
           const conns = await this.chatConnService.findAll({
             chat_room_id: chatRoomId.toString(),
           });
-          console.log(conns);
           await Promise.all(
             conns.map((conn) => {
               return apiGatewayClient.send(

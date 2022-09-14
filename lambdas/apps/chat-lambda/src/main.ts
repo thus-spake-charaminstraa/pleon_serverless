@@ -23,10 +23,7 @@ export const handler: Handler = async (
   if (!app) {
     app = await bootstrap();
   }
-  console.log(app);
   const chatLambdaService = app.get(ChatLambdaService);
-  console.log(chatLambdaService);
   const ret = await chatLambdaService.handle(event);
-  console.log(ret);
   return ret;
 };

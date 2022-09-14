@@ -28,6 +28,7 @@ declare -a array=(
   "chat-lambda"
   "chat-connect"
   "chat-disconnect"
+  "token-check"
 )
 for i in "${array[@]}"
 do
