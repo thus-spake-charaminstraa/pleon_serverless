@@ -1,14 +1,13 @@
 import {
+  forwardRef,
+  Inject,
   Injectable,
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { AuthRepository } from './auth.repository';
-import {
-  PublishCommand,
-  SNSClient,
-} from '@aws-sdk/client-sns';
+import { PublishCommand, SNSClient } from '@aws-sdk/client-sns';
 import { VerifySmsDto, SendSmsDto, VerifySmsResDto } from './dto/sms-auth.dto';
 import { User } from '@app/user';
 import { JwtService } from '@nestjs/jwt';
@@ -21,11 +20,12 @@ const snsClient = new SNSClient({ region: 'ap-northeast-1' });
 @Injectable()
 export class AuthService {
   constructor(
+    @Inject(forwardRef(() => UserRepository))
     private readonly userRepository: UserRepository,
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
     private readonly authRepository: AuthRepository,
-  ) { }
+  ) {}
 
   async login(user: User): Promise<CreateTokenResDto> {
     const uuid = uuid4();
@@ -39,7 +39,7 @@ export class AuthService {
     const token = {
       access_token,
       refresh_token,
-    }
+    };
     return {
       user,
       token,

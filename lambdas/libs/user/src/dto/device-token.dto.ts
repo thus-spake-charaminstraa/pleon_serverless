@@ -1,5 +1,5 @@
 import { ApiHideProperty } from '@nestjs/swagger';
-import { IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { IsDate, IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class CreateDeviceTokenDto {
   @ApiHideProperty()
@@ -11,6 +11,13 @@ export class CreateDeviceTokenDto {
   @IsNotEmpty()
   device_token: string;
 }
+
+export class UpdateDeviceTokenDto {
+  @IsDate()
+  @IsNotEmpty()
+  updated_at: Date;
+}
+
 
 export class GetDeviceTokenQuery {
   owner?: string;

@@ -19,26 +19,32 @@ import {
   CreateUserResDto,
   UpdateUserDto,
   DeviceTokenService,
+  CreateDeviceTokenResponse,
+  CreateUserResponse,
+  UpdateUserResponse,
+  CreateDeviceTokenDto,
+  UpdateDeviceTokenDto,
+  UpdateDeviceTokenResponse,
 } from '@app/user';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
+  ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiHeader,
+  ApiNotFoundResponse,
   ApiOkResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { JwtAuthGuard, JwtCheckGuard } from '@app/auth';
-import { PhonePipe } from '@app/common/pipes';
 import {
+  CaslAbilityFactory,
   BadRequestResponse,
   UnauthorizedResponse,
   ForbiddenResponse,
-} from '@app/common/dto';
-import { CaslAbilityFactory } from '@app/common';
-import { CreateUserResponse, UpdateUserResponse } from '@app/user/dto';
-import { CreateDeviceTokenDto } from '@app/user/dto/device-token.dto';
+  PhonePipe,
+} from '@app/common';
 
 @ApiTags('User')
 @Controller('user')
@@ -47,7 +53,7 @@ export class UserLambdaController {
     @Inject(forwardRef(() => UserService))
     private readonly userService: UserService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
-    private readonly deviceTokenService: DeviceTokenService
+    private readonly deviceTokenService: DeviceTokenService,
   ) {}
 
   /*
@@ -116,18 +122,80 @@ export class UserLambdaController {
     return this.userService.update(id, updateUserDto);
   }
 
-
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.userService.deleteOne(id);
   }
 
+  /**
+   * 유저의 디바이스 토큰을 추가합니다. 유저 자신만 추가할 수 있습니다.
+   */
+  @ApiNotFoundResponse({
+    description: '해당 유저가 존재하지 않습니다.',
+    type: BadRequestResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBadRequestResponse({
+    description: '적절하지 않은 입력입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiCreatedResponse({
+    description: '토큰을 성공적으로 생성합니다.',
+    type: CreateDeviceTokenResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @Post(':id/token')
+  async createToken(
+    @Param('id') id: string,
+    @Body() createDeviceTokenDto: CreateDeviceTokenDto,
+  ) {
+    createDeviceTokenDto.owner = id;
+    return await this.deviceTokenService.create(createDeviceTokenDto);
+  }
+
+  /**
+   * 유저의 디바이스 토큰을 업데이트 합니다. 유저 자신만 업데이트할 수 있습니다.
+   */
+  @ApiNotFoundResponse({
+    description: '해당 유저가 존재하지 않습니다.',
+    type: BadRequestResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBadRequestResponse({
+    description: '적절하지 않은 입력입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiForbiddenResponse({
+    description: '이 유저는 수정할 수 없습니다.',
+    type: ForbiddenResponse,
+  })
+  @ApiCreatedResponse({
+    description: '토큰을 성공적으로 수정합니다.',
+    type: UpdateDeviceTokenResponse,
+  })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Post(':id/token')
-  async createToken(@Param('id') id: string, @Body() createDeviceTokenDto: CreateDeviceTokenDto) {
-    createDeviceTokenDto.owner = id;
-    return await this.deviceTokenService.create(createDeviceTokenDto);
+  @Patch(':id/token/:token')
+  async updateToken(
+    @Param('token') token: string,
+    @Body() updateDeviceTokenDto: UpdateDeviceTokenDto,
+    @Req() req,
+  ) {
+    const id = req.user.id;
+    const ability = this.caslAbilityFactory.createForUser(req.user);
+    ability.checkCanModify(id);
+    return await this.deviceTokenService.updateTimestampByToken(
+      token,
+      updateDeviceTokenDto,
+    );
   }
 }

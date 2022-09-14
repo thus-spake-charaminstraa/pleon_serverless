@@ -20,6 +20,8 @@ import { NotiKind } from './types';
 import { initializeApp } from 'firebase-admin/app';
 import { credential } from 'firebase-admin';
 import { getMessaging, Messaging } from 'firebase-admin/messaging';
+import { DeviceTokenRepository } from '@app/user/repositories';
+import { DeviceToken } from '@app/user';
 
 @Injectable()
 export class NotiService {
@@ -31,6 +33,7 @@ export class NotiService {
     private readonly scheduleService: ScheduleService,
     @Inject(forwardRef(() => PlantRepository))
     private readonly plantRepository: PlantRepository,
+    private readonly deviceTokenRepository: DeviceTokenRepository,
   ) {
     this.notiContentFormat = (plantName: string, kind: string) => {
       const contents = {
@@ -53,40 +56,44 @@ export class NotiService {
     this.fcmMessaging = getMessaging();
   }
 
-  async sendPushNoti(content: string, targetDevice: string): Promise<any> {
+  async sendPushNoti(content: string, targetDevice: DeviceToken): Promise<any> {
     const GCMPayload = {
       title: 'PLeon 관리 가이드',
       body: content,
     };
     const message = {
-      token: targetDevice,
+      token: targetDevice.device_token,
       notification: GCMPayload,
     };
-    return this.fcmMessaging.send(message);
+    try {
+      return await this.fcmMessaging.send(message);
+    } catch (e) {
+      if (e.errorCode?.name === 'UNREGISTERED') {
+        return await this.deviceTokenRepository.deleteOne(
+          targetDevice.id.toString(),
+        );
+      }
+    }
   }
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
     for (let kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        try {
-          await Promise.all([
-            this.notiRepository.create({
-              owner: plantInfo.owner.toString(),
-              plant_id: plantInfo.id.toString(),
-              kind: NotiKind.water,
-              content: this.notiContentFormat(plantInfo.name, kind),
-            }),
-            ...plantInfo.user.device_tokens.map((device) =>
-              this.sendPushNoti(
-                this.notiContentFormat(plantInfo.name, kind),
-                device.device_token,
-              ),
+        await Promise.all([
+          this.notiRepository.create({
+            owner: plantInfo.owner.toString(),
+            plant_id: plantInfo.id.toString(),
+            kind: NotiKind.water,
+            content: this.notiContentFormat(plantInfo.name, kind),
+          }),
+          ...plantInfo.user.device_tokens.map((device) =>
+            this.sendPushNoti(
+              this.notiContentFormat(plantInfo.name, kind),
+              device,
             ),
-          ]);
-        } catch (e) {
-          console.log(e);
-        }
+          ),
+        ]);
       }
     }
   }

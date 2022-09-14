@@ -23,7 +23,17 @@ export abstract class CommonRepository<Entity, CreateDto, UpdateDto, GetQuery> {
       .exec();
   }
 
+  async findOneAndUpdate(query: any, updateEntityDto: UpdateDto): Promise<Entity> {
+    return await this.model
+      .findOneAndUpdate(query, updateEntityDto, { new: true })
+      .exec();
+  }
+
   async deleteOne(id: string): Promise<void> {
     await this.model.findOneAndDelete({ id }).exec();
+  }
+
+  async deleteMany(query: any): Promise<void> {
+    await this.model.deleteMany(query).exec();
   }
 }

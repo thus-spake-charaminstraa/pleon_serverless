@@ -73,6 +73,16 @@
         "tsConfigPath": "apps/chat-disconnect/tsconfig.app.json"
       }
     },
+    "token-check": {
+      "type": "application",
+      "root": "apps/token-check",
+      "entryFile": "main",
+      "sourceRoot": "apps/token-check/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/token-check/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",

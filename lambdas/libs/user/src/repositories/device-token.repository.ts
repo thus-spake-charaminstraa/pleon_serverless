@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import {
   CreateDeviceTokenDto,
   GetDeviceTokenQuery,
+  UpdateDeviceTokenDto,
 } from '../dto/device-token.dto';
 import {
   DeviceToken,
@@ -15,12 +16,28 @@ import {
 export class DeviceTokenRepository extends CommonRepository<
   DeviceToken,
   CreateDeviceTokenDto,
-  any,
+  UpdateDeviceTokenDto,
   GetDeviceTokenQuery
-  > {
+> {
   constructor(
-    @InjectModel(DeviceToken.name) model: Model<DeviceTokenDocument>,
+    @InjectModel(DeviceToken.name)
+    private deviceTokenModel: Model<DeviceTokenDocument>,
   ) {
-    super(model);
+    super(deviceTokenModel);
+  }
+
+  async updateTimestampByToken(
+    token: string,
+    updateDeviceTokenDto: UpdateDeviceTokenDto,
+  ) {
+    return await this.deviceTokenModel
+      .findOneAndUpdate({ device_token: token }, updateDeviceTokenDto, {
+        new: true,
+      })
+      .exec();
+  }
+
+  async deleteManyExpired(criteria: Date) {
+    return await this.deviceTokenModel.deleteMany({ updated_at: { $lt: criteria } }).exec();
   }
 }
