@@ -46,10 +46,10 @@ export class Plant {
   @Prop({ required: true })
   thumbnail: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: String, enum: PlantLight })
   light: PlantLight;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: String, enum: PlantAir })
   air: PlantAir;
 }
 

@@ -11,7 +11,7 @@ const toObjectOptions = {
     return ret;
   },
   virtuals: true,
-}
+};
 
 @Schema({
   toObject: toObjectOptions,
@@ -32,7 +32,7 @@ export class Schedule {
   @Prop({ required: true })
   timestamp: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: true, enum: ScheduleKind, type: String })
   kind: ScheduleKind;
 }
 
@@ -43,4 +43,4 @@ ScheduleSchema.virtual('plant', {
   localField: 'plant_id',
   foreignField: 'id',
   justOne: true,
-})
+});

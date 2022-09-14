@@ -39,7 +39,7 @@ export class Noti {
   @Prop({ required: true })
   content: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: String, enum: NotiKind })
   kind: NotiKind;
 
   @Prop({ required: false })

@@ -50,10 +50,10 @@ export class Species {
   @Prop({ required: true })
   proper_temperature: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: [String] })
   proper_light: PlantLight[];
 
-  @Prop({ required: true })
+  @Prop({ required: true, type: [String] })
   proper_humidity: PlantHumidity[];
 
   @Prop({ required: true })
@@ -62,7 +62,7 @@ export class Species {
   @Prop({ required: true })
   blight: string;
 
-  @Prop({ required: true })
+  @Prop({ required: true, enum: PlantDifficulty, type: String })
   managing_difficulty: PlantDifficulty;
 
   @Prop({ required: false, default: 'no' })

@@ -9,7 +9,7 @@ import { PlantModule } from '@app/plant';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Noti', schema: NotiSchema }]),
-    ScheduleModule,
+    forwardRef(() => ScheduleModule),
     forwardRef(() => PlantModule),
   ],
   providers: [NotiService, NotiRepository],

@@ -42,7 +42,7 @@ export class Feed {
   @Prop({ required: true })
   publish_date: Date;
 
-  @Prop({ required: true })
+  @Prop({ required: true, enum: FeedKind, type: String })
   kind: FeedKind;
 
   @Prop({ required: true })
@@ -78,4 +78,4 @@ FeedSchema.virtual('user', {
   localField: 'owner',
   foreignField: 'id',
   justOne: true,
-})
+});

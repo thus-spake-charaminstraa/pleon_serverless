@@ -69,20 +69,24 @@ export class NotiService {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
     for (let kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        await Promise.all([
-          this.notiRepository.create({
-            owner: plantInfo.owner.toString(),
-            plant_id: plantInfo.id.toString(),
-            kind: NotiKind.water,
-            content: this.notiContentFormat(plantInfo.name, kind),
-          }),
-          ...plantInfo.user.device_tokens.map((device) =>
-            this.sendPushNoti(
-              this.notiContentFormat(plantInfo.name, kind),
-              device.device_token,
+        try {
+          await Promise.all([
+            this.notiRepository.create({
+              owner: plantInfo.owner.toString(),
+              plant_id: plantInfo.id.toString(),
+              kind: NotiKind.water,
+              content: this.notiContentFormat(plantInfo.name, kind),
+            }),
+            ...plantInfo.user.device_tokens.map((device) =>
+              this.sendPushNoti(
+                this.notiContentFormat(plantInfo.name, kind),
+                device.device_token,
+              ),
             ),
-          ),
-        ]);
+          ]);
+        } catch (e) {
+          console.log(e);
+        }
       }
     }
   }

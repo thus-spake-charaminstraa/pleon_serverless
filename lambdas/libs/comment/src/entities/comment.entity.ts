@@ -39,7 +39,7 @@ export class Comment {
   @Prop({ required: false, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: true })
+  @Prop({ required: true, enum: CommentAuthorKind, type: String })
   author_kind: CommentAuthorKind;
 
   @Prop({ required: true })
@@ -55,7 +55,9 @@ export class Comment {
 export const CommentSchema = SchemaFactory.createForClass(Comment);
 
 CommentSchema.virtual('owner').get(function () {
-  return this.author_kind === CommentAuthorKind.user ? this.user_id : this.plant_id;
+  return this.author_kind === CommentAuthorKind.user
+    ? this.user_id
+    : this.plant_id;
 });
 
 CommentSchema.virtual('plant', {

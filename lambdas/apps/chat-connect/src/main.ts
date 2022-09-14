@@ -30,5 +30,3 @@ export const handler: Handler = async (
   console.log(ret);
   return ret;
 };
-
-bootstrap();

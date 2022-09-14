@@ -8,6 +8,7 @@ import {
   UpdatePlantDto,
 } from '../dto/plant.dto';
 import { CommonRepository } from '@app/common/common.repository';
+import { DeviceToken, DeviceTokenDocument, User, UserDocument } from '@app/user/entities';
 
 @Injectable()
 export class PlantRepository extends CommonRepository<
@@ -18,6 +19,9 @@ export class PlantRepository extends CommonRepository<
 > {
   constructor(
     @InjectModel(Plant.name) private plantModel: Model<PlantDocument>,
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(DeviceToken.name)
+    private deviceTokenModel: Model<DeviceTokenDocument>,
   ) {
     super(plantModel);
   }
@@ -40,7 +44,13 @@ export class PlantRepository extends CommonRepository<
       .select({ id: 1, owner: 1, species: 1, name: 1 })
       .populate({
         path: 'user',
-        populate: ['device_tokens'],
+        model: this.userModel,
+        populate: [
+          {
+            path: 'device_tokens',
+            model: this.deviceTokenModel,
+          },
+        ],
       })
       .exec();
   }

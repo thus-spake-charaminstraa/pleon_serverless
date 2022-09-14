@@ -2,13 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { configure as serverlessExpress } from '@vendia/serverless-express';
 import { Callback, Context, Handler } from 'aws-lambda';
 import { MonoAppModule } from './mono-app.module';
-import { CommonService, TransformInterceptor } from '@app/common';
+import { TransformInterceptor } from '@app/common';
 import { ValidationPipe } from '@nestjs/common';
-import {
-  DocumentBuilder,
-  SwaggerCustomOptions,
-  SwaggerModule,
-} from '@nestjs/swagger';
 
 let server: Handler;
 
@@ -32,24 +27,6 @@ async function bootstrap(): Promise<Handler> {
 
   // use response interceptor
   app.useGlobalInterceptors(new TransformInterceptor());
-
-  const document = SwaggerModule.createDocument(
-    app,
-    new DocumentBuilder()
-      .setTitle('PLeon API')
-      .setDescription('The API description')
-      .setVersion('1.0')
-      .addServer(process.env.HOST, 'server')
-      .addServer('http://localhost:8000', 'local server')
-      .addBearerAuth()
-      .build(),
-  );
-  const swaggerCustomOptions: SwaggerCustomOptions = {
-    swaggerOptions: {
-      persistAuthorization: true,
-    },
-  };
-  SwaggerModule.setup('api', app, document, swaggerCustomOptions);
 
   await app.init();
   const expressApp = app.getHttpAdapter().getInstance();

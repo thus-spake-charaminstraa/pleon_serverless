@@ -29,14 +29,6 @@
       "entryFile": "main",
       "sourceRoot": "apps/mono-app/src",
       "compilerOptions": {
-        "plugins": [
-          {
-            "name": "@nestjs/swagger",
-            "options": {
-              "introspectComments": true
-            }
-          }
-        ],
         "webpack": true,
         "tsConfigPath": "apps/mono-app/tsconfig.app.json"
       }

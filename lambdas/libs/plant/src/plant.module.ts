@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { PlantService, SpeciesService } from './services';
 import { PlantRepository, SpeciesRepository } from './repositories';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -7,10 +7,11 @@ import { FeedModule, FeedRepository } from '@app/feed';
 import { ScheduleModule, ScheduleRepository } from '@app/schedule';
 import { NotiModule, NotiRepository } from '@app/noti';
 import { Species, SpeciesSchema } from './entities/species.entity';
+import { DeviceToken, DeviceTokenSchema, User, UserSchema } from '@app/user';
 
 @Module({
   imports: [
-    MongooseModule.forFeatureAsync([
+    forwardRef(() => MongooseModule.forFeatureAsync([
       {
         name: Plant.name,
         imports: [FeedModule, ScheduleModule, NotiModule],
@@ -40,7 +41,15 @@ import { Species, SpeciesSchema } from './entities/species.entity';
         name: Species.name,
         useFactory: () => SpeciesSchema,
       },
-    ]),
+      {
+        name: User.name,
+        useFactory: () => UserSchema,
+      },
+      {
+        name: DeviceToken.name,
+        useFactory: () => DeviceTokenSchema,
+      }
+    ])),
   ],
   providers: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
   exports: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],

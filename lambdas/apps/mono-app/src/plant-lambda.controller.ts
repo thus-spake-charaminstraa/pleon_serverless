@@ -133,13 +133,10 @@ export class PlantLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get()
   async findAll(@Query('owner') owner: string, @Req() req) {
-    console.log(owner);
     if (!owner) {
       owner = req.user.id.toString();
     }
-    console.log(owner);
     const query: GetPlantQuery = queryParser({ owner }, GetPlantQuery);
-    console.log(query);
     return await this.plantService.findAll(query);
   }
 
