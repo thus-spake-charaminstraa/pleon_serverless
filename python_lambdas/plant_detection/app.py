@@ -13,6 +13,13 @@ model.max_det = 1000  # maximum number of detections per image
 
 
 def handler(event, context):
+    print(event);
+    if event['body'] == 'warming':
+        print('warming up...')
+        return {
+            'statusCode': 200,
+            'body': 'Warm up',
+        }
     
     body = json.loads(event['body'])
     
@@ -26,16 +33,12 @@ def handler(event, context):
     boxes = predictions[:, :4]  # x1, y1, x2, y2
     scores = predictions[:, 4]
     categories = predictions[:, 5]
+    print('prediction result: ', predictions.tolist()[0])
     
     return {
         'statusCode': 200,
         'body': json.dumps({
             'image_url': image_url,
-            'predictions': json.dumps(predictions),
+            'predictions': json.dumps(predictions.tolist()[0]),
         })
-    }
-
-
-print(handler({'body': '{"image_url": "https://blog.kakaocdn.net/dn/raSZ5/btqUTmCm2Ad/ZK2k13W5zeXjz0oTFoNSzk/img.png"}'}, None))
-    
-
+    }    
