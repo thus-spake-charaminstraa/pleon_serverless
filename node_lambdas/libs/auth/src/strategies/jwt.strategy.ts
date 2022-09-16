@@ -49,7 +49,7 @@ export class RefreshJwtStrategy extends PassportStrategy(
   constructor(
     private userRepository: UserRepository,
     private configService: ConfigService,
-  ) {  
+  ) {
     super({
       jwtFromRequest: ExtractJwt.fromBodyField('refresh_token'),
       ignoreExpiration: false,

@@ -1,4 +1,10 @@
-import { IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsEnum,
+  IsMongoId,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import { CommentAuthorKind } from '../types';
 

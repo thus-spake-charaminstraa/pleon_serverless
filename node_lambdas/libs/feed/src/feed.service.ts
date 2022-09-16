@@ -23,7 +23,7 @@ export class FeedService {
 
   async create(createFeedDto: CreateFeedDto): Promise<Feed> {
     if (createFeedDto.kind in ScheduleKind) {
-      let kind: any = createFeedDto.kind;
+      const kind: any = createFeedDto.kind;
       const createScheduleDto: CreateScheduleDto = {
         plant_id: createFeedDto.plant_id,
         timestamp: createFeedDto.publish_date,

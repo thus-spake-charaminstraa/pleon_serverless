@@ -37,8 +37,8 @@ export class ScheduleService {
         plantInfo.id.toString(),
       );
     const guide = this.getPlantGuide(plantInfo.species);
-    let ret = {};
-    for (let kind of Object.keys(ScheduleKind)) {
+    const ret = {};
+    for (const kind of Object.keys(ScheduleKind)) {
       let overdue = false;
       const schedule = scheduleOfPlantByKind[kind];
       if (schedule.length > 0) {

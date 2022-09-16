@@ -9,4 +9,3 @@ export class UploadImageResponse extends SuccessResponse {
   data: ImageUploadResDto;
   statusCode = 201;
 }
-

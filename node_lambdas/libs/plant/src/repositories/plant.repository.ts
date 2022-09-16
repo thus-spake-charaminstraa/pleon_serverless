@@ -8,7 +8,12 @@ import {
   UpdatePlantDto,
 } from '../dto/plant.dto';
 import { CommonRepository } from '@app/common/common.repository';
-import { DeviceToken, DeviceTokenDocument, User, UserDocument } from '@app/user/entities';
+import {
+  DeviceToken,
+  DeviceTokenDocument,
+  User,
+  UserDocument,
+} from '@app/user/entities';
 
 @Injectable()
 export class PlantRepository extends CommonRepository<

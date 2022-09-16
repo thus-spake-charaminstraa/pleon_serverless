@@ -1,4 +1,4 @@
-import { NotFoundException } from "@nestjs/common";
+import { NotFoundException } from '@nestjs/common';
 
 export abstract class CommonService<Entity, CreateDto, UpdateDto, GetQuery> {
   constructor(private repository: any) {
@@ -15,7 +15,7 @@ export abstract class CommonService<Entity, CreateDto, UpdateDto, GetQuery> {
 
   async findOne(id: string): Promise<Entity> {
     const ret = await this.repository.findOne(id);
-    if(!ret) {
+    if (!ret) {
       throw new NotFoundException('존재하지 않는 데이터입니다.');
     }
     return ret;

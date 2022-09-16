@@ -11,45 +11,47 @@ import { DeviceToken, DeviceTokenSchema, User, UserSchema } from '@app/user';
 
 @Module({
   imports: [
-    forwardRef(() => MongooseModule.forFeatureAsync([
-      {
-        name: Plant.name,
-        imports: [FeedModule, ScheduleModule, NotiModule],
-        useFactory: (
-          feedRepository: FeedRepository,
-          scheduleRepository: ScheduleRepository,
-          notiRepository: NotiRepository,
-        ) => {
-          const schema = PlantSchema;
-          schema.pre(
-            'findOneAndDelete',
-            { document: false, query: true },
-            async function () {
-              const { id } = this.getFilter();
-              await Promise.all([
-                feedRepository.deleteAll({ plant_id: id }),
-                scheduleRepository.deleteAll({ plant_id: id }),
-                notiRepository.deleteAll({ plant_id: id }),
-              ]);
-            },
-          );
-          return schema;
+    forwardRef(() =>
+      MongooseModule.forFeatureAsync([
+        {
+          name: Plant.name,
+          imports: [FeedModule, ScheduleModule, NotiModule],
+          useFactory: (
+            feedRepository: FeedRepository,
+            scheduleRepository: ScheduleRepository,
+            notiRepository: NotiRepository,
+          ) => {
+            const schema = PlantSchema;
+            schema.pre(
+              'findOneAndDelete',
+              { document: false, query: true },
+              async function () {
+                const { id } = this.getFilter();
+                await Promise.all([
+                  feedRepository.deleteAll({ plant_id: id }),
+                  scheduleRepository.deleteAll({ plant_id: id }),
+                  notiRepository.deleteAll({ plant_id: id }),
+                ]);
+              },
+            );
+            return schema;
+          },
+          inject: [FeedRepository, ScheduleRepository, NotiRepository],
         },
-        inject: [FeedRepository, ScheduleRepository, NotiRepository],
-      },
-      {
-        name: Species.name,
-        useFactory: () => SpeciesSchema,
-      },
-      {
-        name: User.name,
-        useFactory: () => UserSchema,
-      },
-      {
-        name: DeviceToken.name,
-        useFactory: () => DeviceTokenSchema,
-      }
-    ])),
+        {
+          name: Species.name,
+          useFactory: () => SpeciesSchema,
+        },
+        {
+          name: User.name,
+          useFactory: () => UserSchema,
+        },
+        {
+          name: DeviceToken.name,
+          useFactory: () => DeviceTokenSchema,
+        },
+      ]),
+    ),
   ],
   providers: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
   exports: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],

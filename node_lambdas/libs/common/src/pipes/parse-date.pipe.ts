@@ -1,4 +1,9 @@
-import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
+import {
+  PipeTransform,
+  Injectable,
+  ArgumentMetadata,
+  BadRequestException,
+} from '@nestjs/common';
 import { DateStrFormat } from '../utils';
 
 @Injectable()
@@ -10,8 +15,7 @@ export class ParseDateInBodyPipe implements PipeTransform {
       value.publish_date = DateStrFormat(new Date(value.publish_date));
     else if (value.timestamp)
       value.timestamp = DateStrFormat(new Date(value.timestamp));
-    else
-      throw new BadRequestException('Invalid date format');
+    else throw new BadRequestException('Invalid date format');
     return value;
   }
 }
@@ -25,13 +29,10 @@ export class ParseMonthPipe implements PipeTransform {
   }
 }
 
-
 @Injectable()
 export class ParseYearPipe implements PipeTransform {
   transform(value: any, metadata: ArgumentMetadata) {
-    if (value < 0)
-      throw new BadRequestException('잘못된 년도입니다.');
+    if (value < 0) throw new BadRequestException('잘못된 년도입니다.');
     return value;
   }
 }
-

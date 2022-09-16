@@ -6,7 +6,7 @@ import { AllExceptionsFilter, CommonModule } from '@app/common';
 import { UserModule } from '@app/user/user.module';
 import { UserLambdaController } from './user-lambda.controller';
 import { AuthModule } from '@app/auth/auth.module';
-import { AuthLambdaController } from './auth-lambda.controller';
+import { AuthLambdaController } from '../../monolithic-app/src/auth-lambda.controller';
 import { PlantModule } from '@app/plant/plant.module';
 import { PlantLambdaController } from './plant-lambda.controller';
 import { ScheduleModule } from '@app/schedule/schedule.module';
@@ -16,7 +16,7 @@ import { ImageLambdaController } from './image-lambda.controller';
 import { FeedLambdaController } from './feed-lambda.controller';
 import { FeedModule } from '@app/feed';
 import { NotiModule } from '@app/noti';
-import { NotiLambdaController } from './noti-lambda.controller';
+import { NotiLambdaController } from '../../monolithic-app/src/noti-lambda.controller';
 import { CommentLambdaController } from './comment-lambda.controller';
 import { CommentModule } from '@app/comment';
 

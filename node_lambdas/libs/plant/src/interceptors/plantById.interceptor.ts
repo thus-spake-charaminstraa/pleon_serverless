@@ -10,8 +10,7 @@ import { PlantRepository } from '@app/plant';
 
 @Injectable()
 export class PlantByParamsIdInterceptor implements NestInterceptor {
-  constructor(
-    private readonly plantRepository: PlantRepository) { }
+  constructor(private readonly plantRepository: PlantRepository) {}
   async intercept(
     context: ExecutionContext,
     next: CallHandler,

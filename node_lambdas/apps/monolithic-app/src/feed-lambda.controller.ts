@@ -177,10 +177,10 @@ export class FeedLambdaController {
       GetFeedQuery,
     );
     const feeds = await this.feedService.findAll(query);
-    let result = feeds.map((feed) => ({
+    const result = feeds.map((feed) => ({
       viewType: FeedViewKind.feed,
       viewObject: feed,
-    }))
+    }));
     return {
       result,
       count: result.length,

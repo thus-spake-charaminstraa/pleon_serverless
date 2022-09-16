@@ -1,9 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import {
-  Callback,
-  Context,
-  Handler,
-} from 'aws-lambda';
+import { Callback, Context, Handler } from 'aws-lambda';
 import { INestApplicationContext } from '@nestjs/common';
 import { TokenCheckModule } from './token-check.module';
 import { DeviceTokenService } from '@app/user/services';

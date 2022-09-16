@@ -36,7 +36,6 @@ import { NotiKind } from '@app/noti/types';
 export class NotiLambdaController {
   constructor(private readonly notiService: NotiService) {}
 
-
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
@@ -87,7 +86,7 @@ export class NotiLambdaController {
     @Query('kind') kind: NotiKind,
     @Req() req,
   ) {
-    let query: GetNotiQuery = queryParser(
+    const query: GetNotiQuery = queryParser(
       {
         owner: owner || req.user.id.toString(),
         plant_id,

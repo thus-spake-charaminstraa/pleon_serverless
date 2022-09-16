@@ -2,7 +2,7 @@ export abstract class CommonRepository<Entity, CreateDto, UpdateDto, GetQuery> {
   private model: any;
   constructor(model: any) {
     this.model = model;
-   }
+  }
 
   async create(createEntityDto: CreateDto): Promise<Entity> {
     const createdCommon = new this.model(createEntityDto);
@@ -23,7 +23,10 @@ export abstract class CommonRepository<Entity, CreateDto, UpdateDto, GetQuery> {
       .exec();
   }
 
-  async findOneAndUpdate(query: any, updateEntityDto: UpdateDto): Promise<Entity> {
+  async findOneAndUpdate(
+    query: any,
+    updateEntityDto: UpdateDto,
+  ): Promise<Entity> {
     return await this.model
       .findOneAndUpdate(query, updateEntityDto, { new: true })
       .exec();

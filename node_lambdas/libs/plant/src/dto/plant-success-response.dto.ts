@@ -1,6 +1,6 @@
-import { SuccessResponse } from "@app/common/dto";
-import { GetPlantResDto } from "@app/plant";
-import { Species } from "../entities/species.entity";
+import { SuccessResponse } from '@app/common/dto';
+import { GetPlantResDto } from '@app/plant';
+import { Species } from '../entities/species.entity';
 
 export class GetPlantResponse extends SuccessResponse {
   data: GetPlantResDto;

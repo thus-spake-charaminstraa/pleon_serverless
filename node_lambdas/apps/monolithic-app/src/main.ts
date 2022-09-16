@@ -6,7 +6,11 @@ import { CreateSpeciesDto, PlantService } from '@app/plant';
 import * as fs from 'fs/promises';
 import { PlantDifficulty, PlantHumidity, PlantLight } from '@app/plant/types';
 import { ScheduleService } from '@app/schedule';
-import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/swagger';
+import {
+  DocumentBuilder,
+  SwaggerCustomOptions,
+  SwaggerModule,
+} from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
@@ -90,7 +94,7 @@ async function bootstrap() {
         }
       });
     });
-  
+
   species.forEach((data, index) => {
     const ret = [];
     if (data.proper_light.match(new RegExp(/(\P{L}|^)양지(\P{L}|$)/gu))) {
@@ -103,7 +107,7 @@ async function bootstrap() {
       ret.push(PlantLight.dark);
     }
     data.proper_light = ret;
-  })
+  });
 
   species.forEach((data, index) => {
     const ret = [];
@@ -133,9 +137,6 @@ async function bootstrap() {
     data.managing_difficulty = ret;
   });
 
-  
-
-
   const speciesJSON = JSON.stringify(species, null, '  ');
   await fs.writeFile('apps/monolithic-app/src/species.json', speciesJSON, {
     encoding: 'utf-8',
@@ -148,8 +149,6 @@ async function bootstrap() {
 
   const scheduleService = app.get(ScheduleService);
   const schedules = await scheduleService.findAll({});
-
-
 }
 bootstrap();
 
@@ -159,7 +158,7 @@ function CSVToArray(strData, strDelimiter?) {
   strDelimiter = strDelimiter || ',';
 
   // Create a regular expression to parse the CSV values.
-  var objPattern = new RegExp(
+  const objPattern = new RegExp(
     // Delimiters.
     '(\\' +
       strDelimiter +
@@ -175,17 +174,17 @@ function CSVToArray(strData, strDelimiter?) {
 
   // Create an array to hold our data. Give the array
   // a default empty first row.
-  var arrData = [[]];
+  const arrData = [[]];
 
   // Create an array to hold our individual pattern
   // matching groups.
-  var arrMatches = null;
+  let arrMatches = null;
 
   // Keep looping over the regular expression matches
   // until we can no longer find a match.
   while ((arrMatches = objPattern.exec(strData))) {
     // Get the delimiter that was found.
-    var strMatchedDelimiter = arrMatches[1];
+    const strMatchedDelimiter = arrMatches[1];
 
     // Check to see if the given delimiter has a length
     // (is not the start of string) and if it matches

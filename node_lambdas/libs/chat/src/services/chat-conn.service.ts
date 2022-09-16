@@ -20,7 +20,9 @@ export class ChatConnService extends CommonService<
   }
 
   async getChatRoomIdByConnId(connectionId: string) {
-    const chatConn = await this.chatConnRepository.findOneByConnId(connectionId);
+    const chatConn = await this.chatConnRepository.findOneByConnId(
+      connectionId,
+    );
     if (!chatConn) {
       throw new NotFoundException('Chat connection not found');
     }

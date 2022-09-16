@@ -49,4 +49,4 @@ UserSchema.virtual('device_tokens', {
   ref: 'DeviceToken',
   localField: 'id',
   foreignField: 'owner',
-})
+});

@@ -15,9 +15,10 @@ const apiGatewayClient = new ApiGatewayManagementApiClient({
   endpoint: process.env.AWS_WEBSOCKET_API_ENDPOINT,
 });
 
-type APIGatewayProxyWebsocketEventV2Connect = APIGatewayProxyWebsocketEventV2 & {
-  queryStringParameters: any;
-};
+type APIGatewayProxyWebsocketEventV2Connect =
+  APIGatewayProxyWebsocketEventV2 & {
+    queryStringParameters: any;
+  };
 
 @Injectable()
 export class ChatLambdaService {

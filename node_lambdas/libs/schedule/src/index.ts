@@ -4,5 +4,3 @@ export * from './schedule.repository';
 export * from './entities/schedule.entity';
 export * from './dto';
 export * from './types';
-
-

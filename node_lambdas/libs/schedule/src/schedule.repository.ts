@@ -26,7 +26,7 @@ export class ScheduleRepository {
   }
 
   async findAllAndGroupBy(query: GetScheduleQuery): Promise<any> {
-    let ret = await this.scheduleModel
+    const ret = await this.scheduleModel
       .aggregate()
       .match({
         plant_id: new Types.ObjectId(query.plant_id),
@@ -47,8 +47,8 @@ export class ScheduleRepository {
   }
 
   async findByPlantAndGroup(plantId: string): Promise<any> {
-    let ret = {};
-    for (let kind of Object.keys(ScheduleKind)) {
+    const ret = {};
+    for (const kind of Object.keys(ScheduleKind)) {
       ret[kind] = await this.scheduleModel
         .find({ plant_id: plantId, kind: ScheduleKind[kind] })
         .sort({ timestamp: -1 })

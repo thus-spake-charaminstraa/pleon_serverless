@@ -30,6 +30,7 @@ export class NotiService {
 
   constructor(
     private readonly notiRepository: NotiRepository,
+    @Inject(forwardRef(() => ScheduleService))
     private readonly scheduleService: ScheduleService,
     @Inject(forwardRef(() => PlantRepository))
     private readonly plantRepository: PlantRepository,
@@ -78,7 +79,7 @@ export class NotiService {
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
-    for (let kind of Object.keys(NotiKind)) {
+    for (const kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
         await Promise.all([
           this.notiRepository.create({

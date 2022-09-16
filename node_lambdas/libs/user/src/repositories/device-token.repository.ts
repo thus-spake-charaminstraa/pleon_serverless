@@ -38,6 +38,8 @@ export class DeviceTokenRepository extends CommonRepository<
   }
 
   async deleteManyExpired(criteria: Date) {
-    return await this.deviceTokenModel.deleteMany({ updated_at: { $lt: criteria } }).exec();
+    return await this.deviceTokenModel
+      .deleteMany({ updated_at: { $lt: criteria } })
+      .exec();
   }
 }

@@ -1,4 +1,4 @@
-import { IsPhoneNumber, IsString } from "class-validator";
+import { IsPhoneNumber, IsString } from 'class-validator';
 
 export class SendSmsDto {
   @IsPhoneNumber('KR')

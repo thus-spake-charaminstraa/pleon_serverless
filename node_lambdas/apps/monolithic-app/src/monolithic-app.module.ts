@@ -3,23 +3,22 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AllExceptionsFilter, CommonModule } from '@app/common';
-import { UserModule } from '@app/user/user.module';
-import { UserLambdaController } from '../../mono-app/src/user-lambda.controller';
 import { AuthModule } from '@app/auth/auth.module';
-import { AuthLambdaController } from '../../mono-app/src/auth-lambda.controller';
-import { PlantModule } from '@app/plant/plant.module';
-import { PlantLambdaController } from '../../mono-app/src/plant-lambda.controller';
-import { ScheduleModule } from '@app/schedule/schedule.module';
-import { ScheduleLambdaController } from '../../mono-app/src/schedule-lambda.controller';
-import { ImageLambdaController } from '../../mono-app/src/image-lambda.controller';
+import { UserModule } from '@app/user/user.module';
+import { PlantModule } from '@app/plant';
+import { ScheduleModule } from '@app/schedule';
 import { ImageModule } from '@app/image';
 import { FeedModule } from '@app/feed';
-import { FeedLambdaController } from '../../mono-app/src/feed-lambda.controller';
 import { NotiModule } from '@app/noti';
-import { NotiLambdaController } from 'apps/mono-app/src/noti-lambda.controller';
-import { GuideNotiController } from './guide-noti.controller';
-import { CommentLambdaController } from 'apps/mono-app/src/comment-lambda.controller';
 import { CommentModule } from '@app/comment';
+import { UserLambdaController } from './user-lambda.controller';
+import { AuthLambdaController } from './auth-lambda.controller';
+import { PlantLambdaController } from './plant-lambda.controller';
+import { FeedLambdaController } from './feed-lambda.controller';
+import { ScheduleLambdaController } from './schedule-lambda.controller';
+import { NotiLambdaController } from './noti-lambda.controller';
+import { CommentLambdaController } from './comment-lambda.controller';
+import { GuideNotiController } from './guide-noti.controller';
 
 @Module({
   imports: [
@@ -48,7 +47,7 @@ import { CommentModule } from '@app/comment';
     UserLambdaController,
     AuthLambdaController,
     PlantLambdaController,
-    ImageLambdaController,
+    UserLambdaController,
     FeedLambdaController,
     ScheduleLambdaController,
     NotiLambdaController,

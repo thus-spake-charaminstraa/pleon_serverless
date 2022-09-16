@@ -39,13 +39,15 @@ export class CreatePlantApiDto extends CreatePlantDto {
   water_date: Date;
 }
 
-export class UpdatePlantDto extends PartialType(PickType(CreatePlantDto, [
-  'name',
-  'thumbnail',
-  'light',
-  'air',
-  'adopt_date',
-] as const)) {}
+export class UpdatePlantDto extends PartialType(
+  PickType(CreatePlantDto, [
+    'name',
+    'thumbnail',
+    'light',
+    'air',
+    'adopt_date',
+  ] as const),
+) {}
 
 export class GetPlantResDto extends Plant {
   d_day: number;

@@ -1,5 +1,11 @@
 import { ApiHideProperty, PartialType } from '@nestjs/swagger';
-import { IsEnum, IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import {
+  IsEnum,
+  IsMongoId,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+} from 'class-validator';
 import { NotiKind } from '../types';
 
 export class CreateNotiDto {
@@ -19,7 +25,7 @@ export class CreateNotiDto {
   kind: NotiKind;
 }
 
-export class UpdateNotiDto extends PartialType(CreateNotiDto) { }
+export class UpdateNotiDto extends PartialType(CreateNotiDto) {}
 
 export enum NotiManageKind {
   complete = 'complete',
@@ -30,7 +36,6 @@ export class NotiManageDto {
   @IsEnum(NotiManageKind)
   type: NotiManageKind;
 }
-
 
 export class GetNotiQuery {
   owner?: string;

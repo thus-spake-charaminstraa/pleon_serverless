@@ -101,7 +101,7 @@ export class ScheduleLambdaController {
     start.setMonth(month - 2);
     const end = new Date(year, 0, 31);
     end.setMonth(month);
-    let query: GetScheduleQuery = queryParser(
+    const query: GetScheduleQuery = queryParser(
       { plant_id, year, month, start, end },
       GetScheduleQuery,
     );

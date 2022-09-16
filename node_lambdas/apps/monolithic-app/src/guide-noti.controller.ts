@@ -5,10 +5,8 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('Noti')
 @Controller('guide-noti')
 export class GuideNotiController {
-  constructor(
-    private readonly notiService: NotiService,
-  ) { }
-  
+  constructor(private readonly notiService: NotiService) {}
+
   @Post()
   async sendGuideNoti() {
     return await this.notiService.sendNotiForPlants();

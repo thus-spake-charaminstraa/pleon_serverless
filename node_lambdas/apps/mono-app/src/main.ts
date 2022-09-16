@@ -43,5 +43,12 @@ export const handler: Handler = async (
     server = await bootstrap();
     console.log('bootstrap : ', new Date().getTime() - start, 'ms');
   }
+  if (event.body === 'warming') {
+    console.log('warming up...');
+    return {
+      statusCode: 200,
+      body: 'warming',
+    };
+  }
   return server(event, context, callback);
 };

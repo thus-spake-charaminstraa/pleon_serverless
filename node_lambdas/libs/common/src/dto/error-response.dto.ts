@@ -1,8 +1,6 @@
-
 class ErrorResponse {
   success = false;
 }
-
 
 export class UnauthorizedResponse extends ErrorResponse {
   error = 'Unauthorized';

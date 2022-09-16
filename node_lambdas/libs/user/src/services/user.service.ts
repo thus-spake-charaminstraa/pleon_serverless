@@ -5,7 +5,11 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
-import { CreateUserDto, CreateUserResDto, UpdateUserDto } from '../dto/user.dto';
+import {
+  CreateUserDto,
+  CreateUserResDto,
+  UpdateUserDto,
+} from '../dto/user.dto';
 import { UserRepository } from '../repositories/user.repository';
 import { AuthService, TokenResDto } from '@app/auth';
 import { parsePhoneNumber } from 'libphonenumber-js';

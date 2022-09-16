@@ -8,14 +8,12 @@ class EntityPolicy {
   checkCanModify(user: User, resource: any): void {
     if (user.id.toString() !== resource.owner.toString()) {
       throw new ForbiddenException('리소스를 수정할 권한이 없습니다.');
-    };
+    }
   }
 }
 
 class UserPolicy {
-  constructor(
-    private user: User,
-  ) { }
+  constructor(private user: User) {}
   checkCanModify(id: string): void {
     if (this.user.id.toString() !== id) {
       throw new ForbiddenException('리소스를 수정할 권한이 없습니다.');

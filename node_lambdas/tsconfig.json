@@ -62,12 +62,6 @@
       "@app/image/*": [
         "libs/image/src/*"
       ],
-      "@app/guide": [
-        "libs/guide/src"
-      ],
-      "@app/guide/*": [
-        "libs/guide/src/*"
-      ],
       "@app/noti": [
         "libs/noti/src"
       ],

@@ -33,6 +33,56 @@
         "tsConfigPath": "apps/mono-app/tsconfig.app.json"
       }
     },
+    "user-lambda": {
+      "type": "application",
+      "root": "apps/user-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/user-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/user-lambda/tsconfig.app.json"
+      }
+    },
+    "auth-lambda": {
+      "type": "application",
+      "root": "apps/auth-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/auth-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/auth-lambda/tsconfig.app.json"
+      }
+    },
+    "plant-lambda": {
+      "type": "application",
+      "root": "apps/plant-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/plant-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/plant-lambda/tsconfig.app.json"
+      }
+    },
+    "feed-lambda": {
+      "type": "application",
+      "root": "apps/feed-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/feed-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/feed-lambda/tsconfig.app.json"
+      }
+    },
+    "comment-lambda": {
+      "type": "application",
+      "root": "apps/comment-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/comment-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/comment-lambda/tsconfig.app.json"
+      }
+    },
     "noti-lambda": {
       "type": "application",
       "root": "apps/noti-lambda",
@@ -41,6 +91,36 @@
       "compilerOptions": {
         "webpack": true,
         "tsConfigPath": "apps/noti-lambda/tsconfig.app.json"
+      }
+    },
+    "schedule-lambda": {
+      "type": "application",
+      "root": "apps/schedule-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/schedule-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/schedule-lambda/tsconfig.app.json"
+      }
+    },
+    "image-lambda": {
+      "type": "application",
+      "root": "apps/image-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/image-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/image-lambda/tsconfig.app.json"
+      }
+    },
+    "guide-noti-lambda": {
+      "type": "application",
+      "root": "apps/guide-noti-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/guide-noti-lambda/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/guide-noti-lambda/tsconfig.app.json"
       }
     },
     "chat-lambda": {
