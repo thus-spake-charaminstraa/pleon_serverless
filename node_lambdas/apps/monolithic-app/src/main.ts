@@ -14,7 +14,10 @@ import {
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(MonolithicAppModule);
+  const app = await NestFactory.create(MonolithicAppModule, {
+    logger: ['error', 'warn', 'debug', 'log', 'verbose'],
+  });
+
   app.enableCors({
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
@@ -47,6 +50,7 @@ async function bootstrap() {
       .setDescription('The API description')
       .setVersion('1.0')
       .addServer(process.env.HOST, 'server')
+      .addServer(process.env.TEST_HOST, 'test server')
       .addServer('http://localhost:8000', 'local server')
       .addBearerAuth()
       .build(),

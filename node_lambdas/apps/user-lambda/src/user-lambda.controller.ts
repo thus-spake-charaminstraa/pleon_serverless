@@ -36,7 +36,7 @@ export class UserLambdaController {
 
   @UseGuards(JwtCheckGuard)
   @HttpCode(HttpStatus.OK)
-  @Post()
+  @Post('user')
   async create(
     @Body(PhonePipe) createUserDto: CreateUserDto,
     @Req() req,
@@ -44,14 +44,14 @@ export class UserLambdaController {
     return await this.userService.create(createUserDto, req.user.sub);
   }
 
-  @Get()
+  @Get('user')
   async findAll() {
     return await this.userService.findAll();
   }
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Patch()
+  @Patch('user')
   async update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
     const id = req.user.id;
     const ability = this.caslAbilityFactory.createForUser(req.user);

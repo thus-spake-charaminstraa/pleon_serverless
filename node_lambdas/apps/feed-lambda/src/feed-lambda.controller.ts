@@ -45,7 +45,7 @@ export class FeedLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post()
+  @Post('feed')
   async create(
     @Body(ParseDateInBodyPipe) createFeedDto: CreateFeedDto,
     @Req() req,
@@ -56,7 +56,7 @@ export class FeedLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Get()
+  @Get('feed')
   async findAll(
     @Query('plant_id') plant_id: string,
     @Query('kind') kind: FeedKind,

@@ -33,7 +33,7 @@ export class ScheduleLambdaController {
   @UseInterceptors(PlantByBodyIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post()
+  @Post('schedule')
   async create(
     @Body(ParseDateInBodyPipe) createScheduleDto: CreateScheduleDto,
     @Req() req,
@@ -45,7 +45,7 @@ export class ScheduleLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Get()
+  @Get('schedule')
   async findAll(
     @Query('plant_id') plant_id: string,
     @Query('year', ParseIntPipe, ParseYearPipe) year: number,

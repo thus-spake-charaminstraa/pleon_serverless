@@ -26,7 +26,7 @@ export class NotiLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post()
+  @Post('noti')
   async create(@Body() createNotiDto: CreateNotiDto, @Req() req) {
     createNotiDto.owner = req.user.id.toString();
     return await this.notiService.create(createNotiDto);
@@ -34,7 +34,7 @@ export class NotiLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Get()
+  @Get('noti')
   async findAll(
     @Query('owner') owner: string,
     @Query('plant_id') plant_id: string,

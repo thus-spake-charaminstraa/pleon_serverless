@@ -56,7 +56,7 @@ export class PlantLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post()
+  @Post('plant')
   async create(
     @Body(ParseDateInBodyPipe) createPlantDto: CreatePlantApiDto,
     @Req() req,
@@ -73,7 +73,7 @@ export class PlantLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Get()
+  @Get('plant')
   async findAll(@Query('owner') owner: string, @Req() req) {
     if (!owner) {
       owner = req.user.id.toString();

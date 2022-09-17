@@ -31,7 +31,7 @@ export class CommentLambdaController {
 
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post()
+  @Post('comment')
   async create(@Body() createCommentDto: CreateCommentDto, @Req() req) {
     if (createCommentDto.author_kind == CommentAuthorKind.user) {
       createCommentDto.user_id = req.user.id.toString();
