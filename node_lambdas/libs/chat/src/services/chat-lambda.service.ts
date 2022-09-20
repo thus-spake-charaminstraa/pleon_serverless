@@ -5,10 +5,16 @@ import {
 } from '@app/chat/services';
 import { Injectable } from '@nestjs/common';
 import { APIGatewayProxyWebsocketEventV2 } from 'aws-lambda';
+import { JwtService } from '@nestjs/jwt';
 import {
   ApiGatewayManagementApiClient,
   PostToConnectionCommand,
 } from '@aws-sdk/client-apigatewaymanagementapi';
+import {
+  JsonWebTokenError,
+  NotBeforeError,
+  TokenExpiredError,
+} from 'jsonwebtoken';
 
 const apiGatewayClient = new ApiGatewayManagementApiClient({
   region: process.env.AWS_REGION,
@@ -23,49 +29,67 @@ type APIGatewayProxyWebsocketEventV2Connect =
 @Injectable()
 export class ChatLambdaService {
   constructor(
+    private readonly jwtService: JwtService,
     private readonly chatConnService: ChatConnService,
     private readonly chatMessageService: ChatMessageService,
     private readonly chatRoomService: ChatRoomService,
   ) {}
 
-  async connect(event: APIGatewayProxyWebsocketEventV2Connect) {
-    const { connectionId } = event.requestContext;
-    try {
-      await this.chatConnService.create({
-        user_id: event.queryStringParameters.user_id,
-        chat_room_id: event.queryStringParameters.chat_room_id,
-        connection_id: connectionId,
-      });
-    } catch (e) {
+  transformError(error: any, message?: string) {
+    if (
+      error instanceof JsonWebTokenError ||
+      error instanceof NotBeforeError ||
+      error instanceof TokenExpiredError
+    ) {
       return {
-        statusCode: 500,
+        statusCode: 401,
         body: JSON.stringify({
-          message: 'Error connecting to chat',
+          message: 'Unauthorized',
         }),
       };
     }
+    else {
+      return {
+        statusCode: 500,
+        body: JSON.stringify({
+          message: message || 'Internal server error',
+          error,
+        }),
+      };
+    }
+  }
+
+  transformResponse(message: string) {
     return {
       statusCode: 200,
-      body: 'Connected',
+      body: message,
     };
+  }
+
+  async connect(event: APIGatewayProxyWebsocketEventV2Connect) {
+    try {
+      const { connectionId } = event.requestContext;
+      const authToken = event.queryStringParameters.authorization_credential;
+      const { sub: userId } = this.jwtService.verify(authToken);
+      await this.chatConnService.create({
+        user_id: userId,
+        chat_room_id: event.queryStringParameters.chat_room_id,
+        connection_id: connectionId,
+      });
+      return this.transformResponse('Connected');
+    } catch (e) {
+      return this.transformError(e);
+    }
   }
 
   async disconnect(event: APIGatewayProxyWebsocketEventV2) {
     const { connectionId } = event.requestContext;
     try {
       await this.chatConnService.deleteConn(connectionId);
+      return this.transformResponse('Disconnected');
     } catch (e) {
-      return {
-        statusCode: 500,
-        body: JSON.stringify({
-          message: 'Error disconnecting to chat',
-        }),
-      };
+      return this.transformError(e, 'Error disconnecting to chat');
     }
-    return {
-      statusCode: 200,
-      body: 'Disconnected',
-    };
   }
 
   async handle(event: APIGatewayProxyWebsocketEventV2) {
