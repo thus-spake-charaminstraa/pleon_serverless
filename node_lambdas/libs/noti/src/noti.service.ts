@@ -69,7 +69,7 @@ export class NotiService {
     try {
       return await this.fcmMessaging.send(message);
     } catch (e) {
-      if (e.errorCode?.name === 'UNREGISTERED') {
+      if (e.errorInfo.code === 'messaging/registration-token-not-registered') {
         return await this.deviceTokenRepository.deleteOne(
           targetDevice.id.toString(),
         );
