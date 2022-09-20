@@ -117,8 +117,6 @@ export class UserLambdaController {
   @Patch()
   async update(@Body() updateUserDto: UpdateUserDto, @Req() req) {
     const id = req.user.id;
-    const ability = this.caslAbilityFactory.createForUser(req.user);
-    ability.checkCanModify(id);
     return this.userService.update(id, updateUserDto);
   }
 
