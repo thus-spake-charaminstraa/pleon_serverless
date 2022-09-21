@@ -39,10 +39,8 @@ def handler(event, context):
         'statusCode': 200,
         'body': json.dumps({
             'image_url': image_url,
-            'predictions': json.dumps({
-                'boxes': boxes.tolist(),
-                'scores': scores.tolist(),
-                'categories': categories.tolist(),
-            }),
+            'box': json.dumps(boxes.tolist()),
+            'score': json.dumps(scores.tolist()),
+            'class': json.dumps(categories.tolist()),
         })
     }

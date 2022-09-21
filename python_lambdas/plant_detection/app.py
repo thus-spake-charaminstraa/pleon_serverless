@@ -11,6 +11,17 @@ model.agnostic = False  # NMS class-agnostic
 model.multi_label = False  # NMS multiple labels per box
 model.max_det = 1000  # maximum number of detections per image
 
+prediction_threshold = 0.5
+
+def sort_by_area(prediction):
+    box = prediction['box']
+    return (box[2] - box[0]) * (box[3] - box[1])
+
+def decide_prediction(predictions):
+    for pred in predictions: 
+        if pred['score'] > prediction_threshold:
+            return pred;
+    return None;
 
 def handler(event, context):
     print(event);
@@ -30,19 +41,27 @@ def handler(event, context):
 
     # parse results
     predictions = results.pred[0]
-    boxes = predictions[:, :4]  # x1, y1, x2, y2
-    scores = predictions[:, 4]
-    categories = predictions[:, 5]
-    print('prediction result: ', predictions.tolist()[0])
+    boxes = predictions[:, :4].tolist()  # x1, y1, x2, y2
+    scores = predictions[:, 4].tolist()
+    classes = predictions[:, 5].tolist()
+    
+    predictions = [];
+    for i in range(len(boxes)):
+        predictions.append({
+            'box': boxes[i],
+            'score': scores[i],
+            'class': classes[i]
+        })
+    predictions.sort(key=sort_by_area, reverse=True)
+    
+    print('prediction result: ', predictions[0])
     
     return {
         'statusCode': 200,
         'body': json.dumps({
             'image_url': image_url,
-            'predictions': json.dumps({
-                'boxes': boxes.tolist(),
-                'scores': scores.tolist(),
-                'categories': categories.tolist(),
-            }),
+            'box': json.dumps(boxes),
+            'score': json.dumps(scores),
+            'class': json.dumps(classes),
         })
     }
