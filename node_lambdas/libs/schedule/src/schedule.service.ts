@@ -71,7 +71,24 @@ export class ScheduleService {
   }
 
   async findAllAndGroupBy(query: GetScheduleQuery): Promise<any> {
-    return await this.scheduleRepository.findAllAndGroupBy(query);
+    const ret = await this.scheduleRepository.findAllAndGroupBy(query);
+    ret.forEach((item) => {
+      item.kinds = item.kinds.map((kind) =>
+        kind == ScheduleKind.water
+          ? 'water'
+          : kind == ScheduleKind.air
+          ? 'air'
+          : kind == ScheduleKind.prune
+          ? 'prune'
+          : kind == ScheduleKind.spray
+          ? 'spray'
+          : kind == ScheduleKind.fertilize
+          ? 'fertilize'
+          : 'etc',
+      );
+    });
+    console.log(ret);
+    return ret;
   }
 
   async deleteOne(id: string): Promise<void> {
