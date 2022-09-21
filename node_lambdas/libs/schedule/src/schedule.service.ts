@@ -87,7 +87,6 @@ export class ScheduleService {
           : 'etc',
       );
     });
-    console.log(ret);
     return ret;
   }
 

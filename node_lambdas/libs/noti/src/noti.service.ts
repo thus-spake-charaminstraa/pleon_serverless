@@ -38,12 +38,12 @@ export class NotiService {
   ) {
     this.notiContentFormat = (plantName: string, kind: string) => {
       const contents = {
-        water: `${plantName}의 흙이 말라있나요? 말라있다면 물을 주세요~!`,
-        air: `${plantName}이가 신선한 공기를 필요로 해요. 창문을 열어 환기를 시켜주세요~!`,
-        spray: `${plantName} 잎이 바싹 말랐나요? ${plantName}에게 분무를 해주세요!`,
-        repot: `화분 밑으로 뿌리가 나와있지는 않나요? 나와있다면 새집으로 이사할 시간이에요.`,
-        fertilize: `${plantName} 집에 먹을 것이 없어요.. 화분에 액체 비료를 꽂아주세요.`,
-        prune: `${plantName} 머리가 까치집이네요 ^^ 가지치기를 해주세요!`,
+        water: `${plantName}의 흙이 말라있나요?\n말라있다면 물을 주세요~!`,
+        air: `${plantName}이가 신선한 공기를 필요로 해요.\n창문을 열어 환기를 시켜주세요~!`,
+        spray: `${plantName} 잎이 바싹 말랐나요?\n${plantName}에게 분무를 해주세요!`,
+        repot: `화분 밑으로 뿌리가 나와있지는 않나요?\n나와있다면 새집으로 이사할 시간이에요.`,
+        fertilize: `${plantName} 집에 먹을 것이 없어요..\n화분에 액체 비료를 꽂아주세요.`,
+        prune: `${plantName} 머리가 까치집이네요^^\n가지치기를 해주세요!`,
       };
       return contents[kind];
     };
@@ -81,19 +81,22 @@ export class NotiService {
     const overdue = await this.scheduleService.checkScheduleOverdue(plantInfo);
     for (const kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        await Promise.all([
+        const notiProms = plantInfo.user?.device_tokens
+          ? plantInfo.user.device_tokens.map((device) =>
+              this.sendPushNoti(
+                this.notiContentFormat(plantInfo.name, kind),
+                device,
+              ),
+            )
+          : [Promise.resolve(undefined)];
+        const ret = await Promise.all([
           this.notiRepository.create({
             owner: plantInfo.owner.toString(),
             plant_id: plantInfo.id.toString(),
             kind: NotiKind.water,
             content: this.notiContentFormat(plantInfo.name, kind),
           }),
-          ...plantInfo.user.device_tokens.map((device) =>
-            this.sendPushNoti(
-              this.notiContentFormat(plantInfo.name, kind),
-              device,
-            ),
-          ),
+          ...notiProms,
         ]);
       }
     }
@@ -101,7 +104,9 @@ export class NotiService {
 
   async sendNotiForPlants(): Promise<void> {
     const plantInfos = await this.plantRepository.findAllInfo();
-    await Promise.all(plantInfos.map((plant) => this.sendNotiForPlant(plant)));
+    const ret = await Promise.all(
+      plantInfos.map((plant) => this.sendNotiForPlant(plant)),
+    );
   }
 
   async create(createNotiDto: CreateNotiDto): Promise<Noti> {

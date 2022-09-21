@@ -35,4 +35,8 @@ export abstract class CommonService<Entity, CreateDto, UpdateDto, GetQuery> {
       throw new NotFoundException('존재하지 않는 데이터입니다.');
     }
   }
+
+  async deleteMany(query: GetQuery): Promise<void> {
+    await this.repository.deleteMany(query);
+  }
 }

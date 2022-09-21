@@ -9,6 +9,7 @@ export class GuideNotiController {
 
   @Post()
   async sendGuideNoti() {
-    return await this.notiService.sendNotiForPlants();
+    const ret = await this.notiService.sendNotiForPlants();
+    return ret;
   }
 }
