@@ -43,25 +43,27 @@ def handler(event, context):
     predictions = results.pred[0]
     boxes = predictions[:, :4].tolist()  # x1, y1, x2, y2
     scores = predictions[:, 4].tolist()
-    classes = predictions[:, 5].tolist()
+    categories = predictions[:, 5].tolist()
     
     predictions = [];
     for i in range(len(boxes)):
         predictions.append({
             'box': boxes[i],
             'score': scores[i],
-            'class': classes[i]
+            'category': categories[i]
         })
     predictions.sort(key=sort_by_area, reverse=True)
     
-    print('prediction result: ', predictions[0])
+    final_prediction = decide_prediction(predictions)
+    
+    print('prediction result: ', final_prediction)
     
     return {
         'statusCode': 200,
         'body': json.dumps({
             'image_url': image_url,
-            'box': json.dumps(boxes),
-            'score': json.dumps(scores),
-            'class': json.dumps(classes),
+            'box': json.dumps(final_prediction.box),
+            'score': json.dumps(final_prediction.score),
+            'category': json.dumps(final_prediction.category),
         })
     }

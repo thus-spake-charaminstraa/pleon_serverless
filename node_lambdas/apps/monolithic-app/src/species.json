@@ -1,24 +1,27 @@
 [
   {
-    "name": "스노우화이트(사파이어)",
-    "scientific_name": "Aglaonema 'Lady Valentine'",
-    "english_name": "Chinese Evergreen 'First Diamond'",
-    "plant_feature": "아글라오네마는 잎에 진한 녹색과 흰색, 붉은색, 분홍색 등의 색상과 무늬가 다양하여 각 품종마다 다른 매력이 있다. 이 식물은 빛이 잘 안 드는 실내에서도 잘 견디어 가정과 공공건물에서 많이 사용한다. 단, 저온에 약해서 13℃ 이상을 유지해야 한다.",
-    "water_description": "봄~가을(5월~9월)까지 생장기에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 건조에 강하기 때문에 15℃ 이하에서는 물을 주지 않는다. 여름철 건조기에는 식물에 분무를 자주 하여 공중습도를 높이면 좋다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 가지치기를 하지 않으면 웃자라 주변 식물 생장에 영향을 준다.",
-    "species_family": "천남성과",
-    "proper_temperature": "21~24℃ (최저 13℃)",
+    "name": "얼룩애크메아",
+    "scientific_name": "Aechmea fasciata",
+    "english_name": "Vase plant, Urn Plant, Silver Vase plant",
+    "plant_feature": "얼룩애크메아는 외관이 화려하고 독특하여 시선을 끄는 이 국적인 식물이다. 꽃은 일생에 한번 피는데, 분홍색 포엽이 화려하고, 관상기간이 길다. 로제트형태의 잎은 단단하고 거 친 느낌이며, 은색과 진한 녹색의 줄무늬가 있고 가장자리 에 가시가 있다. 잎들이 로제트형태로 있는 것을 위에서 보 면 물을 담아두는 항아리처럼 보여 영어이름이 'Urn Plant (항아리 식물)'이다. 원래 착생식물로 나뭇가지나 바위 위에 붙어 자란다. 나뭇 가지에 식물체를 붙인 후 수태로 감싸서 철사나 낚시줄로 고정하여 키울 수도 있고, 일반 화분에 심어서 토양에도 키 울 수 있다.",
+    "water_description": "토양표면이 말랐을 때 충분히 물을 준다. 브로맬리아류(Bromeliads)는 식물체 중간에 물이 담겨있어야 꽃이 피는 특징 이 있다.",
+    "managing_point": "직사광선 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
+    "species_family": "파인애플과",
+    "proper_temperature": "12~21℃ (최저 13℃)",
     "proper_light": [
-      "dark"
+      "half_bright"
     ],
     "proper_humidity": [
       "normal"
     ],
-    "benefit": "포름알데히드·자일렌 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 진딧물, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다."
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "파인애플과 식물은 난초과 식물, 다육식물 등과 마찬가지로 밤에 이산화탄소를 흡수하므로 햇빛 이 잘 드는 거실에 두면 좋다.",
+    "class_label": 0,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "아글라오네마 엔젤",
@@ -39,7 +42,34 @@
     "blight": "응애, 진딧물, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "식물 모든 부분",
-    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다."
+    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다.",
+    "class_label": 1,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "스노우화이트(사파이어)",
+    "scientific_name": "Aglaonema 'Lady Valentine'",
+    "english_name": "Chinese Evergreen 'First Diamond'",
+    "plant_feature": "아글라오네마는 잎에 진한 녹색과 흰색, 붉은색, 분홍색 등의 색상과 무늬가 다양하여 각 품종마다 다른 매력이 있다. 이 식물은 빛이 잘 안 드는 실내에서도 잘 견디어 가정과 공공건물에서 많이 사용한다. 단, 저온에 약해서 13℃ 이상을 유지해야 한다.",
+    "water_description": "봄~가을(5월~9월)까지 생장기에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 건조에 강하기 때문에 15℃ 이하에서는 물을 주지 않는다. 여름철 건조기에는 식물에 분무를 자주 하여 공중습도를 높이면 좋다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 가지치기를 하지 않으면 웃자라 주변 식물 생장에 영향을 준다.",
+    "species_family": "천남성과",
+    "proper_temperature": "21~24℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·자일렌 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 진딧물, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다.",
+    "class_label": 2,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "시암오로라",
@@ -60,7 +90,10 @@
     "blight": "응애, 진딧물, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "식물 모든 부분",
-    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다."
+    "tip": "아글라오네마속 식물은 빛이 잘 안 드는 곳에서도 잘 자라고 음이온 발생량이 많아서 공부 방에 배치하면 좋다.",
+    "class_label": 3,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "거북알로카시아",
@@ -81,7 +114,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "hard",
     "poison": "식물 모든 부분",
-    "tip": "알로카시아/콜로카시아 구별법: 형태가 다르다. 콜로카시아는 과서(꽃이 피는 순서에 따라 형성되는 열매의 배열 상태)가 하 수형 또는 비스듬히 자라고, 열매가 3mm이하이며 황색 또는 갈색이다. 한 과실당 작은 종 자가 무수히 많다. 알로카시아는 과서가 직립하고, 열매가 4mm이상이며 적색이다. 한 과실 당 큰 종자가 몇 개씩 있다."
+    "tip": "알로카시아/콜로카시아 구별법: 형태가 다르다. 콜로카시아는 과서(꽃이 피는 순서에 따라 형성되는 열매의 배열 상태)가 하 수형 또는 비스듬히 자라고, 열매가 3mm이하이며 황색 또는 갈색이다. 한 과실당 작은 종 자가 무수히 많다. 알로카시아는 과서가 직립하고, 열매가 4mm이상이며 적색이다. 한 과실 당 큰 종자가 몇 개씩 있다.",
+    "class_label": 4,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "알로에 베라",
@@ -103,1067 +139,10 @@
     "blight": "병충해에 강함",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "다육식물로 난초과, 브로멜리아류 식물과 마찬가지로 밤에 이산화탄소를 흡수하므로 침실 에 두면 좋다."
-  },
-  {
-    "name": "홍학꽃(안스리움)",
-    "scientific_name": "Anthurium andraeanum Linden ex André",
-    "english_name": "Flamingo flower, Lily Flamingo",
-    "plant_feature": "열대지방이 원산지인 홍학꽃은 따뜻하고 습한 곳을 좋아하 는 기르기가 꽤 까다로운 식물이다. 육수화서를 둘러싼 넓은 잎모양의 불염포는 흰색, 분홍색, 빨간색, 산호색 등 색상이 다양하다. 이 불염포는 여러 주 동안 볼 수 있지만 꽃은 꽃가 루가 날릴 수 있으므로 제거하는 것이 좋다. 여름에는 직사광선을 피하는 것이 좋다. 또한 날이 추워지면 창가에 두지 않도록 한다. 비료는 봄·가을에 주고, 겨울에는 주지 않는다.",
-    "water_description": "화분흙이 대부분 말랐을 때 충분히 물을 준다. 물주기가 까다로운 편이며 많이 주지 않도록 주의한다. 수분 을 좋아하고 건조한 공기를 매우 힘들어한다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다.",
-    "species_family": "천남성과",
-    "proper_temperature": "18~24℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "암모니아 제거, 일산화탄소 제거, 포름알데히드· 톨루엔 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애",
-    "managing_difficulty": "normal",
-    "poison": "식물 모든 부분",
-    "tip": "일산화탄소와 암모니아가스 제거능력이 좋아 햇빛이 잘 드 는 주방 또는 화장실에 두면 좋다."
-  },
-  {
-    "name": "아펠란드라 스쿠아로사",
-    "scientific_name": "Aphelandra squarrosa 'Louisae'",
-    "english_name": "Saffron spike, Zebra plant",
-    "plant_feature": "원산지는 열대 아메리카와 아열대 아메리카로 약 80여 종이 난다. 잎은 광택이 나는 진녹색 바탕에 은백색의 줄무늬 엽 맥이 나타나며 줄기 끝에 선명한 황금색의 포가 나오며 포 의 기부에서 통꽃이 핀다. 개화기는 1∼2월이나 환경 조건만 맞으면 연중 개화한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "직사광선을 피하고 건조할 때 잎에 자주 분무한다. 매년 분갈이를 한다.",
-    "species_family": "쥐꼬리망초과",
-    "proper_temperature": "18~32℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal",
-      "high"
-    ],
-    "benefit": "일산화탄소 제거",
-    "blight": "응애, 깍지벌레, 온실가루이",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": ""
-  },
-  {
-    "name": "아라우카리아 헤테로필라(아라우카리아)",
-    "scientific_name": "Araucaria heterophylla",
-    "english_name": "House pine",
-    "plant_feature": "아라우카리아 헤테로필라는 송곳모양의 부드러운 바늘잎이 달린 가지가 수평으로 자라는 우아한 형태의 상록침엽수이 다. 15종 이상의 품종이 있으나 실내식물로 도입된 종은 아 라우카리아 헤테로필라 하나뿐이다. 한 번의 생육기를 거치 는 동안 새로 나오는 가지는 한 층으로 생장이 느린 편이며 새로 자란 층의 잎은 밝은 녹색이나 기간이 지나면 점점 짙 어진다. 반음지~반양지에서 잘 자라고 직사광선을 받으면 잎이 누렇게 탄다. 자생지에서는 키가 61m까지도 자라지만, 실내에서 기를 경우 최고 높이가 3m 정도이다. 일반 화분재배, 수경재배, 저면관수 모두 가능하다.",
-    "water_description": "왕성하게 생육하는 봄~여름에는 토양이 촉촉하도록 물을 주 고, 겨울에는 적게 준다. 분무는 자주 해주는 것이 좋다.",
-    "managing_point": "어두운 곳에 오래두면 모양이 흐트러지므로 주의한다.",
-    "species_family": "아라우카리아과",
-    "proper_temperature": "18~22℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
-    "blight": "진딧물, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "겨울철에 크리스마스 트리로 사용하는 경우가 많은데 장식을 매달 때 가지가 상하지 않도 록 주의한다."
-  },
-  {
-    "name": "백량금",
-    "scientific_name": "Ardisia crenata",
-    "english_name": "Coralberry",
-    "plant_feature": "우리나라 제주도를 비롯하여 서남해안 도서 지방 숲속에서 자라는 상록관목 자생식물이다. 높이는 0.3~1m이며, 6~8월 에 흰색 꽃이 피고, 10~12월에 둥근 열매가 붉은색으로 열린 다. 자금우에 비해 곧게 자라고, 잎 가장자리에 물결모양으 로 톱니가 있다. 부식질이 풍부하고 보수력이 좋은 토양이 적합하다.",
-    "water_description": "토양 표면이 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조하면 깍지벌레나 진딧물이 줄기나 잎의 뒷면에 발생할 수 있으므로 물을 자주 분무하여 건조하지 않게 한다. 실내에서 빛이 부족해도 적응하지만 꽃과 열매를 보기 위해 서는 밝은 빛이 필요하다.",
-    "species_family": "자금우과",
-    "proper_temperature": "16~20℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·일산화탄소 제거",
-    "blight": "응애, 깍지벌레, 진딧물, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "백량금은 포름알데히드와 일산화탄소 제거능력이 우수하여 거실에 배치하면 좋다. 어느 광 도에도 잘 자라지만 햇빛을 좋아하는 편이라 창가나 밝은 곳에 두면 열매가 많이 열린다."
-  },
-  {
-    "name": "자금우",
-    "scientific_name": "Ardisia japonica",
-    "english_name": "Marlberry",
-    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
-    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
-    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
-    "species_family": "자금우과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다."
-  },
-  {
-    "name": "무늬산호수",
-    "scientific_name": "Ardisia japonica 'Hakuokan'",
-    "english_name": "Marlberry",
-    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
-    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
-    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
-    "species_family": "자금우과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다."
-  },
-  {
-    "name": "황금산호수",
-    "scientific_name": "Ardisia japonica 'Houkan'",
-    "english_name": "Marlberry",
-    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
-    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
-    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
-    "species_family": "자금우과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다."
-  },
-  {
-    "name": "산호수",
-    "scientific_name": "Ardisia pusilla",
-    "english_name": "Tiny Ardisia",
-    "plant_feature": "제주도에 자생하는 산호수는 키가 20cm를 넘지 않는 덩굴 성으로 추위에 약해서 외부에서 월동이 되지 않는다. 반그늘 진 곳을 좋아하며, 어느 정도 습기유지가 중요하다. 잎에 광 택이 있어 고급스럽지만 독성이 있어 함부로 섭취하면 위험 하니 주의한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 겨울에 는 물주는 횟수를 줄인다",
-    "managing_point": "직사광선을 피하고 잎이 타지 않도록 주의한다. 가지치기를 하여 다른 식물을 감싸는 가지를 제거한다. 가지치기를 하지 않으면 안쪽 가지가 무르거나 상할 수 있다.",
-    "species_family": "자금우과",
-    "proper_temperature": "10~26℃ (최저 0℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "일산화탄소제거, 음이온 발생, 상대습도 증가, 미세먼지 제거",
-    "blight": "응애, 깍지벌레, 온실가루이",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "산호수를 공부방에 두면 음이온과 습도의 발생량이 우수하여 집중력 향상과 습도 조절에 도움을 준다."
-  },
-  {
-    "name": "꽃베고니아",
-    "scientific_name": "Begonia semperflorens",
-    "english_name": "Wax Begonia",
-    "plant_feature": "'언제나 꽃이 피는 베고니아'라는 의미의 Begonia semperflorens는 '사철베고니아'라는 이 름으로도 불린다. 꽃 색상은 흰색, 분홍색, 노란색, 주황색 등 다양하고 생육상태가 좋으면 일 년 내내 꽃을 볼 수 있다. 꽃이 피는 식물로 가능한 햇빛을 많이 보는 것이 좋다. 배수가 잘되고 부식질이 많이 포함된 배합토를 사용한다.",
-    "water_description": "봄~여름에는 토양을 촉촉하게 유지하고, 가을에는 토양 표면이 말랐을 때 충분히 물을 주며, 겨울에는 화분흙이 대부분 말랐을 때는 충분히 물을 준다. 일반적으로 다육성이라 물을 많이 주지 않아도 좋다.",
-    "managing_point": "시든 잎과 꽃잎은 자주 따 주며 관리한다. 잎의 색이 희미해지면 가능한 햇빛이 덜 드는 곳 으로 옮겨주고, 잎 끝이 갈색으로 변하면 공기가 너무 건조하다는 것이다. 생장속도가 빨 라 식물이 지나치게 무성해지면 통풍이 되지 않아 흰가루병이 발병할 수 있으니 주의한다.",
-    "species_family": "베고니아과",
-    "proper_temperature": "16~24℃ (최저 13℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 증산작용",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "녹색 잎을 가진 관엽식물들과 함께 키우면 꽃베고니아의 화려한 색을 디자인으로 활용할 수 있다."
-  },
-  {
-    "name": "얼룩애크메아",
-    "scientific_name": "Aechmea fasciata",
-    "english_name": "Vase plant, Urn Plant, Silver Vase plant",
-    "plant_feature": "얼룩애크메아는 외관이 화려하고 독특하여 시선을 끄는 이 국적인 식물이다. 꽃은 일생에 한번 피는데, 분홍색 포엽이 화려하고, 관상기간이 길다. 로제트형태의 잎은 단단하고 거 친 느낌이며, 은색과 진한 녹색의 줄무늬가 있고 가장자리 에 가시가 있다. 잎들이 로제트형태로 있는 것을 위에서 보 면 물을 담아두는 항아리처럼 보여 영어이름이 'Urn Plant (항아리 식물)'이다. 원래 착생식물로 나뭇가지나 바위 위에 붙어 자란다. 나뭇 가지에 식물체를 붙인 후 수태로 감싸서 철사나 낚시줄로 고정하여 키울 수도 있고, 일반 화분에 심어서 토양에도 키 울 수 있다.",
-    "water_description": "토양표면이 말랐을 때 충분히 물을 준다. 브로맬리아류(Bromeliads)는 식물체 중간에 물이 담겨있어야 꽃이 피는 특징 이 있다.",
-    "managing_point": "직사광선 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
-    "species_family": "파인애플과",
-    "proper_temperature": "12~21℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "파인애플과 식물은 난초과 식물, 다육식물 등과 마찬가지로 밤에 이산화탄소를 흡수하므로 햇빛 이 잘 드는 거실에 두면 좋다."
-  },
-  {
-    "name": "틸란드시아 키아네아",
-    "scientific_name": "Tillandsia cyanea",
-    "english_name": "Blue~flowered torch, Pink quill",
-    "plant_feature": "틸란드시아 키아네아는 에어플랜트(air plant)라 하여 토양 없이 바위나 나무에 붙어 공중에서 수분과 양분을 흡수하 며 자란다. 보통 우리가 아는 틸란드시아 우스네오이데스 (Tillandsia usneoides, 수염틸란드시아) 등과 같이 공중에 걸어서 장식한다. 틸란드시아 키아네아는 폭 1cm, 길이가 30cm인 진한 녹색 의 잎과 그 사이에 올라오는 분홍색 꽃대, 분홍색 포엽사이 로 보라색의 꽃이 핀다. 화려한 분홍색 꽃대는 1개월 이상 유 지되나 보라색 꽃은 오래가지 않는다.",
-    "water_description": "흙에 직접 물을 주는 것보다 잎과 잎 사이의 틈에 고이게 한다.",
-    "managing_point": "반음지에서 잘 자라지만 개화기에는 빛을 많이 받아야 오래 유지되고, 꽃이 잘 핀다.",
-    "species_family": "파인애플과",
-    "proper_temperature": "7~15℃ (최저 3℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드·자일렌 제거",
-    "blight": "진딧물, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "포름알데히드 및 자일렌 등 새집증후군 원인물 질 제거효과가 탁월하여 거실에 배치하면 좋다."
-  },
-  {
-    "name": "게발선인장",
-    "scientific_name": "Zygocactus truncatus",
-    "english_name": "Christmas Cactus",
-    "plant_feature": "게발선인장과 가재발선인장은 화려한 꽃을 피우는 매력적 인 실내식물이다. 영명이 크리스마스 선인장과 부활절 선 인장으로 종류가 다르다. 게발선인장(크리스마스 선인장, Christmas Cactus)은 11월 중순부터 1월 말 크리스마스 즈음 에 꽃이 피고, 가재발선인장(부활절 선인장, Easter Cactus) 은 4월이나 5월 부활절 즈음에 꽃이 핀다. 두 식물의 모습은 매우 닮았는데, 게발선인장 잎의 가장자리가 결각이 더 많 고, 가지가 더 늘어진 것을 볼 수 있다. 잎꽂이로 번식한다.",
-    "water_description": "토양의 표면이 약간 마르면 촉촉할 정도로 물은 준다. 분무를 자주 해준다.",
-    "managing_point": "꽃이 피고 난 후에는 시원한 방으로 이동했다가 생육기에 온도, 물, 비료를 점점 증가해서 공 급한다. 용토는 배수가 잘 되도록 마사토를 40%이상 섞고, 매년 분갈이한다.",
-    "species_family": "선인장과",
-    "proper_temperature": "12~27℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 이산화탄소 흡수",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "잎이 밖으로 늘어져 자라기 때문에 작고 가벼운 화분보다 높이가 있고 묵직한 화분을 추천 한다. 밤에 이산화탄소를 흡수하므로 침실에 놓으면 좋다."
-  },
-  {
-    "name": "가제발선인장",
-    "scientific_name": "Rhipsalidopsis gaertneri",
-    "english_name": "Easter Cactus",
-    "plant_feature": "게발선인장과 가재발선인장은 화려한 꽃을 피우는 매력적 인 실내식물이다. 영명이 크리스마스 선인장과 부활절 선 인장으로 종류가 다르다. 게발선인장(크리스마스 선인장, Christmas Cactus)은 11월 중순부터 1월 말 크리스마스 즈음 에 꽃이 피고, 가재발선인장(부활절 선인장, Easter Cactus) 은 4월이나 5월 부활절 즈음에 꽃이 핀다. 두 식물의 모습은 매우 닮았는데, 게발선인장 잎의 가장자리가 결각이 더 많 고, 가지가 더 늘어진 것을 볼 수 있다. 잎꽂이로 번식한다.",
-    "water_description": "토양의 표면이 약간 마르면 촉촉할 정도로 물은 준다. 분무를 자주 해준다.",
-    "managing_point": "꽃이 피고 난 후에는 시원한 방으로 이동했다가 생육기에 온도, 물, 비료를 점점 증가해서 공 급한다. 용토는 배수가 잘 되도록 마사토를 40%이상 섞고, 매년 분갈이한다.",
-    "species_family": "선인장과",
-    "proper_temperature": "12~27℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 이산화탄소 흡수",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "잎이 밖으로 늘어져 자라기 때문에 작고 가벼운 화분보다 높이가 있고 묵직한 화분을 추천 한다. 밤에 이산화탄소를 흡수하므로 침실에 놓으면 좋다."
-  },
-  {
-    "name": "줄무늬접란(나비란)",
-    "scientific_name": "Chlorophytum comosum 'Vittatum'",
-    "english_name": "Spider Plant",
-    "plant_feature": "실내 적응력이 매우 뛰어나 햇빛이나 그늘, 건조 등 대부분 의 환경에서 잘 견디는 편으로 기르기 쉽다. 단, 잎의 크림색 무늬를 유지하려면 밝은 빛이 필요하다. 녹색 바탕에 크림색 줄무늬가 있는 15~30cm 정도의 긴 잎들 이 아치 형태로 늘어진다. 가늘고 길게 자라는 줄기 끝에서 작은 하얀 꽃이 피고, 지고 난 후에는 공중에 떠 있는 형태로 어린 식물이 나온다. 이 어린 식물은 그냥 두어도 되고, 모체 로부터 분리하여 번식시킬 수도 있다. 토양과 수경재배 모두 잘 자란다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조할 때 잎에 분무하는 등 습도유지가 중요하다. 너무 건 조하면 해충이 발생할 수 있다.",
-    "species_family": "백합과",
-    "proper_temperature": "13~24℃ (최저 10℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 포름알데히드 · 일산화탄소 제거, 휘발성 화학물질 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 진딧물, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "덩굴성으로 베란다에서 벽과 천장을 타고 올라가도록 키울 수 있다. 걸이화분으로 장식하면 좋고, 위치를 주기적으로 회전시켜야 형태가 예쁘게 자란다. 포름알데히드와 일산화탄소 제거효과가 좋아 거실이나 주방에 배치하면 좋다."
-  },
-  {
-    "name": "국화",
-    "scientific_name": "Chrysanthemum morifolium",
-    "english_name": "Pot Chrysanthemum",
-    "plant_feature": "대표적 단일식물로 다양한 색상의 꽃이 피는 국화는 개화시기를 조정할 수 있어 가을뿐 아니라 일 년 내내 볼 수 있다. 서늘하고 빛이 충분한 장소에 두면 6~8주간 꽃을 볼 수 있고 꽃이 피는 기간에는 실내에 두고 즐기면 좋다. 공기오염물질 을 제거하는 능력과 실내습도 조절능력도 좋다.",
-    "water_description": "생육기 동안에는 뿌리가 약간 축축할 정도로 충분히 물을 준다.",
-    "managing_point": "너무 덥거나 건조하면 충해가 발생할 수 있다.",
-    "species_family": "국화과",
-    "proper_temperature": "16~18℃ (최저 ℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 진딧물",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "꽃 색상이 다양해 밝고 화사한 분위기 연출이 가능하여 사무실, 쇼핑몰 등 상업시설에서 사용하면 좋다."
-  },
-  {
-    "name": "멕시코담쟁이(엘렌 다니카)",
-    "scientific_name": "Cissus rhombifolia 'Ellen Danica'",
-    "english_name": "Venezuela treebine",
-    "plant_feature": "멕시코담쟁이 '엘렌 다니카'는 덩굴성으로 성장이 아주 빠 르고 우아한 멋을 가지고 있다. 잎 모양이 얼핏 보면 떡갈나 무 잎처럼 보이기도 하고, 포도 잎처럼 보여 영명을 Oakleaf ivy, Grape ivy라 한다. 관리가 쉬운 편이고 잎이 크게 자라 는 편이라 효과적인 공기정화식물이다. 일반화분과 수경재배 모두 잘 자란다.",
-    "water_description": "봄~가을에는 토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
-    "species_family": "포도과",
-    "proper_temperature": "18~24℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "low"
-    ],
-    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
-    "blight": "응애",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "공간이 충분할 경우 격자모양의 구조물인 트렐리스를 설치하면 보기에도 좋고, 더 효과적인 공기 정화가 가능하다. 수경재배를 하면 물주는 횟수도 줄일 수 있고, 관리하기도 편리하다."
-  },
-  {
-    "name": "클루시아 로세아",
-    "scientific_name": "Clusia rosea",
-    "english_name": "Copey",
-    "plant_feature": "클루시아 로세아는 잎의 증산이 활발하고 공기정화 능력도 우수한 식물이다. Autograph tree라는 별칭이 있을 정도로 잎에 글씨를 쓸 수 있을 것 같이 윤기가 나고 매끈하다. 웃자 람 없이 키우려면 하루에 적어도 3~4시간 정도 밝은 곳에 두 는 것이 필요하다. 병충해에 강하고 성장속도가 느린 편이어서 관리가 쉬우나 추위에 약하고 환기를 필요로 한다. 가지를 잘라 물꽂이를 하여 번식한다. 꽃과 열매에 독성이 있어 주의해야 한다.",
-    "water_description": "토양표면이 마르면 충분히 물을 주지만 약간 건조한 편으 로 관리한다.",
-    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다. 1년에 한번 정도 가지치기를 해서 단정한 수형을 유지하면 좋다. 빛이 부족하면 잎에 윤기가 사라지고 성장이 더디어 진다. 배수가 좋은 흙에 식재해야 하고 환기가 잘 되지 않으면 해충이 생기기 쉬우니 주의한다. 내한성이 약하므로 겨울철 추위에 주의한다.",
-    "species_family": "물레나물과",
-    "proper_temperature": "16~29℃ (최저 10℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal",
-      "low"
-    ],
-    "benefit": "공기정화",
-    "blight": "깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "잎, 열매",
-    "tip": "햇빛에 강해 거실 창가에 두어도 잘 자란다."
-  },
-  {
-    "name": "크로톤",
-    "scientific_name": "Codiaeum variegatum",
-    "english_name": "Croton Garden",
-    "plant_feature": "잎의 독특한 색감과 무늬가 다른 녹색의 관엽식물 사이에서 포인트가 된다. 크로톤은 강한 직사광선을 피해야 하고, 보 통 양지에서 반음지가 적당하며 빛이 부족하면 선명한 색감 도 옅어진다. 새로 나온 잎은 녹색이나 시간이 지남에 따라 색상이 변한다. 수액에 독성이 있으므로 주의한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조할 때 잎에 분무한다. 가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다.",
-    "species_family": "대극과",
-    "proper_temperature": "21~25℃ (최저 15℃)",
-    "proper_light": [
-      "bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 개각충, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "식물 모든 부분",
-    "tip": ""
-  },
-  {
-    "name": "시클라멘",
-    "scientific_name": "Cyclamen persicum",
-    "english_name": "CyclamenFlorist's",
-    "plant_feature": "시클라멘은 괴경인 구근식물로 늦가을부터 초봄까지 우아 하고 화사한 꽃을 피우는 식물이다. 한 줄기 끝에 하나의 꽃 이 피며, 색상도 보라색, 분홍색, 흰색, 빨간색 등으로 다양하 다. 은색과 진한 녹색으로 무늬가 그려진 하트모양의 잎과 그 무성한 잎들 사이에서 꽃대가 솟아올라 피는 꽃이 독특한 화형을 지니고 있고 매우 화려하고 아름답다. 약 15여 종이 있는데 그 중에서 Cyclamen persicum이 실내에서 가장 많 이 이용된다. 원래 산악지대의 산림지역에서 서식하였기 때 문에 시원하고 공기순환이 잘 되는 곳을 좋아한다.",
-    "water_description": "가을~봄에는 토양을 촉촉하게 관리하고 휴면기인 여름에는 약간 습한 상태로 유지한다. 물을 줄 때 잎과 구근에 닿지 않 도록 하고, 아침에 저면관수를 하는 것이 좋다.",
-    "managing_point": "생육적온이 20℃ 내외로 여름철 고온기에는 서늘한 곳에 둔다.",
-    "species_family": "앵초과",
-    "proper_temperature": "16~22℃ (최저 7℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
-    "blight": "진딧물, 응애, 온실가루이",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": "시클라멘을 구입할 때 꽃봉오리에 색이 약간 보이 는 것을 고른다. 꽃이 필 때는 난방기 등이 직접 닿지 않는 곳에 두 고, 꽃이 진 뒤에는 서늘하게 보관한다."
-  },
-  {
-    "name": "디펜바키아 콤팍타",
-    "scientific_name": "Dieffenbachia 'Compacta'",
-    "english_name": "Dumb Cane",
-    "plant_feature": "디펜바키아 '콤팍타'(Dieffenbachia 'Compacta')는 최대 60cm까지 자라는 왜성종으로 녹색과 흰색 또는 녹색과 크 림색의 무늬가 인상적이다. 생장이 너무 빠르고 빛이 비추는 쪽으로 휘는 굴광성을 가지고 있다. 디펜바키아의 모든 종 들의 영명은 'Dumb Cane (말문이 막히는 줄기)'라 불린다. 이는 수액성분인 옥살산칼슘에서 유래되었는데, 디펜바키 아속 식물들은 전 부위에 독성물질을 함유하고 있어 식물의 일부를 떼어내어 입에 넣고 씹으면 일시적으로 혀와 성대가 마비되는 현상이 나타난다. 수형을 위해 전정을 해주면 금방 새로운 잎이 나온다. 전정 시 수액이 나오므로 주의해야 한다. 잎의 표면적이 넓기 때 문에 실내공기를 정화하고 증산율이 좋아 공기 중에 수분을 잘 공급한다. 수경재배에서도 잘 자란다.",
-    "water_description": "토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다. 분무를 자주 해주면 좋다.",
-    "managing_point": "일반적으로 환경에 잘 적응하는 편이지만, 너무 어두운 곳에서 키우면 잎 색이 옅어진다. 건 조하지 않게 분무를 자주 해주고 외풍에 약하므로 찬바람을 차단해야 한다.",
-    "species_family": "천남성과",
-    "proper_temperature": "16~27℃ (최저 9℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드· 일산화탄소 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레, 진딧물, 총채벌레",
-    "managing_difficulty": "normal",
-    "poison": "식물 모든 부분",
-    "tip": "디펜바키아 품종은 포름알데히드와 일산화탄소 제거 효과가 좋고, 상대습도 증가효과가 좋 아 거실에 배치하면 좋은 식물이다."
-  },
-  {
-    "name": "디펜바키아 마리안느",
-    "scientific_name": "Dieffenbachia 'Marrianne'",
-    "english_name": "Dumb Cane, Dieffenbachia maculata",
-    "plant_feature": "디펜바키아 '마리안느'는 잎이 크고 꽃처럼 화사하여 실내식 물로 많이 활용하는 식물로 잎의 표면적이 넓기 때문에 공기 를 정화하고 증산율이 좋아 공기 중 수분을 잘 공급한다. 생 장이 빠르고 빛이 비추는 쪽으로 휘는 굴광성을 가지고 있으 며, 전정을 해주면 금방 새로운 잎이 나온다. 디펜바키아속 식물들은 전 부위에 독성물질을 함유하고 있 어 전정 시 수액이 피부에 닿지 않도록 주의해야 한다. 수경 재배에서도 잘 자란다.",
-    "water_description": "토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다. 분무를 자주 해주면 좋다.",
-    "managing_point": "일반적으로 환경에 잘 적응하는 편이지만, 너무 어두운 곳에 서 키우면 잎 색이 옅어진다. 건조하지 않게 분무를 자주 해 주고 외풍에 약하므로 찬바람을 차단해야 한다.",
-    "species_family": "천남성과",
-    "proper_temperature": "16~29℃ (최저 8℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레, 진딧물, 총채벌레",
-    "managing_difficulty": "normal",
-    "poison": "식물 모든 부분",
-    "tip": "디펜바키아는 포름알데히드 제거 효과가 가장 우수한 식물이다."
-  },
-  {
-    "name": "행운목 마상게아나",
-    "scientific_name": "Dracaena fragrans 'Massangeana'",
-    "english_name": "Corn plant",
-    "plant_feature": "행운목으로 알려진 행운목 '마상게아나'는 햇빛을 좋아하지 만 어두운 곳에서도 잘 자라고 식물의 잎 모양이 옥수수 잎 과 닮아 영어 이름은 'Corn plant'다. 성장하면서 줄기는 목 질화되어 나무처럼 딱딱해지고, 잎은 줄기 끝부분에서 자란 다. 실내에서 3m까지 자랄 수 있는데, 줄기 윗부분을 20㎝ 정도 잘라주면, 노화된 나무의 경우 원기 회복에 도움이 된 다. 일반적인 배합토에서 잘 자라고 수경재배도 잘 자란다. 독성이 있어 애완동물에게 해로울 수 있으니 주의한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 추위에 약하므로 겨울철 베란다에서 실내로 들여보낸다. 너무 건조하면 해충이 발생한다.",
-    "species_family": "백합과",
-    "proper_temperature": "16~24℃ (최저 13℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "상대습도 증가와 음이온 발생량이 많은 식물로 거실에 두면 건조한 계절에 실내 습도를 높 이는 천연 가습효과를 기대할 수 있다."
-  },
-  {
-    "name": "행운목 와르네케이",
-    "scientific_name": "Dracaena fragrans 'Warneckei'",
-    "english_name": "Striped Dracaena, Dragon Tree",
-    "plant_feature": "아프라카 열대지역이 원산지인 행운목 '와르네케이'는 잎색 이 녹색, 연두색, 노란색, 흰색 등 다양할 뿐만 아니라 잎의 줄무늬가 특징인 관엽식물이다. 낮은 광도에서도 잘 자라고 실내공기 오염물질을 효과적으로 제거하기 때문에 실내조 경에 자주 사용한다. 보통 가정이나 사무실에서는 1m 안팎 으로 자라지만 환경이 좋으면 3m까지 자란다. 독성이 있어 애완동물이 있으면 주의한다. 배수성이 좋은 용토에서 잘 자라고, 수경재배를 할 수 있다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 여름 에는 다습한 환경을 좋아한다. 겨울에는 화분흙이 대부분 말 랐을 때 충분히 물을 주는데 실내온도와 비슷한 온도의 물 을 주는 것이 좋다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 온도가 너무 낮거나 습도 높을 경우 뿌리썩음병이 발생할 수 있다. 공중습도가 너무 건조하면 해충이 발생한다. 잎이 갈변하면 가위로 잎 끝을 잘라 정상적인 잎 모양으로 잘 다듬어 준다.",
-    "species_family": "백합과",
-    "proper_temperature": "16~24℃ (최저 13℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal",
-      "low"
-    ],
-    "benefit": "벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "뿌리가 많이 발달하지 않아 휘발성 유기화합물 제거 능력이 낮은 편이다. 그러나 음이온 발 생량이 많고, 실내습도 조절이 가능한 큰 식물로 거실에 두면 건조한 계절에 실내습도를 높 일 수 있다."
-  },
-  {
-    "name": "마지나타 드라세나",
-    "scientific_name": "Dracaena reflexa var. angustifolia",
-    "english_name": "Madagascar dragon tree, Red edged Dracaena",
-    "plant_feature": "마지나타 드라세나는 1960년대 초에 처음 실내식물로 재배 되기 시작하였다. 환경 적응력이 뛰어나 실내 환경에 잘 적 응하고 키우기가 쉬워 많이 알려진 품종이다. 곧은 가지 끝 에 길고 가느다란 잎이 다발형태로 자라고 광택이 나는 잎의 가장자리에 붉은색으로 띠가 있는 것이 특징이다. 다양한 공 기오염물질을 제거하고 병충해에 강하지만, 겨울철에 난방 등으로 실내가 지나치게 건조하면 충해가 발생할 수 있다. 꺾꽂이, 포기나누기 등으로 번식할 수 있으며 수경재배로 도 잘 자란다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
-    "species_family": "백합과",
-    "proper_temperature": "16~24℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "크실렌 등 다양한 공기오염 물질 제거",
-    "blight": "응애",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "마지나타 드라세나는 실내 환경에 잘 적응하고 튼튼하여 건물 로비나 현관, 공공건물의 아 트리움 등에 배치하면 좋다."
-  },
-  {
-    "name": "산데리아나 드라세나",
-    "scientific_name": "Dracaena sanderiana",
-    "english_name": "Ribbon plant",
-    "plant_feature": "일반적으로 드라세나종은 햇빛이 너무 강하거나 혹은 하루 종일 어두운 곳만 아니라면 어디서든 잘 자란다. 그러나 종 류에 따라 상대적으로 빛을 선호하거나 그렇지 않은 경우가 있는데, 산데리아나는 빛을 선호하는 편이다. 한낮의 직사광 선은 피하고 3시간 정도는 햇빛을 볼 수 있는 장소에 배치 하는 것이 좋다. 그렇지 않으면 잎의 밝은 부분 선명도가 점 차 떨어지게 된다. 실내 습도가 낮으면 잎 끝이 마르므로 3~4일에 한 번씩 잎에 분무를 해주면 좋다. 독성이 있으므로 어린아이나 애완동물의 주의가 필요하다.",
-    "water_description": "겨울철에 찬 수돗물은 잎을 노랗게 변하게 하므로 하루쯤 받 아 둔 물을 준다. 실내가 건조할 때 잎에 분무하면 잎도 싱싱 해지고 병충해 피해도 줄일 수 있다.",
-    "managing_point": "직사광선 피하고 건조할 때 잎에 자주 분무한다.",
-    "species_family": "백합과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레, 총채벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": ""
-  },
-  {
-    "name": "스킨답서스",
-    "scientific_name": "Epipremnum aureum",
-    "english_name": "Pothos Golden",
-    "plant_feature": "실내식물 중에서 관리가 쉽고 잘 자라는 식물로 병해충에 대한 강한 저항력과 공기 정화 능 력을 가지고 있다. 여러 무늬종들이 있으며 밝은 형광 색상의 잎을 가진 라임스킨답서스(Epipremnum aureum 'Neon')가 경쾌한 느낌으로 인기가 많다. 반음지에서 잘 자라며 겨울철에는 충분한 빛을 주고 물은 적게 준다. 수경재배가 가능하여 줄기를 잘라 물꽂이하여 재배한다. 칼슘옥살레이트 성분을 가지고 있어 애완동물에게는 독성이 있고 인체 피부나 점막을 자 극할 수 있으니 유의한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "약 40m 길이까지 자랄 수 있는 덩굴성이고, 줄기 끝을 잘라주면 길이 생장은 지연되지만 잎 이 많이 나와 풍성해진다. 다른 식물의 생장을 방해하는 덩굴은 제거한다. 뿌리가 과습하여 생기는 뿌리썩음병을 조심한다.",
-    "species_family": "두릅나무과",
-    "proper_temperature": "16~20 ℃ (최저 5 ℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "일산화탄소 제거 기능이 우수하고 어두운 곳에서도 잘 적응 하기 때문에 주방의 기능성 식물로 알려졌다. 벽이나 기둥을 타고 오르게 할 수 있고, 걸이화분을 활용하도 좋다."
-  },
-  {
-    "name": "라임 스킨답서스",
-    "scientific_name": "Epipremnum aureum 'Neon'",
-    "english_name": "Devil's ivy",
-    "plant_feature": "실내식물 중에서 관리가 쉽고 잘 자라는 식물로 병해충에 대한 강한 저항력과 공기 정화 능 력을 가지고 있다. 여러 무늬종들이 있으며 밝은 형광 색상의 잎을 가진 라임스킨답서스(Epipremnum aureum 'Neon')가 경쾌한 느낌으로 인기가 많다. 반음지에서 잘 자라며 겨울철에는 충분한 빛을 주고 물은 적게 준다. 수경재배가 가능하여 줄기를 잘라 물꽂이하여 재배한다. 칼슘옥살레이트 성분을 가지고 있어 애완동물에게는 독성이 있고 인체 피부나 점막을 자 극할 수 있으니 유의한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "약 40m 길이까지 자랄 수 있는 덩굴성이고, 줄기 끝을 잘라주면 길이 생장은 지연되지만 잎 이 많이 나와 풍성해진다. 다른 식물의 생장을 방해하는 덩굴은 제거한다. 뿌리가 과습하여 생기는 뿌리썩음병을 조심한다.",
-    "species_family": "두릅나무과",
-    "proper_temperature": "16~20 ℃ (최저 5 ℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "일산화탄소 제거 기능이 우수하고 어두운 곳에서도 잘 적응 하기 때문에 주방의 기능성 식물로 알려졌다. 벽이나 기둥을 타고 오르게 할 수 있고, 걸이화분을 활용하도 좋다."
-  },
-  {
-    "name": "사철나무",
-    "scientific_name": "Euonymus japonicus 'Ovatus Aureus'",
-    "english_name": "Spindle Tree Japanese",
-    "plant_feature": "한국, 일본 등지에 분포한다. 원예종으로 잎 색상이 화려하 여 화분, 정원수, 꽃꽂이 소재 등으로 많이 사용한다. 번식은 종자나 꺾꽂이로 한다",
-    "water_description": "겉흙이 말랐을 때 물을 충분히 준다.",
-    "managing_point": "직사광선을 피한다.",
-    "species_family": "노박덩굴과",
-    "proper_temperature": "16~20℃ (최저 0℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": ""
-  },
-  {
-    "name": "스플렌덴스 꽃기린",
-    "scientific_name": "Euphorbia milii var. splendens",
-    "english_name": "Christ's Thorn, Crown of Thorns",
-    "plant_feature": "꽃이 솟아 오른 모양이 기린을 닮았다고 하여 꽃기린이라는 이름이 붙었다. 빨간색, 연노란색, 흰색, 주황색 등 꽃 색상이 다양해 취향에 따라 선택할 수 있다. 줄기에 홈이 있고 날카 로운 가시로 덮여있어 가시에 주의해야 한다. 파종과 꺾꽂이로 번식하는데 보통 봄에 하는 것이 좋다. 꺾꽂이를 할 때 절단면에서 흐르는 흰색 액체를 깨끗이 씻어 낸 후 흙에 꽂으면 된다.",
-    "water_description": "화분흙이 마르면 물을 충분히 준다. 겨울은 다른 계절에 비 해 적게 물을 준다. 건조에 강하다.",
-    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물의 생장에 영향을 준다. 저온과 건조 상태에서는 잎이 떨어지는 현상이 있어 수분을 연중 유지해야 한다. 용토는 모래와 부엽(피트모스) 등을 배합하여 배수성과 보 수성이 좋게한다. 분갈이는 봄에 필요한 경우에 실시한다. 추위에 강해 3~5℃에서 월동이 가능하나, 겨울철에도 개화를 계속시키고자 할 때에는 10℃ 이상 보온이 필요하다. 일년내내 꽃을 피우는 성질 이 강하나 빛이 부족하거나 저온과 건조에서는 낙 엽이 지고 개화가 불량해진다.",
-    "species_family": "대극과",
-    "proper_temperature": "18~25℃ (최저 7℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal",
-      "low"
-    ],
-    "benefit": "음이온 방출",
-    "blight": "응애, 총채벌레, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "흰색 수액에 독성 함유",
-    "tip": "다육식물은 난과식물, 파인애플과 식물과 마찬가 지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다. 햇볕이 잘 드는 곳에 키우면 튼튼하게 자라고 꽃도 오래 감 상할 수 있다."
-  },
-  {
-    "name": "포인세티아",
-    "scientific_name": "Euphorbia pulcherrima",
-    "english_name": "Poinsettia",
-    "plant_feature": "멕시코 남부가 원산지인 포인세티아는 보통 겨울철에 가장 인기 있는 식물로 화려한 포엽 이 매력적인 식물이다. 1900년대 초에 상업적으로 재배되기 시작했으며, 새로운 품종이 계속 개발되어 식물 아래 부분의 잎은 녹색이지만 위로 갈수록 다양한 색과 문양이 있어 다양하고 화려하게 연출 할 수 있다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "봄~한여름까지는 포인세티아의 휴식기이므로 물을 적게 준다. 과습하면 뿌리썩음병이 발생할 수 있다. 흙이 말랐을 때 물을 충분히 준다.",
-    "species_family": "대극과",
-    "proper_temperature": "18~21℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "흰색 수액에 독성 함유",
-    "tip": "다음 크리스마스에도 포인세티아 꽃피우는 법 1) 잎이 떨어지면 줄기를 10cm 높이로 자른다. 2) 토양은 건조하게 관리하고 화분을 따뜻하고 그늘진 곳에 둔다. 5월 초순에 물을 주고 식물을 다시 심어서 오래된 토양을 교체한다. 3) 물을 계속 주면 곧 새싹이 나는데 정기적으로 영양을 공 급하면서 새 순을 제거하여 4~5개의 건강한 새 줄기만 남긴다. 4) 포인세티아는 단일식물로 9월 말부터는 관리가 필요하 다. 이른 저녁부터 다음 날 아침까지 14시간 정도를 8주 동안 검은 비닐을 씌워 차광하고, 그 이후 정상적으로 관리한다."
-  },
-  {
-    "name": "팔손이",
-    "scientific_name": "Fatsia japonica",
-    "english_name": "Japensse Aralia",
-    "plant_feature": "다양한 조건에서 잘 자라는 팔손이는 시원하고 통풍이 잘되는 밝은 환경을 더 좋아한다. 대표적인 공기정화 자생식물로 남해안에서는 노지에서 월동하며 11월 경에 꽃이 피는데 흰 색 꽃이 둥글게 우산모양으로 가지 끝에 달린다. 열매는 꽃이 진 후에 다음 해 5월경에 둥글 고 까만 것들이 여러 개 모여 달린다. 중부 지방에서는 실내식물로 많이 이용된다. 팔손이는 영국 빅토리아 시대부터 인기있는 관엽식물로 동양적인 느낌을 주기 위한 식물로 사용하기도 한다. 수분과 양분을 잘 공급하면 몇 년 안에 약 1m까지 성장한다.",
-    "water_description": "겉흙이 말랐을 때 물을 충분히 주며 약간 건조한 듯이 관리한다. 봄~가을은 정기적으로 주고 겨울에는 적게 준다. 공중습도는 높은 편이 좋으므로 잎에 자주 분무한다. 단, 토양이 과습하 면 뿌리썩음병이 발생할 수 있다.",
-    "managing_point": "직사광선을 피한다. 낮은 온도나 물주는 시기가 너무 지연될 경우 잎이 아래로 처질 수 있다.",
-    "species_family": "두릅나무과",
-    "proper_temperature": "16~20℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거, 공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "팔손이는 가구에서 나오는 휘발성 물질을 잘 제거하므로 큰 식물의 경우 거실이나 베란다에 두면 좋다. 또한 습도 발생 량이 우수하고 음이온 배출이 많아 집중력 향상에 도움을 주 므로 작은 화분의 경우 공부방에 놓아 활용한다."
-  },
-  {
-    "name": "파초일엽",
-    "scientific_name": "Asplenium antiquum",
-    "english_name": "Bird's-nest fern",
-    "plant_feature": "세계적으로 각광받고 있는 실내식물 중 하나로 시원하게 뻗은 잎과 물결치는 듯한 잎의 가장자리가 매력적이다. 실내에서 화분에 심거나, 나무에 착생시켜 관상하기도 한다. 보통 시중에는 둥지파초일엽(Asplenium nidus)이 아비스고 사리로 유통된다.",
-    "water_description": "토양 표면이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
-    "managing_point": "수태나 부식토에서 잘 자란다. 충분히 물을 주고 습도 유지가 중요하다. 건조할 때 잎에 분무한다.",
-    "species_family": "꼬리고사리과",
-    "proper_temperature": "21~25℃ (최저 8℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "빛이 부족하고 습도가 높은 주방에서 키우기 좋다."
-  },
-  {
-    "name": "아비스고사리",
-    "scientific_name": "Asplenium nidus",
-    "english_name": "Bird's-nest fern",
-    "plant_feature": "세계적으로 각광받고 있는 실내식물 중 하나로 시원하게 뻗은 잎과 물결치는 듯한 잎의 가장자리가 매력적이다. 실내에서 화분에 심거나, 나무에 착생시켜 관상하기도 한다. 보통 시중에는 둥지파초일엽(Asplenium nidus)이 아비스고 사리로 유통된다.",
-    "water_description": "토양 표면이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
-    "managing_point": "수태나 부식토에서 잘 자란다. 충분히 물을 주고 습도 유지가 중요하다. 건조할 때 잎에 분무한다.",
-    "species_family": "꼬리고사리과",
-    "proper_temperature": "21~25℃ (최저 8℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "빛이 부족하고 습도가 높은 주방에서 키우기 좋다."
-  },
-  {
-    "name": "블루스타 고사리",
-    "scientific_name": "Phlebodium aureum 'Blue Star'",
-    "english_name": "Golden polypody , Blue~star fern , Hare~foot fern",
-    "plant_feature": "푸른빛이 도는 파스텔 톤의 잎 색깔과 모양이 아름다워 인 기가 많다. 열대지방의 나무에 착생해서 자라는 식물로 반그 늘과 일반적인 실내온도에서 잘 자란다. 착생식물로 분갈이를 자주할 필요는 없고, 흙에 심을 경우 배수가 아주 좋아야 한다. 비료도 많이 필요없지만 성장기에 묽게 준다. 포기나누기, 포자로 번식한다.",
-    "water_description": "겉흙이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
-    "managing_point": "직사광선에 두면 잎 끝이 탈 수 있으니 주의한다. 습도 유지가 중요하므로 건조할 때 잎에 분무해야 한다. 물이 부족하면 잎 끝이 검게 변한다. 갑자기 잎이 노랗게 변하면 뿌리가 화분에 꽉 찼거나 흙 속에 영양분이 없다는 뜻이라 분갈 이가 필요하다.",
-    "species_family": "고란초과",
-    "proper_temperature": "16~24℃ (최저 5℃)",
-    "proper_light": [
-      "bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "공기정화, 습도유지",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "빛이 부족하고 습도가 높은 주방에서 키우면 좋다."
-  },
-  {
-    "name": "보스톤고사리",
-    "scientific_name": "Nephrolepis exaltata",
-    "english_name": "Boston fern",
-    "plant_feature": "보스톤고사리는 분수같이 아치형으로 떨어지는 잎 모양이 풍성하고 싱그러워 많은 사랑을 받고 있는 실내식물이다. 습도가 높은 숲이나 습지의 반양지 같은 습한 곳에 자생하는 식물이므로 실내재배 시 물이 부족하면 잎 끝이 갈색으로 변 하거나 떨어지니 충분히 분무해줘야 한다. 실내재배 시 봄과 가을에 충분한 햇빛을 받아야 포기가 바르 게 자라고 잎의 색도 진해진다. 자연종은 포자로, 재배종은 포기나누기를 통하여 번식하며 수경재배도 가능하다.",
-    "water_description": "봄~가을은 물에 잠기지 않도록 배수에 주의하고, 흙을 촉촉 하게 유지한다. 겨울에는 토양 표면이 말랐을 때 충분히 물 을 준다.",
-    "managing_point": "건조할 때 잎에 분무하여 습도를 유지하는 것이 중요하다. 유기질이 풍부한 화분용 배합토에서 잘 자라고, 뿌리가 화분 가득히 뻗어있는 것이 이상적이 다. 한여름의 직사광선은 피하고 습도유지가 되어야 잘 자란다.",
-    "species_family": "줄고사리과",
-    "proper_temperature": "15~35℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 포름알데히드 제거, 상대습도 증가",
-    "blight": "응애, 진딧물, 깍지벌레, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "잎의 선이 아름다운 식물로 걸이화분이나 받침대가 있는 화분에 심어 조금 높은 위치에 놓 으면 더 멋있게 볼 수 있다."
-  },
-  {
-    "name": "기붐새깃아재비(실버레이디)",
-    "scientific_name": "Blechnum gibbum",
-    "english_name": "Miniature Tree Fern",
-    "plant_feature": "열대지방에서 서식하는 식물답게 고온 다습한 관경에서는 잘 자라지만, 직사광선과 추위에는 약하다.",
-    "water_description": "토양표면이 마르면 충분히 물을 주고, 분무 등을 통해 공중 습도를 높게 유지한다.",
-    "managing_point": "습도 유지가 중요하므로 건조할 때 잎에 분무해야 한다. 실내에서 키울 경우 20℃ 정도를 유지해야 하고 환기가 잘 되는 곳에 배치한다.",
-    "species_family": "새깃아재비과",
-    "proper_temperature": "10~30℃ (최저 10℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "미세먼지 제거, 공기정화, 포름알데히드 제거",
-    "blight": "깍지벌레, 가루깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": ""
-  },
-  {
-    "name": "상록넉줄고사리'후마타'",
-    "scientific_name": "Davallia griffithiana (Humata tyermannii)",
-    "english_name": "Squirrel's-foot fern",
-    "plant_feature": "넉줄고사리는 우리나라에 자생하는 식물로 바위나 나무에 붙어 자라는 다년생 양치식물로 높이가 20cm 정도이다. 번 식이 빠르게 잘되어 관리를 잘하면 연중 초록의 싱그러움을 볼 수 있다. 뿌리줄기의 모양이 독특하고 매력적이다. 반음 지에서 잘 자라지만 적당한 빛이 있어야 튼튼하게 자라고 오 랫동안 한 방향으로만 햇빛을 받으면 잎이 한쪽으로 치우치 므로 주기적으로 돌려가며 키운다. 시중에서는 후마타고사리가 유통되는데 흙 위로 올라온 발 처럼 생긴 근경의 모양이 독특하고 매력적이다.",
-    "water_description": "고사리과 식물들은 흙이 습한 것보다 공중습도가 높은 환경 을 좋아한다. 봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지 하고, 겨울에는 토양 표면이 말랐을 때 충분히 물을 준다. 건 조하지 않도록 자주 분무한다.",
-    "managing_point": "너무 건조하면 해충이 발생하므로 자주 분무하여 공중습도를 건조하지 않게 유지한다. 반음 지에서 잘 자라며 흙 위에 올라 온 근경만 살아있으면 언제든지 새순을 낼 수 있다.",
-    "species_family": "넉줄고사리과",
-    "proper_temperature": "20-25℃ (최저 3℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드·톨루엔 등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
-    "blight": "응애, 온실가루이",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "양치식물은 포름알데히드 제거능력이 우수한 편이고, 넉줄고사리는 양치식물 중에서도 포 름알데히드 제거능력이 가장 탁월하다. 음이온이 발생하고 실내습도를 조절할 수 있어 거 실에 두면 좋다. 거실에 배치할 때 큰 화분의 지피식물로 활용하면 공기정화능력을 향상 시 킬 수 있다."
-  },
-  {
-    "name": "넉줄고사리",
-    "scientific_name": "Davallia mariesii",
-    "english_name": "Squirrel's-foot fern",
-    "plant_feature": "넉줄고사리는 우리나라에 자생하는 식물로 바위나 나무에 붙어 자라는 다년생 양치식물로 높이가 20cm 정도이다. 번 식이 빠르게 잘되어 관리를 잘하면 연중 초록의 싱그러움을 볼 수 있다. 뿌리줄기의 모양이 독특하고 매력적이다. 반음 지에서 잘 자라지만 적당한 빛이 있어야 튼튼하게 자라고 오 랫동안 한 방향으로만 햇빛을 받으면 잎이 한쪽으로 치우치 므로 주기적으로 돌려가며 키운다. 시중에서는 후마타고사리가 유통되는데 흙 위로 올라온 발 처럼 생긴 근경의 모양이 독특하고 매력적이다.",
-    "water_description": "고사리과 식물들은 흙이 습한 것보다 공중습도가 높은 환경 을 좋아한다. 봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지 하고, 겨울에는 토양 표면이 말랐을 때 충분히 물을 준다. 건 조하지 않도록 자주 분무한다.",
-    "managing_point": "너무 건조하면 해충이 발생하므로 자주 분무하여 공중습도를 건조하지 않게 유지한다. 반음 지에서 잘 자라며 흙 위에 올라 온 근경만 살아있으면 언제든지 새순을 낼 수 있다.",
-    "species_family": "넉줄고사리과",
-    "proper_temperature": "20-25℃ (최저 3℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드·톨루엔 등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
-    "blight": "응애, 온실가루이",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "양치식물은 포름알데히드 제거능력이 우수한 편이고, 넉줄고사리는 양치식물 중에서도 포 름알데히드 제거능력이 가장 탁월하다. 음이온이 발생하고 실내습도를 조절할 수 있어 거 실에 두면 좋다. 거실에 배치할 때 큰 화분의 지피식물로 활용하면 공기정화능력을 향상 시 킬 수 있다."
-  },
-  {
-    "name": "봉의꼬리",
-    "scientific_name": "Pteris multifida",
-    "english_name": "Spider brake fern",
-    "plant_feature": "봉의꼬리는 한국이 원산지이며 남부지방 숲속이나 길가 절벽이나 돌담에서 자라는 상록성의 양치식물로 높이는 30~70cm이다. 갈라진 잎의 모양이 봉의꼬리처럼 생겨 붙 여진 이름이다. 잎몸 중측 상부에 날개가 뚜렷하게 있는 점 이 특징이다. 속명 프테리스(Pteris)는 '날개', '깃털'을 뜻하 는 'pteron'에서 유래한 것으로 '고사리'를 나타내고 멀티피 다(multifida)는 '여러 개로 갈라진'이란 의미로 학명이 '여러 갈래로 갈라진 고사리'라는 뜻을 가진다. 잎에 흰색 또는 백녹색 무늬가 있는 품종으로 알록큰봉의꼬 리(Pteris nipponica)가 있다. 봉의 꼬리와 달리 잎몸의 중측 에 날개가 없다. 포자엽 뒷면의 포자로 번식하거나 포기나누기로 번식한다.",
-    "water_description": "봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지하고, 겨울에 는 토양 표면이 말랐을 때 충분히 물을 준다. 건조하지 않도록 자주 분무한다.",
-    "managing_point": "공중습도가 높아야 건강하게 자라므로, 자주 분무하여 건조하지 않게 관리한다.",
-    "species_family": "꼬리고사리과",
-    "proper_temperature": "16~20℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": "봉의꼬리는 양치식물 중에서 포름알데히드 제거에 탁월하다. 습도와 음이온 발생량도 좋아 서 거실에 놓으면 가구에서 나오는 포름알데히드 제거와 건조한 실내습도를 조절할 수 있다."
-  },
-  {
-    "name": "알록큰봉의꼬리",
-    "scientific_name": "Pteris nipponica",
-    "english_name": "Spider brake fern",
-    "plant_feature": "봉의꼬리는 한국이 원산지이며 남부지방 숲속이나 길가 절벽이나 돌담에서 자라는 상록성의 양치식물로 높이는 30~70cm이다. 갈라진 잎의 모양이 봉의꼬리처럼 생겨 붙 여진 이름이다. 잎몸 중측 상부에 날개가 뚜렷하게 있는 점 이 특징이다. 속명 프테리스(Pteris)는 '날개', '깃털'을 뜻하 는 'pteron'에서 유래한 것으로 '고사리'를 나타내고 멀티피 다(multifida)는 '여러 개로 갈라진'이란 의미로 학명이 '여러 갈래로 갈라진 고사리'라는 뜻을 가진다. 잎에 흰색 또는 백녹색 무늬가 있는 품종으로 알록큰봉의꼬 리(Pteris nipponica)가 있다. 봉의 꼬리와 달리 잎몸의 중측 에 날개가 없다. 포자엽 뒷면의 포자로 번식하거나 포기나누기로 번식한다.",
-    "water_description": "봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지하고, 겨울에 는 토양 표면이 말랐을 때 충분히 물을 준다. 건조하지 않도록 자주 분무한다.",
-    "managing_point": "공중습도가 높아야 건강하게 자라므로, 자주 분무하여 건조하지 않게 관리한다.",
-    "species_family": "꼬리고사리과",
-    "proper_temperature": "16~20℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": "봉의꼬리는 양치식물 중에서 포름알데히드 제거에 탁월하다. 습도와 음이온 발생량도 좋아 서 거실에 놓으면 가구에서 나오는 포름알데히드 제거와 건조한 실내습도를 조절할 수 있다."
-  },
-  {
-    "name": "털머위",
-    "scientific_name": "Farfugium japonicum",
-    "english_name": "Leopard plant",
-    "plant_feature": "우리나라 울릉도와 남부지방 바닷가 쪽에서 자라는 상록성 의 여러해살이풀이다. 높이가 30~70cm로 9~11월에 노란색 꽃이 피며 식물의 전체에 털이 많고 잎이 머위를 닮았다 하 여 이름이 붙여졌다. 실내외 조경용으로 심고, 어린 잎자루 는 식용하고, 민간요법으로 활용한다.",
-    "water_description": "토양 표면이 말랐을때 충분히 물을 준다.",
-    "managing_point": "토양 표면이 말랐을때 충분히 물을 준다.",
-    "species_family": "국화과",
-    "proper_temperature": "16~24℃ (최저 5℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "음이온 발생, 상대습도 증가, 이산화탄소 감소",
-    "blight": "응애, 깍지벌레, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "음이온 발생량과 습도 발생량이 많아 공부방에 배치하면 집중력향상에 좋고, 실내습도를 증 가시키는 효과가 좋다."
-  },
-  {
-    "name": "벵갈고무나무",
-    "scientific_name": "Ficus benghalensis L.",
-    "english_name": "Fig Indian",
-    "plant_feature": "벵갈고무나무는 원산지인 인도에서 장수와 풍요를 상징해 신성하게 여기는 식물로 회백색 수피에 잎 무늬가 아름다워 실내식물로 인기가 많다. 미세먼지 제거 측정 실험에서 제거 능력이 뛰어난 식물로 산호수와 함께 선정되었으며, 음이온 발생량이 최고 등급인 우수한 공기정화식물이다. 번식은 삽목이나 취목을 이용한다.",
-    "water_description": "토양표면이 마르면 물을 충분히 준다.",
-    "managing_point": "봄·가을처럼 건조할 때는 자주 분무해주고, 습할 때는 환기를 자주 해준다.",
-    "species_family": "뽕나무과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "자일렌 등 다양한 공기오염 물질 제거, 미세먼지 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "수액에 독성 함유",
-    "tip": "관상 포인트인 잎의 무늬를 유지하려면 햇빛을 많이 받아 야 하므로 밝은 거실이나 창가에 배치한다. 벵갈고무나무는 음이온 발생량이 최상 등급인데 음이온은 멀리 퍼지지 않으 므로 식물을 사람과 가까운 곳에 두는 것이 좋다 ."
-  },
-  {
-    "name": "벤자민고무나무",
-    "scientific_name": "Ficus benjamina",
-    "english_name": "Waringin, Weeping fig",
-    "plant_feature": "실내공기 오염물질 제거 능력이 뛰어나 인기가 높은 벤자민 고무나무는 키가 크고 우아해 보이는 가지를 부드럽게 늘어 뜨리고 있는 모습에서 Weeping fig가 영명으로 유래되었다 고 한다. 벤자민고무나무는 일반적으로 세가지 형태가 있는 데, 원줄기가 뚜렷한 나무형태와 줄기가 밑부분에서 여러 가 지로 갈라지는 관목형태, 2~3가지가 꼬여서 자라는 형태가 있다. 잎도 짙은 녹색, 밝은 녹색, 그리고 무늬가 있는 잎까 지 종류가 다양하다. 단, 환경변화에 민감하고 이동을 싫어하여 새로운 환경에 적응하는 동안 잎이 떨어지는 경우가 있지만, 일단 적응하 면 잘 생장한다. 수경재배나 저면관수로 기르는 것이 이상적이다. 식물 전체적으로 독성물질이 함유하고 있다.",
-    "water_description": "토양은 가급적 촉촉하게 유지한다. 봄~가을에는 토양표면이 말랐을 때 물을 충분히 주고, 겨울에는 토양이 대부분 말랐 을 때 충분히 물을 준다.",
-    "managing_point": "뿌리가 화분에 꽉 차는 것을 좋아하므로 매년 분갈이할 필요가 없다. 지나치게 물을 많이 주면 뿌리썩음병이 발생한다.",
-    "species_family": "뽕나무과",
-    "proper_temperature": "16~24℃ (최저 13℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
-    "blight": "깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "수액에 독성 함유",
-    "tip": "자동차에서 나오는 배기가스를 많이 제거하므로 빛이 들어오는 현관에 배 치하면 좋다. 화분 지면에 아이비, 스 킨답서스 등을 함께 심으면 공기정화 효과가 커진다."
-  },
-  {
-    "name": "인도고무나무",
-    "scientific_name": "Ficus elastica",
-    "english_name": "Assam Rubber, India Rubber Plant",
-    "plant_feature": "고무나무는 약 800~2,000종이 주로 열대지역에 분포되어 있다. 열대지역에서는 녹음수 또는 가로수로 이용되며 온대 지역에서는 실내 관엽식물로 이용된다. 토양재배, 수경재배 모두 잘 자란다. 흰색의 수액이 자극적이니 주의해야 한다.",
-    "water_description": "토양표면이 말랐을 때 물을 충분히 준다.",
-    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 줄 수 있다.",
-    "species_family": "뽕나무과",
-    "proper_temperature": "16~27℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal",
-      "low"
-    ],
-    "benefit": "포름알데히드 제거, 공기정화",
-    "blight": "응애, 깍지벌레, 가루깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "수액에 독성 함유",
-    "tip": "고무나무 종류 중에 실내의 화학적 독소를 제거하는 능력이 뛰어나고 넓고 큰 공간에 잘 어울리므로 거실에 두면 좋다."
-  },
-  {
-    "name": "무늬왕모람(푸미라)",
-    "scientific_name": "Ficus pumila 'Variegata'",
-    "english_name": "Creeping fig",
-    "plant_feature": "실내정원을 조성할 때 녹색 카페트를 만들 수 있을 만큼 지 피식물로 좋다. 줄기가 가늘고 작은 잎이 풍성하여 걸이화분 에 단독으로 사용하거나 다른 식물과 함께 식재하여 활용할 수 있다. 물만 정기적으로 잘 주면 관리도 쉽다. 식물의 모든 부분이 애완동물에게는 독성이 있으니 주의한 다.",
-    "water_description": "겉흙이 마르면 물을 충분히 준다. 잎에 자주 분무한다.",
-    "managing_point": "다른 식물의 생장을 방해하는 덩굴은 제거한다. 강한 직사광선은 피하고, 배수가 좋은 흙에서 키운다. 삽목이나 휘묻이로 번식한다.",
-    "species_family": "뽕나무과",
-    "proper_temperature": "21~25℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "low"
-    ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "식물 모든 부분",
-    "tip": "덩굴성으로 베란다에서 벽과 천장을 타고 올라가도록 키울 수 있고, 수경재배도 가능하다."
-  },
-  {
-    "name": "오렌지스타",
-    "scientific_name": "Fittonia albivenis 'Jade'",
-    "english_name": "Mosaic plant",
-    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조할 때 잎에 자주 분무한다.",
-    "species_family": "쥐꼬리망초과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다."
-  },
-  {
-    "name": "화이트스타",
-    "scientific_name": "Fittonia albivenis 'White Star'",
-    "english_name": "Mosaic plant",
-    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조할 때 잎에 자주 분무한다.",
-    "species_family": "쥐꼬리망초과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다."
-  },
-  {
-    "name": "레드스타",
-    "scientific_name": "Fittonia verschaffeltii 'Red Star'",
-    "english_name": "Mosaic plant",
-    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "건조할 때 잎에 자주 분무한다.",
-    "species_family": "쥐꼬리망초과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
-    "proper_light": [
-      "dark"
-    ],
-    "proper_humidity": [
-      "high"
-    ],
-    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 온실가루이",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다."
-  },
-  {
-    "name": "아이비(잉글리쉬 아이비)",
-    "scientific_name": "Hedera helix",
-    "english_name": "English ivy",
-    "plant_feature": "유럽 대부분의 지역과 서아시아에 자생하는 아이비는 덩굴성으로 성장속도가 빠르고 공중 뿌리가 나와서 벽 같은 면이나 철사 등을 타고 오르는 성질을 가졌다. 양담쟁이, 상록담쟁이 등으로도 불리우며 잎이 3~5개로 갈라져 있고 잎의 색과 모양이 품종 에 따라 다양하다. 보통의 실내 환경에서 적응을 잘하는 편이나 무늬가 있는 품종은 빛이 부 족하면 무늬가 없어지므로 빛이 충분해야 한다. 식물체에 독이 있어 아이가 있는 가정에서 키울 경우, 아이 피부에 닿으면 피부염에 걸릴 수 있고 입에 댈 경우 호흡곤란이나 혼수상태에 빠질 수 있다. 새싹이 자라면 순지르기를 해서 가지 수를 늘릴 수 있다. 수경재배나 토양에서 동일하게 재배가 가능하다.",
-    "water_description": "잎에 물을 자주 분무하고, 겉흙이 마르면 물을 충분히 준다.",
-    "managing_point": "직사광선을 피한다. 온도가 너무 높은 경우 성장을 방해한다. 성장 시 가지치기하여 다른 식 물의 생장을 방해하는 덩굴을 제거한다. 병충해에 강한 편이나 기온이 높고 건조하면 응애, 깍지벌레가 발생한다.",
-    "species_family": "두릅나무과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright",
-      "dark"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·톨루엔 제거, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "큰 식물의 경우 베란다, 거실에 배치하고, 습도와 음이온 배 출이 많아 작은 화분의 경우 공부방에 놓아 활용한다."
+    "tip": "다육식물로 난초과, 브로멜리아류 식물과 마찬가지로 밤에 이산화탄소를 흡수하므로 침실 에 두면 좋다.",
+    "class_label": 5,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "레몬버베나",
@@ -1185,190 +164,44 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "허브식물 중에서 새집증후군의 원인 물질인 톨루엔을 제거하는 능력이 가장 뛰어나다. 햇빛 이 잘 들고 통풍이 잘되는 거실의 창가 또는 베란다에 두면 좋다."
+    "tip": "허브식물 중에서 새집증후군의 원인 물질인 톨루엔을 제거하는 능력이 가장 뛰어나다. 햇빛 이 잘 들고 통풍이 잘되는 거실의 창가 또는 베란다에 두면 좋다.",
+    "class_label": 6,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "학자스민",
-    "scientific_name": "Jasminum polyanthum",
-    "english_name": "Jasmin polyanthum",
-    "plant_feature": "3.5~5m 정도로 자라는 상록성 덩굴식물인 학자스민은 꽃봉 오리는 진홍색을 띠고 꽃은 흰색으로 핀다. 한겨울에 꽃을 피우고 향기가 뛰어나 사람들에게 인기가 많다. 꺾꽂이 또는 휘묻이로 번식을 하며, 번식과 관리가 매우 쉬 워 실내식물로 많이 이용된다. 자스민은 좋은 향기로 예전부터 향수나 차로 이용했다. 달콤 한 향기가 기분전환에 좋아 우울증을 개선해준다.",
-    "water_description": "토양표면이 마르면 충분히 물을 주고, 겨울에는 토양을 건조 하게 관리한다. 너무 건조하지 않도록 자주 분무한다. 꽃이 피는 시기 충분한 물을 준다. 토양은 항상 수분이 있어 야 한다. 토양이 마를 시에 꽃과 꽃봉오리도 마를 수 있다. 그 러나 과습한 상태는 피하도록 한다.",
-    "managing_point": "햇빛이 잘 드는 서늘한 곳에 두면 꽃을 오랫동안 볼 수 있으며, 여름에 정원의 나무 그늘같이 서늘한 곳에 두면 꽃봉오리형성이 빨라진다. 꽃이 진 뒤에 가지들을 잘라주고, 가을에 분갈 이를 한 다음 따뜻한 곳에 둔다. 가늘고 길게 자라는 덩굴식물로 작은 화분에 심을 경우 지지 대를 두어 감고 올라갈 수 있게 지지대를 설치하면 좋다.",
-    "species_family": "물푸레나무과",
-    "proper_temperature": "16~24℃ (최저 7℃)",
+    "name": "홍학꽃(안스리움)",
+    "scientific_name": "Anthurium andraeanum Linden ex André",
+    "english_name": "Flamingo flower, Lily Flamingo",
+    "plant_feature": "열대지방이 원산지인 홍학꽃은 따뜻하고 습한 곳을 좋아하 는 기르기가 꽤 까다로운 식물이다. 육수화서를 둘러싼 넓은 잎모양의 불염포는 흰색, 분홍색, 빨간색, 산호색 등 색상이 다양하다. 이 불염포는 여러 주 동안 볼 수 있지만 꽃은 꽃가 루가 날릴 수 있으므로 제거하는 것이 좋다. 여름에는 직사광선을 피하는 것이 좋다. 또한 날이 추워지면 창가에 두지 않도록 한다. 비료는 봄·가을에 주고, 겨울에는 주지 않는다.",
+    "water_description": "화분흙이 대부분 말랐을 때 충분히 물을 준다. 물주기가 까다로운 편이며 많이 주지 않도록 주의한다. 수분 을 좋아하고 건조한 공기를 매우 힘들어한다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다.",
+    "species_family": "천남성과",
+    "proper_temperature": "18~24℃ (최저 13℃)",
     "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "low"
-    ],
-    "benefit": "포름알데히드 제거",
-    "blight": "응애, 진딧물",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "포름알데히드 제거능력이 우수하며 향기좋은 흰색 꽃이 피는 덩굴식물로 통풍이 잘되고 햇 빛이 풍부한 베란다에 두고 기르면 오랫동안 향기를 즐길 수 있다."
-  },
-  {
-    "name": "라벤더",
-    "scientific_name": "Lavandula angustifolia",
-    "english_name": "English lavender",
-    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
-    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
-    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다."
-  },
-  {
-    "name": "다우니라벤더",
-    "scientific_name": "Lavandula multifida",
-    "english_name": "fernleaf lavender",
-    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
-    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
-    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다."
-  },
-  {
-    "name": "프렌치라벤더",
-    "scientific_name": "Lavandula stoechas",
-    "english_name": "Lavender French",
-    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
-    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
-    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "15~25℃ (최저 5℃)",
-    "proper_light": [
-      "bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드 제거, 음이온 발생",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다."
-  },
-  {
-    "name": "애플민트",
-    "scientific_name": "Mentha suaveolens",
-    "english_name": "Mint Apple",
-    "plant_feature": "유럽이 원산지인 애플민트는 사과와 민트향이 나는 다년생 초본 식물이다. 잎은 연녹색의 주름지고 난형의 형태로, 가 장자리 톱니 모양과 뚜렷한 엽맥으로 앞뒷면에 털이 있다. 여름에 흰색 또는 분홍색의 꽃이 층층이 길게 난다. 내한성 이 강하여 반음지 환경에서의 생장과 월동이 가능하다는 장 점이 있다. 꺾꽂이나 포기나누기로 번식을 한다. 향긋한 향기로 피로회복과 살균, 방향효과가 뛰어나 요리나 방향제 등으로 사용한다.",
-    "water_description": "토양 표면이 마르고 잎이 시들면 물을 준다. 겨울에는 식물이 어는 것을 막기 위해 다른 계절보다 물을 적게 준다. 과습은 식물 뿌리를 썩게 할 수 있으므로 너무 많 이 주지 않도록 주의 한다.",
-    "managing_point": "햇빛이 많은 양지가 좋으며, 빛이 부족할 때 잎에 생기가 사라지며 웃자라 실내에서는 자주 분갈이를 해주거나 가지치기를 해주어 수형을 잡아주는 것이 좋다. 양질의 토양이 필요한 식물로 장마 끝에 거름을 주 면 좋다. 땅속줄기가 뻗으면서 자라므로 자주 솎아 준다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "16~24℃ (최저 –20℃)",
-    "proper_light": [
-      "bright",
       "half_bright"
     ],
     "proper_humidity": [
       "normal"
     ],
-    "benefit": "포름알데히드·톨루엔 제거, 음이온 증가, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
+    "benefit": "암모니아 제거, 일산화탄소 제거, 포름알데히드· 톨루엔 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애",
     "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "습도 유지 및 공기정화에 좋아 아이들 공부방에 놓 거나 향긋한 향기로 요리에 많이 쓰여 주방에서도 애용하는 식물이다."
+    "poison": "식물 모든 부분",
+    "tip": "일산화탄소와 암모니아가스 제거능력이 좋아 햇빛이 잘 드 는 주방 또는 화장실에 두면 좋다.",
+    "class_label": 7,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "제라늄",
-    "scientific_name": "Pelargonium inquinans",
-    "english_name": "Geranium, Fish Geranium",
-    "plant_feature": "꽃의 관상 기간이 길뿐 아니라 다양하고 화려한 꽃 색으로 세계적으로 널리 이용되는 분화 식물이다. 정원의 화단, 아파트 베란다, 벽장식 등에 화분, 플라워박스, 행잉바스켓 등의 형태 로 다양하게 이용하며, 특히 유럽에서는 창가에 놓는 꽃으로 활용한다. 비내한성 다년초로 약광, 건조 등 불량한 환경에 대한 적응력이 강하고 병충해에 강하기 때문에 최근 정원화단 및 실내환경 조성 등에 인기가 높다. 식물명인 제라늄은 이전 학명으로, 지금은 영명으로 통용되고 있다. 허브식물로 잎과 줄기에 서 독특한 향이 있어 곤충이나 모기를 쫓는 것으로 알려져 있다. 우리나라에서 모기를 쫓는 것으로 알려진 '구문초'도 제라늄의 한 품종이다.",
-    "water_description": "봄~가을 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충 분히 물을 준다. 약간 건조한 것을 좋아하므로, 화분의 토양표면이 마른 후 1~2일 두었다가 물을 충분히 준다. 토양이 과습하면 뿌리가 썩을 수 있다.",
-    "managing_point": "화분에 뿌리가 가득차서 뿌리발달이 제한되면 발육이 나빠지고 아랫잎이 쉽게 고사되므로 매년 좀더 큰 화분으로 분갈이한다. 토양을 과습하지 않게 관리한다.",
-    "species_family": "쥐손이풀과",
-    "proper_temperature": "15~25℃ (최저 10℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·톨루엔등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
-    "blight": "응애, 깍지벌레, 온실가루이",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "제라늄은 꽃을 피우기 위해 햇빛이 많이 필요하므로 창가나 베란다에 배치하는 것이 좋다. 창가에 두면 특유의 향 때문 에 해충이 들어오는 것을 막아주어 유럽에서는 창가에 놓는 꽃으로 활용한다."
-  },
-  {
-    "name": "장미허브",
-    "scientific_name": "Plectranthus tomentosa",
-    "english_name": "Vicks plant",
-    "plant_feature": "장미허브는 남아프리카가 원산지인 달콤한 향이 나는 다년 생 허브이다. 종 'tomentosa'는 라틴어로 잎의 양면을 덮은 벨벳 같은 코팅을 뜻하는 말로, 털이 있고 두꺼우며 녹색의 장미 꽃모양의 잎을 가지고 있다. 최대 50cm까지 자랄 수 있 으며 처음에는 연한 줄기를 가지고 있지만 생장 후에는 목질 화 된다. 초봄과 가을에 보라색의 꽃이 피며, 벌과 나비는 좋 아하지만 모기는 퇴치할 수 있는 역할을 한다. 번식력이 좋아 물꽂이, 꺾꽂이 및 포기나누기 등 다양한 방 법으로 쉽게 번식할 수 있다.",
-    "water_description": "토양 표면이 말랐을 때 물을 준다. 다육식물 같이 잎이 두꺼 워 건조에 강하나 과습은 식물이 황변하는 등 피해가 될 수 있으므로 물주기에 주의한다. 과도한 물주기는 곰팜이 병이 발생할 수 있다.",
-    "managing_point": "햇빛을 좋아하는 식물로 남향의 창가나 베란다에 둔다. 햇빛이 부족한 경우 웃자라서 잎이 드문드 문 달린다. 통풍이 불량하거나 습한 환경에서 취약하여 곰팡 이와 같은 병해가 발생하기 쉬우므로 통풍과 습도 조절에 주의가 필요하다. 월동을 위해서 최소 10℃ 이상의 온도가 필요하다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "15~25℃ (최저 10℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "이산화탄소 감소, 상대습도 증가, 음이온 발생",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "허브류 중에서 음이온 발생량이 가장 우수한 식물 로, 실내에서 기를 때에는 햇빛이 잘 드는 공부방 창가에 두면 집중력 향상에 도움을 준다."
-  },
-  {
-    "name": "로즈마리",
-    "scientific_name": "Rosmarinus officinalis",
-    "english_name": "Rosemary",
-    "plant_feature": "남유럽 지중해 연안이 원산지인 로즈마리는 라틴어 '바다의 이슬'에서 유래된 식물로 향기가 나는 빛을 좋아하는 다년생 관목이다. 봄과 여름에 흰색, 분홍색, 하늘색 등의 꽃이 핀다. 잎은 상록색의 가늘고 긴 잎이며, 뒷면은 회색의 털들이 있 으며, 목질과 잔가지가 많은 줄기에 붙어 있다. 자랄 때 최대 2m까지 자라는 견고한 식물이다. 향균 및 살균 효과가 있으 며, 특유의 향으로 화장품, 요리 등 다양한 용도로 이용되고 있으며, 기억력 증진 효과 등에 효과가 좋은 실내식물이다.",
-    "water_description": "토양표면이 말랐을 때 물을 준다. 과습은 식물 뿌리를 썩게 할 수 있으므로 너무 많이 주지 않도록 주의한다. 보통 8월 이후는 다소 건조하게 관리하는 것이 좋다.",
-    "managing_point": "햇빛이 충분한 양지에서 최소 15도 이상의 온도를 유지하는 것이 좋다. 빛이 부족할 때 잎에 생기가 사라지며 웃자라 실내에서는 자주 분갈이를 해주는 것이 좋다. 1년생의 과도한 가지치기는 생장을 저해할 수 있으므로 주의한다. 잎을 수확할 시 향이 진한 가을에 하는 것이 좋으며, 건조하게 관리하는 것이 좋다.",
-    "species_family": "꿀풀과",
-    "proper_temperature": "16~24℃ (최저 15℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드·톨루엔 제거",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "기억력 증진과 실내 공기정화가 우수한 식물로 가정에서 햇빛이 잘 드는 아이들의 공부방이 나 요리를 자주 하는 주방에 두면 좋다."
-  },
-  {
-    "name": "해피트리",
-    "scientific_name": "Heteropanax chinensis",
-    "english_name": "Fragrant Aralia",
-    "plant_feature": "싱그러운 녹색을 띠는 작고 얇은 잎들이 보는 이들을 행복 하게 만드는 나무다. 잎이 웃는 모양 같다고 하여 행복나무 라고 불리기도 한다. 중국에서는 '황산풍'이라고 불리며 부 귀수로 알려지는 등 다양한 이름을 가졌다. 높이가 20~30m 나 자라 조경수로도 이용한다. 실내에서는 직사광선과 완전 한 음지를 제외하고는 어떤 곳에서도 잘 자란다. 햇빛이 잘 드는 창가가 키우기 가장 좋은 장소이고 간접 광을 받을 수 있는 곳은 어디든 좋다.",
+    "name": "아펠란드라 스쿠아로사",
+    "scientific_name": "Aphelandra squarrosa 'Louisae'",
+    "english_name": "Saffron spike, Zebra plant",
+    "plant_feature": "원산지는 열대 아메리카와 아열대 아메리카로 약 80여 종이 난다. 잎은 광택이 나는 진녹색 바탕에 은백색의 줄무늬 엽 맥이 나타나며 줄기 끝에 선명한 황금색의 포가 나오며 포 의 기부에서 통꽃이 핀다. 개화기는 1∼2월이나 환경 조건만 맞으면 연중 개화한다.",
     "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 가지치기를 하지 않 으면 웃자라 주변 식물에 영향을 준다.",
-    "species_family": "두릅나무과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
+    "managing_point": "직사광선을 피하고 건조할 때 잎에 자주 분무한다. 매년 분갈이를 한다.",
+    "species_family": "쥐꼬리망초과",
+    "proper_temperature": "18~32℃ (최저 13℃)",
     "proper_light": [
       "half_bright"
     ],
@@ -1376,54 +209,262 @@
       "normal",
       "high"
     ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
+    "benefit": "일산화탄소 제거",
+    "blight": "응애, 깍지벌레, 온실가루이",
+    "managing_difficulty": "hard",
     "poison": "",
-    "tip": "가정, 사무실, 상업 공간 등 많이 이용되는데 넓은 공간에 잘 어울린다."
+    "tip": "",
+    "class_label": 8,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "호야",
-    "scientific_name": "Hoya carnosa ",
-    "english_name": "Wax Plant",
-    "plant_feature": "호야는 실내에서 쉽게 생육하며 덩굴성 상록 다년초이다. 잎 이 다육질이며 5~9월에 향기로운 별 모양의 꽃이 연한 분홍 색으로 피고 윤기가 있다. 동남아시아에서 오스트레일리아 에 이르는 열대, 아열대 지역에 걸쳐 100여 종이 분포한다. 시중에 여러 품종이 유통되며 잎에 무늬가 있는 무늬호야, 호야에서 잎만 떼어낸 후 잎꽂이 하여 판매하는 하트호야, 랑케올라타 벨라호야(Hoya lanceolata) 등이 있다. 소형인 랑케올라타 벨라호야는 줄기가 길어 행잉 바스켓에 심는다.",
-    "water_description": "봄~가을은 토양 표면이 말랐을 때 충분히 물을 주고 겨울에 는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 공중습도 가 너무 건조하면 깍지벌레가 발생하므로 잎에 분무한다.",
-    "managing_point": "과습에 유의한다. 다른 식물의 생장을 방해하는 가지를 제거 한다. 꽃봉오리가 생기면 가지를 제거하거나 분갈이 등을 하 지 않는다. 꽃이 진 후에 줄기를 잘라준다.",
-    "species_family": "박주가리과",
-    "proper_temperature": "18~22℃ (최저 13℃)",
+    "name": "아라우카리아 헤테로필라(아라우카리아)",
+    "scientific_name": "Araucaria heterophylla",
+    "english_name": "House pine",
+    "plant_feature": "아라우카리아 헤테로필라는 송곳모양의 부드러운 바늘잎이 달린 가지가 수평으로 자라는 우아한 형태의 상록침엽수이 다. 15종 이상의 품종이 있으나 실내식물로 도입된 종은 아 라우카리아 헤테로필라 하나뿐이다. 한 번의 생육기를 거치 는 동안 새로 나오는 가지는 한 층으로 생장이 느린 편이며 새로 자란 층의 잎은 밝은 녹색이나 기간이 지나면 점점 짙 어진다. 반음지~반양지에서 잘 자라고 직사광선을 받으면 잎이 누렇게 탄다. 자생지에서는 키가 61m까지도 자라지만, 실내에서 기를 경우 최고 높이가 3m 정도이다. 일반 화분재배, 수경재배, 저면관수 모두 가능하다.",
+    "water_description": "왕성하게 생육하는 봄~여름에는 토양이 촉촉하도록 물을 주 고, 겨울에는 적게 준다. 분무는 자주 해주는 것이 좋다.",
+    "managing_point": "어두운 곳에 오래두면 모양이 흐트러지므로 주의한다.",
+    "species_family": "아라우카리아과",
+    "proper_temperature": "18~22℃ (최저 5℃)",
     "proper_light": [
-      "half_bright"
+      "half_bright",
+      "dark"
     ],
     "proper_humidity": [
       "normal"
     ],
-    "benefit": "자일렌 등 제거, 공기정화",
-    "blight": "응애, 깍지벌레",
+    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
+    "blight": "진딧물, 깍지벌레",
     "managing_difficulty": "easy",
-    "poison": "흰색 수액에 독성 함유",
-    "tip": "햇빛이 잘 드는 창가에 배치하면 다육질의 잎과 윤기나는 호야 꽃을 볼 수 있다. 줄기가 늘어 지는 것이 싫으면 지주대를 세운다. 보통 행잉, 모아심기 등에 많이 활용한다."
+    "poison": "",
+    "tip": "겨울철에 크리스마스 트리로 사용하는 경우가 많은데 장식을 매달 때 가지가 상하지 않도 록 주의한다.",
+    "class_label": 9,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "칼랑코에",
-    "scientific_name": "Kalanchoe blossfeldiana",
-    "english_name": "Flaming Katy",
-    "plant_feature": "칼랑코에는 넓은 잎을 가진 다육식물이로 낮의 길이가 8시 간 이하로 짧아지면 꽃눈이 분화하여 꽃을 피우는 단일성 식 물이다. 빨간색, 노란색, 분홍색, 흰색 등 꽃의 색이 다양하고 아름다우며 관리가 쉬워 실내에서 많이 키운다. 네덜란드에 서 재배품종으로 육성하여 브랜드화한 '칼란디바'의 품종들 도 다양하게 유통된다.",
-    "water_description": "화분의 흙이 마르면 화분 밑으로 물이 흘러나올 때까지 충 분히 준다. 물을 지나치게 주면 뿌리가 썩을 수 있고, 물을 너 무 적게 주면 경우 뿌리마름, 염해 축적 등의 문제가 발생할 수 있으므로 주의한다.",
-    "managing_point": "가지치기를 하지 않으면 식물이 웃자라 주변식물의 생장에 방해될 수 있다. 토양은 통기성이 좋아야하며, 배수가 용이하고, 보수력이 좋아야 한다. 다육식물이므로 과습에 유의한다.",
-    "species_family": "돌나물과",
-    "proper_temperature": "16~26℃ (최저 10℃)",
+    "name": "백량금",
+    "scientific_name": "Ardisia crenata",
+    "english_name": "Coralberry",
+    "plant_feature": "우리나라 제주도를 비롯하여 서남해안 도서 지방 숲속에서 자라는 상록관목 자생식물이다. 높이는 0.3~1m이며, 6~8월 에 흰색 꽃이 피고, 10~12월에 둥근 열매가 붉은색으로 열린 다. 자금우에 비해 곧게 자라고, 잎 가장자리에 물결모양으 로 톱니가 있다. 부식질이 풍부하고 보수력이 좋은 토양이 적합하다.",
+    "water_description": "토양 표면이 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조하면 깍지벌레나 진딧물이 줄기나 잎의 뒷면에 발생할 수 있으므로 물을 자주 분무하여 건조하지 않게 한다. 실내에서 빛이 부족해도 적응하지만 꽃과 열매를 보기 위해 서는 밝은 빛이 필요하다.",
+    "species_family": "자금우과",
+    "proper_temperature": "16~20℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·일산화탄소 제거",
+    "blight": "응애, 깍지벌레, 진딧물, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "백량금은 포름알데히드와 일산화탄소 제거능력이 우수하여 거실에 배치하면 좋다. 어느 광 도에도 잘 자라지만 햇빛을 좋아하는 편이라 창가나 밝은 곳에 두면 열매가 많이 열린다.",
+    "class_label": 10,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "자금우",
+    "scientific_name": "Ardisia japonica",
+    "english_name": "Marlberry",
+    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
+    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
+    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
+    "species_family": "자금우과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다.",
+    "class_label": 11,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "무늬산호수",
+    "scientific_name": "Ardisia japonica 'Hakuokan'",
+    "english_name": "Marlberry",
+    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
+    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
+    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
+    "species_family": "자금우과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다.",
+    "class_label": 12,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "황금산호수",
+    "scientific_name": "Ardisia japonica 'Houkan'",
+    "english_name": "Marlberry",
+    "plant_feature": "자금우는 한국이 원산지로 중국, 일본, 타이완에 분포한다. 꽃은 양성화로 7~8월에 줄기 끝에 잎겨드랑이에서 피며, 10~12월에 탐스런 붉은 열매가 달려서 겨울철 실내정원과 크리스마스 시즌에 포인트로 많이 장식한다. 자금우는 잎에 무늬가 있는 품종들도 함께 분화로 많이 사 용하며, 정원에서 지피식물로 사용할 수 있다. 자금우'하쿠 오칸'(Ardisia japonica 'Hakuokan')은 잎 전체가 녹색이고, 잎 가장자리는 크림색인 무늬종으로 '무늬산호수'로 유통된 다. 자금우'호우칸'은 잎 전체가 연한 녹색에 가장자리는 진 한 녹색인 무늬종으로 시장에서는 '황금산호수'로 불린다.",
+    "water_description": "잎에 자주 분무하고, 토양표면이 말랐을 때 물을 충분히 준다.",
+    "managing_point": "고온건조, 직사광선을 피하고 온도와 습도관리에 유의한다.",
+    "species_family": "자금우과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "음이온 발생, 상대습도 증가, 톨루엔·포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "음이온을 배출하여 전자파를 잡아주고 집중력 향상에 도움을 주기 때문에 서재, 공부방에 놓아 활용한다.",
+    "class_label": 13,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "산호수",
+    "scientific_name": "Ardisia pusilla",
+    "english_name": "Tiny Ardisia",
+    "plant_feature": "제주도에 자생하는 산호수는 키가 20cm를 넘지 않는 덩굴 성으로 추위에 약해서 외부에서 월동이 되지 않는다. 반그늘 진 곳을 좋아하며, 어느 정도 습기유지가 중요하다. 잎에 광 택이 있어 고급스럽지만 독성이 있어 함부로 섭취하면 위험 하니 주의한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 겨울에 는 물주는 횟수를 줄인다",
+    "managing_point": "직사광선을 피하고 잎이 타지 않도록 주의한다. 가지치기를 하여 다른 식물을 감싸는 가지를 제거한다. 가지치기를 하지 않으면 안쪽 가지가 무르거나 상할 수 있다.",
+    "species_family": "자금우과",
+    "proper_temperature": "10~26℃ (최저 0℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "일산화탄소제거, 음이온 발생, 상대습도 증가, 미세먼지 제거",
+    "blight": "응애, 깍지벌레, 온실가루이",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "산호수를 공부방에 두면 음이온과 습도의 발생량이 우수하여 집중력 향상과 습도 조절에 도움을 준다.",
+    "class_label": 14,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "파초일엽",
+    "scientific_name": "Asplenium antiquum",
+    "english_name": "Bird's-nest fern",
+    "plant_feature": "세계적으로 각광받고 있는 실내식물 중 하나로 시원하게 뻗은 잎과 물결치는 듯한 잎의 가장자리가 매력적이다. 실내에서 화분에 심거나, 나무에 착생시켜 관상하기도 한다. 보통 시중에는 둥지파초일엽(Asplenium nidus)이 아비스고 사리로 유통된다.",
+    "water_description": "토양 표면이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
+    "managing_point": "수태나 부식토에서 잘 자란다. 충분히 물을 주고 습도 유지가 중요하다. 건조할 때 잎에 분무한다.",
+    "species_family": "꼬리고사리과",
+    "proper_temperature": "21~25℃ (최저 8℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "빛이 부족하고 습도가 높은 주방에서 키우기 좋다.",
+    "class_label": 15,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "아비스고사리",
+    "scientific_name": "Asplenium nidus",
+    "english_name": "Bird's-nest fern",
+    "plant_feature": "세계적으로 각광받고 있는 실내식물 중 하나로 시원하게 뻗은 잎과 물결치는 듯한 잎의 가장자리가 매력적이다. 실내에서 화분에 심거나, 나무에 착생시켜 관상하기도 한다. 보통 시중에는 둥지파초일엽(Asplenium nidus)이 아비스고 사리로 유통된다.",
+    "water_description": "토양 표면이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
+    "managing_point": "수태나 부식토에서 잘 자란다. 충분히 물을 주고 습도 유지가 중요하다. 건조할 때 잎에 분무한다.",
+    "species_family": "꼬리고사리과",
+    "proper_temperature": "21~25℃ (최저 8℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "빛이 부족하고 습도가 높은 주방에서 키우기 좋다.",
+    "class_label": 16,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "꽃베고니아",
+    "scientific_name": "Begonia semperflorens",
+    "english_name": "Wax Begonia",
+    "plant_feature": "'언제나 꽃이 피는 베고니아'라는 의미의 Begonia semperflorens는 '사철베고니아'라는 이 름으로도 불린다. 꽃 색상은 흰색, 분홍색, 노란색, 주황색 등 다양하고 생육상태가 좋으면 일 년 내내 꽃을 볼 수 있다. 꽃이 피는 식물로 가능한 햇빛을 많이 보는 것이 좋다. 배수가 잘되고 부식질이 많이 포함된 배합토를 사용한다.",
+    "water_description": "봄~여름에는 토양을 촉촉하게 유지하고, 가을에는 토양 표면이 말랐을 때 충분히 물을 주며, 겨울에는 화분흙이 대부분 말랐을 때는 충분히 물을 준다. 일반적으로 다육성이라 물을 많이 주지 않아도 좋다.",
+    "managing_point": "시든 잎과 꽃잎은 자주 따 주며 관리한다. 잎의 색이 희미해지면 가능한 햇빛이 덜 드는 곳 으로 옮겨주고, 잎 끝이 갈색으로 변하면 공기가 너무 건조하다는 것이다. 생장속도가 빨 라 식물이 지나치게 무성해지면 통풍이 되지 않아 흰가루병이 발병할 수 있으니 주의한다.",
+    "species_family": "베고니아과",
+    "proper_temperature": "16~24℃ (최저 13℃)",
     "proper_light": [
       "bright",
       "half_bright"
     ],
     "proper_humidity": [
-      "low"
+      "normal"
     ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레, 노균병, 잿빛곰팡이병, 역병, 입고병",
-    "managing_difficulty": "easy",
+    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 증산작용",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
     "poison": "",
-    "tip": "강한 직사광선을 피할 수 있는 밝은 창가에 두면 좋다. 칼랑코에는 겨울철에 해가 짧아 자연적으로 14시간정도 의 단일처리가 되어 10~11주 후에 꽃눈이 형성되고 꽃이 피게 된다. 실내에서 키워 자연적인 단일처리가 되지 못 했을 때는 저녁 6시~다음날 오전 9시경까지 14시간 이상, 10~11주 정도를 검은 봉지나 박스 등을 이용하여 빛을 완 전 차단해 주면 단일효과를 볼 수 있다."
+    "tip": "녹색 잎을 가진 관엽식물들과 함께 키우면 꽃베고니아의 화려한 색을 디자인으로 활용할 수 있다.",
+    "class_label": 17,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "기붐새깃아재비(실버레이디)",
+    "scientific_name": "Blechnum gibbum",
+    "english_name": "Miniature Tree Fern",
+    "plant_feature": "열대지방에서 서식하는 식물답게 고온 다습한 관경에서는 잘 자라지만, 직사광선과 추위에는 약하다.",
+    "water_description": "토양표면이 마르면 충분히 물을 주고, 분무 등을 통해 공중 습도를 높게 유지한다.",
+    "managing_point": "습도 유지가 중요하므로 건조할 때 잎에 분무해야 한다. 실내에서 키울 경우 20℃ 정도를 유지해야 하고 환기가 잘 되는 곳에 배치한다.",
+    "species_family": "새깃아재비과",
+    "proper_temperature": "10~30℃ (최저 10℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "미세먼지 제거, 공기정화, 포름알데히드 제거",
+    "blight": "깍지벌레, 가루깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "",
+    "class_label": 18,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "칼라테아 인시그니스",
@@ -1445,7 +486,10 @@
     "blight": "진딧물, 응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": ""
+    "tip": "",
+    "class_label": 19,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "칼라테아 마코이아나",
@@ -1468,39 +512,20 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "hard",
     "poison": "",
-    "tip": "칼라테아 마코이아나는 온도, 습도, 공중습도 등 조금이라도 변화가 있으면 잎이 말리거나 갈색으로 변하기 때문에 기르기가 까다로운 식물이다."
+    "tip": "칼라테아 마코이아나는 온도, 습도, 공중습도 등 조금이라도 변화가 있으면 잎이 말리거나 갈색으로 변하기 때문에 기르기가 까다로운 식물이다.",
+    "class_label": 20,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "마란타",
-    "scientific_name": "Maranta leuconeura var. kerchoveana",
-    "english_name": "Ten commandments, Prayer plant",
-    "plant_feature": "마란타는 연한 녹색 잎에 진한 녹색 반점이 잎맥을 중심으 로 2열로 있는 독특한 무늬가 인상적인 식물이다. 마란타속 에는 여러 가지 변종이 있지만 키우기가 가장 쉬운 품종이 다. 다 자라도 20~30cm 정도의 높이로 키가 작고 가지가 많 아 자라면서 방사상으로 퍼진다. 영어이름이 Prayer plant인데 식물 체내 수분을 유지하기 위 해 해질 무렵 잎을 위로 모으는 모양이 마치 기도할 때 손을 모으는 모습과 비슷해 유래했다. 현재 키우고 있는 마란타가 낮에는 잎을 펼치고 밤에는 잎을 위로 세운다면 환경에 잘 적응하고 있는 것이라 할 수 있다.",
-    "water_description": "토양을 촉촉하게 유지하고, 분무를 자주하는 것이 좋다. 겨울에는 물주는 횟수를 줄이고, 물을 받아 두었다 실내온도 와 비슷한 온도로 물을 주어야 한다.",
-    "managing_point": "난방 등으로 공기가 건조하면 해충이 생기기 쉽다. 너무 서늘한 곳에 두면 잎이 갈변할 수 있다.",
-    "species_family": "마란타과",
-    "proper_temperature": "21~27℃ (최저 13℃)",
-    "proper_light": [
-      "bright",
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": ""
-  },
-  {
-    "name": "몬스테라",
-    "scientific_name": "Monstera deliciosa",
-    "english_name": "Swiss cheese plant",
-    "plant_feature": "거칠고 무성해 보이는 외형, 공중으로 쭉 뻗은 뿌리에 찢어진 큰 잎(어린 잎에는 구멍이 없 다)을 지닌 몬스테라는 인기가 많은 실내식물로 기르기와 관리가 쉽다. 원산지가 멕시코와 중앙아메리카인 상록성 착생식물로 몬스테라속(屬)에는 30여 종이 있다. 잎의 모양은 다소 깃처럼 갈라지고, 군데군데 구멍이 파여 있어 폭우와 강한 바람에 견딜 수 있는 구조로 발달하였으며, 밑에 달린 잎에 광선이 통할 수 있도록 되어 있다. 원줄기는 굵고 초록색이며 마디에서 기근(氣根)이 내리고 다른 물체에 붙어 올라간다. 천남성과의 식물로 육수화서의 꽃이 피고, 성숙한 열매는 옥수수 이삭같이 생겼으며 바나나와 같은 향기가 있고 식용이 가능하여 몇몇 나라에서는 별미로 통한다. 번식은 포기나누기 또는 꺾꽂이로 한다.",
-    "water_description": "흙을 촉촉하게 유지한다.",
-    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다.",
-    "species_family": "천남성과",
-    "proper_temperature": "16~25℃ (최저 13℃)",
+    "name": "줄무늬접란(나비란)",
+    "scientific_name": "Chlorophytum comosum 'Vittatum'",
+    "english_name": "Spider Plant",
+    "plant_feature": "실내 적응력이 매우 뛰어나 햇빛이나 그늘, 건조 등 대부분 의 환경에서 잘 견디는 편으로 기르기 쉽다. 단, 잎의 크림색 무늬를 유지하려면 밝은 빛이 필요하다. 녹색 바탕에 크림색 줄무늬가 있는 15~30cm 정도의 긴 잎들 이 아치 형태로 늘어진다. 가늘고 길게 자라는 줄기 끝에서 작은 하얀 꽃이 피고, 지고 난 후에는 공중에 떠 있는 형태로 어린 식물이 나온다. 이 어린 식물은 그냥 두어도 되고, 모체 로부터 분리하여 번식시킬 수도 있다. 토양과 수경재배 모두 잘 자란다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조할 때 잎에 분무하는 등 습도유지가 중요하다. 너무 건 조하면 해충이 발생할 수 있다.",
+    "species_family": "백합과",
+    "proper_temperature": "13~24℃ (최저 10℃)",
     "proper_light": [
       "half_bright",
       "dark"
@@ -1508,162 +533,115 @@
     "proper_humidity": [
       "normal"
     ],
-    "benefit": "공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "easy",
-    "poison": "식물 모든 부분",
-    "tip": "덩굴성이라 위로 자라게 하려면 지지대가 필요하다."
-  },
-  {
-    "name": "남천",
-    "scientific_name": "Nandina domestica",
-    "english_name": "Heavenly bamboo, Sacred Bamboo",
-    "plant_feature": "환경 적응력이 뛰어나고 생명력이 강한 남천은 대나무같은 곧은 줄기에 작은 초록색 잎들이 가득 달린 생기있는 모습으 로 사랑받는 식물이다. 남부지방에서는 월동이 가능한 상록 관목 식물인 남천은 실내·외 조경수로 사계절의 모습을 생 생하게 담아낸다. 봄에는 마른 가지에 새잎이 돋기 시작하여 점점 무성해지고, 초여름에 작은 흰색 꽃이 피고 꽃이 진 뒤 에는 붉은 열매를 맺는다. 가을에는 단풍과 붉은 열매를 보 여주는 등 꽃·잎·열매·단풍이 모두 아름답다. 화분의 흙은 배수가 잘되는 비옥한 사질양토를 사용한다. 종자번식, 삽목, 접목, 분주 등 다양한 방법으로 번식한다.",
-    "water_description": "봄~가을에는 토양표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "직사광선을 피하고 햇빛이 잘 드는 곳에 둔다.",
-    "species_family": "매자나무과",
-    "proper_temperature": "16~25℃ (최저 5℃)",
-    "proper_light": [
-      "bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "포름알데히드 제거",
-    "blight": "응애, 깍지벌레",
+    "benefit": "공기정화, 포름알데히드 · 일산화탄소 제거, 휘발성 화학물질 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 진딧물, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "실내·외, 옥상 등 정원수로 많이 사용되는 남천은 실내에서 기를 때에는 거실 창가나 베란다, 빛을 많이 받을 수 있는 곳에서 키우는 것이 좋다."
+    "tip": "덩굴성으로 베란다에서 벽과 천장을 타고 올라가도록 키울 수 있다. 걸이화분으로 장식하면 좋고, 위치를 주기적으로 회전시켜야 형태가 예쁘게 자란다. 포름알데히드와 일산화탄소 제거효과가 좋아 거실이나 주방에 배치하면 좋다.",
+    "class_label": 21,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "심비디움",
-    "scientific_name": "Cymbidium spp.",
-    "english_name": "Cymbidium",
-    "plant_feature": "심비디움은 열대종과 온대종이 있고 흔히 꽃이 크고 화려한 것은 열대종이다. 최근에 온대성 심비디움과의 교잡에 의해 신품종이 많이 육성되어 향기가 나거나 포기가 작아진 종도 생겼다. 저온에 강해서 2~3℃에도 견디지만 꽃을 피우기 위 해서는 최저 12℃ 이상이어야 한다. 보통 우리나라에서는 겨 울에 꽃이 피고, 꽃 피는 기간도 긴 편이다. 번식은 포기나누기, 조직배양으로 한다.",
-    "water_description": "봄, 겨울에는 화분흙이 대부분 말랐을 때 물을 충분하게 주 고, 여름~가을에는 토양표면이 말랐을 때 충분히 물을 준다.",
-    "managing_point": "여름에 50~70% 햇빛을 가려주고, 공중습도를 60~70% 정 도 유지한다. 밤 온도가 15℃ 이상 너무 높아지면 꽃이 잘 피 지 않거나 꽃 색이 불량해진다.",
-    "species_family": "난초과",
-    "proper_temperature": "16~24℃ (최저 12℃)",
+    "name": "국화",
+    "scientific_name": "Chrysanthemum morifolium",
+    "english_name": "Pot Chrysanthemum",
+    "plant_feature": "대표적 단일식물로 다양한 색상의 꽃이 피는 국화는 개화시기를 조정할 수 있어 가을뿐 아니라 일 년 내내 볼 수 있다. 서늘하고 빛이 충분한 장소에 두면 6~8주간 꽃을 볼 수 있고 꽃이 피는 기간에는 실내에 두고 즐기면 좋다. 공기오염물질 을 제거하는 능력과 실내습도 조절능력도 좋다.",
+    "water_description": "생육기 동안에는 뿌리가 약간 축축할 정도로 충분히 물을 준다.",
+    "managing_point": "너무 덥거나 건조하면 충해가 발생할 수 있다.",
+    "species_family": "국화과",
+    "proper_temperature": "16~18℃ (최저 ℃)",
     "proper_light": [
       "bright",
       "half_bright"
     ],
     "proper_humidity": [
-      "high"
+      "normal"
     ],
-    "benefit": "공기정화 효과",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": "햇빛이 잘 들고 통풍이 잘되는 베란다에 두면 좋다. 베란다가 겨울철에 12℃ 이하가 지속되 면 꽃이 피기 어려우므로 주의한다."
-  },
-  {
-    "name": "덴드로비움",
-    "scientific_name": "Dendrobium spp.",
-    "english_name": "Dendrobium",
-    "plant_feature": "덴드로비움은 보통 고개를 숙이고 있는 줄기 위에서 일렬로 핀다. 개화기간은 일주일에서 몇 개월 동안으로 품종에 따 라 다르다. 워낙 광범위하게 분포되어 식물의 종수도 많고 특성이 다양하다. 개화습성도 품종마다 다르기 때문에 구입 할 때 고려해야 한다. 속명 Dendrobium은 나무를 뜻하는 dendron과 생활을 뜻 하는 bios에서 온 것으로 “life in a tree (나무에서의 삶)” 이 라는 뜻이다. 이름에서 알 수 있듯이 대부분의 덴드로비움 속의 식물은 다른 나무나 바위 면에 붙어 자라는 착생식물 이다. 건조하고 낮은 온도에서 잘 견디며 대개 직립성이다.",
-    "water_description": "표면이 마르면 물을 준다. 건조하지 않도록 자주 분무해주 고, 너무 습하지 않도록 환기에도 주의한다. 겨울에는 뿌리 가 시들지 않을 정도만 물을 준다.",
-    "managing_point": "직사광선 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생하고, 물을 너무 많이 주면 곰팡이병에 걸린다.",
-    "species_family": "난초과",
-    "proper_temperature": "16~24℃ (최저 5℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal",
-      "high"
-    ],
-    "benefit": "알코올·아세톤· 포름알데히드 등 제거, 공기정화",
-    "blight": "응애, 깍지벌레",
-    "managing_difficulty": "hard",
-    "poison": "",
-    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다."
-  },
-  {
-    "name": "온시디움",
-    "scientific_name": "Oncidium spp.",
-    "english_name": "Butterfly Orchid",
-    "plant_feature": "멕시코, 브라질이 원산지인 온시디움은 열대지방에서 자라 는 착생란으로 다른 식물의 표면이나 바위 등에 붙어서 생 장한다. 많은 품종 있지만 보통 재배되는 것은 작은 노란색 꽃이 스파켈라툼(Oncidium sphacelatum), 작은 노란색 꽃 이 피며 작은 분으로 가꿀 수 있는 플렉수오숨(Oncidium plexuosum) 등이 있다. 봄에 포기나누기로 번식한다.",
-    "water_description": "표면이 마르면 충분히 물을 주고 가을부터는 약간 건조하 게 관리한다.",
-    "managing_point": "꽃이 진 후에는 해가 잘 들고 통풍이 되는 장소, 베란다에 서 관리한다. 밤에는 시원하고 수분이 충분해야 잘 자란다. 직사광선은 피하고, 통풍이 잘 되도록 관리하며, 추위에 약하므로 최저 10℃ 이상 유지해 줘 야 한다. 또한 겨울철에는 햇빛이 약해지므로 빛이 부족하지 않게 관리해야 한다.",
-    "species_family": "난초과",
-    "proper_temperature": "21~25℃ (최저 10℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal",
-      "high"
-    ],
-    "benefit": "상대습도 증가",
-    "blight": "응애, 깍지벌레",
+    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 진딧물",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다."
+    "tip": "꽃 색상이 다양해 밝고 화사한 분위기 연출이 가능하여 사무실, 쇼핑몰 등 상업시설에서 사용하면 좋다.",
+    "class_label": 22,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "팔레놉시스(호접란)",
-    "scientific_name": "Phalaenopsis spp.",
-    "english_name": "Moth Orchid",
-    "plant_feature": "호접란으로 알려진 팔레놉시스는 영어이름도 Moth Orchid 로 꽃의 외형이 호랑나비를 닮아 유래하였다. 흰색, 노란색, 분홍색, 혼합색 등 다양한 꽃 색과 혁질의 잎이 넓고 두껍 다. 줄기가 짧은 단축성(短軸性) 식물이고, 모든 잎이 하나의 줄기에서 나온다. 서양난을 처음 키우는 사람도 쉽게 키울 수 있을 만큼 실내환경에 잘 적응하고, 꽃의 개화기가 길다.",
-    "water_description": "봄~가을에는 토양표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 분무를 자주하는 것이 좋다.",
-    "managing_point": "물을 너무 많이 주면 곰팡이에 의해 병이 발병하고, 공기가 너무 건조하면 해충이 발생할 수 있다. 개화기가 끝난 다음에 첫 번째 꽃이 나와 있는 마디 바로 밑부분을 잘라낸다. 주·야간 온도 의 차이가 5℃이상, 수일동안 지속되어야 또다시 꽃이 핀다. 겨울~초여름에 핀 꽃이 피고난 후에 줄기를 2~3마디 남기고 자른다. 밤에 온도차이가 나는 곳에서 일정기간을 지내고 나면 또다시 꽃을 피우게 된다.",
-    "species_family": "난초과",
-    "proper_temperature": "21~25℃ (최저 13℃)",
+    "name": "멕시코담쟁이(엘렌 다니카)",
+    "scientific_name": "Cissus rhombifolia 'Ellen Danica'",
+    "english_name": "Venezuela treebine",
+    "plant_feature": "멕시코담쟁이 '엘렌 다니카'는 덩굴성으로 성장이 아주 빠 르고 우아한 멋을 가지고 있다. 잎 모양이 얼핏 보면 떡갈나 무 잎처럼 보이기도 하고, 포도 잎처럼 보여 영명을 Oakleaf ivy, Grape ivy라 한다. 관리가 쉬운 편이고 잎이 크게 자라 는 편이라 효과적인 공기정화식물이다. 일반화분과 수경재배 모두 잘 자란다.",
+    "water_description": "봄~가을에는 토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
+    "species_family": "포도과",
+    "proper_temperature": "18~24℃ (최저 13℃)",
     "proper_light": [
-      "bright",
-      "half_bright"
+      "half_bright",
+      "dark"
     ],
     "proper_humidity": [
-      "normal"
+      "low"
     ],
-    "benefit": "포름알데히드 제거, 상대습도 증가",
+    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
+    "blight": "응애",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "공간이 충분할 경우 격자모양의 구조물인 트렐리스를 설치하면 보기에도 좋고, 더 효과적인 공기 정화가 가능하다. 수경재배를 하면 물주는 횟수도 줄일 수 있고, 관리하기도 편리하다.",
+    "class_label": 23,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "클루시아 로세아",
+    "scientific_name": "Clusia rosea",
+    "english_name": "Copey",
+    "plant_feature": "클루시아 로세아는 잎의 증산이 활발하고 공기정화 능력도 우수한 식물이다. Autograph tree라는 별칭이 있을 정도로 잎에 글씨를 쓸 수 있을 것 같이 윤기가 나고 매끈하다. 웃자 람 없이 키우려면 하루에 적어도 3~4시간 정도 밝은 곳에 두 는 것이 필요하다. 병충해에 강하고 성장속도가 느린 편이어서 관리가 쉬우나 추위에 약하고 환기를 필요로 한다. 가지를 잘라 물꽂이를 하여 번식한다. 꽃과 열매에 독성이 있어 주의해야 한다.",
+    "water_description": "토양표면이 마르면 충분히 물을 주지만 약간 건조한 편으 로 관리한다.",
+    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다. 1년에 한번 정도 가지치기를 해서 단정한 수형을 유지하면 좋다. 빛이 부족하면 잎에 윤기가 사라지고 성장이 더디어 진다. 배수가 좋은 흙에 식재해야 하고 환기가 잘 되지 않으면 해충이 생기기 쉬우니 주의한다. 내한성이 약하므로 겨울철 추위에 주의한다.",
+    "species_family": "물레나물과",
+    "proper_temperature": "16~29℃ (최저 10℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal",
+      "low"
+    ],
+    "benefit": "공기정화",
     "blight": "깍지벌레",
     "managing_difficulty": "easy",
-    "poison": "",
-    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지 로 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침 실에 두면 좋다. 낮에 햇빛을 많이 받을수록 이산화탄 소 고정능력이 상승한다. 팔레놉시스는 난초과 식물 중에서 밤에 이산화탄소를 흡수하는 CAM 성질을 가 장 크게 갖고 있는 식물이다."
+    "poison": "잎, 열매",
+    "tip": "햇빛에 강해 거실 창가에 두어도 잘 자란다.",
+    "class_label": 24,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "나도 풍란",
-    "scientific_name": "Sedirea japonica",
-    "english_name": "Nadopungran",
-    "plant_feature": "대엽 풍란인 나도풍란은 우리나라 제주도와 남해안을 중심 으로 도서지방에 자생하는데 습도가 높고 통풍이 잘 되는 곳 에서 잘 자란다. 흰 꽃은 4~6월에 피며, 개화기간이 15~20일 정도로 길며, 꽃의 향기가 진하고 좋다. 착생난으로 나무의 줄기가 암벽에 붙어 살아가고 습도가 높은 곳에 뿌리가 노 출되어야 잘 자란다. 일본에서 많은 개량품종이 개발되었고, 일부가 우리나라에도 들어왔다.",
-    "water_description": "3~6월까지는 물을 충분히 주고 10월부터는 물을 줄여 꽃눈 이 잘 형성되도록 한다. 여름철에는 습도가 80~90%정도가 적당하고, 겨울철에는 50%가 적당하다.",
-    "managing_point": "공중습도가 건조할 때는 자주 분무해 주고, 습할 때는 환기 를 자주 해준다.",
-    "species_family": "난초과",
-    "proper_temperature": "21~25℃ (최저 7℃)",
+    "name": "크로톤",
+    "scientific_name": "Codiaeum variegatum",
+    "english_name": "Croton Garden",
+    "plant_feature": "잎의 독특한 색감과 무늬가 다른 녹색의 관엽식물 사이에서 포인트가 된다. 크로톤은 강한 직사광선을 피해야 하고, 보 통 양지에서 반음지가 적당하며 빛이 부족하면 선명한 색감 도 옅어진다. 새로 나온 잎은 녹색이나 시간이 지남에 따라 색상이 변한다. 수액에 독성이 있으므로 주의한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조할 때 잎에 분무한다. 가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다.",
+    "species_family": "대극과",
+    "proper_temperature": "21~25℃ (최저 15℃)",
     "proper_light": [
-      "half_bright"
+      "bright",
+      "dark"
     ],
     "proper_humidity": [
       "high"
     ],
-    "benefit": "포름알데히드 제거, 상대습도 증가",
-    "blight": "응애, 깍지벌레",
+    "benefit": "공기정화",
+    "blight": "응애, 개각충, 깍지벌레",
     "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "나도풍란은 착생란이므로 화분에 심어도 좋지만 수태, 돌, 고목 등에 부착하여 뿌리가 노출 되어도 멋있다. 다른 난류에 비해 크기, 잎 면적이 작은 편이지만 포름알데히드 제거능력이 뛰어나고 상대습도 증가량도 우수하다. 침실 또는 거실에 두면 새집증후군을 없애는데 도움이 된다."
-  },
-  {
-    "name": "파키라",
-    "scientific_name": "Pachira aquatica",
-    "english_name": "Provision tree, Money tree",
-    "plant_feature": "두꺼운 줄기에서 뻗은 가느다란 가지가 특징인 파키라는 줄 기는 벽오동처럼 생겼으나 밑 부분은 갈색의 곤봉처럼 생 겼다. 꽃은 크고 아름다워 감상하기에 좋고, 열매는 땅콩 맛이 나 식용할 수 있다. 외국에서는 Money tree라고 부르며, 잎과 꽃은 채소처럼 식용한다. 씨뿌리기와 꺾꽂이로 번식하는데, 줄기를 자르면 여러 개의 새순이 나오기 때문에 1∼2개의 줄기에 여러 개의 작은 줄기 와 잎을 가꿔 상품가치를 높일 수 있다.",
-    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
-    "managing_point": "과습에 주의한다. 반음지를 좋아하고 배수가 잘 되는 땅에서 잘 자란다. 건조하지 않도록 주의해야 한다.",
-    "species_family": "물밤나무과",
-    "proper_temperature": "20~30℃ (최저 13℃)",
-    "proper_light": [
-      "half_bright"
-    ],
-    "proper_humidity": [
-      "normal"
-    ],
-    "benefit": "미세먼지 제거, 포름알데히드 제거, 이산화탄소 제거",
-    "blight": "진딧물, 깍지벌레",
-    "managing_difficulty": "normal",
-    "poison": "",
-    "tip": "이산화탄소를 없애는 능력이 뛰어나 공기정화 능력이 좋아 아파트의 베란다 또는 거실에 서 키우면 좋다."
+    "poison": "식물 모든 부분",
+    "tip": "",
+    "class_label": 25,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "테이블야자",
@@ -1686,7 +664,281 @@
     "blight": "깍지벌레, 가루깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "크기가 작지만 섬세한 외모와 나무형상을 가지고 있어 테라리움, 디시가든 등 식물 모아심 기에 많이 사용한다."
+    "tip": "크기가 작지만 섬세한 외모와 나무형상을 가지고 있어 테라리움, 디시가든 등 식물 모아심 기에 많이 사용한다.",
+    "class_label": 26,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "시클라멘",
+    "scientific_name": "Cyclamen persicum",
+    "english_name": "CyclamenFlorist's",
+    "plant_feature": "시클라멘은 괴경인 구근식물로 늦가을부터 초봄까지 우아 하고 화사한 꽃을 피우는 식물이다. 한 줄기 끝에 하나의 꽃 이 피며, 색상도 보라색, 분홍색, 흰색, 빨간색 등으로 다양하 다. 은색과 진한 녹색으로 무늬가 그려진 하트모양의 잎과 그 무성한 잎들 사이에서 꽃대가 솟아올라 피는 꽃이 독특한 화형을 지니고 있고 매우 화려하고 아름답다. 약 15여 종이 있는데 그 중에서 Cyclamen persicum이 실내에서 가장 많 이 이용된다. 원래 산악지대의 산림지역에서 서식하였기 때 문에 시원하고 공기순환이 잘 되는 곳을 좋아한다.",
+    "water_description": "가을~봄에는 토양을 촉촉하게 관리하고 휴면기인 여름에는 약간 습한 상태로 유지한다. 물을 줄 때 잎과 구근에 닿지 않 도록 하고, 아침에 저면관수를 하는 것이 좋다.",
+    "managing_point": "생육적온이 20℃ 내외로 여름철 고온기에는 서늘한 곳에 둔다.",
+    "species_family": "앵초과",
+    "proper_temperature": "16~22℃ (최저 7℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
+    "blight": "진딧물, 응애, 온실가루이",
+    "managing_difficulty": "hard",
+    "poison": "",
+    "tip": "시클라멘을 구입할 때 꽃봉오리에 색이 약간 보이 는 것을 고른다. 꽃이 필 때는 난방기 등이 직접 닿지 않는 곳에 두 고, 꽃이 진 뒤에는 서늘하게 보관한다.",
+    "class_label": 27,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "심비디움",
+    "scientific_name": "Cymbidium spp.",
+    "english_name": "Cymbidium",
+    "plant_feature": "심비디움은 열대종과 온대종이 있고 흔히 꽃이 크고 화려한 것은 열대종이다. 최근에 온대성 심비디움과의 교잡에 의해 신품종이 많이 육성되어 향기가 나거나 포기가 작아진 종도 생겼다. 저온에 강해서 2~3℃에도 견디지만 꽃을 피우기 위 해서는 최저 12℃ 이상이어야 한다. 보통 우리나라에서는 겨 울에 꽃이 피고, 꽃 피는 기간도 긴 편이다. 번식은 포기나누기, 조직배양으로 한다.",
+    "water_description": "봄, 겨울에는 화분흙이 대부분 말랐을 때 물을 충분하게 주 고, 여름~가을에는 토양표면이 말랐을 때 충분히 물을 준다.",
+    "managing_point": "여름에 50~70% 햇빛을 가려주고, 공중습도를 60~70% 정 도 유지한다. 밤 온도가 15℃ 이상 너무 높아지면 꽃이 잘 피 지 않거나 꽃 색이 불량해진다.",
+    "species_family": "난초과",
+    "proper_temperature": "16~24℃ (최저 12℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "공기정화 효과",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "",
+    "tip": "햇빛이 잘 들고 통풍이 잘되는 베란다에 두면 좋다. 베란다가 겨울철에 12℃ 이하가 지속되 면 꽃이 피기 어려우므로 주의한다.",
+    "class_label": 28,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "상록넉줄고사리'후마타'",
+    "scientific_name": "Davallia griffithiana (Humata tyermannii)",
+    "english_name": "Squirrel's-foot fern",
+    "plant_feature": "넉줄고사리는 우리나라에 자생하는 식물로 바위나 나무에 붙어 자라는 다년생 양치식물로 높이가 20cm 정도이다. 번 식이 빠르게 잘되어 관리를 잘하면 연중 초록의 싱그러움을 볼 수 있다. 뿌리줄기의 모양이 독특하고 매력적이다. 반음 지에서 잘 자라지만 적당한 빛이 있어야 튼튼하게 자라고 오 랫동안 한 방향으로만 햇빛을 받으면 잎이 한쪽으로 치우치 므로 주기적으로 돌려가며 키운다. 시중에서는 후마타고사리가 유통되는데 흙 위로 올라온 발 처럼 생긴 근경의 모양이 독특하고 매력적이다.",
+    "water_description": "고사리과 식물들은 흙이 습한 것보다 공중습도가 높은 환경 을 좋아한다. 봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지 하고, 겨울에는 토양 표면이 말랐을 때 충분히 물을 준다. 건 조하지 않도록 자주 분무한다.",
+    "managing_point": "너무 건조하면 해충이 발생하므로 자주 분무하여 공중습도를 건조하지 않게 유지한다. 반음 지에서 잘 자라며 흙 위에 올라 온 근경만 살아있으면 언제든지 새순을 낼 수 있다.",
+    "species_family": "넉줄고사리과",
+    "proper_temperature": "20-25℃ (최저 3℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드·톨루엔 등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
+    "blight": "응애, 온실가루이",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "양치식물은 포름알데히드 제거능력이 우수한 편이고, 넉줄고사리는 양치식물 중에서도 포 름알데히드 제거능력이 가장 탁월하다. 음이온이 발생하고 실내습도를 조절할 수 있어 거 실에 두면 좋다. 거실에 배치할 때 큰 화분의 지피식물로 활용하면 공기정화능력을 향상 시 킬 수 있다.",
+    "class_label": 29,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "넉줄고사리",
+    "scientific_name": "Davallia mariesii",
+    "english_name": "Squirrel's-foot fern",
+    "plant_feature": "넉줄고사리는 우리나라에 자생하는 식물로 바위나 나무에 붙어 자라는 다년생 양치식물로 높이가 20cm 정도이다. 번 식이 빠르게 잘되어 관리를 잘하면 연중 초록의 싱그러움을 볼 수 있다. 뿌리줄기의 모양이 독특하고 매력적이다. 반음 지에서 잘 자라지만 적당한 빛이 있어야 튼튼하게 자라고 오 랫동안 한 방향으로만 햇빛을 받으면 잎이 한쪽으로 치우치 므로 주기적으로 돌려가며 키운다. 시중에서는 후마타고사리가 유통되는데 흙 위로 올라온 발 처럼 생긴 근경의 모양이 독특하고 매력적이다.",
+    "water_description": "고사리과 식물들은 흙이 습한 것보다 공중습도가 높은 환경 을 좋아한다. 봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지 하고, 겨울에는 토양 표면이 말랐을 때 충분히 물을 준다. 건 조하지 않도록 자주 분무한다.",
+    "managing_point": "너무 건조하면 해충이 발생하므로 자주 분무하여 공중습도를 건조하지 않게 유지한다. 반음 지에서 잘 자라며 흙 위에 올라 온 근경만 살아있으면 언제든지 새순을 낼 수 있다.",
+    "species_family": "넉줄고사리과",
+    "proper_temperature": "20-25℃ (최저 3℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드·톨루엔 등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
+    "blight": "응애, 온실가루이",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "양치식물은 포름알데히드 제거능력이 우수한 편이고, 넉줄고사리는 양치식물 중에서도 포 름알데히드 제거능력이 가장 탁월하다. 음이온이 발생하고 실내습도를 조절할 수 있어 거 실에 두면 좋다. 거실에 배치할 때 큰 화분의 지피식물로 활용하면 공기정화능력을 향상 시 킬 수 있다.",
+    "class_label": 30,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "덴드로비움",
+    "scientific_name": "Dendrobium spp.",
+    "english_name": "Dendrobium",
+    "plant_feature": "덴드로비움은 보통 고개를 숙이고 있는 줄기 위에서 일렬로 핀다. 개화기간은 일주일에서 몇 개월 동안으로 품종에 따 라 다르다. 워낙 광범위하게 분포되어 식물의 종수도 많고 특성이 다양하다. 개화습성도 품종마다 다르기 때문에 구입 할 때 고려해야 한다. 속명 Dendrobium은 나무를 뜻하는 dendron과 생활을 뜻 하는 bios에서 온 것으로 “life in a tree (나무에서의 삶)” 이 라는 뜻이다. 이름에서 알 수 있듯이 대부분의 덴드로비움 속의 식물은 다른 나무나 바위 면에 붙어 자라는 착생식물 이다. 건조하고 낮은 온도에서 잘 견디며 대개 직립성이다.",
+    "water_description": "표면이 마르면 물을 준다. 건조하지 않도록 자주 분무해주 고, 너무 습하지 않도록 환기에도 주의한다. 겨울에는 뿌리 가 시들지 않을 정도만 물을 준다.",
+    "managing_point": "직사광선 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생하고, 물을 너무 많이 주면 곰팡이병에 걸린다.",
+    "species_family": "난초과",
+    "proper_temperature": "16~24℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal",
+      "high"
+    ],
+    "benefit": "알코올·아세톤· 포름알데히드 등 제거, 공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "",
+    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다.",
+    "class_label": 31,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "디펜바키아 콤팍타",
+    "scientific_name": "Dieffenbachia 'Compacta'",
+    "english_name": "Dumb Cane",
+    "plant_feature": "디펜바키아 '콤팍타'(Dieffenbachia 'Compacta')는 최대 60cm까지 자라는 왜성종으로 녹색과 흰색 또는 녹색과 크 림색의 무늬가 인상적이다. 생장이 너무 빠르고 빛이 비추는 쪽으로 휘는 굴광성을 가지고 있다. 디펜바키아의 모든 종 들의 영명은 'Dumb Cane (말문이 막히는 줄기)'라 불린다. 이는 수액성분인 옥살산칼슘에서 유래되었는데, 디펜바키 아속 식물들은 전 부위에 독성물질을 함유하고 있어 식물의 일부를 떼어내어 입에 넣고 씹으면 일시적으로 혀와 성대가 마비되는 현상이 나타난다. 수형을 위해 전정을 해주면 금방 새로운 잎이 나온다. 전정 시 수액이 나오므로 주의해야 한다. 잎의 표면적이 넓기 때 문에 실내공기를 정화하고 증산율이 좋아 공기 중에 수분을 잘 공급한다. 수경재배에서도 잘 자란다.",
+    "water_description": "토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다. 분무를 자주 해주면 좋다.",
+    "managing_point": "일반적으로 환경에 잘 적응하는 편이지만, 너무 어두운 곳에서 키우면 잎 색이 옅어진다. 건 조하지 않게 분무를 자주 해주고 외풍에 약하므로 찬바람을 차단해야 한다.",
+    "species_family": "천남성과",
+    "proper_temperature": "16~27℃ (최저 9℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드· 일산화탄소 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레, 진딧물, 총채벌레",
+    "managing_difficulty": "normal",
+    "poison": "식물 모든 부분",
+    "tip": "디펜바키아 품종은 포름알데히드와 일산화탄소 제거 효과가 좋고, 상대습도 증가효과가 좋 아 거실에 배치하면 좋은 식물이다.",
+    "class_label": 32,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "디펜바키아 마리안느",
+    "scientific_name": "Dieffenbachia 'Marrianne'",
+    "english_name": "Dumb Cane, Dieffenbachia maculata",
+    "plant_feature": "디펜바키아 '마리안느'는 잎이 크고 꽃처럼 화사하여 실내식 물로 많이 활용하는 식물로 잎의 표면적이 넓기 때문에 공기 를 정화하고 증산율이 좋아 공기 중 수분을 잘 공급한다. 생 장이 빠르고 빛이 비추는 쪽으로 휘는 굴광성을 가지고 있으 며, 전정을 해주면 금방 새로운 잎이 나온다. 디펜바키아속 식물들은 전 부위에 독성물질을 함유하고 있 어 전정 시 수액이 피부에 닿지 않도록 주의해야 한다. 수경 재배에서도 잘 자란다.",
+    "water_description": "토양을 촉촉하게 유지하고, 겨울에는 물주는 횟수를 줄인다. 분무를 자주 해주면 좋다.",
+    "managing_point": "일반적으로 환경에 잘 적응하는 편이지만, 너무 어두운 곳에 서 키우면 잎 색이 옅어진다. 건조하지 않게 분무를 자주 해 주고 외풍에 약하므로 찬바람을 차단해야 한다.",
+    "species_family": "천남성과",
+    "proper_temperature": "16~29℃ (최저 8℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레, 진딧물, 총채벌레",
+    "managing_difficulty": "normal",
+    "poison": "식물 모든 부분",
+    "tip": "디펜바키아는 포름알데히드 제거 효과가 가장 우수한 식물이다.",
+    "class_label": 33,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "행운목 마상게아나",
+    "scientific_name": "Dracaena fragrans 'Massangeana'",
+    "english_name": "Corn plant",
+    "plant_feature": "행운목으로 알려진 행운목 '마상게아나'는 햇빛을 좋아하지 만 어두운 곳에서도 잘 자라고 식물의 잎 모양이 옥수수 잎 과 닮아 영어 이름은 'Corn plant'다. 성장하면서 줄기는 목 질화되어 나무처럼 딱딱해지고, 잎은 줄기 끝부분에서 자란 다. 실내에서 3m까지 자랄 수 있는데, 줄기 윗부분을 20㎝ 정도 잘라주면, 노화된 나무의 경우 원기 회복에 도움이 된 다. 일반적인 배합토에서 잘 자라고 수경재배도 잘 자란다. 독성이 있어 애완동물에게 해로울 수 있으니 주의한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 추위에 약하므로 겨울철 베란다에서 실내로 들여보낸다. 너무 건조하면 해충이 발생한다.",
+    "species_family": "백합과",
+    "proper_temperature": "16~24℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "상대습도 증가와 음이온 발생량이 많은 식물로 거실에 두면 건조한 계절에 실내 습도를 높 이는 천연 가습효과를 기대할 수 있다.",
+    "class_label": 34,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "행운목 와르네케이",
+    "scientific_name": "Dracaena fragrans 'Warneckei'",
+    "english_name": "Striped Dracaena, Dragon Tree",
+    "plant_feature": "아프라카 열대지역이 원산지인 행운목 '와르네케이'는 잎색 이 녹색, 연두색, 노란색, 흰색 등 다양할 뿐만 아니라 잎의 줄무늬가 특징인 관엽식물이다. 낮은 광도에서도 잘 자라고 실내공기 오염물질을 효과적으로 제거하기 때문에 실내조 경에 자주 사용한다. 보통 가정이나 사무실에서는 1m 안팎 으로 자라지만 환경이 좋으면 3m까지 자란다. 독성이 있어 애완동물이 있으면 주의한다. 배수성이 좋은 용토에서 잘 자라고, 수경재배를 할 수 있다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 여름 에는 다습한 환경을 좋아한다. 겨울에는 화분흙이 대부분 말 랐을 때 충분히 물을 주는데 실내온도와 비슷한 온도의 물 을 주는 것이 좋다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 온도가 너무 낮거나 습도 높을 경우 뿌리썩음병이 발생할 수 있다. 공중습도가 너무 건조하면 해충이 발생한다. 잎이 갈변하면 가위로 잎 끝을 잘라 정상적인 잎 모양으로 잘 다듬어 준다.",
+    "species_family": "백합과",
+    "proper_temperature": "16~24℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal",
+      "low"
+    ],
+    "benefit": "벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "뿌리가 많이 발달하지 않아 휘발성 유기화합물 제거 능력이 낮은 편이다. 그러나 음이온 발 생량이 많고, 실내습도 조절이 가능한 큰 식물로 거실에 두면 건조한 계절에 실내습도를 높 일 수 있다.",
+    "class_label": 35,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "마지나타 드라세나",
+    "scientific_name": "Dracaena reflexa var. angustifolia",
+    "english_name": "Madagascar dragon tree, Red edged Dracaena",
+    "plant_feature": "마지나타 드라세나는 1960년대 초에 처음 실내식물로 재배 되기 시작하였다. 환경 적응력이 뛰어나 실내 환경에 잘 적 응하고 키우기가 쉬워 많이 알려진 품종이다. 곧은 가지 끝 에 길고 가느다란 잎이 다발형태로 자라고 광택이 나는 잎의 가장자리에 붉은색으로 띠가 있는 것이 특징이다. 다양한 공 기오염물질을 제거하고 병충해에 강하지만, 겨울철에 난방 등으로 실내가 지나치게 건조하면 충해가 발생할 수 있다. 꺾꽂이, 포기나누기 등으로 번식할 수 있으며 수경재배로 도 잘 자란다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 너무 건조하면 해충이 발생한다.",
+    "species_family": "백합과",
+    "proper_temperature": "16~24℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "크실렌 등 다양한 공기오염 물질 제거",
+    "blight": "응애",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "마지나타 드라세나는 실내 환경에 잘 적응하고 튼튼하여 건물 로비나 현관, 공공건물의 아 트리움 등에 배치하면 좋다.",
+    "class_label": 36,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "산데리아나 드라세나",
+    "scientific_name": "Dracaena sanderiana",
+    "english_name": "Ribbon plant",
+    "plant_feature": "일반적으로 드라세나종은 햇빛이 너무 강하거나 혹은 하루 종일 어두운 곳만 아니라면 어디서든 잘 자란다. 그러나 종 류에 따라 상대적으로 빛을 선호하거나 그렇지 않은 경우가 있는데, 산데리아나는 빛을 선호하는 편이다. 한낮의 직사광 선은 피하고 3시간 정도는 햇빛을 볼 수 있는 장소에 배치 하는 것이 좋다. 그렇지 않으면 잎의 밝은 부분 선명도가 점 차 떨어지게 된다. 실내 습도가 낮으면 잎 끝이 마르므로 3~4일에 한 번씩 잎에 분무를 해주면 좋다. 독성이 있으므로 어린아이나 애완동물의 주의가 필요하다.",
+    "water_description": "겨울철에 찬 수돗물은 잎을 노랗게 변하게 하므로 하루쯤 받 아 둔 물을 준다. 실내가 건조할 때 잎에 분무하면 잎도 싱싱 해지고 병충해 피해도 줄일 수 있다.",
+    "managing_point": "직사광선 피하고 건조할 때 잎에 자주 분무한다.",
+    "species_family": "백합과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레, 총채벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "",
+    "class_label": 37,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "아레카야자",
@@ -1707,28 +959,746 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "가정, 사무실, 상업 공간 등 많이 이용되는데 넓은 공간에 잘 어울린다."
+    "tip": "가정, 사무실, 상업 공간 등 많이 이용되는데 넓은 공간에 잘 어울린다.",
+    "class_label": 38,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
-    "name": "관음죽",
-    "scientific_name": "Rhapis excelsa",
-    "english_name": "Fan palm Miniature, Bamboo palm, Lady palm",
-    "plant_feature": "원산지가 중국이지만 관음죽의 식물명은 일본에 있는 관음 산에서 기원되었고 일본을 거쳐 유럽으로 전파되었다. 잎은 윤기있고 끝이 톱니바퀴 형태로 갈라져 독특하다. 성장이 느 려서 관리하기도 쉽고, 병충해도 잘 생기지 않으며 공기정 화 효과도 탁월하다. 포기나누기로 번식이 가능하다. 번식 시기는 5~6월이 좋고, 작업 후에는 어두운 곳에서 적응하도록 한다.",
-    "water_description": "봄~여름에는 물을 넉넉하게 주고, 겨울철 따뜻하고 건조한 실내에서는 물을 더 자주 준다.",
-    "managing_point": "직사광선을 받으면 잎이 노랗게 변할 수 있으므로 직사광선 을 피한다. 염분이나 무기양분이 잎 끝에 축적되어 갈색으로 변하면 그 부분만 잘라준다.",
-    "species_family": "야자과",
-    "proper_temperature": "16~21℃ (최저 10℃)",
+    "name": "스킨답서스",
+    "scientific_name": "Epipremnum aureum",
+    "english_name": "Pothos Golden",
+    "plant_feature": "실내식물 중에서 관리가 쉽고 잘 자라는 식물로 병해충에 대한 강한 저항력과 공기 정화 능 력을 가지고 있다. 여러 무늬종들이 있으며 밝은 형광 색상의 잎을 가진 라임스킨답서스(Epipremnum aureum 'Neon')가 경쾌한 느낌으로 인기가 많다. 반음지에서 잘 자라며 겨울철에는 충분한 빛을 주고 물은 적게 준다. 수경재배가 가능하여 줄기를 잘라 물꽂이하여 재배한다. 칼슘옥살레이트 성분을 가지고 있어 애완동물에게는 독성이 있고 인체 피부나 점막을 자 극할 수 있으니 유의한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "약 40m 길이까지 자랄 수 있는 덩굴성이고, 줄기 끝을 잘라주면 길이 생장은 지연되지만 잎 이 많이 나와 풍성해진다. 다른 식물의 생장을 방해하는 덩굴은 제거한다. 뿌리가 과습하여 생기는 뿌리썩음병을 조심한다.",
+    "species_family": "두릅나무과",
+    "proper_temperature": "16~20 ℃ (최저 5 ℃)",
     "proper_light": [
       "half_bright"
     ],
     "proper_humidity": [
       "normal"
     ],
-    "benefit": "포름알데히드 제거, 암모니아 흡수, 음이온 발생, 상대습도 증가",
-    "blight": "응애, 병충해에 강함",
+    "benefit": "공기정화, 음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "일산화탄소 제거 기능이 우수하고 어두운 곳에서도 잘 적응 하기 때문에 주방의 기능성 식물로 알려졌다. 벽이나 기둥을 타고 오르게 할 수 있고, 걸이화분을 활용하도 좋다.",
+    "class_label": 39,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "라임 스킨답서스",
+    "scientific_name": "Epipremnum aureum 'Neon'",
+    "english_name": "Devil's ivy",
+    "plant_feature": "실내식물 중에서 관리가 쉽고 잘 자라는 식물로 병해충에 대한 강한 저항력과 공기 정화 능 력을 가지고 있다. 여러 무늬종들이 있으며 밝은 형광 색상의 잎을 가진 라임스킨답서스(Epipremnum aureum 'Neon')가 경쾌한 느낌으로 인기가 많다. 반음지에서 잘 자라며 겨울철에는 충분한 빛을 주고 물은 적게 준다. 수경재배가 가능하여 줄기를 잘라 물꽂이하여 재배한다. 칼슘옥살레이트 성분을 가지고 있어 애완동물에게는 독성이 있고 인체 피부나 점막을 자 극할 수 있으니 유의한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "약 40m 길이까지 자랄 수 있는 덩굴성이고, 줄기 끝을 잘라주면 길이 생장은 지연되지만 잎 이 많이 나와 풍성해진다. 다른 식물의 생장을 방해하는 덩굴은 제거한다. 뿌리가 과습하여 생기는 뿌리썩음병을 조심한다.",
+    "species_family": "두릅나무과",
+    "proper_temperature": "16~20 ℃ (최저 5 ℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "일산화탄소 제거 기능이 우수하고 어두운 곳에서도 잘 적응 하기 때문에 주방의 기능성 식물로 알려졌다. 벽이나 기둥을 타고 오르게 할 수 있고, 걸이화분을 활용하도 좋다.",
+    "class_label": 40,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "사철나무",
+    "scientific_name": "Euonymus japonicus 'Ovatus Aureus'",
+    "english_name": "Spindle Tree Japanese",
+    "plant_feature": "한국, 일본 등지에 분포한다. 원예종으로 잎 색상이 화려하 여 화분, 정원수, 꽃꽂이 소재 등으로 많이 사용한다. 번식은 종자나 꺾꽂이로 한다",
+    "water_description": "겉흙이 말랐을 때 물을 충분히 준다.",
+    "managing_point": "직사광선을 피한다.",
+    "species_family": "노박덩굴과",
+    "proper_temperature": "16~20℃ (최저 0℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "휘발성 화학물질뿐 아니라 특히 암모니아를 잘 흡수하기 때문에 빛이 들어오는 화장실에 두면 좋다."
+    "tip": "",
+    "class_label": 41,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "스플렌덴스 꽃기린",
+    "scientific_name": "Euphorbia milii var. splendens",
+    "english_name": "Christ's Thorn, Crown of Thorns",
+    "plant_feature": "꽃이 솟아 오른 모양이 기린을 닮았다고 하여 꽃기린이라는 이름이 붙었다. 빨간색, 연노란색, 흰색, 주황색 등 꽃 색상이 다양해 취향에 따라 선택할 수 있다. 줄기에 홈이 있고 날카 로운 가시로 덮여있어 가시에 주의해야 한다. 파종과 꺾꽂이로 번식하는데 보통 봄에 하는 것이 좋다. 꺾꽂이를 할 때 절단면에서 흐르는 흰색 액체를 깨끗이 씻어 낸 후 흙에 꽂으면 된다.",
+    "water_description": "화분흙이 마르면 물을 충분히 준다. 겨울은 다른 계절에 비 해 적게 물을 준다. 건조에 강하다.",
+    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물의 생장에 영향을 준다. 저온과 건조 상태에서는 잎이 떨어지는 현상이 있어 수분을 연중 유지해야 한다. 용토는 모래와 부엽(피트모스) 등을 배합하여 배수성과 보 수성이 좋게한다. 분갈이는 봄에 필요한 경우에 실시한다. 추위에 강해 3~5℃에서 월동이 가능하나, 겨울철에도 개화를 계속시키고자 할 때에는 10℃ 이상 보온이 필요하다. 일년내내 꽃을 피우는 성질 이 강하나 빛이 부족하거나 저온과 건조에서는 낙 엽이 지고 개화가 불량해진다.",
+    "species_family": "대극과",
+    "proper_temperature": "18~25℃ (최저 7℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal",
+      "low"
+    ],
+    "benefit": "음이온 방출",
+    "blight": "응애, 총채벌레, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "흰색 수액에 독성 함유",
+    "tip": "다육식물은 난과식물, 파인애플과 식물과 마찬가 지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다. 햇볕이 잘 드는 곳에 키우면 튼튼하게 자라고 꽃도 오래 감 상할 수 있다.",
+    "class_label": 42,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "포인세티아",
+    "scientific_name": "Euphorbia pulcherrima",
+    "english_name": "Poinsettia",
+    "plant_feature": "멕시코 남부가 원산지인 포인세티아는 보통 겨울철에 가장 인기 있는 식물로 화려한 포엽 이 매력적인 식물이다. 1900년대 초에 상업적으로 재배되기 시작했으며, 새로운 품종이 계속 개발되어 식물 아래 부분의 잎은 녹색이지만 위로 갈수록 다양한 색과 문양이 있어 다양하고 화려하게 연출 할 수 있다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "봄~한여름까지는 포인세티아의 휴식기이므로 물을 적게 준다. 과습하면 뿌리썩음병이 발생할 수 있다. 흙이 말랐을 때 물을 충분히 준다.",
+    "species_family": "대극과",
+    "proper_temperature": "18~21℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "흰색 수액에 독성 함유",
+    "tip": "다음 크리스마스에도 포인세티아 꽃피우는 법 1) 잎이 떨어지면 줄기를 10cm 높이로 자른다. 2) 토양은 건조하게 관리하고 화분을 따뜻하고 그늘진 곳에 둔다. 5월 초순에 물을 주고 식물을 다시 심어서 오래된 토양을 교체한다. 3) 물을 계속 주면 곧 새싹이 나는데 정기적으로 영양을 공 급하면서 새 순을 제거하여 4~5개의 건강한 새 줄기만 남긴다. 4) 포인세티아는 단일식물로 9월 말부터는 관리가 필요하 다. 이른 저녁부터 다음 날 아침까지 14시간 정도를 8주 동안 검은 비닐을 씌워 차광하고, 그 이후 정상적으로 관리한다.",
+    "class_label": 43,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "털머위",
+    "scientific_name": "Farfugium japonicum",
+    "english_name": "Leopard plant",
+    "plant_feature": "우리나라 울릉도와 남부지방 바닷가 쪽에서 자라는 상록성 의 여러해살이풀이다. 높이가 30~70cm로 9~11월에 노란색 꽃이 피며 식물의 전체에 털이 많고 잎이 머위를 닮았다 하 여 이름이 붙여졌다. 실내외 조경용으로 심고, 어린 잎자루 는 식용하고, 민간요법으로 활용한다.",
+    "water_description": "토양 표면이 말랐을때 충분히 물을 준다.",
+    "managing_point": "토양 표면이 말랐을때 충분히 물을 준다.",
+    "species_family": "국화과",
+    "proper_temperature": "16~24℃ (최저 5℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "음이온 발생, 상대습도 증가, 이산화탄소 감소",
+    "blight": "응애, 깍지벌레, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "음이온 발생량과 습도 발생량이 많아 공부방에 배치하면 집중력향상에 좋고, 실내습도를 증 가시키는 효과가 좋다.",
+    "class_label": 44,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "팔손이",
+    "scientific_name": "Fatsia japonica",
+    "english_name": "Japensse Aralia",
+    "plant_feature": "다양한 조건에서 잘 자라는 팔손이는 시원하고 통풍이 잘되는 밝은 환경을 더 좋아한다. 대표적인 공기정화 자생식물로 남해안에서는 노지에서 월동하며 11월 경에 꽃이 피는데 흰 색 꽃이 둥글게 우산모양으로 가지 끝에 달린다. 열매는 꽃이 진 후에 다음 해 5월경에 둥글 고 까만 것들이 여러 개 모여 달린다. 중부 지방에서는 실내식물로 많이 이용된다. 팔손이는 영국 빅토리아 시대부터 인기있는 관엽식물로 동양적인 느낌을 주기 위한 식물로 사용하기도 한다. 수분과 양분을 잘 공급하면 몇 년 안에 약 1m까지 성장한다.",
+    "water_description": "겉흙이 말랐을 때 물을 충분히 주며 약간 건조한 듯이 관리한다. 봄~가을은 정기적으로 주고 겨울에는 적게 준다. 공중습도는 높은 편이 좋으므로 잎에 자주 분무한다. 단, 토양이 과습하 면 뿌리썩음병이 발생할 수 있다.",
+    "managing_point": "직사광선을 피한다. 낮은 온도나 물주는 시기가 너무 지연될 경우 잎이 아래로 처질 수 있다.",
+    "species_family": "두릅나무과",
+    "proper_temperature": "16~20℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "음이온·습도 발생량 많음, 톨루엔·포름알데히드 제거, 공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "팔손이는 가구에서 나오는 휘발성 물질을 잘 제거하므로 큰 식물의 경우 거실이나 베란다에 두면 좋다. 또한 습도 발생 량이 우수하고 음이온 배출이 많아 집중력 향상에 도움을 주 므로 작은 화분의 경우 공부방에 놓아 활용한다.",
+    "class_label": 45,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "벵갈고무나무",
+    "scientific_name": "Ficus benghalensis L.",
+    "english_name": "Fig Indian",
+    "plant_feature": "벵갈고무나무는 원산지인 인도에서 장수와 풍요를 상징해 신성하게 여기는 식물로 회백색 수피에 잎 무늬가 아름다워 실내식물로 인기가 많다. 미세먼지 제거 측정 실험에서 제거 능력이 뛰어난 식물로 산호수와 함께 선정되었으며, 음이온 발생량이 최고 등급인 우수한 공기정화식물이다. 번식은 삽목이나 취목을 이용한다.",
+    "water_description": "토양표면이 마르면 물을 충분히 준다.",
+    "managing_point": "봄·가을처럼 건조할 때는 자주 분무해주고, 습할 때는 환기를 자주 해준다.",
+    "species_family": "뽕나무과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "자일렌 등 다양한 공기오염 물질 제거, 미세먼지 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "수액에 독성 함유",
+    "tip": "관상 포인트인 잎의 무늬를 유지하려면 햇빛을 많이 받아 야 하므로 밝은 거실이나 창가에 배치한다. 벵갈고무나무는 음이온 발생량이 최상 등급인데 음이온은 멀리 퍼지지 않으 므로 식물을 사람과 가까운 곳에 두는 것이 좋다 .",
+    "class_label": 46,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "벤자민고무나무",
+    "scientific_name": "Ficus benjamina",
+    "english_name": "Waringin, Weeping fig",
+    "plant_feature": "실내공기 오염물질 제거 능력이 뛰어나 인기가 높은 벤자민 고무나무는 키가 크고 우아해 보이는 가지를 부드럽게 늘어 뜨리고 있는 모습에서 Weeping fig가 영명으로 유래되었다 고 한다. 벤자민고무나무는 일반적으로 세가지 형태가 있는 데, 원줄기가 뚜렷한 나무형태와 줄기가 밑부분에서 여러 가 지로 갈라지는 관목형태, 2~3가지가 꼬여서 자라는 형태가 있다. 잎도 짙은 녹색, 밝은 녹색, 그리고 무늬가 있는 잎까 지 종류가 다양하다. 단, 환경변화에 민감하고 이동을 싫어하여 새로운 환경에 적응하는 동안 잎이 떨어지는 경우가 있지만, 일단 적응하 면 잘 생장한다. 수경재배나 저면관수로 기르는 것이 이상적이다. 식물 전체적으로 독성물질이 함유하고 있다.",
+    "water_description": "토양은 가급적 촉촉하게 유지한다. 봄~가을에는 토양표면이 말랐을 때 물을 충분히 주고, 겨울에는 토양이 대부분 말랐 을 때 충분히 물을 준다.",
+    "managing_point": "뿌리가 화분에 꽉 차는 것을 좋아하므로 매년 분갈이할 필요가 없다. 지나치게 물을 많이 주면 뿌리썩음병이 발생한다.",
+    "species_family": "뽕나무과",
+    "proper_temperature": "16~24℃ (최저 13℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·벤젠 등 다양한 공기오염물질 제거, 음이온 발생, 상대습도 증가",
+    "blight": "깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "수액에 독성 함유",
+    "tip": "자동차에서 나오는 배기가스를 많이 제거하므로 빛이 들어오는 현관에 배 치하면 좋다. 화분 지면에 아이비, 스 킨답서스 등을 함께 심으면 공기정화 효과가 커진다.",
+    "class_label": 47,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "인도고무나무",
+    "scientific_name": "Ficus elastica",
+    "english_name": "Assam Rubber, India Rubber Plant",
+    "plant_feature": "고무나무는 약 800~2,000종이 주로 열대지역에 분포되어 있다. 열대지역에서는 녹음수 또는 가로수로 이용되며 온대 지역에서는 실내 관엽식물로 이용된다. 토양재배, 수경재배 모두 잘 자란다. 흰색의 수액이 자극적이니 주의해야 한다.",
+    "water_description": "토양표면이 말랐을 때 물을 충분히 준다.",
+    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 줄 수 있다.",
+    "species_family": "뽕나무과",
+    "proper_temperature": "16~27℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal",
+      "low"
+    ],
+    "benefit": "포름알데히드 제거, 공기정화",
+    "blight": "응애, 깍지벌레, 가루깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "수액에 독성 함유",
+    "tip": "고무나무 종류 중에 실내의 화학적 독소를 제거하는 능력이 뛰어나고 넓고 큰 공간에 잘 어울리므로 거실에 두면 좋다.",
+    "class_label": 48,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "무늬왕모람(푸미라)",
+    "scientific_name": "Ficus pumila 'Variegata'",
+    "english_name": "Creeping fig",
+    "plant_feature": "실내정원을 조성할 때 녹색 카페트를 만들 수 있을 만큼 지 피식물로 좋다. 줄기가 가늘고 작은 잎이 풍성하여 걸이화분 에 단독으로 사용하거나 다른 식물과 함께 식재하여 활용할 수 있다. 물만 정기적으로 잘 주면 관리도 쉽다. 식물의 모든 부분이 애완동물에게는 독성이 있으니 주의한 다.",
+    "water_description": "겉흙이 마르면 물을 충분히 준다. 잎에 자주 분무한다.",
+    "managing_point": "다른 식물의 생장을 방해하는 덩굴은 제거한다. 강한 직사광선은 피하고, 배수가 좋은 흙에서 키운다. 삽목이나 휘묻이로 번식한다.",
+    "species_family": "뽕나무과",
+    "proper_temperature": "21~25℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "low"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "식물 모든 부분",
+    "tip": "덩굴성으로 베란다에서 벽과 천장을 타고 올라가도록 키울 수 있고, 수경재배도 가능하다.",
+    "class_label": 49,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "오렌지스타",
+    "scientific_name": "Fittonia albivenis 'Jade'",
+    "english_name": "Mosaic plant",
+    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조할 때 잎에 자주 분무한다.",
+    "species_family": "쥐꼬리망초과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다.",
+    "class_label": 50,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "화이트스타",
+    "scientific_name": "Fittonia albivenis 'White Star'",
+    "english_name": "Mosaic plant",
+    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조할 때 잎에 자주 분무한다.",
+    "species_family": "쥐꼬리망초과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다.",
+    "class_label": 51,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "레드스타",
+    "scientific_name": "Fittonia verschaffeltii 'Red Star'",
+    "english_name": "Mosaic plant",
+    "plant_feature": "원산지가 남아메리카인 피토니아는 고온다습하고 통풍이 잘되는 밝은 그늘이나 반그늘에서 잘 자란다. 갑자기 강한 햇빛에 노출되면 잎이 타기 쉽다. 높이가 10~20cm 정도이고, 잎이 무성하고 기는 줄기로 자 란다. 잎에 그물무늬가 있으며, 잎맥의 색상이 잎색과 대조 적인 것이 매력적이다. 꺾꽂이나 포기나누기로 번식한다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "건조할 때 잎에 자주 분무한다.",
+    "species_family": "쥐꼬리망초과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "암모니아 냄새 흡수, 이산화탄소 감소, 톨루엔 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "덩굴성 식물로 걸이화분을 사용해도 좋고, 잎의 무늬와 색상이 다양하여 디시 가든과 테라 리엄에 많이 사용한다. 음이온 발생량이 많고, 실내습도 조절에 우수한 식물로 직사광선이 들지 않는 공부방에 두 면 좋다.",
+    "class_label": 52,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "아이비(잉글리쉬 아이비)",
+    "scientific_name": "Hedera helix",
+    "english_name": "English ivy",
+    "plant_feature": "유럽 대부분의 지역과 서아시아에 자생하는 아이비는 덩굴성으로 성장속도가 빠르고 공중 뿌리가 나와서 벽 같은 면이나 철사 등을 타고 오르는 성질을 가졌다. 양담쟁이, 상록담쟁이 등으로도 불리우며 잎이 3~5개로 갈라져 있고 잎의 색과 모양이 품종 에 따라 다양하다. 보통의 실내 환경에서 적응을 잘하는 편이나 무늬가 있는 품종은 빛이 부 족하면 무늬가 없어지므로 빛이 충분해야 한다. 식물체에 독이 있어 아이가 있는 가정에서 키울 경우, 아이 피부에 닿으면 피부염에 걸릴 수 있고 입에 댈 경우 호흡곤란이나 혼수상태에 빠질 수 있다. 새싹이 자라면 순지르기를 해서 가지 수를 늘릴 수 있다. 수경재배나 토양에서 동일하게 재배가 가능하다.",
+    "water_description": "잎에 물을 자주 분무하고, 겉흙이 마르면 물을 충분히 준다.",
+    "managing_point": "직사광선을 피한다. 온도가 너무 높은 경우 성장을 방해한다. 성장 시 가지치기하여 다른 식 물의 생장을 방해하는 덩굴을 제거한다. 병충해에 강한 편이나 기온이 높고 건조하면 응애, 깍지벌레가 발생한다.",
+    "species_family": "두릅나무과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·톨루엔 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "큰 식물의 경우 베란다, 거실에 배치하고, 습도와 음이온 배 출이 많아 작은 화분의 경우 공부방에 놓아 활용한다.",
+    "class_label": 53,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "해피트리",
+    "scientific_name": "Heteropanax chinensis",
+    "english_name": "Fragrant Aralia",
+    "plant_feature": "싱그러운 녹색을 띠는 작고 얇은 잎들이 보는 이들을 행복 하게 만드는 나무다. 잎이 웃는 모양 같다고 하여 행복나무 라고 불리기도 한다. 중국에서는 '황산풍'이라고 불리며 부 귀수로 알려지는 등 다양한 이름을 가졌다. 높이가 20~30m 나 자라 조경수로도 이용한다. 실내에서는 직사광선과 완전 한 음지를 제외하고는 어떤 곳에서도 잘 자란다. 햇빛이 잘 드는 창가가 키우기 가장 좋은 장소이고 간접 광을 받을 수 있는 곳은 어디든 좋다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "직사광선을 피하고 잎에 자주 분무한다. 가지치기를 하지 않 으면 웃자라 주변 식물에 영향을 준다.",
+    "species_family": "두릅나무과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal",
+      "high"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "가정, 사무실, 상업 공간 등 많이 이용되는데 넓은 공간에 잘 어울린다.",
+    "class_label": 54,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "호야",
+    "scientific_name": "Hoya carnosa ",
+    "english_name": "Wax Plant",
+    "plant_feature": "호야는 실내에서 쉽게 생육하며 덩굴성 상록 다년초이다. 잎 이 다육질이며 5~9월에 향기로운 별 모양의 꽃이 연한 분홍 색으로 피고 윤기가 있다. 동남아시아에서 오스트레일리아 에 이르는 열대, 아열대 지역에 걸쳐 100여 종이 분포한다. 시중에 여러 품종이 유통되며 잎에 무늬가 있는 무늬호야, 호야에서 잎만 떼어낸 후 잎꽂이 하여 판매하는 하트호야, 랑케올라타 벨라호야(Hoya lanceolata) 등이 있다. 소형인 랑케올라타 벨라호야는 줄기가 길어 행잉 바스켓에 심는다.",
+    "water_description": "봄~가을은 토양 표면이 말랐을 때 충분히 물을 주고 겨울에 는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 공중습도 가 너무 건조하면 깍지벌레가 발생하므로 잎에 분무한다.",
+    "managing_point": "과습에 유의한다. 다른 식물의 생장을 방해하는 가지를 제거 한다. 꽃봉오리가 생기면 가지를 제거하거나 분갈이 등을 하 지 않는다. 꽃이 진 후에 줄기를 잘라준다.",
+    "species_family": "박주가리과",
+    "proper_temperature": "18~22℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "자일렌 등 제거, 공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "흰색 수액에 독성 함유",
+    "tip": "햇빛이 잘 드는 창가에 배치하면 다육질의 잎과 윤기나는 호야 꽃을 볼 수 있다. 줄기가 늘어 지는 것이 싫으면 지주대를 세운다. 보통 행잉, 모아심기 등에 많이 활용한다.",
+    "class_label": 55,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "학자스민",
+    "scientific_name": "Jasminum polyanthum",
+    "english_name": "Jasmin polyanthum",
+    "plant_feature": "3.5~5m 정도로 자라는 상록성 덩굴식물인 학자스민은 꽃봉 오리는 진홍색을 띠고 꽃은 흰색으로 핀다. 한겨울에 꽃을 피우고 향기가 뛰어나 사람들에게 인기가 많다. 꺾꽂이 또는 휘묻이로 번식을 하며, 번식과 관리가 매우 쉬 워 실내식물로 많이 이용된다. 자스민은 좋은 향기로 예전부터 향수나 차로 이용했다. 달콤 한 향기가 기분전환에 좋아 우울증을 개선해준다.",
+    "water_description": "토양표면이 마르면 충분히 물을 주고, 겨울에는 토양을 건조 하게 관리한다. 너무 건조하지 않도록 자주 분무한다. 꽃이 피는 시기 충분한 물을 준다. 토양은 항상 수분이 있어 야 한다. 토양이 마를 시에 꽃과 꽃봉오리도 마를 수 있다. 그 러나 과습한 상태는 피하도록 한다.",
+    "managing_point": "햇빛이 잘 드는 서늘한 곳에 두면 꽃을 오랫동안 볼 수 있으며, 여름에 정원의 나무 그늘같이 서늘한 곳에 두면 꽃봉오리형성이 빨라진다. 꽃이 진 뒤에 가지들을 잘라주고, 가을에 분갈 이를 한 다음 따뜻한 곳에 둔다. 가늘고 길게 자라는 덩굴식물로 작은 화분에 심을 경우 지지 대를 두어 감고 올라갈 수 있게 지지대를 설치하면 좋다.",
+    "species_family": "물푸레나무과",
+    "proper_temperature": "16~24℃ (최저 7℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "low"
+    ],
+    "benefit": "포름알데히드 제거",
+    "blight": "응애, 진딧물",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "포름알데히드 제거능력이 우수하며 향기좋은 흰색 꽃이 피는 덩굴식물로 통풍이 잘되고 햇 빛이 풍부한 베란다에 두고 기르면 오랫동안 향기를 즐길 수 있다.",
+    "class_label": 56,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "칼랑코에",
+    "scientific_name": "Kalanchoe blossfeldiana",
+    "english_name": "Flaming Katy",
+    "plant_feature": "칼랑코에는 넓은 잎을 가진 다육식물이로 낮의 길이가 8시 간 이하로 짧아지면 꽃눈이 분화하여 꽃을 피우는 단일성 식 물이다. 빨간색, 노란색, 분홍색, 흰색 등 꽃의 색이 다양하고 아름다우며 관리가 쉬워 실내에서 많이 키운다. 네덜란드에 서 재배품종으로 육성하여 브랜드화한 '칼란디바'의 품종들 도 다양하게 유통된다.",
+    "water_description": "화분의 흙이 마르면 화분 밑으로 물이 흘러나올 때까지 충 분히 준다. 물을 지나치게 주면 뿌리가 썩을 수 있고, 물을 너 무 적게 주면 경우 뿌리마름, 염해 축적 등의 문제가 발생할 수 있으므로 주의한다.",
+    "managing_point": "가지치기를 하지 않으면 식물이 웃자라 주변식물의 생장에 방해될 수 있다. 토양은 통기성이 좋아야하며, 배수가 용이하고, 보수력이 좋아야 한다. 다육식물이므로 과습에 유의한다.",
+    "species_family": "돌나물과",
+    "proper_temperature": "16~26℃ (최저 10℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "low"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레, 노균병, 잿빛곰팡이병, 역병, 입고병",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "강한 직사광선을 피할 수 있는 밝은 창가에 두면 좋다. 칼랑코에는 겨울철에 해가 짧아 자연적으로 14시간정도 의 단일처리가 되어 10~11주 후에 꽃눈이 형성되고 꽃이 피게 된다. 실내에서 키워 자연적인 단일처리가 되지 못 했을 때는 저녁 6시~다음날 오전 9시경까지 14시간 이상, 10~11주 정도를 검은 봉지나 박스 등을 이용하여 빛을 완 전 차단해 주면 단일효과를 볼 수 있다.",
+    "class_label": 57,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "라벤더",
+    "scientific_name": "Lavandula angustifolia",
+    "english_name": "English lavender",
+    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
+    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
+    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다.",
+    "class_label": 58,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "다우니라벤더",
+    "scientific_name": "Lavandula multifida",
+    "english_name": "fernleaf lavender",
+    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
+    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
+    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다.",
+    "class_label": 59,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "프렌치라벤더",
+    "scientific_name": "Lavandula stoechas",
+    "english_name": "Lavender French",
+    "plant_feature": "원산지는 지중해 연안이며, 25~30여 종이 있다. 보통 30~60 cm 정도 자라며, 꽃, 잎, 줄기 전체에 미세한 흰색 털이 있고, 그 사이에 향기가 나오는 기름샘이 있다. 손으로 만져 향기 를 맡으면 더 진한 향기를 맡을 수 있다. 허브식물이 향기를 내는 것은 스스로 방어하는 기능때문인데, 손으로 식물을 접 촉하여 자극하거나 해충이 오면 스트레스를 받아 살균기능 을 가진 방향물질을 내뿜어 가까이 오지 못하게 방어한다. 6~9월에 피는 꽃은 긴 꽃대 끝에 드문드문 달리며 아주 작 고 보랏빛을 띠며, 품종에 따라 다양하다. 배수가 잘되는 사 양토에서 기른다. 향유 채취와 관상용으로 재배한다. 향유는 향수와 화장품의 원료로 사용하고, 요리 향료, 두통이나 신경안정을 치료하는 등에도 활용한다.",
+    "water_description": "물은 토양표면이 마르면 흠뻑 준다.",
+    "managing_point": "햇빛을 많이 받게 하고 습하지 않은 곳에서 잘 자란다. 물빠짐이 좋고 너무 비옥하지 않은 자 갈이 약간 혼합된 사양토가 좋다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "15~25℃ (최저 5℃)",
+    "proper_light": [
+      "bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "허브식물 중 포름알데히드 제거량이 가장 우수한 식물이다. 햇빛이 잘 드는 창가나 베란다 에 두는 것이 좋다. 또한 허브식물은 음이온 발생량이 풍부하여 햇빛이 잘 드는 공부방 창 가에 두면 좋다.",
+    "class_label": 60,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "마란타",
+    "scientific_name": "Maranta leuconeura var. kerchoveana",
+    "english_name": "Ten commandments, Prayer plant",
+    "plant_feature": "마란타는 연한 녹색 잎에 진한 녹색 반점이 잎맥을 중심으 로 2열로 있는 독특한 무늬가 인상적인 식물이다. 마란타속 에는 여러 가지 변종이 있지만 키우기가 가장 쉬운 품종이 다. 다 자라도 20~30cm 정도의 높이로 키가 작고 가지가 많 아 자라면서 방사상으로 퍼진다. 영어이름이 Prayer plant인데 식물 체내 수분을 유지하기 위 해 해질 무렵 잎을 위로 모으는 모양이 마치 기도할 때 손을 모으는 모습과 비슷해 유래했다. 현재 키우고 있는 마란타가 낮에는 잎을 펼치고 밤에는 잎을 위로 세운다면 환경에 잘 적응하고 있는 것이라 할 수 있다.",
+    "water_description": "토양을 촉촉하게 유지하고, 분무를 자주하는 것이 좋다. 겨울에는 물주는 횟수를 줄이고, 물을 받아 두었다 실내온도 와 비슷한 온도로 물을 주어야 한다.",
+    "managing_point": "난방 등으로 공기가 건조하면 해충이 생기기 쉽다. 너무 서늘한 곳에 두면 잎이 갈변할 수 있다.",
+    "species_family": "마란타과",
+    "proper_temperature": "21~27℃ (최저 13℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "",
+    "class_label": 61,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "애플민트",
+    "scientific_name": "Mentha suaveolens",
+    "english_name": "Mint Apple",
+    "plant_feature": "유럽이 원산지인 애플민트는 사과와 민트향이 나는 다년생 초본 식물이다. 잎은 연녹색의 주름지고 난형의 형태로, 가 장자리 톱니 모양과 뚜렷한 엽맥으로 앞뒷면에 털이 있다. 여름에 흰색 또는 분홍색의 꽃이 층층이 길게 난다. 내한성 이 강하여 반음지 환경에서의 생장과 월동이 가능하다는 장 점이 있다. 꺾꽂이나 포기나누기로 번식을 한다. 향긋한 향기로 피로회복과 살균, 방향효과가 뛰어나 요리나 방향제 등으로 사용한다.",
+    "water_description": "토양 표면이 마르고 잎이 시들면 물을 준다. 겨울에는 식물이 어는 것을 막기 위해 다른 계절보다 물을 적게 준다. 과습은 식물 뿌리를 썩게 할 수 있으므로 너무 많 이 주지 않도록 주의 한다.",
+    "managing_point": "햇빛이 많은 양지가 좋으며, 빛이 부족할 때 잎에 생기가 사라지며 웃자라 실내에서는 자주 분갈이를 해주거나 가지치기를 해주어 수형을 잡아주는 것이 좋다. 양질의 토양이 필요한 식물로 장마 끝에 거름을 주 면 좋다. 땅속줄기가 뻗으면서 자라므로 자주 솎아 준다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "16~24℃ (최저 –20℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·톨루엔 제거, 음이온 증가, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "습도 유지 및 공기정화에 좋아 아이들 공부방에 놓 거나 향긋한 향기로 요리에 많이 쓰여 주방에서도 애용하는 식물이다.",
+    "class_label": 62,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "몬스테라",
+    "scientific_name": "Monstera deliciosa",
+    "english_name": "Swiss cheese plant",
+    "plant_feature": "거칠고 무성해 보이는 외형, 공중으로 쭉 뻗은 뿌리에 찢어진 큰 잎(어린 잎에는 구멍이 없 다)을 지닌 몬스테라는 인기가 많은 실내식물로 기르기와 관리가 쉽다. 원산지가 멕시코와 중앙아메리카인 상록성 착생식물로 몬스테라속(屬)에는 30여 종이 있다. 잎의 모양은 다소 깃처럼 갈라지고, 군데군데 구멍이 파여 있어 폭우와 강한 바람에 견딜 수 있는 구조로 발달하였으며, 밑에 달린 잎에 광선이 통할 수 있도록 되어 있다. 원줄기는 굵고 초록색이며 마디에서 기근(氣根)이 내리고 다른 물체에 붙어 올라간다. 천남성과의 식물로 육수화서의 꽃이 피고, 성숙한 열매는 옥수수 이삭같이 생겼으며 바나나와 같은 향기가 있고 식용이 가능하여 몇몇 나라에서는 별미로 통한다. 번식은 포기나누기 또는 꺾꽂이로 한다.",
+    "water_description": "흙을 촉촉하게 유지한다.",
+    "managing_point": "가지치기를 하지 않으면 웃자라 주변 식물에 영향을 준다.",
+    "species_family": "천남성과",
+    "proper_temperature": "16~25℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "식물 모든 부분",
+    "tip": "덩굴성이라 위로 자라게 하려면 지지대가 필요하다.",
+    "class_label": 63,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "남천",
+    "scientific_name": "Nandina domestica",
+    "english_name": "Heavenly bamboo, Sacred Bamboo",
+    "plant_feature": "환경 적응력이 뛰어나고 생명력이 강한 남천은 대나무같은 곧은 줄기에 작은 초록색 잎들이 가득 달린 생기있는 모습으 로 사랑받는 식물이다. 남부지방에서는 월동이 가능한 상록 관목 식물인 남천은 실내·외 조경수로 사계절의 모습을 생 생하게 담아낸다. 봄에는 마른 가지에 새잎이 돋기 시작하여 점점 무성해지고, 초여름에 작은 흰색 꽃이 피고 꽃이 진 뒤 에는 붉은 열매를 맺는다. 가을에는 단풍과 붉은 열매를 보 여주는 등 꽃·잎·열매·단풍이 모두 아름답다. 화분의 흙은 배수가 잘되는 비옥한 사질양토를 사용한다. 종자번식, 삽목, 접목, 분주 등 다양한 방법으로 번식한다.",
+    "water_description": "봄~가을에는 토양표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "직사광선을 피하고 햇빛이 잘 드는 곳에 둔다.",
+    "species_family": "매자나무과",
+    "proper_temperature": "16~25℃ (최저 5℃)",
+    "proper_light": [
+      "bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "실내·외, 옥상 등 정원수로 많이 사용되는 남천은 실내에서 기를 때에는 거실 창가나 베란다, 빛을 많이 받을 수 있는 곳에서 키우는 것이 좋다.",
+    "class_label": 64,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "보스톤고사리",
+    "scientific_name": "Nephrolepis exaltata",
+    "english_name": "Boston fern",
+    "plant_feature": "보스톤고사리는 분수같이 아치형으로 떨어지는 잎 모양이 풍성하고 싱그러워 많은 사랑을 받고 있는 실내식물이다. 습도가 높은 숲이나 습지의 반양지 같은 습한 곳에 자생하는 식물이므로 실내재배 시 물이 부족하면 잎 끝이 갈색으로 변 하거나 떨어지니 충분히 분무해줘야 한다. 실내재배 시 봄과 가을에 충분한 햇빛을 받아야 포기가 바르 게 자라고 잎의 색도 진해진다. 자연종은 포자로, 재배종은 포기나누기를 통하여 번식하며 수경재배도 가능하다.",
+    "water_description": "봄~가을은 물에 잠기지 않도록 배수에 주의하고, 흙을 촉촉 하게 유지한다. 겨울에는 토양 표면이 말랐을 때 충분히 물 을 준다.",
+    "managing_point": "건조할 때 잎에 분무하여 습도를 유지하는 것이 중요하다. 유기질이 풍부한 화분용 배합토에서 잘 자라고, 뿌리가 화분 가득히 뻗어있는 것이 이상적이 다. 한여름의 직사광선은 피하고 습도유지가 되어야 잘 자란다.",
+    "species_family": "줄고사리과",
+    "proper_temperature": "15~35℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 포름알데히드 제거, 상대습도 증가",
+    "blight": "응애, 진딧물, 깍지벌레, 온실가루이",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "잎의 선이 아름다운 식물로 걸이화분이나 받침대가 있는 화분에 심어 조금 높은 위치에 놓 으면 더 멋있게 볼 수 있다.",
+    "class_label": 65,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "온시디움",
+    "scientific_name": "Oncidium spp.",
+    "english_name": "Butterfly Orchid",
+    "plant_feature": "멕시코, 브라질이 원산지인 온시디움은 열대지방에서 자라 는 착생란으로 다른 식물의 표면이나 바위 등에 붙어서 생 장한다. 많은 품종 있지만 보통 재배되는 것은 작은 노란색 꽃이 스파켈라툼(Oncidium sphacelatum), 작은 노란색 꽃 이 피며 작은 분으로 가꿀 수 있는 플렉수오숨(Oncidium plexuosum) 등이 있다. 봄에 포기나누기로 번식한다.",
+    "water_description": "표면이 마르면 충분히 물을 주고 가을부터는 약간 건조하 게 관리한다.",
+    "managing_point": "꽃이 진 후에는 해가 잘 들고 통풍이 되는 장소, 베란다에 서 관리한다. 밤에는 시원하고 수분이 충분해야 잘 자란다. 직사광선은 피하고, 통풍이 잘 되도록 관리하며, 추위에 약하므로 최저 10℃ 이상 유지해 줘 야 한다. 또한 겨울철에는 햇빛이 약해지므로 빛이 부족하지 않게 관리해야 한다.",
+    "species_family": "난초과",
+    "proper_temperature": "21~25℃ (최저 10℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal",
+      "high"
+    ],
+    "benefit": "상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지로 밤에 이산화탄소를 흡수하므로 꽃이 피었을 때는 햇빛이 잘 드는 침실에 두면 좋다.",
+    "class_label": 66,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "파키라",
+    "scientific_name": "Pachira aquatica",
+    "english_name": "Provision tree, Money tree",
+    "plant_feature": "두꺼운 줄기에서 뻗은 가느다란 가지가 특징인 파키라는 줄 기는 벽오동처럼 생겼으나 밑 부분은 갈색의 곤봉처럼 생 겼다. 꽃은 크고 아름다워 감상하기에 좋고, 열매는 땅콩 맛이 나 식용할 수 있다. 외국에서는 Money tree라고 부르며, 잎과 꽃은 채소처럼 식용한다. 씨뿌리기와 꺾꽂이로 번식하는데, 줄기를 자르면 여러 개의 새순이 나오기 때문에 1∼2개의 줄기에 여러 개의 작은 줄기 와 잎을 가꿔 상품가치를 높일 수 있다.",
+    "water_description": "봄~가을에는 토양 표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다.",
+    "managing_point": "과습에 주의한다. 반음지를 좋아하고 배수가 잘 되는 땅에서 잘 자란다. 건조하지 않도록 주의해야 한다.",
+    "species_family": "물밤나무과",
+    "proper_temperature": "20~30℃ (최저 13℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "미세먼지 제거, 포름알데히드 제거, 이산화탄소 제거",
+    "blight": "진딧물, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "이산화탄소를 없애는 능력이 뛰어나 공기정화 능력이 좋아 아파트의 베란다 또는 거실에 서 키우면 좋다.",
+    "class_label": 67,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "제라늄",
+    "scientific_name": "Pelargonium inquinans",
+    "english_name": "Geranium, Fish Geranium",
+    "plant_feature": "꽃의 관상 기간이 길뿐 아니라 다양하고 화려한 꽃 색으로 세계적으로 널리 이용되는 분화 식물이다. 정원의 화단, 아파트 베란다, 벽장식 등에 화분, 플라워박스, 행잉바스켓 등의 형태 로 다양하게 이용하며, 특히 유럽에서는 창가에 놓는 꽃으로 활용한다. 비내한성 다년초로 약광, 건조 등 불량한 환경에 대한 적응력이 강하고 병충해에 강하기 때문에 최근 정원화단 및 실내환경 조성 등에 인기가 높다. 식물명인 제라늄은 이전 학명으로, 지금은 영명으로 통용되고 있다. 허브식물로 잎과 줄기에 서 독특한 향이 있어 곤충이나 모기를 쫓는 것으로 알려져 있다. 우리나라에서 모기를 쫓는 것으로 알려진 '구문초'도 제라늄의 한 품종이다.",
+    "water_description": "봄~가을 토양 표면이 말랐을 때 충분히 물을 주고, 겨울에는 화분흙이 대부분 말랐을 때 충 분히 물을 준다. 약간 건조한 것을 좋아하므로, 화분의 토양표면이 마른 후 1~2일 두었다가 물을 충분히 준다. 토양이 과습하면 뿌리가 썩을 수 있다.",
+    "managing_point": "화분에 뿌리가 가득차서 뿌리발달이 제한되면 발육이 나빠지고 아랫잎이 쉽게 고사되므로 매년 좀더 큰 화분으로 분갈이한다. 토양을 과습하지 않게 관리한다.",
+    "species_family": "쥐손이풀과",
+    "proper_temperature": "15~25℃ (최저 10℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·톨루엔등 제거, 음이온 발생, 상대습도 증가, 이산화탄소 감소",
+    "blight": "응애, 깍지벌레, 온실가루이",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "제라늄은 꽃을 피우기 위해 햇빛이 많이 필요하므로 창가나 베란다에 배치하는 것이 좋다. 창가에 두면 특유의 향 때문 에 해충이 들어오는 것을 막아주어 유럽에서는 창가에 놓는 꽃으로 활용한다.",
+    "class_label": 68,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "에덴로소",
@@ -1751,7 +1721,10 @@
     "blight": "깍지벌레, 총채벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": ""
+    "tip": "",
+    "class_label": 69,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "홍테 페페로미아",
@@ -1774,7 +1747,10 @@
     "blight": "총채벌레, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "생장이 더딘 편이라 디시 가든(Dish garden), 테라리엄(Terrarium) 에서 많이 사용한다."
+    "tip": "생장이 더딘 편이라 디시 가든(Dish garden), 테라리엄(Terrarium) 에서 많이 사용한다.",
+    "class_label": 70,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "청페페",
@@ -1797,7 +1773,35 @@
     "blight": "총채벌레, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "생장이 더딘 편이라 디시 가든(Dish garden), 테라리엄(Terrarium) 에서 많이 사용한다."
+    "tip": "생장이 더딘 편이라 디시 가든(Dish garden), 테라리엄(Terrarium) 에서 많이 사용한다.",
+    "class_label": 71,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "팔레놉시스(호접란)",
+    "scientific_name": "Phalaenopsis spp.",
+    "english_name": "Moth Orchid",
+    "plant_feature": "호접란으로 알려진 팔레놉시스는 영어이름도 Moth Orchid 로 꽃의 외형이 호랑나비를 닮아 유래하였다. 흰색, 노란색, 분홍색, 혼합색 등 다양한 꽃 색과 혁질의 잎이 넓고 두껍 다. 줄기가 짧은 단축성(短軸性) 식물이고, 모든 잎이 하나의 줄기에서 나온다. 서양난을 처음 키우는 사람도 쉽게 키울 수 있을 만큼 실내환경에 잘 적응하고, 꽃의 개화기가 길다.",
+    "water_description": "봄~가을에는 토양표면이 말랐을 때 충분히 물을 주고, 겨울 에는 화분흙이 대부분 말랐을 때 충분히 물을 준다. 분무를 자주하는 것이 좋다.",
+    "managing_point": "물을 너무 많이 주면 곰팡이에 의해 병이 발병하고, 공기가 너무 건조하면 해충이 발생할 수 있다. 개화기가 끝난 다음에 첫 번째 꽃이 나와 있는 마디 바로 밑부분을 잘라낸다. 주·야간 온도 의 차이가 5℃이상, 수일동안 지속되어야 또다시 꽃이 핀다. 겨울~초여름에 핀 꽃이 피고난 후에 줄기를 2~3마디 남기고 자른다. 밤에 온도차이가 나는 곳에서 일정기간을 지내고 나면 또다시 꽃을 피우게 된다.",
+    "species_family": "난초과",
+    "proper_temperature": "21~25℃ (최저 13℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 상대습도 증가",
+    "blight": "깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "난초과 식물은 다육식물, 브로멜리아류와 마찬가지 로 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침 실에 두면 좋다. 낮에 햇빛을 많이 받을수록 이산화탄 소 고정능력이 상승한다. 팔레놉시스는 난초과 식물 중에서 밤에 이산화탄소를 흡수하는 CAM 성질을 가 장 크게 갖고 있는 식물이다.",
+    "class_label": 72,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "콩고 필로덴드론(콩고)",
@@ -1818,7 +1822,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "수액에 독성 함유",
-    "tip": ""
+    "tip": "",
+    "class_label": 73,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "셀로움 필로덴드론",
@@ -1839,7 +1846,10 @@
     "blight": "진딧물, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "수액에 독성 함유",
-    "tip": "가정에서 기르는 중간 크기의 식물로 포름알데히드 제거, 음이온 발생과 상대습도 향상에 도 움을 주어 공부방, 거실, 사무실 등 어디에 놓아도 잘 어울린다."
+    "tip": "가정에서 기르는 중간 크기의 식물로 포름알데히드 제거, 음이온 발생과 상대습도 향상에 도 움을 주어 공부방, 거실, 사무실 등 어디에 놓아도 잘 어울린다.",
+    "class_label": 74,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "옥시카르디움 필로덴드론",
@@ -1862,7 +1872,35 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "수액에 독성 함유",
-    "tip": "생장이 느린 식물로 걸이 화분에서 키우면 좋다."
+    "tip": "생장이 느린 식물로 걸이 화분에서 키우면 좋다.",
+    "class_label": 75,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "블루스타 고사리",
+    "scientific_name": "Phlebodium aureum 'Blue Star'",
+    "english_name": "Golden polypody , Blue~star fern , Hare~foot fern",
+    "plant_feature": "푸른빛이 도는 파스텔 톤의 잎 색깔과 모양이 아름다워 인 기가 많다. 열대지방의 나무에 착생해서 자라는 식물로 반그 늘과 일반적인 실내온도에서 잘 자란다. 착생식물로 분갈이를 자주할 필요는 없고, 흙에 심을 경우 배수가 아주 좋아야 한다. 비료도 많이 필요없지만 성장기에 묽게 준다. 포기나누기, 포자로 번식한다.",
+    "water_description": "겉흙이 마르면 충분히 물을 주고, 분무를 통해 습하게 유지한다.",
+    "managing_point": "직사광선에 두면 잎 끝이 탈 수 있으니 주의한다. 습도 유지가 중요하므로 건조할 때 잎에 분무해야 한다. 물이 부족하면 잎 끝이 검게 변한다. 갑자기 잎이 노랗게 변하면 뿌리가 화분에 꽉 찼거나 흙 속에 영양분이 없다는 뜻이라 분갈 이가 필요하다.",
+    "species_family": "고란초과",
+    "proper_temperature": "16~24℃ (최저 5℃)",
+    "proper_light": [
+      "bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "공기정화, 습도유지",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "빛이 부족하고 습도가 높은 주방에서 키우면 좋다.",
+    "class_label": 76,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "돈나무",
@@ -1883,7 +1921,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "가정에서 기를 때에는 햇빛이 잘 드는 거실이나 베란다에 배치하면 실내습도를 높일 수 있 다. 화훼장식에서 절지로 많이 활용하는 소재이다."
+    "tip": "가정에서 기를 때에는 햇빛이 잘 드는 거실이나 베란다에 배치하면 실내습도를 높일 수 있 다. 화훼장식에서 절지로 많이 활용하는 소재이다.",
+    "class_label": 77,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "박쥐란",
@@ -1905,7 +1946,133 @@
     "blight": "깍지벌레",
     "managing_difficulty": "hard",
     "poison": "",
-    "tip": "습도가 높은 환경을 좋아하므로 자주 분무한다. 건 조한 바람이 직접 식물에 닿으면 잎 끝이 누렇게 변 하므로 여름철에 에어컨 바람에 주의한다. 해고나 자연목에 붙여 실내 벽이나 높은 위치에서 두면 좋다"
+    "tip": "습도가 높은 환경을 좋아하므로 자주 분무한다. 건 조한 바람이 직접 식물에 닿으면 잎 끝이 누렇게 변 하므로 여름철에 에어컨 바람에 주의한다. 해고나 자연목에 붙여 실내 벽이나 높은 위치에서 두면 좋다",
+    "class_label": 78,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "장미허브",
+    "scientific_name": "Plectranthus tomentosa",
+    "english_name": "Vicks plant",
+    "plant_feature": "장미허브는 남아프리카가 원산지인 달콤한 향이 나는 다년 생 허브이다. 종 'tomentosa'는 라틴어로 잎의 양면을 덮은 벨벳 같은 코팅을 뜻하는 말로, 털이 있고 두꺼우며 녹색의 장미 꽃모양의 잎을 가지고 있다. 최대 50cm까지 자랄 수 있 으며 처음에는 연한 줄기를 가지고 있지만 생장 후에는 목질 화 된다. 초봄과 가을에 보라색의 꽃이 피며, 벌과 나비는 좋 아하지만 모기는 퇴치할 수 있는 역할을 한다. 번식력이 좋아 물꽂이, 꺾꽂이 및 포기나누기 등 다양한 방 법으로 쉽게 번식할 수 있다.",
+    "water_description": "토양 표면이 말랐을 때 물을 준다. 다육식물 같이 잎이 두꺼 워 건조에 강하나 과습은 식물이 황변하는 등 피해가 될 수 있으므로 물주기에 주의한다. 과도한 물주기는 곰팜이 병이 발생할 수 있다.",
+    "managing_point": "햇빛을 좋아하는 식물로 남향의 창가나 베란다에 둔다. 햇빛이 부족한 경우 웃자라서 잎이 드문드 문 달린다. 통풍이 불량하거나 습한 환경에서 취약하여 곰팡 이와 같은 병해가 발생하기 쉬우므로 통풍과 습도 조절에 주의가 필요하다. 월동을 위해서 최소 10℃ 이상의 온도가 필요하다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "15~25℃ (최저 10℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "이산화탄소 감소, 상대습도 증가, 음이온 발생",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "허브류 중에서 음이온 발생량이 가장 우수한 식물 로, 실내에서 기를 때에는 햇빛이 잘 드는 공부방 창가에 두면 집중력 향상에 도움을 준다.",
+    "class_label": 79,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "봉의꼬리",
+    "scientific_name": "Pteris multifida",
+    "english_name": "Spider brake fern",
+    "plant_feature": "봉의꼬리는 한국이 원산지이며 남부지방 숲속이나 길가 절벽이나 돌담에서 자라는 상록성의 양치식물로 높이는 30~70cm이다. 갈라진 잎의 모양이 봉의꼬리처럼 생겨 붙 여진 이름이다. 잎몸 중측 상부에 날개가 뚜렷하게 있는 점 이 특징이다. 속명 프테리스(Pteris)는 '날개', '깃털'을 뜻하 는 'pteron'에서 유래한 것으로 '고사리'를 나타내고 멀티피 다(multifida)는 '여러 개로 갈라진'이란 의미로 학명이 '여러 갈래로 갈라진 고사리'라는 뜻을 가진다. 잎에 흰색 또는 백녹색 무늬가 있는 품종으로 알록큰봉의꼬 리(Pteris nipponica)가 있다. 봉의 꼬리와 달리 잎몸의 중측 에 날개가 없다. 포자엽 뒷면의 포자로 번식하거나 포기나누기로 번식한다.",
+    "water_description": "봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지하고, 겨울에 는 토양 표면이 말랐을 때 충분히 물을 준다. 건조하지 않도록 자주 분무한다.",
+    "managing_point": "공중습도가 높아야 건강하게 자라므로, 자주 분무하여 건조하지 않게 관리한다.",
+    "species_family": "꼬리고사리과",
+    "proper_temperature": "16~20℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "",
+    "tip": "봉의꼬리는 양치식물 중에서 포름알데히드 제거에 탁월하다. 습도와 음이온 발생량도 좋아 서 거실에 놓으면 가구에서 나오는 포름알데히드 제거와 건조한 실내습도를 조절할 수 있다.",
+    "class_label": 80,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "알록큰봉의꼬리",
+    "scientific_name": "Pteris nipponica",
+    "english_name": "Spider brake fern",
+    "plant_feature": "봉의꼬리는 한국이 원산지이며 남부지방 숲속이나 길가 절벽이나 돌담에서 자라는 상록성의 양치식물로 높이는 30~70cm이다. 갈라진 잎의 모양이 봉의꼬리처럼 생겨 붙 여진 이름이다. 잎몸 중측 상부에 날개가 뚜렷하게 있는 점 이 특징이다. 속명 프테리스(Pteris)는 '날개', '깃털'을 뜻하 는 'pteron'에서 유래한 것으로 '고사리'를 나타내고 멀티피 다(multifida)는 '여러 개로 갈라진'이란 의미로 학명이 '여러 갈래로 갈라진 고사리'라는 뜻을 가진다. 잎에 흰색 또는 백녹색 무늬가 있는 품종으로 알록큰봉의꼬 리(Pteris nipponica)가 있다. 봉의 꼬리와 달리 잎몸의 중측 에 날개가 없다. 포자엽 뒷면의 포자로 번식하거나 포기나누기로 번식한다.",
+    "water_description": "봄~가을 흙을 물에 잠기지 않고 촉촉하게 유지하고, 겨울에 는 토양 표면이 말랐을 때 충분히 물을 준다. 건조하지 않도록 자주 분무한다.",
+    "managing_point": "공중습도가 높아야 건강하게 자라므로, 자주 분무하여 건조하지 않게 관리한다.",
+    "species_family": "꼬리고사리과",
+    "proper_temperature": "16~20℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright",
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드 제거, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "hard",
+    "poison": "",
+    "tip": "봉의꼬리는 양치식물 중에서 포름알데히드 제거에 탁월하다. 습도와 음이온 발생량도 좋아 서 거실에 놓으면 가구에서 나오는 포름알데히드 제거와 건조한 실내습도를 조절할 수 있다.",
+    "class_label": 81,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "관음죽",
+    "scientific_name": "Rhapis excelsa",
+    "english_name": "Fan palm Miniature, Bamboo palm, Lady palm",
+    "plant_feature": "원산지가 중국이지만 관음죽의 식물명은 일본에 있는 관음 산에서 기원되었고 일본을 거쳐 유럽으로 전파되었다. 잎은 윤기있고 끝이 톱니바퀴 형태로 갈라져 독특하다. 성장이 느 려서 관리하기도 쉽고, 병충해도 잘 생기지 않으며 공기정 화 효과도 탁월하다. 포기나누기로 번식이 가능하다. 번식 시기는 5~6월이 좋고, 작업 후에는 어두운 곳에서 적응하도록 한다.",
+    "water_description": "봄~여름에는 물을 넉넉하게 주고, 겨울철 따뜻하고 건조한 실내에서는 물을 더 자주 준다.",
+    "managing_point": "직사광선을 받으면 잎이 노랗게 변할 수 있으므로 직사광선 을 피한다. 염분이나 무기양분이 잎 끝에 축적되어 갈색으로 변하면 그 부분만 잘라준다.",
+    "species_family": "야자과",
+    "proper_temperature": "16~21℃ (최저 10℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드 제거, 암모니아 흡수, 음이온 발생, 상대습도 증가",
+    "blight": "응애, 병충해에 강함",
+    "managing_difficulty": "easy",
+    "poison": "",
+    "tip": "휘발성 화학물질뿐 아니라 특히 암모니아를 잘 흡수하기 때문에 빛이 들어오는 화장실에 두면 좋다.",
+    "class_label": 82,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "가제발선인장",
+    "scientific_name": "Rhipsalidopsis gaertneri",
+    "english_name": "Easter Cactus",
+    "plant_feature": "게발선인장과 가재발선인장은 화려한 꽃을 피우는 매력적 인 실내식물이다. 영명이 크리스마스 선인장과 부활절 선 인장으로 종류가 다르다. 게발선인장(크리스마스 선인장, Christmas Cactus)은 11월 중순부터 1월 말 크리스마스 즈음 에 꽃이 피고, 가재발선인장(부활절 선인장, Easter Cactus) 은 4월이나 5월 부활절 즈음에 꽃이 핀다. 두 식물의 모습은 매우 닮았는데, 게발선인장 잎의 가장자리가 결각이 더 많 고, 가지가 더 늘어진 것을 볼 수 있다. 잎꽂이로 번식한다.",
+    "water_description": "토양의 표면이 약간 마르면 촉촉할 정도로 물은 준다. 분무를 자주 해준다.",
+    "managing_point": "꽃이 피고 난 후에는 시원한 방으로 이동했다가 생육기에 온도, 물, 비료를 점점 증가해서 공 급한다. 용토는 배수가 잘 되도록 마사토를 40%이상 섞고, 매년 분갈이한다.",
+    "species_family": "선인장과",
+    "proper_temperature": "12~27℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 이산화탄소 흡수",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "잎이 밖으로 늘어져 자라기 때문에 작고 가벼운 화분보다 높이가 있고 묵직한 화분을 추천 한다. 밤에 이산화탄소를 흡수하므로 침실에 놓으면 좋다.",
+    "class_label": 83,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "만병초",
@@ -1927,7 +2094,10 @@
     "blight": "엽고병, 갈반병, 녹병",
     "managing_difficulty": "hard",
     "poison": "식잎에 유독성분 함유",
-    "tip": "실내에서 기를 때에는 햇빛을 가장 많이 받을 수 있는 공간, 거실이나 베란다에 놓는다. 새집 증후군의 원인물질인 톨루엔 제거능력이 국립 원예특작원에서 측정한 식물 중 가장 탁월하였 다. 음이온 발생량과 상대습도 증가량도 커서, 자생식물로써 공기정화 식물로 개발 가치가 높 은 식물이다."
+    "tip": "실내에서 기를 때에는 햇빛을 가장 많이 받을 수 있는 공간, 거실이나 베란다에 놓는다. 새집 증후군의 원인물질인 톨루엔 제거능력이 국립 원예특작원에서 측정한 식물 중 가장 탁월하였 다. 음이온 발생량과 상대습도 증가량도 커서, 자생식물로써 공기정화 식물로 개발 가치가 높 은 식물이다.",
+    "class_label": 84,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "아잘레아",
@@ -1949,7 +2119,35 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "식물 모든 부분",
-    "tip": "아잘레아를 구입할 때 봉오리에 꽃 색이 비치고, 수량이 많 은 것으로 선택한다."
+    "tip": "아잘레아를 구입할 때 봉오리에 꽃 색이 비치고, 수량이 많 은 것으로 선택한다.",
+    "class_label": 85,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "로즈마리",
+    "scientific_name": "Rosmarinus officinalis",
+    "english_name": "Rosemary",
+    "plant_feature": "남유럽 지중해 연안이 원산지인 로즈마리는 라틴어 '바다의 이슬'에서 유래된 식물로 향기가 나는 빛을 좋아하는 다년생 관목이다. 봄과 여름에 흰색, 분홍색, 하늘색 등의 꽃이 핀다. 잎은 상록색의 가늘고 긴 잎이며, 뒷면은 회색의 털들이 있 으며, 목질과 잔가지가 많은 줄기에 붙어 있다. 자랄 때 최대 2m까지 자라는 견고한 식물이다. 향균 및 살균 효과가 있으 며, 특유의 향으로 화장품, 요리 등 다양한 용도로 이용되고 있으며, 기억력 증진 효과 등에 효과가 좋은 실내식물이다.",
+    "water_description": "토양표면이 말랐을 때 물을 준다. 과습은 식물 뿌리를 썩게 할 수 있으므로 너무 많이 주지 않도록 주의한다. 보통 8월 이후는 다소 건조하게 관리하는 것이 좋다.",
+    "managing_point": "햇빛이 충분한 양지에서 최소 15도 이상의 온도를 유지하는 것이 좋다. 빛이 부족할 때 잎에 생기가 사라지며 웃자라 실내에서는 자주 분갈이를 해주는 것이 좋다. 1년생의 과도한 가지치기는 생장을 저해할 수 있으므로 주의한다. 잎을 수확할 시 향이 진한 가을에 하는 것이 좋으며, 건조하게 관리하는 것이 좋다.",
+    "species_family": "꿀풀과",
+    "proper_temperature": "16~24℃ (최저 15℃)",
+    "proper_light": [
+      "bright",
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "포름알데히드·톨루엔 제거",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "기억력 증진과 실내 공기정화가 우수한 식물로 가정에서 햇빛이 잘 드는 아이들의 공부방이 나 요리를 자주 하는 주방에 두면 좋다.",
+    "class_label": 86,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "스투키 산세베리아",
@@ -1971,7 +2169,10 @@
     "blight": "응애, 깍지벌레, 총채벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "다육식물, 난과 식물, 파인애플과 식물은 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침실에 두면 좋다"
+    "tip": "다육식물, 난과 식물, 파인애플과 식물은 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침실에 두면 좋다",
+    "class_label": 87,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "산세베리아 라우렌티",
@@ -1993,7 +2194,10 @@
     "blight": "응애, 깍지벌레, 총채벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "다육식물, 난과 식물, 파인애플과 식물은 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침 실에 두면 좋다."
+    "tip": "다육식물, 난과 식물, 파인애플과 식물은 밤에 이산화탄소를 흡수하므로 햇빛이 잘 드는 침 실에 두면 좋다.",
+    "class_label": 88,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "쉐플레라 홍콩(홍콩야자)",
@@ -2015,7 +2219,10 @@
     "blight": "응애, 진딧물, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "",
-    "tip": "음이온이 많이 나오고 증산율이 좋아 실내습도를 높이는 효과가 좋다. 겨울에 침실이나 거 실에 두면 상대습도를 높이고 새집증후군 완화에 효과적이다."
+    "tip": "음이온이 많이 나오고 증산율이 좋아 실내습도를 높이는 효과가 좋다. 겨울에 침실이나 거 실에 두면 상대습도를 높이고 새집증후군 완화에 효과적이다.",
+    "class_label": 89,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "디지고테카",
@@ -2037,7 +2244,34 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "디지고데카는 포름알데히드 제거량이 가장 우수하며, 음이온 발생량, 상대습도 증가량도 우 수하다. 직사광선이 들지 않는 거실에 배치하면 효과적이다."
+    "tip": "디지고데카는 포름알데히드 제거량이 가장 우수하며, 음이온 발생량, 상대습도 증가량도 우 수하다. 직사광선이 들지 않는 거실에 배치하면 효과적이다.",
+    "class_label": 90,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "나도 풍란",
+    "scientific_name": "Sedirea japonica",
+    "english_name": "Nadopungran",
+    "plant_feature": "대엽 풍란인 나도풍란은 우리나라 제주도와 남해안을 중심 으로 도서지방에 자생하는데 습도가 높고 통풍이 잘 되는 곳 에서 잘 자란다. 흰 꽃은 4~6월에 피며, 개화기간이 15~20일 정도로 길며, 꽃의 향기가 진하고 좋다. 착생난으로 나무의 줄기가 암벽에 붙어 살아가고 습도가 높은 곳에 뿌리가 노 출되어야 잘 자란다. 일본에서 많은 개량품종이 개발되었고, 일부가 우리나라에도 들어왔다.",
+    "water_description": "3~6월까지는 물을 충분히 주고 10월부터는 물을 줄여 꽃눈 이 잘 형성되도록 한다. 여름철에는 습도가 80~90%정도가 적당하고, 겨울철에는 50%가 적당하다.",
+    "managing_point": "공중습도가 건조할 때는 자주 분무해 주고, 습할 때는 환기 를 자주 해준다.",
+    "species_family": "난초과",
+    "proper_temperature": "21~25℃ (최저 7℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드 제거, 상대습도 증가",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "나도풍란은 착생란이므로 화분에 심어도 좋지만 수태, 돌, 고목 등에 부착하여 뿌리가 노출 되어도 멋있다. 다른 난류에 비해 크기, 잎 면적이 작은 편이지만 포름알데히드 제거능력이 뛰어나고 상대습도 증가량도 우수하다. 침실 또는 거실에 두면 새집증후군을 없애는데 도움이 된다.",
+    "class_label": 91,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "셀라기넬라",
@@ -2058,7 +2292,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "셀라기넬라는 거실 등에 놓인 큰 화분의 지피식물로 활용하면 공기정화 및 습도 조절에 좋 다. 부드러운 질감을 살려 화훼장식에 사용할 수 있다."
+    "tip": "셀라기넬라는 거실 등에 놓인 큰 화분의 지피식물로 활용하면 공기정화 및 습도 조절에 좋 다. 부드러운 질감을 살려 화훼장식에 사용할 수 있다.",
+    "class_label": 92,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "스파티필룸",
@@ -2080,7 +2317,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "easy",
     "poison": "식물 모든 부분",
-    "tip": "내음성이 강해 실내 어디든지 키울 수 있지만 습도가 높은 주방, 창문이 있는 밝은 화장실 등에 배치하면 좋다."
+    "tip": "내음성이 강해 실내 어디든지 키울 수 있지만 습도가 높은 주방, 창문이 있는 밝은 화장실 등에 배치하면 좋다.",
+    "class_label": 93,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "싱고니움",
@@ -2101,7 +2341,34 @@
     "blight": "응애, 깍지벌레, 온실가루이",
     "managing_difficulty": "easy",
     "poison": "수액에 독성 함유",
-    "tip": "싱고니움은 걸이화분으로 활용하는데 화분의 방향을 정기적으로 돌려주는 것이 고른 생장 을 위해 좋다."
+    "tip": "싱고니움은 걸이화분으로 활용하는데 화분의 방향을 정기적으로 돌려주는 것이 고른 생장 을 위해 좋다.",
+    "class_label": 94,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "틸란드시아 키아네아",
+    "scientific_name": "Tillandsia cyanea",
+    "english_name": "Blue~flowered torch, Pink quill",
+    "plant_feature": "틸란드시아 키아네아는 에어플랜트(air plant)라 하여 토양 없이 바위나 나무에 붙어 공중에서 수분과 양분을 흡수하 며 자란다. 보통 우리가 아는 틸란드시아 우스네오이데스 (Tillandsia usneoides, 수염틸란드시아) 등과 같이 공중에 걸어서 장식한다. 틸란드시아 키아네아는 폭 1cm, 길이가 30cm인 진한 녹색 의 잎과 그 사이에 올라오는 분홍색 꽃대, 분홍색 포엽사이 로 보라색의 꽃이 핀다. 화려한 분홍색 꽃대는 1개월 이상 유 지되나 보라색 꽃은 오래가지 않는다.",
+    "water_description": "흙에 직접 물을 주는 것보다 잎과 잎 사이의 틈에 고이게 한다.",
+    "managing_point": "반음지에서 잘 자라지만 개화기에는 빛을 많이 받아야 오래 유지되고, 꽃이 잘 핀다.",
+    "species_family": "파인애플과",
+    "proper_temperature": "7~15℃ (최저 3℃)",
+    "proper_light": [
+      "dark"
+    ],
+    "proper_humidity": [
+      "high"
+    ],
+    "benefit": "포름알데히드·자일렌 제거",
+    "blight": "진딧물, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "포름알데히드 및 자일렌 등 새집증후군 원인물 질 제거효과가 탁월하여 거실에 배치하면 좋다.",
+    "class_label": 95,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "마삭줄",
@@ -2122,7 +2389,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다."
+    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다.",
+    "class_label": 96,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "오색마삭줄",
@@ -2143,7 +2413,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다."
+    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다.",
+    "class_label": 97,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "황금마삭줄",
@@ -2164,7 +2437,10 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다."
+    "tip": "음이온과 습도의 발생량이 좋아서 공부방에 두면 실내 습도 조절과 집중력 향상에 도움이 된다. 덩굴성이므로 공중걸이분에 심어 활용한다.",
+    "class_label": 98,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "튤립",
@@ -2186,7 +2462,10 @@
     "blight": "진딧물",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": ""
+    "tip": "",
+    "class_label": 99,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   },
   {
     "name": "멕시코소철",
@@ -2208,6 +2487,33 @@
     "blight": "응애, 깍지벌레",
     "managing_difficulty": "normal",
     "poison": "",
-    "tip": "빛이 충분한 양지에서 잘 자라므로, 실내에서 기를 때는 햇빛이 많이 드는 거실이나 베란 다에 둔다. 겨울철에도 최저 10℃이상 유지해야 되므로 베란다가 추울 경우 실내로 옮긴다."
+    "tip": "빛이 충분한 양지에서 잘 자라므로, 실내에서 기를 때는 햇빛이 많이 드는 거실이나 베란 다에 둔다. 겨울철에도 최저 10℃이상 유지해야 되므로 베란다가 추울 경우 실내로 옮긴다.",
+    "class_label": 100,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
+  },
+  {
+    "name": "게발선인장",
+    "scientific_name": "Zygocactus truncatus",
+    "english_name": "Christmas Cactus",
+    "plant_feature": "게발선인장과 가재발선인장은 화려한 꽃을 피우는 매력적 인 실내식물이다. 영명이 크리스마스 선인장과 부활절 선 인장으로 종류가 다르다. 게발선인장(크리스마스 선인장, Christmas Cactus)은 11월 중순부터 1월 말 크리스마스 즈음 에 꽃이 피고, 가재발선인장(부활절 선인장, Easter Cactus) 은 4월이나 5월 부활절 즈음에 꽃이 핀다. 두 식물의 모습은 매우 닮았는데, 게발선인장 잎의 가장자리가 결각이 더 많 고, 가지가 더 늘어진 것을 볼 수 있다. 잎꽂이로 번식한다.",
+    "water_description": "토양의 표면이 약간 마르면 촉촉할 정도로 물은 준다. 분무를 자주 해준다.",
+    "managing_point": "꽃이 피고 난 후에는 시원한 방으로 이동했다가 생육기에 온도, 물, 비료를 점점 증가해서 공 급한다. 용토는 배수가 잘 되도록 마사토를 40%이상 섞고, 매년 분갈이한다.",
+    "species_family": "선인장과",
+    "proper_temperature": "12~27℃ (최저 5℃)",
+    "proper_light": [
+      "half_bright"
+    ],
+    "proper_humidity": [
+      "normal"
+    ],
+    "benefit": "공기정화, 이산화탄소 흡수",
+    "blight": "응애, 깍지벌레",
+    "managing_difficulty": "normal",
+    "poison": "",
+    "tip": "잎이 밖으로 늘어져 자라기 때문에 작고 가벼운 화분보다 높이가 있고 묵직한 화분을 추천 한다. 밤에 이산화탄소를 흡수하므로 침실에 놓으면 좋다.",
+    "class_label": 101,
+    "proper_watering_other": 432000000,
+    "proper_watering_winter": 604800000
   }
 ]
