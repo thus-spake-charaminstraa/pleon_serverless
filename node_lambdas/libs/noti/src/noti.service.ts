@@ -1,27 +1,27 @@
+import { plantInfoForGuide } from '@app/common';
+import { FeedService } from '@app/feed/feed.service';
+import { PlantRepository } from '@app/plant/repositories/plant.repository';
+import { ScheduleService } from '@app/schedule/schedule.service';
+import { DeviceToken } from '@app/user';
+import { DeviceTokenRepository } from '@app/user/repositories/device-token.repository';
 import {
-  Injectable,
   BadRequestException,
-  Inject,
   forwardRef,
+  Inject,
+  Injectable,
 } from '@nestjs/common';
-import { NotiRepository } from './noti.repository';
-import { ScheduleService } from '@app/schedule';
-import { plantInfoForGuide } from '@app/common/types';
-import { Noti } from './entities';
+import { credential } from 'firebase-admin';
+import { initializeApp } from 'firebase-admin/app';
+import { getMessaging, Messaging } from 'firebase-admin/messaging';
 import {
   CreateNotiDto,
   GetNotiQuery,
   NotiManageDto,
   NotiManageKind,
 } from './dto';
-import { PlantRepository } from '@app/plant';
-import { CreateFeedDto } from '@app/feed/dto';
+import { Noti } from './entities';
+import { NotiRepository } from './noti.repository';
 import { NotiKind } from './types';
-import { initializeApp } from 'firebase-admin/app';
-import { credential } from 'firebase-admin';
-import { getMessaging, Messaging } from 'firebase-admin/messaging';
-import { DeviceTokenRepository } from '@app/user/repositories';
-import { DeviceToken } from '@app/user';
 
 @Injectable()
 export class NotiService {
@@ -35,6 +35,8 @@ export class NotiService {
     @Inject(forwardRef(() => PlantRepository))
     private readonly plantRepository: PlantRepository,
     private readonly deviceTokenRepository: DeviceTokenRepository,
+    @Inject(forwardRef(() => FeedService))
+    private readonly feedService: FeedService,
   ) {
     this.notiContentFormat = (plantName: string, kind: string) => {
       const contents = {
@@ -89,6 +91,10 @@ export class NotiService {
               ),
             )
           : [Promise.resolve(undefined)];
+        await this.notiRepository.deleteAll({
+          plant_id: plantInfo.id.toString(),
+          kind: NotiKind[kind],
+        });
         const ret = await Promise.all([
           this.notiRepository.create({
             owner: plantInfo.owner.toString(),
@@ -117,26 +123,26 @@ export class NotiService {
     return await this.notiRepository.findAll(query);
   }
 
-  async completeManage(id: string): Promise<CreateFeedDto> {
+  async completeManage(id: string): Promise<void> {
     const ret = await this.notiRepository.deleteOne(id);
     const kind: any = ret.kind;
-    const createFeedDto: CreateFeedDto = {
-      plant_id: ret.plant_id.toString(),
-      publish_date: new Date(),
-      kind,
-      content: '오늘은 무엇을 해주었어요~?',
-    };
-    return createFeedDto;
+    await this.feedService.create(
+      {
+        owner: ret.owner.toString(),
+        plant_id: ret.plant_id.toString(),
+        publish_date: new Date(),
+        kind,
+        content: '오늘은 무엇을 해주었어요~?',
+      },
+      true,
+    );
   }
 
   async laterManage(id: string): Promise<void> {
     await this.notiRepository.deleteOne(id);
   }
 
-  async notiManage(
-    id: string,
-    notiManageDto: NotiManageDto,
-  ): Promise<CreateFeedDto | void> {
+  async notiManage(id: string, notiManageDto: NotiManageDto): Promise<void> {
     if (notiManageDto.type === NotiManageKind.complete) {
       return await this.completeManage(id);
     } else if (notiManageDto.type === NotiManageKind.later) {

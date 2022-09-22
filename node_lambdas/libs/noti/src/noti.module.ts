@@ -1,18 +1,20 @@
-import { Module, forwardRef } from '@nestjs/common';
-import { NotiService } from './noti.service';
-import { NotiRepository } from './noti.repository';
-import { ScheduleModule } from '@app/schedule';
-import { MongooseModule } from '@nestjs/mongoose';
-import { NotiSchema } from './entities/noti.entity';
-import { PlantModule } from '@app/plant';
+import { FeedModule } from '@app/feed/feed.module';
+import { PlantModule } from '@app/plant/plant.module';
+import { ScheduleModule } from '@app/schedule/schedule.module';
 import { UserModule } from '@app/user/user.module';
+import { Module, forwardRef } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { Noti, NotiSchema } from './entities';
+import { NotiRepository } from './noti.repository';
+import { NotiService } from './noti.service';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: 'Noti', schema: NotiSchema }]),
+    MongooseModule.forFeature([{ name: Noti.name, schema: NotiSchema }]),
     forwardRef(() => ScheduleModule),
     forwardRef(() => PlantModule),
     UserModule,
+    forwardRef(() => FeedModule),
   ],
   providers: [NotiService, NotiRepository],
   exports: [NotiService, NotiRepository],

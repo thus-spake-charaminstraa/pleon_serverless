@@ -1,19 +1,13 @@
+import { JwtAuthGuard } from '@app/auth';
 import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  HttpCode,
-  HttpStatus,
-  UseGuards,
-  UseInterceptors,
-  Req,
-  Query,
-} from '@nestjs/common';
-import { PlantByParamsIdInterceptor, PlantService } from '@app/plant';
+  ForbiddenResponse,
+  NotFoundResponse,
+  ParseDateInBodyPipe,
+  queryParser,
+  SuccessResponse,
+  UnauthorizedResponse,
+} from '@app/common';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
 import {
   CreatePlantApiDto,
   CreatePlantResponse,
@@ -22,9 +16,29 @@ import {
   GetPlantResponse,
   GetPlantsResponse,
   GetSpeciesResponse,
+  PlantByParamsIdInterceptor,
   UpdatePlantDto,
   UpdatePlantResponse,
-} from '@app/plant/dto';
+} from '@app/plant';
+import { PlantService } from '@app/plant/services/plant.service';
+import { SpeciesService } from '@app/plant/services/species.service';
+import {
+  Body,
+  Controller,
+  Delete,
+  forwardRef,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Inject,
+  Param,
+  Patch,
+  Post,
+  Query,
+  Req,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import {
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -35,25 +49,14 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory, ParseDateInBodyPipe } from '@app/common';
-import {
-  ForbiddenResponse,
-  UnauthorizedResponse,
-  NotFoundResponse,
-  SuccessResponse,
-} from '@app/common/dto';
-import { ScheduleKind, ScheduleService } from '@app/schedule';
-import { DateStrFormat, queryParser } from '@app/common/utils';
-import { SpeciesService } from '@app/plant/services/species.service';
 
 @ApiTags('Plant')
 @Controller('plant')
 export class PlantLambdaController {
   constructor(
+    @Inject(forwardRef(() => PlantService))
     private readonly plantService: PlantService,
     private readonly speciesService: SpeciesService,
-    private readonly scheduleService: ScheduleService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -103,11 +106,6 @@ export class PlantLambdaController {
   ) {
     createPlantDto.owner = req.user.id;
     const plant = await this.plantService.create(createPlantDto);
-    await this.scheduleService.create({
-      plant_id: plant.id.toString(),
-      timestamp: new Date(DateStrFormat(new Date(createPlantDto.water_date))),
-      kind: ScheduleKind.water,
-    });
     return plant;
   }
 

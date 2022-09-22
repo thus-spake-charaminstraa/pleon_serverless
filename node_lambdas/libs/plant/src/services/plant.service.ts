@@ -1,12 +1,15 @@
-import { Injectable } from '@nestjs/common';
+import { CommonService } from '@app/common/common.service';
+import { FeedKind } from '@app/feed';
+import { FeedService } from '@app/feed/feed.service';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import {
+  CreatePlantApiDto,
   CreatePlantDto,
   GetPlantQuery,
   UpdatePlantDto,
-} from '../dto/plant.dto';
-import { Plant } from '../entities/plant.entity';
+} from '../dto';
+import { Plant } from '../entities';
 import { PlantRepository } from '../repositories/plant.repository';
-import { CommonService } from '@app/common';
 
 @Injectable()
 export class PlantService extends CommonService<
@@ -15,7 +18,35 @@ export class PlantService extends CommonService<
   UpdatePlantDto,
   GetPlantQuery
 > {
-  constructor(private plantRepository: PlantRepository) {
+  constructor(
+    private plantRepository: PlantRepository,
+    @Inject(forwardRef(() => FeedService))
+    private feedService: FeedService,
+  ) {
     super(plantRepository);
+  }
+
+  async create(createPlantDto: CreatePlantApiDto): Promise<Plant> {
+    const ret = await this.plantRepository.create(createPlantDto);
+    await Promise.all([
+      this.feedService.create({
+        owner: ret.owner.toString(),
+        plant_id: ret.id.toString(),
+        publish_date: new Date(),
+        kind: FeedKind.today,
+        content: `${ret.name}을 새로 입양했다!`,
+      }),
+      this.feedService.create(
+        {
+          owner: ret.owner.toString(),
+          plant_id: ret.id.toString(),
+          publish_date: new Date(createPlantDto.water_date),
+          kind: FeedKind.water,
+          content: 'auto',
+        },
+        true,
+      ),
+    ]);
+    return ret;
   }
 }

@@ -6,7 +6,7 @@ import { UserRepository } from './repositories/user.repository';
 import { UserService } from './services/user.service';
 import { DeviceTokenService } from './services/device-token.service';
 import { DeviceTokenRepository } from './repositories/device-token.repository';
-import { DeviceToken, DeviceTokenSchema } from './entities';
+import { DeviceToken, DeviceTokenSchema } from './entities/device-token.entity';
 
 @Module({
   imports: [
