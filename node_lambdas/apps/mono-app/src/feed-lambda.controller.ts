@@ -63,6 +63,33 @@ export class FeedLambdaController {
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
+  @ApiOkResponse({
+    description: '피드 자동 완성 텍스트입니다.',
+    schema: {
+      example: {
+        data: {
+          [FeedKind.water]: '시원한 물을 뿌려주었다!',
+          [FeedKind.air]: '신선한 공기로 숨 돌리게 해주었다!',
+          [FeedKind.spray]: '잎이 건조하지 않게 분무를 해주었다!',
+          [FeedKind.nutrition]: '집에 먹을게 없어서 비료를 넣어주었다!',
+          [FeedKind.repot]: '새 집으로 이사해주었다!',
+          [FeedKind.prune]: '이쁘게 다듬었다!',
+          [FeedKind.today]: '오늘의 모습은 아주 이쁘다!',
+          [FeedKind.leaf]: '잎이 멋지다!',
+          [FeedKind.flower]: '꽃이 이쁘다!',
+          [FeedKind.fruit]: '열매가 맺혔다!',
+          [FeedKind.etc]: '어떤 일이 있었다!',
+        },
+        success: true,
+      },
+    },
+  })
+  @HttpCode(HttpStatus.OK)
+  @Get('content')
+  async feedContentTemplate() {
+    return await this.feedService.feedContentTemplate();
+  }
+
   /**
    * 주어진 정보로 식물 피드를 생성합니다. 피드 종류는 enum 값이며, 식물 id는 필수입니다.
    * 유저의 id로 피드의 소유자를 설정합니다.
