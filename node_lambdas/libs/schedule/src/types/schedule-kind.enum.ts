@@ -4,5 +4,5 @@ export enum ScheduleKind {
   repot = 'repot',
   prune = 'prune',
   spray = 'spray',
-  fertilize = 'fertilize',
+  nutrition = 'nutrition',
 }

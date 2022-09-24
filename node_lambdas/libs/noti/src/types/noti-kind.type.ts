@@ -4,6 +4,6 @@ export enum NotiKind {
   repot = 'repot',
   prune = 'prune',
   spray = 'spray',
-  fertilize = 'fertilize',
+  nutrition = 'nutrition',
   photo = 'photo',
 }

@@ -4,7 +4,7 @@ export enum FeedKind {
   repot = 'repot',
   prune = 'prune',
   spray = 'spray',
-  fertilize = 'fertilize',
+  nutrition = 'nutrition',
   today = 'today',
   leaf = 'leaf',
   flower = 'flower',

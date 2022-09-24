@@ -27,7 +27,7 @@ export class ScheduleService {
       repot: new Date(90 * 24 * 60 * 60 * 1000),
       prune: new Date(30 * 24 * 60 * 60 * 1000),
       spray: new Date(3 * 24 * 60 * 60 * 1000),
-      fertilize: new Date(120 * 24 * 60 * 60 * 1000),
+      nutrition: new Date(120 * 24 * 60 * 60 * 1000),
     };
   }
 
@@ -82,8 +82,8 @@ export class ScheduleService {
           ? 'prune'
           : kind == ScheduleKind.spray
           ? 'spray'
-          : kind == ScheduleKind.fertilize
-          ? 'fertilize'
+          : kind == ScheduleKind.nutrition
+          ? 'nutrition'
           : 'etc',
       );
     });

@@ -1,12 +1,31 @@
 import { JwtAuthGuard } from '@app/auth';
-import { CaslAbilityFactory } from '@app/common';
 import {
   BadRequestResponse,
+  DateStrFormat,
   ForbiddenResponse,
   NotFoundResponse,
+  ParseDateInBodyPipe,
+  queryParser,
   SuccessResponse,
   UnauthorizedResponse,
-} from '@app/common/dto';
+} from '@app/common';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
+import {
+  CreateFeedDto,
+  CreateFeedResponse,
+  FeedByParamsIdInterceptor,
+  FeedKind,
+  FeedViewKind,
+  GetFeedOrderBy,
+  GetFeedQuery,
+  GetFeedResponse,
+  GetFeedsResponse,
+  GetFeedsWithNotiResponse,
+  UpdateFeedDto,
+  UpdateFeedResponse,
+} from '@app/feed';
+import { FeedService } from '@app/feed/feed.service';
+import { NotiService } from '@app/noti/noti.service';
 import {
   Body,
   Controller,
@@ -36,23 +55,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { DateStrFormat, queryParser } from '@app/common/utils';
-import { ParseDateInBodyPipe } from '@app/common/pipes';
-import { NotiService } from '@app/noti';
-import { FeedByParamsIdInterceptor, FeedService } from '@app/feed';
-import {
-  CreateFeedDto,
-  CreateFeedResponse,
-  FeedViewKind,
-  GetFeedOrderBy,
-  GetFeedQuery,
-  GetFeedResponse,
-  GetFeedsResponse,
-  GetFeedsWithNotiResponse,
-  UpdateFeedDto,
-  UpdateFeedResponse,
-} from '@app/feed/dto';
-import { FeedKind } from '@app/feed/types';
 
 @ApiTags('Feed')
 @Controller('feed')
@@ -63,6 +65,9 @@ export class FeedLambdaController {
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
+  /**
+   * 피드 자동 완성 텍스트입니다.
+   */
   @ApiOkResponse({
     description: '피드 자동 완성 텍스트입니다.',
     schema: {
@@ -74,7 +79,7 @@ export class FeedLambdaController {
           [FeedKind.nutrition]: '집에 먹을게 없어서 비료를 넣어주었다!',
           [FeedKind.repot]: '새 집으로 이사해주었다!',
           [FeedKind.prune]: '이쁘게 다듬었다!',
-          [FeedKind.today]: '오늘의 모습은 아주 이쁘다!',
+          [FeedKind.today]: '오늘 아주 이쁘다!',
           [FeedKind.leaf]: '잎이 멋지다!',
           [FeedKind.flower]: '꽃이 이쁘다!',
           [FeedKind.fruit]: '열매가 맺혔다!',
@@ -86,8 +91,94 @@ export class FeedLambdaController {
   })
   @HttpCode(HttpStatus.OK)
   @Get('content')
-  async feedContentTemplate() {
-    return await this.feedService.feedContentTemplate();
+  async getFeedContentTemplate() {
+    return await this.feedService.getFeedContentTemplate();
+  }
+
+  /**
+   * 피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url입니다.
+   */
+  @ApiOkResponse({
+    description:
+      '피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url입니다.',
+    schema: {
+      example: {
+        data: [
+          {
+            name_kr: '물',
+            name_en: 'water',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_water.svg',
+          },
+          {
+            name_kr: '통풍',
+            name_en: 'air',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_air.svg',
+          },
+          {
+            name_kr: '분무',
+            name_en: 'spray',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_spray.svg',
+          },
+          {
+            name_kr: '영양제',
+            name_en: 'nutrition',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_nutrition.svg',
+          },
+          {
+            name_kr: '분갈이',
+            name_en: 'repot',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_repot.svg',
+          },
+          {
+            name_kr: '가지치기',
+            name_en: 'prune',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_prune.svg',
+          },
+          {
+            name_kr: '오늘의모습',
+            name_en: 'today',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_today.svg',
+          },
+          {
+            name_kr: '잎',
+            name_en: 'leaf',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_leaf.svg',
+          },
+          {
+            name_kr: '꽃',
+            name_en: 'flower',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_flower.svg',
+          },
+          {
+            name_kr: '열매',
+            name_en: 'fruit',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_fruit.svg',
+          },
+          {
+            name_kr: '기타',
+            name_en: 'etc',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_etc.svg',
+          },
+        ],
+        success: true,
+      },
+    },
+  })
+  @HttpCode(HttpStatus.OK)
+  @Get('kind')
+  async getFeedKind() {
+    return await this.feedService.getFeedKind();
   }
 
   /**
