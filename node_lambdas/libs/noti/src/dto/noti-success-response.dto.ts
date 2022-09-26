@@ -70,7 +70,7 @@ export class GetNotiResponse extends SuccessResponse {
               properties: {
                 content: {
                   type: 'string',
-                  example: '식물과 대화해보세요~!',
+                  example: '식물과 놀아보세요~!',
                 }
               }
             }

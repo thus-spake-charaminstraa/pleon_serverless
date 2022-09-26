@@ -99,7 +99,7 @@ export class NotiService {
           this.notiRepository.create({
             owner: plantInfo.owner.toString(),
             plant_id: plantInfo.id.toString(),
-            kind: NotiKind.water,
+            kind: NotiKind[kind],
             content: this.notiContentFormat(plantInfo.name, kind),
           }),
           ...notiProms,
@@ -136,6 +136,7 @@ export class NotiService {
       },
       true,
     );
+    console.log(feed);
   }
 
   async laterManage(id: string): Promise<void> {

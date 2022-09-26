@@ -136,7 +136,7 @@ export class NotiLambdaController {
       {
         viewType: NotiViewKind.default,
         viewObject: {
-          content: '식물과의 일기를 써보세요!',
+          content: '식물의 하루를 기록해보세요!',
         },
       },
     );
