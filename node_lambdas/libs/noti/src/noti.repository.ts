@@ -22,21 +22,22 @@ export class NotiRepository {
 
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
     const { ...q } = query;
-    return this.model.find(q).sort({ created_at: -1 }).exec();
+    return await this.model.find(q).sort({ created_at: -1 }).exec();
   }
 
   async findOne(id: string): Promise<Noti> {
-    return this.model.findOne({ id }).exec();
+    return await this.model.findOne({ id }).exec();
   }
 
   async update(id: string, updateNotiDto: UpdateNotiDto): Promise<Noti> {
-    return this.model
+    return await this.model
       .findOneAndUpdate({ id }, updateNotiDto, { new: true })
       .exec();
   }
 
   async deleteOne(id: string): Promise<Noti> {
-    return this.model.findOneAndDelete({ id }).exec();
+    const ret = await this.model.findOneAndDelete({ id }).exec();
+    return ret;
   }
 
   async deleteAll(query: DeleteNotiQuery): Promise<void> {

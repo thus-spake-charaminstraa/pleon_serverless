@@ -126,7 +126,7 @@ export class NotiService {
   async completeManage(id: string): Promise<void> {
     const ret = await this.notiRepository.deleteOne(id);
     const kind: any = ret.kind;
-    await this.feedService.create(
+    const feed = await this.feedService.create(
       {
         owner: ret.owner.toString(),
         plant_id: ret.plant_id.toString(),
