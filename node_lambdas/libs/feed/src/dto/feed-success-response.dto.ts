@@ -40,7 +40,6 @@ export class FeedView {
   viewObject: FeedRes;
 }
 
-@ApiExtraModels()
 export class NotiView {
   viewType: FeedViewKind;
 

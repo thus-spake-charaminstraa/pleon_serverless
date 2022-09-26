@@ -1,4 +1,4 @@
-import { plantInfoForGuide } from '@app/common';
+import { DateStrFormat, plantInfoForGuide } from '@app/common';
 import { FeedService } from '@app/feed/feed.service';
 import { PlantRepository } from '@app/plant/repositories/plant.repository';
 import { ScheduleService } from '@app/schedule/schedule.service';
@@ -130,7 +130,7 @@ export class NotiService {
       {
         owner: ret.owner.toString(),
         plant_id: ret.plant_id.toString(),
-        publish_date: new Date(),
+        publish_date: new Date(DateStrFormat(new Date())),
         kind,
         content: '오늘은 무엇을 해주었어요~?',
       },

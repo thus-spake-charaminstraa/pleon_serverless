@@ -1,11 +1,20 @@
-import { NotiService } from '@app/noti';
+import { JwtAuthGuard } from '@app/auth';
+import {
+  BadRequestResponse,
+  queryParser,
+  UnauthorizedResponse,
+} from '@app/common';
 import {
   CreateNotiDto,
   GetNotiQuery,
+  GetNotiResponse,
   GetNotisResponse,
   ManageNotiResponse,
+  NotiKind,
   NotiManageDto,
-} from '@app/noti/dto';
+  NotiViewKind,
+} from '@app/noti';
+import { NotiService } from '@app/noti/noti.service';
 import {
   Body,
   Controller,
@@ -18,8 +27,6 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from '@app/auth';
-import { queryParser } from '@app/common/utils';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
@@ -28,8 +35,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { BadRequestResponse, UnauthorizedResponse } from '@app/common/dto';
-import { NotiKind } from '@app/noti/types';
 
 @ApiTags('Noti')
 @Controller('noti')
@@ -95,6 +100,43 @@ export class NotiLambdaController {
       GetNotiQuery,
     );
     return await this.notiService.findAll(query);
+  }
+
+  @ApiOkResponse({
+    description: '피드에서 보여줄 알림 목록을 받습니다.',
+    type: GetNotiResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('feed')
+  async findNotiList(@Req() req) {
+    const query: GetNotiQuery = queryParser(
+      {
+        owner: req.user.id.toString(),
+      },
+      GetNotiQuery,
+    );
+    const ret = await this.notiService.findAll(query);
+    const viewTypeRet: any[] = ret.map((noti) => ({
+      viewType: NotiViewKind.twoBtn,
+      viewObject: noti,
+    }));
+    viewTypeRet.push(
+      {
+        viewType: NotiViewKind.oneBtn,
+        viewObject: {
+          content: '식물과 놀아보세요!',
+        },
+      },
+      {
+        viewType: NotiViewKind.default,
+        viewObject: {
+          content: '식물과의 일기를 써보세요!',
+        },
+      },
+    );
+    return viewTypeRet;
   }
 
   /**

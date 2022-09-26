@@ -12,7 +12,7 @@ export class ParseDateInBodyPipe implements PipeTransform {
     if (value.adopt_date)
       value.adopt_date = DateStrFormat(new Date(value.adopt_date));
     else if (value.publish_date)
-      value.publish_date = DateStrFormat(new Date(value.publish_date));
+      value.publish_date = new Date(DateStrFormat(new Date(value.publish_date)));
     else if (value.timestamp)
       value.timestamp = DateStrFormat(new Date(value.timestamp));
     else throw new BadRequestException('Invalid date format');

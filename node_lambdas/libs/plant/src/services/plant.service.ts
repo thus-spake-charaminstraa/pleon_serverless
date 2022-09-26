@@ -1,3 +1,4 @@
+import { DateStrFormat } from '@app/common';
 import { CommonService } from '@app/common/common.service';
 import { FeedKind } from '@app/feed';
 import { FeedService } from '@app/feed/feed.service';
@@ -32,7 +33,7 @@ export class PlantService extends CommonService<
       this.feedService.create({
         owner: ret.owner.toString(),
         plant_id: ret.id.toString(),
-        publish_date: new Date(),
+        publish_date: new Date(DateStrFormat(new Date())),
         kind: FeedKind.today,
         content: `${ret.name}을 새로 입양했다!`,
       }),
@@ -40,7 +41,7 @@ export class PlantService extends CommonService<
         {
           owner: ret.owner.toString(),
           plant_id: ret.id.toString(),
-          publish_date: new Date(createPlantDto.water_date),
+          publish_date: new Date(DateStrFormat(new Date(createPlantDto.water_date))),
           kind: FeedKind.water,
           content: 'auto',
         },
