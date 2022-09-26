@@ -120,13 +120,44 @@ export class UserLambdaController {
     return this.userService.update(id, updateUserDto);
   }
 
+  /**
+   * 유저의 자신의 디바이스 토큰을 추가합니다.
+   */
+  @ApiNotFoundResponse({
+    description: '해당 유저가 존재하지 않습니다.',
+    type: BadRequestResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBadRequestResponse({
+    description: '적절하지 않은 입력입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiCreatedResponse({
+    description: '토큰을 성공적으로 생성합니다.',
+    type: CreateDeviceTokenResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.CREATED)
+  @Post('token')
+  async createTokenSelf(
+    @Body() createDeviceTokenDto: CreateDeviceTokenDto,
+    @Req() req,
+  ) {
+    createDeviceTokenDto.owner = req.user.id.toString();
+    return await this.deviceTokenService.create(createDeviceTokenDto);
+  }
+
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.userService.deleteOne(id);
   }
 
   /**
-   * 유저의 디바이스 토큰을 추가합니다. 유저 자신만 추가할 수 있습니다.
+   * 유저의 디바이스 토큰을 추가합니다.
    */
   @ApiNotFoundResponse({
     description: '해당 유저가 존재하지 않습니다.',
