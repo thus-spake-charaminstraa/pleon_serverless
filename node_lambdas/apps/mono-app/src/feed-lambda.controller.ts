@@ -63,44 +63,14 @@ export class FeedLambdaController {
     private readonly feedService: FeedService,
     private readonly notiService: NotiService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
-  ) {}
-
+  ) { }
+  
   /**
-   * 피드 자동 완성 텍스트입니다.
-   */
-  @ApiOkResponse({
-    description: '피드 자동 완성 텍스트입니다.',
-    schema: {
-      example: {
-        data: {
-          [FeedKind.water]: '시원한 물을 뿌려주었다!',
-          [FeedKind.air]: '신선한 공기로 숨 돌리게 해주었다!',
-          [FeedKind.spray]: '잎이 건조하지 않게 분무를 해주었다!',
-          [FeedKind.nutrition]: '집에 먹을게 없어서 비료를 넣어주었다!',
-          [FeedKind.repot]: '새 집으로 이사해주었다!',
-          [FeedKind.prune]: '이쁘게 다듬었다!',
-          [FeedKind.today]: '오늘 아주 이쁘다!',
-          [FeedKind.leaf]: '잎이 멋지다!',
-          [FeedKind.flower]: '꽃이 이쁘다!',
-          [FeedKind.fruit]: '열매가 맺혔다!',
-          [FeedKind.etc]: '어떤 일이 있었다!',
-        },
-        success: true,
-      },
-    },
-  })
-  @HttpCode(HttpStatus.OK)
-  @Get('content')
-  async getFeedContentTemplate() {
-    return await this.feedService.getFeedContentTemplate();
-  }
-
-  /**
-   * 피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url입니다.
+   * 피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url, 피드 자동완성 텍스트입니다.
    */
   @ApiOkResponse({
     description:
-      '피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url입니다.',
+      '피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url, 피드 자동완성 텍스트입니다.',
     schema: {
       example: {
         data: [
@@ -109,66 +79,77 @@ export class FeedLambdaController {
             name_en: 'water',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_water.svg',
+            auto_content: '시원한 물을 뿌려주었다!',
           },
           {
             name_kr: '통풍',
             name_en: 'air',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_air.svg',
+            auto_content: '신선한 공기로 숨 돌리게 해주었다!',
           },
           {
             name_kr: '분무',
             name_en: 'spray',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_spray.svg',
+            auto_content: '잎이 건조하지 않게 분무를 해주었다!',
           },
           {
             name_kr: '영양제',
             name_en: 'nutrition',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_nutrition.svg',
+            auto_content: '집에 먹을게 없어서 비료를 넣어주었다!',
           },
           {
             name_kr: '분갈이',
             name_en: 'repot',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_repot.svg',
+            auto_content: '새 집으로 이사해주었다!',
           },
           {
             name_kr: '가지치기',
             name_en: 'prune',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_prune.svg',
+            auto_content: '이쁘게 다듬었다!',
           },
           {
             name_kr: '오늘의모습',
             name_en: 'today',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_today.svg',
+            auto_content: '오늘의 모습은 아주 이쁘다!',
           },
           {
             name_kr: '잎',
             name_en: 'leaf',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_leaf.svg',
+            auto_content: '잎이 멋지다!',
           },
           {
             name_kr: '꽃',
             name_en: 'flower',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_flower.svg',
+            auto_content: '꽃이 이쁘다!',
           },
           {
             name_kr: '열매',
             name_en: 'fruit',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_fruit.svg',
+            auto_content: '열매가 맺혔다!',
           },
           {
             name_kr: '기타',
             name_en: 'etc',
             icon_uri:
               'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_etc.svg',
+            auto_content: '어떤 일이 있었다!',
           },
         ],
         success: true,
@@ -178,7 +159,7 @@ export class FeedLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get('kind')
   async getFeedKind() {
-    return await this.feedService.getFeedKind();
+    return await this.feedService.getFeedKindInfo();
   }
 
   /**

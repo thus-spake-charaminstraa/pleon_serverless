@@ -102,6 +102,10 @@ export class NotiLambdaController {
     return await this.notiService.findAll(query);
   }
 
+  @ApiUnauthorizedResponse({
+    description: '유저 인증정보가 없습니다.',
+    type: UnauthorizedResponse,
+  })
   @ApiOkResponse({
     description: '피드에서 보여줄 알림 목록을 받습니다.',
     type: GetNotiResponse,
