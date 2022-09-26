@@ -151,8 +151,9 @@ export class UserLambdaController {
   async createToken(
     @Param('id') id: string,
     @Body() createDeviceTokenDto: CreateDeviceTokenDto,
+    @Req() req,
   ) {
-    createDeviceTokenDto.owner = id;
+    createDeviceTokenDto.owner = req.user.id.toString();
     return await this.deviceTokenService.create(createDeviceTokenDto);
   }
 
