@@ -85,6 +85,51 @@ export class PlantLambdaController {
   }
 
   /**
+   * 식물의 기분 정보를 가져옵니다. 배열 형태입니다!
+   */
+  @ApiOkResponse({
+    schema: {
+      example: {
+        data: [
+          {
+            mood: 'happy',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_happy.png',
+          },
+          {
+            mood: 'sad',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sad.png',
+          },
+          {
+            mood: 'sick',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sick.png',
+          },
+          {
+            mood: 'boring',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_boring.png',
+          },
+          {
+            mood: 'hot',
+            icon_uri:
+              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_hot.png',
+          },
+        ],
+        success: true,
+      },
+    },
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('mood')
+  async getMoodInfos() {
+    return await this.plantService.getPlantMoodInfos();
+  }
+
+  /**
    * 식물을 생성합니다. 유저가 있는지 인증정보를 확인하고, 식물을 생성합니다.
    * 유저의 id로 식물의 소유자를 설정합니다.
    */

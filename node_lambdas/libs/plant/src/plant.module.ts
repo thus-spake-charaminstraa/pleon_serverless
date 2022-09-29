@@ -57,6 +57,7 @@ import { SpeciesService } from './services/species.service';
       ]),
     ),
     forwardRef(() => FeedModule),
+    forwardRef(() => NotiModule),
   ],
   providers: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
   exports: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],

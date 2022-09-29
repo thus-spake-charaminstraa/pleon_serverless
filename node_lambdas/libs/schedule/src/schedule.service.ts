@@ -22,12 +22,12 @@ export class ScheduleService {
 
   getPlantGuide(species: any): any {
     return {
-      water: new Date(1 * 24 * 60 * 60 * 1000),
+      water: new Date(7 * 24 * 60 * 60 * 1000),
       air: new Date(2 * 24 * 60 * 60 * 1000),
       repot: new Date(90 * 24 * 60 * 60 * 1000),
       prune: new Date(30 * 24 * 60 * 60 * 1000),
       spray: new Date(3 * 24 * 60 * 60 * 1000),
-      nutrition: new Date(120 * 24 * 60 * 60 * 1000),
+      nutrition: new Date(30 * 24 * 60 * 60 * 1000),
     };
   }
 

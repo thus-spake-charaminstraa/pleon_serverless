@@ -47,7 +47,7 @@ export class UpdatePlantDto extends PartialType(
     'air',
     'adopt_date',
   ] as const),
-) {}
+) { }
 
 export class GetPlantResDto extends Plant {
   d_day: number;
@@ -56,3 +56,4 @@ export class GetPlantResDto extends Plant {
 export class GetPlantQuery {
   owner: string;
 }
+

@@ -123,6 +123,10 @@ export class NotiService {
     return await this.notiRepository.findAll(query);
   }
 
+  async findNotisByPlantId(plantId: string): Promise<Noti[]> {
+    return await this.notiRepository.findNotisByPlantId(plantId);
+  }
+
   async completeManage(id: string): Promise<void> {
     const ret = await this.notiRepository.deleteOne(id);
     const kind: any = ret.kind;

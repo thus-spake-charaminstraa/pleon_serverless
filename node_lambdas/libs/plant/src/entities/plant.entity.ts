@@ -2,6 +2,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as mongoSchema } from 'mongoose';
 import { PlantAir, PlantLight } from '../types';
 
+export class PlantMood {
+  mood: string;
+
+  icon_uri: string;
+}
+
 export type PlantDocument = Plant & Document;
 
 const toObjectOptions = {
@@ -51,6 +57,9 @@ export class Plant {
 
   @Prop({ required: true, type: String, enum: PlantAir })
   air: PlantAir;
+
+  @Prop({ required: false })
+  mood: PlantMood;
 }
 
 export const PlantSchema = SchemaFactory.createForClass(Plant);

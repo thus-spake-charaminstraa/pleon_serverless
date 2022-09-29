@@ -25,6 +25,10 @@ export class NotiRepository {
     return await this.model.find(q).sort({ created_at: -1 }).exec();
   }
 
+  async findNotisByPlantId(plant_id: string): Promise<Noti[]> {
+    return await this.model.find({ plant_id }).sort({ created_at: -1 }).exec();
+  }
+
   async findOne(id: string): Promise<Noti> {
     return await this.model.findOne({ id }).exec();
   }
