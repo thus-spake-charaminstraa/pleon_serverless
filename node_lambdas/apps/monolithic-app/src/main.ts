@@ -88,8 +88,8 @@ async function bootstrap() {
   // const speciesService = app.get(SpeciesService);
   // await speciesService.deleteMany({});
   // for (const data of species) {
-  //   console.log(data);
-  //   await speciesService.create(data);
+  //   const ret = await speciesService.create(data);
+  //   console.log(ret);
   // }
 
 }

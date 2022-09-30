@@ -70,6 +70,15 @@ export class Species {
 
   @Prop({ required: false })
   tip: string;
+
+  @Prop({ required: true })
+  class_label: number;
+
+  @Prop({ required: true })
+  proper_watering_other: number;
+
+  @Prop({ required: true })
+  proper_watering_winter: number;
 }
 
 export const SpeciesSchema = SchemaFactory.createForClass(Species);

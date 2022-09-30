@@ -1,6 +1,7 @@
-import { Body, Controller, Post } from "@nestjs/common";
-import { ApiTags, ApiBody, ApiProperty, ApiOkResponse } from "@nestjs/swagger";
-import { IsString } from "class-validator";
+import { Species } from '@app/plant';
+import { Body, Controller, Post } from '@nestjs/common';
+import { ApiTags, ApiBody, ApiProperty, ApiOkResponse } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 
 export class PlantInferenceDto {
   @ApiProperty()
@@ -16,10 +17,13 @@ export class PlantDetectionResponse {
   box: Array<number>;
 
   @ApiProperty()
-  score: Array<number>;
+  score: number;
 
   @ApiProperty()
-  category: Array<number>;
+  category: number;
+
+  @ApiProperty()
+  species: Species;
 }
 
 @ApiTags('Inference')
@@ -43,6 +47,17 @@ export class InferenceController {
     return 'plant doctor';
   }
 
+  @ApiOkResponse({
+    schema: {
+      type: 'object',
+      properties: {
+        message: {
+          type: 'string',
+          example: 'warm up',
+        },
+      },
+    },
+  })
   @ApiBody({
     description: 'warming plant doctor',
     type: String,
@@ -57,6 +72,17 @@ export class InferenceController {
     return 'warming plant detection';
   }
 
+  @ApiOkResponse({
+    schema: {
+      type: 'object',
+      properties: {
+        message: {
+          type: 'string',
+          example: 'warm up',
+        },
+      },
+    },
+  })
   @ApiBody({
     description: 'warming plant doctor',
     type: String,
