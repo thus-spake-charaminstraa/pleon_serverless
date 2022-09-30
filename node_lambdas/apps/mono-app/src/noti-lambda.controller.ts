@@ -15,6 +15,8 @@ import {
   NotiViewKind,
 } from '@app/noti';
 import { NotiService } from '@app/noti/noti.service';
+import { GetPlantQuery } from '@app/plant';
+import { PlantService } from '@app/plant/services/plant.service';
 import {
   Body,
   Controller,
@@ -39,7 +41,10 @@ import {
 @ApiTags('Noti')
 @Controller('noti')
 export class NotiLambdaController {
-  constructor(private readonly notiService: NotiService) {}
+  constructor(
+    private readonly notiService: NotiService,
+    private readonly plantService: PlantService,
+  ) {}
 
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
@@ -123,23 +128,29 @@ export class NotiLambdaController {
     );
     const ret = await this.notiService.findAll(query);
     const viewTypeRet: any[] = ret.map((noti) => ({
-      viewType: NotiViewKind.twoBtn,
+      viewType: NotiViewKind.TWO_BTN,
       viewObject: noti,
     }));
-    viewTypeRet.push(
-      {
-        viewType: NotiViewKind.oneBtn,
+    if (
+      (
+        await this.plantService.findAll({
+          owner: req.user.id.toString(),
+        } as GetPlantQuery)
+      ).length === 0
+    ) {
+      viewTypeRet.push({
+        viewType: NotiViewKind.ONE_BTN,
         viewObject: {
-          content: '식물과 놀아보세요!',
+          content: '식물을 등록해주세요!',
         },
+      });
+    }
+    viewTypeRet.push({
+      viewType: NotiViewKind.DEFAULT,
+      viewObject: {
+        content: '식물의 하루를 기록해보세요!',
       },
-      {
-        viewType: NotiViewKind.default,
-        viewObject: {
-          content: '식물의 하루를 기록해보세요!',
-        },
-      },
-    );
+    });
     return viewTypeRet;
   }
 

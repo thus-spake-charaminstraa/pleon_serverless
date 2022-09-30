@@ -12,19 +12,19 @@ export class ManageNotiResponse extends SuccessResponse {
 }
 
 export enum NotiViewKind {
-  twoBtn = 'twoBtn',
-  oneBtn = 'oneBtn',
-  default = 'default',
+  TWO_BTN = 'TWO_BTN',
+  ONE_BTN = 'ONE_BTN',
+  DEFAULT = 'DEFAULT',
 }
 
 export class NotiTwoBtnView {
-  viewType: NotiViewKind.twoBtn;
+  viewType: NotiViewKind.TWO_BTN;
 
   viewObject: Noti;
 }
 
 export class NotiOneBtnView {
-  viewType: NotiViewKind.oneBtn;
+  viewType: NotiViewKind.ONE_BTN;
 
   viewObject: {
     content: string;
@@ -32,7 +32,7 @@ export class NotiOneBtnView {
 }
 
 export class NotiDefaultView {
-  viewType: NotiViewKind.default;
+  viewType: NotiViewKind.DEFAULT;
 
   viewObject: {
     content: string;
@@ -51,51 +51,51 @@ export class GetNotiResponse extends SuccessResponse {
           properties: {
             viewType: {
               type: 'string',
-              example: NotiViewKind.twoBtn,
+              example: NotiViewKind.TWO_BTN,
             },
             viewObject: {
               $ref: getSchemaPath(Noti),
-            }
-          }
-        }, 
-        {
-          type: 'object',
-          properties: {
-            viewType: {
-              type: 'string',
-              example: NotiViewKind.oneBtn,
             },
-            viewObject: {
-              type: 'object',
-              properties: {
-                content: {
-                  type: 'string',
-                  example: '식물과 놀아보세요~!',
-                }
-              }
-            }
-          }
+          },
         },
         {
           type: 'object',
           properties: {
             viewType: {
               type: 'string',
-              example: NotiViewKind.default,
+              example: NotiViewKind.ONE_BTN,
             },
             viewObject: {
               type: 'object',
               properties: {
                 content: {
                   type: 'string',
-                  example: '식물 육성 일기를 작성해보세요.',
-                }
-              }
-            }
-          }
-        }
-      ]
-    }
+                  example: '식물을 등록해주세요!',
+                },
+              },
+            },
+          },
+        },
+        {
+          type: 'object',
+          properties: {
+            viewType: {
+              type: 'string',
+              example: NotiViewKind.DEFAULT,
+            },
+            viewObject: {
+              type: 'object',
+              properties: {
+                content: {
+                  type: 'string',
+                  example: '식물의 하루를 기록해보세요!',
+                },
+              },
+            },
+          },
+        },
+      ],
+    },
   })
   data: ViewObject[];
 }
