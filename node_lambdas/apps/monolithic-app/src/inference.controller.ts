@@ -1,5 +1,5 @@
 import { Species } from '@app/plant';
-import { Body, Controller, Post } from '@nestjs/common';
+import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiTags, ApiBody, ApiProperty, ApiOkResponse } from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
@@ -33,6 +33,7 @@ export class InferenceController {
     description: '식물 종 식별 성공',
     type: PlantDetectionResponse,
   })
+  @HttpCode(HttpStatus.OK)
   @Post('plant-detection')
   async plantDetection(@Body() body: PlantInferenceDto) {
     return 'plant detection';
@@ -42,6 +43,7 @@ export class InferenceController {
     description: '식물 종 식별 성공',
     type: PlantDetectionResponse,
   })
+  @HttpCode(HttpStatus.OK)
   @Post('plant-doctor')
   async plantDoctor(@Body() body: PlantInferenceDto) {
     return 'plant doctor';
@@ -67,6 +69,7 @@ export class InferenceController {
       },
     },
   })
+  @HttpCode(HttpStatus.OK)
   @Post('plant-detection/warming')
   async warmingPlantDetection() {
     return 'warming plant detection';
@@ -92,6 +95,7 @@ export class InferenceController {
       },
     },
   })
+  @HttpCode(HttpStatus.OK)
   @Post('plant-doctor/warming')
   async warmingPlantDoctor(@Body() body: string) {
     return 'warming plant doctor';

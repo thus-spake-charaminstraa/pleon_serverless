@@ -9,8 +9,7 @@ COPY requirements.txt ./
 # Install the python requirements from requirements.txt
 RUN yum groupinstall "Development Tools" -y
 RUN yum install -y mesa-libGL
-RUN python3.8 -m pip install yolov5==6.1.9 --target "${LAMBDA_TASK_ROOT}"
-# RUN python3.8 -m pip install -r requirements.txt
+RUN python3.8 -m pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
 # Copy index.py file to the container
 COPY ./app.py "${LAMBDA_TASK_ROOT}"
