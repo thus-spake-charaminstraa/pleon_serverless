@@ -14,6 +14,9 @@ export class PlantDetectionResponse {
   image_url: string;
 
   @ApiProperty()
+  success: boolean;
+
+  @ApiProperty()
   box: Array<number>;
 
   @ApiProperty()

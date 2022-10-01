@@ -77,6 +77,7 @@ def handler(event, context):
         })
     predictions.sort(key=sort_by_area, reverse=True)
     final_prediction = decide_prediction(predictions)
+    final_prediction['score'] = float(final_prediction['score'] * 100 / 5 + 80);
     print('prediction result: ', final_prediction)
     
     for x in species:
@@ -95,6 +96,7 @@ def handler(event, context):
         },
         'body': json.dumps({
             'image_url': image_url,
+            'success': final_prediction['category'] >= 0,
             'box': final_prediction['box'],
             'score': final_prediction['score'],
             'category': final_prediction['category'],
