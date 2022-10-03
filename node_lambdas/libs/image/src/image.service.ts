@@ -22,6 +22,7 @@ export class ImageService {
       Body: image.buffer,
     };
     const ret = await this.s3.send(new PutObjectCommand(uploadParams));
+    console.log(ret);
     return {
       url:
         'https://' +
