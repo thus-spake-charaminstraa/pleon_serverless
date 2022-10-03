@@ -5,3 +5,4 @@ export * from './dto';
 export * from './entities';
 export * from './interceptors/feedById.interceptor';
 export * from './types';
+export * from './resources';

@@ -59,6 +59,18 @@ export class GetFeedQuery {
   order_by: GetFeedOrderBy;
 }
 
+export class GetFeedCalendarQuery {
+  plant_id?: string;
+
+  year?: number;
+
+  month?: number;
+
+  start?: Date;
+
+  end?: Date;
+}
+
 export class DeleteFeedQuery {
   owner?: string;
 

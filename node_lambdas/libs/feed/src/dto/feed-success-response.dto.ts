@@ -1,10 +1,11 @@
 import { Feed } from '@app/feed/entities/feed.entity';
 import { Noti } from '@app/noti';
 import { Plant } from '@app/plant/entities/plant.entity';
-import { ApiExtraModels, ApiProperty, getSchemaPath } from '@nestjs/swagger';
+import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
 import { CommentRes } from '@app/comment/dto';
 import { SuccessResponse } from '@app/common/dto';
 import { User } from '@app/user';
+import { FeedKind } from '../types/feed-kind.type';
 
 export class CreateFeedResponse extends SuccessResponse {
   data: Feed;
@@ -19,6 +20,16 @@ export class FeedRes extends Feed {
   comment_list: CommentRes[];
   plant: Plant;
   user: User;
+}
+
+export class GetFeedCalendarResponse extends SuccessResponse {
+  data: GetFeedCalendarRes[];
+}
+
+export class GetFeedCalendarRes {
+  _id: string;
+  timestamp: Date;
+  kinds: FeedKind[];
 }
 
 export class GetFeedsResponse extends SuccessResponse {

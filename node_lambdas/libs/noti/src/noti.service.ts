@@ -140,7 +140,6 @@ export class NotiService {
       },
       true,
     );
-    console.log(feed);
   }
 
   async laterManage(id: string): Promise<void> {

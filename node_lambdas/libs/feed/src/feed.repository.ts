@@ -1,9 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 import {
   CreateFeedDto,
   DeleteFeedQuery,
+  GetFeedCalendarQuery,
   GetFeedQuery,
   UpdateFeedDto,
 } from './dto';
@@ -35,6 +36,23 @@ export class FeedRepository {
       })
       .populate('user')
       .exec();
+  }
+
+  async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {
+    const ret = await this.model
+      .aggregate()
+      .match({
+        plant_id: new Types.ObjectId(query.plant_id),
+        publish_date: { $gte: query.start, $lte: query.end },
+      })
+      .group({
+        _id: '$publish_date',
+        timestamp: { $first: '$publish_date' },
+        kinds: { $push: '$kind' },
+      })
+      .sort({ timestamp: 1 })
+      .exec();
+    return ret;
   }
 
   async findOne(id: string): Promise<Feed> {
