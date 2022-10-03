@@ -29,14 +29,12 @@ import {
   DateStrFormat,
   queryParser,
 } from '@app/common';
-import { ScheduleKind, ScheduleService } from '@app/schedule';
 
 @Controller()
 export class PlantLambdaController {
   constructor(
     private readonly plantService: PlantService,
     private readonly speciesService: SpeciesService,
-    private readonly scheduleService: ScheduleService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -63,11 +61,6 @@ export class PlantLambdaController {
   ) {
     createPlantDto.owner = req.user.id;
     const plant = await this.plantService.create(createPlantDto);
-    await this.scheduleService.create({
-      plant_id: plant.id.toString(),
-      timestamp: new Date(DateStrFormat(new Date(createPlantDto.water_date))),
-      kind: ScheduleKind.water,
-    });
     return plant;
   }
 

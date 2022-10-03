@@ -1,4 +1,4 @@
-import { CreateScheduleDto } from '@app/schedule';
+import { CreateScheduleDto, ScheduleKind } from '@app/schedule';
 import { ScheduleRepository } from '@app/schedule/schedule.repository';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import {
@@ -36,7 +36,7 @@ export class FeedService extends CommonService<
   }
 
   async create(createFeedDto: CreateFeedDto, auto?: boolean): Promise<Feed> {
-    if (createFeedDto.kind in FeedKind) {
+    if (createFeedDto.kind in ScheduleKind) {
       const kind: any = createFeedDto.kind;
       const createScheduleDto: CreateScheduleDto = {
         plant_id: createFeedDto.plant_id,
