@@ -5,7 +5,6 @@ import { FeedService } from '@app/feed/feed.service';
 import { NotiKind } from '@app/noti';
 import { NotiService } from '@app/noti/noti.service';
 import {
-  BadRequestException,
   ConflictException,
   forwardRef,
   Inject,
@@ -20,6 +19,7 @@ import {
 } from '../dto';
 import { Plant } from '../entities';
 import { PlantRepository } from '../repositories/plant.repository';
+import { PlantMoodInfoMap, PlantMoodInfos } from '../resources/plant-mood';
 
 @Injectable()
 export class PlantService extends CommonService<
@@ -38,34 +38,8 @@ export class PlantService extends CommonService<
     private notiService: NotiService,
   ) {
     super(plantRepository);
-    this.plantMoodInfoMap = {
-      happy: {
-        mood: 'happy',
-        icon_uri:
-          'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_happy.png',
-      },
-      sad: {
-        mood: 'sad',
-        icon_uri:
-          'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sad.png',
-      },
-      sick: {
-        mood: 'sick',
-        icon_uri:
-          'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sick.png',
-      },
-      boring: {
-        mood: 'boring',
-        icon_uri:
-          'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_boring.png',
-      },
-      hot: {
-        mood: 'hot',
-        icon_uri:
-          'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_hot.png',
-      },
-    };
-    this.plantMoodInfos = Object.values(this.plantMoodInfoMap);
+    this.plantMoodInfoMap = PlantMoodInfoMap;
+    this.plantMoodInfos = PlantMoodInfos;
   }
 
   async getPlantMoodInfos() {

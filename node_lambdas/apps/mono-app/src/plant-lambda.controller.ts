@@ -20,6 +20,7 @@ import {
   PlantByParamsIdInterceptor,
   UpdatePlantDto,
   UpdatePlantResponse,
+  PlantMoodInfos,
 } from '@app/plant';
 import { PlantService } from '@app/plant/services/plant.service';
 import { SpeciesService } from '@app/plant/services/species.service';
@@ -92,33 +93,7 @@ export class PlantLambdaController {
   @ApiOkResponse({
     schema: {
       example: {
-        data: [
-          {
-            mood: 'happy',
-            icon_uri:
-              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_happy.png',
-          },
-          {
-            mood: 'sad',
-            icon_uri:
-              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sad.png',
-          },
-          {
-            mood: 'sick',
-            icon_uri:
-              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_sick.png',
-          },
-          {
-            mood: 'boring',
-            icon_uri:
-              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_boring.png',
-          },
-          {
-            mood: 'hot',
-            icon_uri:
-              'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_hot.png',
-          },
-        ],
+        data: PlantMoodInfos,
         success: true,
       },
     },

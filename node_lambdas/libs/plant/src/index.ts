@@ -6,3 +6,4 @@ export * from './repositories/species.repository';
 export * from './dto';
 export * from './entities';
 export * from './interceptors';
+export * from './resources';
