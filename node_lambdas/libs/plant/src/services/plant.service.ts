@@ -4,7 +4,13 @@ import { FeedKind } from '@app/feed';
 import { FeedService } from '@app/feed/feed.service';
 import { NotiKind } from '@app/noti';
 import { NotiService } from '@app/noti/noti.service';
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  ConflictException,
+  forwardRef,
+  Inject,
+  Injectable,
+} from '@nestjs/common';
 import {
   CreatePlantApiDto,
   CreatePlantDto,
@@ -67,6 +73,12 @@ export class PlantService extends CommonService<
   }
 
   async create(createPlantDto: CreatePlantApiDto): Promise<Plant> {
+    const plants = await this.plantRepository.findAll({
+      owner: createPlantDto.owner,
+    });
+    if (plants.length >= 6) {
+      throw new ConflictException('You can only have 6 plants.');
+    }
     const ret = await this.plantRepository.create(createPlantDto);
     await Promise.all([
       this.feedService.create({
@@ -103,11 +115,9 @@ export class PlantService extends CommonService<
       const plantNoti = notis[idx];
       if (plantNoti.some((noti) => noti.kind === NotiKind.water)) {
         plant.mood = this.plantMoodInfoMap.sad;
-      }
-      else if (plantNoti.some((noti) => noti.kind === NotiKind.air)) {
+      } else if (plantNoti.some((noti) => noti.kind === NotiKind.air)) {
         plant.mood = this.plantMoodInfoMap.hot;
-      }
-      else {
+      } else {
         plant.mood = this.plantMoodInfoMap.happy;
       }
       return plant;

@@ -1,5 +1,6 @@
 import { JwtAuthGuard } from '@app/auth';
 import {
+  ConflictResponse,
   ForbiddenResponse,
   NotFoundResponse,
   ParseDateInBodyPipe,
@@ -41,6 +42,7 @@ import {
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiConflictResponse,
   ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiNotFoundResponse,
@@ -140,6 +142,10 @@ export class PlantLambdaController {
   @ApiUnauthorizedResponse({
     description: '유저 확인 실패',
     type: UnauthorizedResponse,
+  })
+  @ApiConflictResponse({
+    description: '식물이 6개 이상일 때 생성할 수 없음',
+    type: ConflictResponse,
   })
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)

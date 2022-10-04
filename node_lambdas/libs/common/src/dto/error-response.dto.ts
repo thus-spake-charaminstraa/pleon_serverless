@@ -21,3 +21,8 @@ export class ForbiddenResponse extends ErrorResponse {
   error = 'Forbidden';
   statusCode = 403;
 }
+
+export class ConflictResponse extends ErrorResponse {
+  error = 'Conflict';
+  statusCode = 409;
+}
