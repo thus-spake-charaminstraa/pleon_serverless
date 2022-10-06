@@ -18,29 +18,49 @@ def handler(event, context):
         print('warming up...')
         return {
             'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
+            },
             'body': 'Warm up',
         }
 
     body = json.loads(event['body'])
 
-    image_url = body['image_url']
+    image_urls: list = list(body['image_urls'])
 
-    # perform inference
-    results = model(image_url)
+    results = []
+    
+    for url in image_urls:
+        # perform inference
+        result = model(url)
 
-    # parse results
-    predictions = results.pred[0]
-    boxes = predictions[:, :4]  # x1, y1, x2, y2
-    scores = predictions[:, 4]
-    categories = predictions[:, 5]
-    print('prediction result: ', predictions.tolist()[0])
+        # parse results
+        predictions = result.pred[0]
+        boxes = predictions[:, :4]  # x1, y1, x2, y2
+        scores = predictions[:, 4]
+        categories = predictions[:, 5]
+        
+        predictions = []
+        for i in range(len(boxes)):
+            predictions.append({
+                'box': boxes[i],
+                'score': scores[i],
+                'category': categories[i]
+            })
+        results.append(predictions)
+        
+    print(results)
 
     return {
         'statusCode': 200,
+        'headers': {
+            'Access-Control-Allow-Headers': 'Content-Type',
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
+        },
         'body': json.dumps({
-            'image_url': image_url,
-            'box': json.dumps(boxes.tolist()),
-            'score': json.dumps(scores.tolist()),
-            'class': json.dumps(categories.tolist()),
+            'result': results
         })
     }

@@ -12,6 +12,9 @@ import { PlantRepository } from './repositories/plant.repository';
 import { SpeciesRepository } from './repositories/species.repository';
 import { PlantService } from './services/plant.service';
 import { SpeciesService } from './services/species.service';
+import { DiagnosisService } from './services/diagnosis.service';
+import { DiagnosisRepository } from './repositories/diagnosis.repository';
+import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
 
 @Module({
   imports: [
@@ -47,6 +50,10 @@ import { SpeciesService } from './services/species.service';
           useFactory: () => SpeciesSchema,
         },
         {
+          name: Diagnosis.name,
+          useFactory: () => DiagnosisSchema,
+        },
+        {
           name: User.name,
           useFactory: () => UserSchema,
         },
@@ -59,7 +66,21 @@ import { SpeciesService } from './services/species.service';
     forwardRef(() => FeedModule),
     forwardRef(() => NotiModule),
   ],
-  providers: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
-  exports: [PlantService, PlantRepository, SpeciesService, SpeciesRepository],
+  providers: [
+    PlantService,
+    PlantRepository,
+    SpeciesService,
+    SpeciesRepository,
+    DiagnosisService,
+    DiagnosisRepository,
+  ],
+  exports: [
+    PlantService,
+    PlantRepository,
+    SpeciesService,
+    SpeciesRepository,
+    DiagnosisService,
+    DiagnosisRepository,
+  ],
 })
 export class PlantModule {}

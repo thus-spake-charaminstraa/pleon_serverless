@@ -9,6 +9,12 @@ export class PlantInferenceDto {
   image_url: string;
 }
 
+export class PlantsInferenceDto {
+  @ApiProperty()
+  @IsString({ each: true })
+  image_urls: string[];
+}
+
 export class PlantDetectionResponse {
   @ApiProperty()
   image_url: string;
@@ -43,12 +49,12 @@ export class InferenceController {
   }
 
   @ApiOkResponse({
-    description: '식물 종 식별 성공',
+    description: '식물 증상 진단 성공',
     type: PlantDetectionResponse,
   })
   @HttpCode(HttpStatus.OK)
   @Post('plant-doctor')
-  async plantDoctor(@Body() body: PlantInferenceDto) {
+  async plantDoctor(@Body() body: PlantsInferenceDto) {
     return 'plant doctor';
   }
 

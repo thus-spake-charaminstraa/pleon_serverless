@@ -24,19 +24,20 @@ packageAndDeploy() {
 
 declare -a array=(
   "mono-app"
-  "auth-lambda"
-  "comment-lambda"
-  "feed-lambda"
-  "image-lambda"
-  "noti-lambda"
-  "plant-lambda"
-  "schedule-lambda"
-  "user-lambda"
+  # "auth-lambda"
+  # "comment-lambda"
+  # "feed-lambda"
+  # "image-lambda"
+  # "noti-lambda"
+  # "plant-lambda"
+  # "schedule-lambda"
+  # "user-lambda"
   "guide-noti-lambda"
   "chat-lambda"
   "chat-connect"
   "chat-disconnect"
   "token-check"
+  "plant-doctor-analysis"
 )
 for i in "${array[@]}"
 do

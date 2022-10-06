@@ -163,6 +163,16 @@
         "tsConfigPath": "apps/token-check/tsconfig.app.json"
       }
     },
+    "plant-doctor-analysis": {
+      "type": "application",
+      "root": "apps/plant-doctor-analysis",
+      "entryFile": "main",
+      "sourceRoot": "apps/plant-doctor-analysis/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/plant-doctor-analysis/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",
