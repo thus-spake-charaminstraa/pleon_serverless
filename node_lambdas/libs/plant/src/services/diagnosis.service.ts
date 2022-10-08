@@ -34,7 +34,7 @@ export class DiagnosisService extends CommonService<
       symptomsInOneImage.forEach((symptomIndex) => {
         if (!plantSymptomAndCause[this.symptomInfoMap[symptomIndex].symptom]) {
           plantSymptomAndCause.push({
-            symptom: this.symptomInfoMap[symptomIndex].symptom,
+            ...this.symptomInfoMap[symptomIndex],
             cause: [],
           });
         }
@@ -86,13 +86,17 @@ export class DiagnosisService extends CommonService<
       }
     }
     plantSymptomAndCause.forEach((symptomAndCause) => {
-      symptomAndCause.cause = plantCauseRet.map((cause) => {
-        if (cause.symptom.some((s) => symptomAndCause.symptom === s)) {
-          return cause.cause;
-        }
-        else return undefined;
-      }).filter((c) => c);
+      symptomAndCause.cause = plantCauseRet
+        .map((cause) => {
+          if (cause.symptom.some((s) => symptomAndCause.symptom === s)) {
+            return cause.cause;
+          } else return undefined;
+        })
+        .filter((c) => c);
     });
-    return plantSymptomAndCause;
+    return {
+      symptoms: plantSymptomAndCause,
+      causes: plantCauseRet,
+    };
   }
 }

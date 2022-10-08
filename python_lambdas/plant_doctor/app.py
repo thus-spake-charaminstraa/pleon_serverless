@@ -31,17 +31,17 @@ def handler(event, context):
     image_urls: list = list(body['image_urls'])
 
     results = []
-    
+
     for url in image_urls:
         # perform inference
         result = model(url)
 
         # parse results
         predictions = result.pred[0]
-        boxes = predictions[:, :4]  # x1, y1, x2, y2
-        scores = predictions[:, 4]
-        categories = predictions[:, 5]
-        
+        boxes = predictions[:, :4].tolist()  # x1, y1, x2, y2
+        scores = predictions[:, 4].tolist()
+        categories = predictions[:, 5].tolist()
+
         predictions = []
         for i in range(len(boxes)):
             predictions.append({
@@ -50,7 +50,7 @@ def handler(event, context):
                 'category': categories[i]
             })
         results.append(predictions)
-        
+
     print(results)
 
     return {
@@ -61,6 +61,7 @@ def handler(event, context):
             'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
         },
         'body': json.dumps({
-            'result': results
+            'result': results,
+            'plant_id': body['plant_id']
         })
     }

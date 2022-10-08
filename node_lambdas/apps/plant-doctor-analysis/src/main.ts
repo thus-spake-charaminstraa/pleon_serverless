@@ -25,7 +25,6 @@ export const handler: Handler = async (
       return detectedSymptom.category;
     });
   });
-  console.log(plantSymptoms);
   const diagnosisService = app.get(DiagnosisService);
   const ret = await diagnosisService.analysis(plantSymptoms, body.plant_id);
   return {
