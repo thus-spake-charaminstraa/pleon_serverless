@@ -2,7 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MonolithicAppModule } from './monolithic-app.module';
 import { TransformInterceptor } from '@app/common';
-import { SpeciesService } from '@app/plant';
+import { Cause, PlantCause, PlantSymptom, SpeciesService, Symptom } from '@app/plant';
 import * as fs from 'fs/promises';
 import {
   DocumentBuilder,
@@ -10,6 +10,7 @@ import {
   SwaggerModule,
 } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 
 async function bootstrap() {
   const app = await NestFactory.create(MonolithicAppModule, {
@@ -40,11 +41,14 @@ async function bootstrap() {
       .setTitle('PLeon API')
       .setDescription('The API description')
       .setVersion('1.0')
-      .addServer(process.env.HOST, 'server')
-      .addServer(process.env.TEST_HOST, 'test server')
+      .addServer(process.env.TEST_HOST, 'test and dev server')
       .addServer('http://localhost:8000', 'local server')
+      .addServer(process.env.HOST, 'production server')
       .addBearerAuth()
       .build(),
+    {
+      extraModels: [Symptom, Cause]
+    }
   );
   const swaggerCustomOptions: SwaggerCustomOptions = {
     swaggerOptions: {
@@ -56,9 +60,12 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   await app.listen(configService.get<string>('PORT'));
 
-  const speciesData = await fs.readFile('apps/monolithic-app/src/species.json', {
-    encoding: 'utf-8',
-  });
+  const speciesData = await fs.readFile(
+    'apps/monolithic-app/src/species.json',
+    {
+      encoding: 'utf-8',
+    },
+  );
   const species = JSON.parse(speciesData);
 
   species.sort((a, b) => {
@@ -92,5 +99,11 @@ async function bootstrap() {
   //   console.log(ret);
   // }
 
+  const diagnosisService = app.get(DiagnosisService);
+  const ret = await diagnosisService.analysis([
+    [3, 4],
+    [0, 5],
+  ]);
+  console.log(ret);
 }
 bootstrap();

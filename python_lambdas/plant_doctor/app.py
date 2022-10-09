@@ -14,7 +14,13 @@ model.max_det = 1000  # maximum number of detections per image
 
 def handler(event, context):
     print(event)
-    if event['body'] == 'warming':
+
+    try:
+        body = json.loads(event['body'])
+    except:
+        body = event['body']
+        
+    if body == 'warming':
         print('warming up...')
         return {
             'statusCode': 200,
@@ -25,8 +31,6 @@ def handler(event, context):
             },
             'body': 'Warm up',
         }
-
-    body = json.loads(event['body'])
 
     image_urls: list = list(body['image_urls'])
 
@@ -62,6 +66,6 @@ def handler(event, context):
         },
         'body': json.dumps({
             'result': results,
-            'plant_id': body['plant_id']
+            'plant_id': body.get('plant_id', None)
         })
     }

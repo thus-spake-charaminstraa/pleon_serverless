@@ -1,6 +1,12 @@
-import { Species } from '@app/plant';
+import { Cause, Species, Symptom } from '@app/plant';
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { ApiTags, ApiBody, ApiProperty, ApiOkResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiBody,
+  ApiProperty,
+  ApiOkResponse,
+  getSchemaPath,
+} from '@nestjs/swagger';
 import { IsString } from 'class-validator';
 
 export class PlantInferenceDto {
@@ -35,6 +41,32 @@ export class PlantDetectionResponse {
   species: Species;
 }
 
+export class PlantDoctorResponseData {
+  @ApiProperty({
+    type: 'array',
+    items: {
+      $ref: getSchemaPath(Symptom),
+    },
+  })
+  symptoms: Symptom[];
+
+  @ApiProperty({
+    type: 'array',
+    items: {
+      $ref: getSchemaPath(Cause),
+    },
+  })
+  causes: Cause[];
+}
+
+export class PlantDocotrResponse {
+  @ApiProperty()
+  success: boolean;
+
+  @ApiProperty()
+  data: PlantDoctorResponseData;
+}
+
 @ApiTags('Inference')
 @Controller('inference')
 export class InferenceController {
@@ -50,7 +82,7 @@ export class InferenceController {
 
   @ApiOkResponse({
     description: '식물 증상 진단 성공',
-    type: PlantDetectionResponse,
+    type: PlantDocotrResponse,
   })
   @HttpCode(HttpStatus.OK)
   @Post('plant-doctor')

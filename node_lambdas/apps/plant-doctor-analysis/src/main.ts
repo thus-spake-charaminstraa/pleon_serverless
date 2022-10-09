@@ -28,7 +28,7 @@ export const handler: Handler = async (
   const diagnosisService = app.get(DiagnosisService);
   const ret = await diagnosisService.analysis(plantSymptoms, body.plant_id);
   return {
-    data: JSON.stringify(ret),
+    data: ret,
     success: true,
   };
 };
