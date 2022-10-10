@@ -9,6 +9,12 @@ module.exports = (options, webpack) => {
 
   return {
     ...options,
+    module: {
+      rules: [
+        { test: /\.ts$/, loader: 'ts-loader' },
+        { test: /\.node$/, use: 'node-loader' },
+      ],
+    },
     externals: [],
     output: {
       ...options.output,

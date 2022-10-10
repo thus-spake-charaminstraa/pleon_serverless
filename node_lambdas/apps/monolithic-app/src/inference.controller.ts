@@ -1,4 +1,4 @@
-import { Cause, Species, Symptom } from '@app/plant';
+import { Cause, Plant, Species, Symptom } from '@app/plant';
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import {
   ApiTags,
@@ -41,11 +41,18 @@ export class PlantDetectionResponse {
   species: Species;
 }
 
+export class SymptomRes extends Symptom {
+  @ApiProperty()
+  image_url: string;
+}
+
+export class CauseRes extends Cause {}
+
 export class PlantDoctorResponseData {
   @ApiProperty({
     type: 'array',
     items: {
-      $ref: getSchemaPath(Symptom),
+      $ref: getSchemaPath(SymptomRes),
     },
   })
   symptoms: Symptom[];
@@ -53,10 +60,13 @@ export class PlantDoctorResponseData {
   @ApiProperty({
     type: 'array',
     items: {
-      $ref: getSchemaPath(Cause),
+      $ref: getSchemaPath(CauseRes),
     },
   })
   causes: Cause[];
+
+  @ApiProperty()
+  plant: Plant;
 }
 
 export class PlantDocotrResponse {

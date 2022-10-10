@@ -19,7 +19,7 @@ def handler(event, context):
         body = json.loads(event['body'])
     except:
         body = event['body']
-        
+
     if body == 'warming':
         print('warming up...')
         return {
@@ -49,6 +49,7 @@ def handler(event, context):
         predictions = []
         for i in range(len(boxes)):
             predictions.append({
+                'image_url': url,
                 'box': boxes[i],
                 'score': scores[i],
                 'category': categories[i]

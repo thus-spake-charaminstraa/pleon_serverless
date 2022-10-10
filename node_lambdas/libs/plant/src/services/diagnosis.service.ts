@@ -1,12 +1,18 @@
 import { CommonService } from '@app/common/common.service';
 import { NotiKind } from '@app/noti';
 import { NotiService } from '@app/noti/noti.service';
-import { Injectable } from '@nestjs/common';
+import {
+  Injectable,
+  BadRequestException,
+  Inject,
+  forwardRef,
+} from '@nestjs/common';
 import { CreateDiagnosisDto } from '../dto/diagnosis.dto';
 import { Diagnosis } from '../entities/diagnosis.entity';
 import { DiagnosisRepository } from '../repositories/diagnosis.repository';
 import { PlantCause } from '../resources/plant-cause';
 import { PlantSymptom } from '../resources/plant-symptom';
+import { PlantRepository } from '@app/plant';
 
 @Injectable()
 export class DiagnosisService extends CommonService<
@@ -18,27 +24,37 @@ export class DiagnosisService extends CommonService<
   symptomInfoMap: any;
   constructor(
     private readonly diagnosisRepository: DiagnosisRepository,
+    @Inject(forwardRef(() => PlantRepository))
+    private readonly PlantRepository: PlantRepository,
     private readonly notiService: NotiService,
   ) {
     super(diagnosisRepository);
     this.symptomInfoMap = PlantSymptom;
   }
 
-  async analysis(symptomsInImages: number[][], plantId?: string) {
+  async analysis(symptomsInImages: any[][], plantId?: string) {
+    if (symptomsInImages.length === 0) {
+      throw new BadRequestException('No symptoms detected');
+    }
     const plantCause = Object.assign({}, PlantCause);
-    const plantSymptomAndCause = [];
+    const plantSymptomAndCause = {};
     Object.keys(plantCause).forEach((key) => {
       plantCause[key].count = 0;
     });
     symptomsInImages.forEach((symptomsInOneImage) => {
-      symptomsInOneImage.forEach((symptomIndex) => {
-        if (!plantSymptomAndCause[this.symptomInfoMap[symptomIndex].symptom]) {
-          plantSymptomAndCause.push({
-            ...this.symptomInfoMap[symptomIndex],
-            cause: [],
-          });
+      symptomsInOneImage.forEach((symptom) => {
+        if (symptom.category <= 2) return;
+        if (
+          !plantSymptomAndCause[this.symptomInfoMap[symptom.category].symptom]
+        ) {
+          plantSymptomAndCause[this.symptomInfoMap[symptom.category].symptom] =
+            {
+              ...this.symptomInfoMap[symptom.category],
+              cause: [],
+              ...symptom,
+            };
         }
-        const cause = this.symptomInfoMap[symptomIndex].cause;
+        const cause = this.symptomInfoMap[symptom.category].cause;
         cause.forEach((c) => {
           plantCause[c].count += 1;
         });
@@ -85,7 +101,7 @@ export class DiagnosisService extends CommonService<
         } else plantCauseRet.splice(opposeCause.nutrition_lack, 1);
       }
     }
-    plantSymptomAndCause.forEach((symptomAndCause) => {
+    Object.values(plantSymptomAndCause).forEach((symptomAndCause: any) => {
       symptomAndCause.cause = plantCauseRet
         .map((cause) => {
           if (cause.symptom.some((s) => symptomAndCause.symptom === s)) {
@@ -95,8 +111,9 @@ export class DiagnosisService extends CommonService<
         .filter((c) => c);
     });
     return {
-      symptoms: plantSymptomAndCause,
+      symptoms: Object.values(plantSymptomAndCause) as any,
       causes: plantCauseRet,
+      plant: plantId ? await this.PlantRepository.findOne(plantId) : null,
     };
   }
 }
