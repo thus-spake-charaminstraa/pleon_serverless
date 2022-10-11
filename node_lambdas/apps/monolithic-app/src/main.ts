@@ -2,7 +2,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MonolithicAppModule } from './monolithic-app.module';
 import { TransformInterceptor } from '@app/common';
-import { Cause, PlantCause, PlantSymptom, SpeciesService, Symptom } from '@app/plant';
+
 import * as fs from 'fs/promises';
 import {
   DocumentBuilder,
@@ -11,6 +11,9 @@ import {
 } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
+import { ImageService } from '@app/image/image.service';
+import { CauseRes, SymptomRes } from './inference.controller';
+import { Diagnosis } from '@app/plant';
 
 async function bootstrap() {
   const app = await NestFactory.create(MonolithicAppModule, {
@@ -47,8 +50,8 @@ async function bootstrap() {
       .addBearerAuth()
       .build(),
     {
-      extraModels: [Symptom, Cause]
-    }
+      extraModels: [SymptomRes, CauseRes, Diagnosis],
+    },
   );
   const swaggerCustomOptions: SwaggerCustomOptions = {
     swaggerOptions: {
@@ -99,11 +102,34 @@ async function bootstrap() {
   //   console.log(ret);
   // }
 
-  const diagnosisService = app.get(DiagnosisService);
-  const ret = await diagnosisService.analysis([
-    [3, 4],
-    [0, 5],
-  ]);
-  console.log(ret);
+  // const diagnosisService = app.get(DiagnosisService);
+  // const imageService = app.get(ImageService);
+
+  // const event = {
+  //   body: '{"result":[[{"box":[64.62814331054688,77.23014831542969,533.0747680664062,765.0573120117188],"score":0.9524128437042236,"category":3,"image_url":"https://post-phinf.pstatic.net/MjAxODAxMTZfMTYw/MDAxNTE2MDkzNzEyMDg1.o6eKeZIgFOmSxe-3nHF9CdrAsZ5eaGm56TY78t_URWog.xbCTC-u3XdB3Su136i3RUOYrxdC8yw3F8M8XSo6C_v0g.JPEG/brown-leaf-edges1.jpg?type=w1200"},{"box":[1.9872417449951172,652.7341918945312,186.97508239746094,800],"score":0.8973885774612427,"category":0,"image_url":"https://post-phinf.pstatic.net/MjAxODAxMTZfMTYw/MDAxNTE2MDkzNzEyMDg1.o6eKeZIgFOmSxe-3nHF9CdrAsZ5eaGm56TY78t_URWog.xbCTC-u3XdB3Su136i3RUOYrxdC8yw3F8M8XSo6C_v0g.JPEG/brown-leaf-edges1.jpg?type=w1200"}],[]],"plant_id":"62fb4213d67227a47309226d"}',
+  // };
+
+  // const body = JSON.parse(event.body);
+  // console.log(body);
+  // const result: any[][] = body.result;
+  // const plantSymptoms = result.filter((imageResult) => imageResult.length > 0);
+  // const ret = await diagnosisService.analysis(plantSymptoms, body.plant_id);
+  // // const imageBuffers = await Promise.all([
+  // //   ...ret.symptoms.map((s: any) =>
+  // //     imageService.downloadImageByUrl(s.image_url),
+  // //   ),
+  // // ]);
+  // // const croppedImagesUrl = await Promise.all([
+  // //   ...imageBuffers.map((imageBuffer, index) =>
+  // //     imageService.cropImageByProportionBox(
+  // //       imageBuffer,
+  // //       ret.symptoms[index].box,
+  // //     ),
+  // //   ),
+  // // ]);
+  // // ret.symptoms.forEach((s: any, index: number) => {
+  // //   s.image_url = croppedImagesUrl[index].url;
+  // // });
+  // console.log(ret);
 }
 bootstrap();

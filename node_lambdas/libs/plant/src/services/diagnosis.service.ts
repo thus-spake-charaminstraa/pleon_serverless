@@ -40,7 +40,7 @@ export class DiagnosisService extends CommonService<
     });
     symptomsInImages.forEach((symptomsInOneImage) => {
       symptomsInOneImage.forEach((symptom) => {
-        if (symptom.category <= 2) return;
+        if (symptom.category <= 2 || symptom.category == 8) return;
         if (
           !plantSymptomAndCause[this.symptomInfoMap[symptom.category].symptom]
         ) {
@@ -110,8 +110,11 @@ export class DiagnosisService extends CommonService<
         })
         .filter((c) => c);
     });
+    let plant = null;
     if (plantId) {
+      plant = await this.PlantRepository.findOne(plantId);
       const ret = await this.create({
+        owner: plant.owner.toString(),
         plant_id: plantId,
         symptoms: Object.values(plantSymptomAndCause),
         causes: plantCauseRet,
@@ -121,7 +124,7 @@ export class DiagnosisService extends CommonService<
     return {
       symptoms: Object.values(plantSymptomAndCause) as any,
       causes: plantCauseRet,
-      plant: plantId ? await this.PlantRepository.findOne(plantId) : null,
+      plant,
     };
   }
 }

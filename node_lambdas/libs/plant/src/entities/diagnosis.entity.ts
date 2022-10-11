@@ -30,6 +30,9 @@ export class Diagnosis {
   })
   id: mongoSchema.Types.ObjectId;
 
+  @Prop({ required: true, ref: 'User' })
+  owner: mongoSchema.Types.ObjectId;
+
   @Prop({ required: true, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
@@ -50,3 +53,10 @@ export class Diagnosis {
 }
 
 export const DiagnosisSchema = SchemaFactory.createForClass(Diagnosis);
+
+DiagnosisSchema.virtual('plant', {
+  ref: 'Plant',
+  localField: 'plant_id',
+  foreignField: 'id',
+  justOne: true,
+});

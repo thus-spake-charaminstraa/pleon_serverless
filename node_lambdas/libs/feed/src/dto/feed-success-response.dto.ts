@@ -6,6 +6,7 @@ import { CommentRes } from '@app/comment/dto';
 import { SuccessResponse } from '@app/common/dto';
 import { User } from '@app/user';
 import { FeedKind } from '../types/feed-kind.type';
+import { Diagnosis } from '@app/plant/entities/diagnosis.entity';
 
 export class CreateFeedResponse extends SuccessResponse {
   data: Feed;
@@ -42,7 +43,7 @@ export class GetFeedsResponse extends SuccessResponse {
 
 export enum FeedViewKind {
   feed = 'feed',
-  noti = 'noti',
+  diagnosis = 'diagnosis',
 }
 
 export class FeedView {
@@ -51,15 +52,15 @@ export class FeedView {
   viewObject: FeedRes;
 }
 
-export class NotiView {
+export class DiagnosisView {
   viewType: FeedViewKind;
 
-  viewObject: Noti;
+  viewObject: Diagnosis;
 }
 
-type ViewObject = FeedView | NotiView;
+type ViewObject = FeedView | DiagnosisView;
 
-class FeedsWithNoti {
+class FeedsWithOtherStuffs {
   @ApiProperty({
     type: 'array',
     items: {
@@ -69,10 +70,10 @@ class FeedsWithNoti {
           properties: {
             viewType: {
               type: 'string',
-              example: 'noti',
+              example: 'diagnosis',
             },
             viewObject: {
-              $ref: getSchemaPath(Noti),
+              $ref: getSchemaPath(Diagnosis),
             },
           },
         },
@@ -98,8 +99,8 @@ class FeedsWithNoti {
   next_offset: number;
 }
 
-export class GetFeedsWithNotiResponse extends SuccessResponse {
-  data: FeedsWithNoti;
+export class GetFeedsWithOtherResponse extends SuccessResponse {
+  data: FeedsWithOtherStuffs;
 }
 
 export class UpdateFeedResponse extends SuccessResponse {

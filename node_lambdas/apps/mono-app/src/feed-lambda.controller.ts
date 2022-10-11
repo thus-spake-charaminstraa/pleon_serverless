@@ -25,7 +25,7 @@ import {
   GetFeedQuery,
   GetFeedResponse,
   GetFeedsResponse,
-  GetFeedsWithNotiResponse,
+  GetFeedsWithOtherResponse,
   UpdateFeedDto,
   UpdateFeedResponse,
 } from '@app/feed';
@@ -60,13 +60,14 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
+import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 
 @ApiTags('Feed')
 @Controller('feed')
 export class FeedLambdaController {
   constructor(
     private readonly feedService: FeedService,
-    private readonly notiService: NotiService,
+    private readonly diagnosisService: DiagnosisService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -268,7 +269,7 @@ export class FeedLambdaController {
   })
   @ApiOkResponse({
     description: '피드들의 정보를 성공적으로 가져옴',
-    type: GetFeedsWithNotiResponse,
+    type: GetFeedsWithOtherResponse,
   })
   @ApiQuery({
     name: 'plant_id',
@@ -321,24 +322,24 @@ export class FeedLambdaController {
       },
       GetFeedQuery,
     );
-    const feeds = await this.feedService.findAll(query);
-    const notis = await this.notiService.findAll({
+    const feeds: any = await this.feedService.findAll(query);
+    const diagnosis: any = await this.diagnosisService.findAll({
       owner: req.user.id.toString(),
     });
-    let result: any = notis.map((noti) => ({
-      viewType: FeedViewKind.noti,
-      viewObject: noti,
-    }));
-    result = result.concat(
-      feeds.map((feed) => ({
-        viewType: FeedViewKind.feed,
-        viewObject: feed,
-      })),
-    );
+    const result: any[] = feeds
+      .map((item) => ({ viewType: 'feed', viewObject: item }))
+      .concat(
+        diagnosis.map((item) => ({ viewType: 'diagnosis', viewObject: item })),
+      )
+      .sort((a: any, b: any) => {
+        if (a.viewObject.updated_at > b.viewObject.updated_at) return -1;
+        if (a.viewObject.updated_at < b.viewObject.updated_at) return 1;
+        return 0;
+      });
     return {
       result,
-      count: result.length,
-      next_offset: offset + result.length,
+      count: feeds.length,
+      next_offset: offset + feeds.length,
     };
   }
 

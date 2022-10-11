@@ -39,12 +39,12 @@ export const handler: Handler = async (
     //     ),
     //   ),
     // ]);
-    // ret.symptoms.forEach((s: any, index: number) => {
-    //   s.image_url = croppedImagesUrl[index].url;
-    //   delete s.box;
-    //   delete s.score;
-    //   delete s.category;
-    // });
+    ret.symptoms.forEach((s: any, index: number) => {
+      // s.image_url = croppedImagesUrl[index].url;
+      delete s.box;
+      delete s.score;
+      delete s.category;
+    });
     ret.causes.forEach((c: any) => {
       delete c.count;
     });
