@@ -7,7 +7,7 @@ import {
   ApiOkResponse,
   getSchemaPath,
 } from '@nestjs/swagger';
-import { IsString } from 'class-validator';
+import { IsMongoId, IsString } from 'class-validator';
 
 export class PlantInferenceDto {
   @ApiProperty()
@@ -19,6 +19,10 @@ export class PlantsInferenceDto {
   @ApiProperty()
   @IsString({ each: true })
   image_urls: string[];
+
+  @ApiProperty()
+  @IsMongoId()
+  plant_id: string;
 }
 
 export class PlantDetectionResponse {
