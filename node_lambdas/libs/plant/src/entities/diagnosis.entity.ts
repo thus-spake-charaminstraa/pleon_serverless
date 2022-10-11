@@ -33,11 +33,14 @@ export class Diagnosis {
   @Prop({ required: true, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
-  @Prop({ required: true })
-  symptom: Symptom;
+  @Prop({ required: true, type: [String] })
+  image_urls: string[];
 
   @Prop({ required: true })
-  cause: Cause;
+  symptoms: Symptom[];
+
+  @Prop({ required: true })
+  causes: Cause[];
 
   @Prop({ required: false })
   created_at: Date;

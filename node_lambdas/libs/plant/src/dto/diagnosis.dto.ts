@@ -5,9 +5,7 @@ export class CreateDiagnosisDto {
   @IsMongoId()
   plant_id: string;
 
-  symptom: Symptom;
+  symptoms: Symptom[];
 
-  cause: Cause;
+  causes: Cause[];
 }
-
-

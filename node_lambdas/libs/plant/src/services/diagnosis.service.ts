@@ -33,9 +33,6 @@ export class DiagnosisService extends CommonService<
   }
 
   async analysis(symptomsInImages: any[][], plantId?: string) {
-    if (symptomsInImages.length === 0) {
-      throw new BadRequestException('No symptoms detected');
-    }
     const plantCause = Object.assign({}, PlantCause);
     const plantSymptomAndCause = {};
     Object.keys(plantCause).forEach((key) => {
@@ -60,13 +57,16 @@ export class DiagnosisService extends CommonService<
         });
       });
     });
+    if (Object.values(plantSymptomAndCause).length === 0) {
+      throw new BadRequestException('No symptoms detected');
+    }
     const sortedPlantCause = Object.values(plantCause).sort(
       (a: any, b: any) => {
         return b.count - a.count;
       },
     );
     const plantCauseRet = [];
-    let maxCnt = 0;
+    let maxCnt = 1;
     sortedPlantCause.forEach((cause: any) => {
       if (maxCnt <= cause.count) {
         maxCnt = cause.count;
@@ -110,6 +110,14 @@ export class DiagnosisService extends CommonService<
         })
         .filter((c) => c);
     });
+    if (plantId) {
+      const ret = await this.create({
+        plant_id: plantId,
+        symptoms: Object.values(plantSymptomAndCause),
+        causes: plantCauseRet,
+      });
+      console.log(ret);
+    }
     return {
       symptoms: Object.values(plantSymptomAndCause) as any,
       causes: plantCauseRet,
