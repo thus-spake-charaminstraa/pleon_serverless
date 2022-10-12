@@ -175,11 +175,6 @@ export class FeedLambdaController {
     type: GetFeedsResponse,
   })
   @ApiQuery({
-    name: 'include_noti',
-    type: Boolean,
-    required: false,
-  })
-  @ApiQuery({
     name: 'plant_id',
     type: String,
     required: false,
@@ -324,7 +319,8 @@ export class FeedLambdaController {
     );
     const feeds: any = await this.feedService.findAll(query);
     const diagnosis: any = await this.diagnosisService.findAll({
-      owner: req.user.id.toString(),
+      owner: query.owner,
+      plant_id: query.plant_id,
     });
     const result: any[] = feeds
       .map((item) => ({ viewType: 'feed', viewObject: item }))
