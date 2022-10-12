@@ -1,6 +1,5 @@
 const { S3Client, PutObjectCommand } = require('@aws-sdk/client-s3');
 const axios = require('axios');
-const uuid4 = require('uuid').v4;
 const sharp = require('sharp');
 
 const s3 = new S3Client({
@@ -16,9 +15,9 @@ async function downloadImageByUrl(url){
 
 async function cropImageByProportionBox(
   image,
+  imageKey,
   proportionBox,
 ) {
-  const imageKey = 'plant-doctor-' + uuid4() + '.jpg';
   const imageSharp = sharp(Buffer.from(image.buffer), { failOn: 'truncated' });
   const uploadParams = {
     Bucket: process.env.AWS_S3_BUCKET_NAME,
@@ -62,12 +61,14 @@ exports.handler = async (
     ...imageBuffers.map((imageBuffer, index) =>
       cropImageByProportionBox(
         imageBuffer,
+        event.data.symptoms[index].image_key,
         event.data.symptoms[index].box,
       ),
     ),
   ]);
   event.data.symptoms.forEach((s, index) => {
     s.image_url = croppedImagesUrl[index].url;
+    delete s.image_key;
     delete s.box;
   });
   return event;

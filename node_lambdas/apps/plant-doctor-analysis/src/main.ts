@@ -23,24 +23,9 @@ export const handler: Handler = async (
   const result: any[][] = body.result;
   const plantSymptoms = result.filter((imageResult) => imageResult.length > 0);
   const diagnosisService = app.get(DiagnosisService);
-  const imageService = app.get(ImageService);
   try {
     const ret = await diagnosisService.analysis(plantSymptoms, body.plant_id);
-    // const imageBuffers = await Promise.all([
-    //   ...ret.symptoms.map((s: any) =>
-    //     imageService.downloadImageByUrl(s.image_url),
-    //   ),
-    // ]);
-    // const croppedImagesUrl = await Promise.all([
-    //   ...imageBuffers.map((imageBuffer, index) =>
-    //     imageService.cropImageByProportionBox(
-    //       imageBuffer,
-    //       ret.symptoms[index].box,
-    //     ),
-    //   ),
-    // ]);
     ret.symptoms.forEach((s: any, index: number) => {
-      // s.image_url = croppedImagesUrl[index].url;
       delete s.score;
       delete s.category;
     });

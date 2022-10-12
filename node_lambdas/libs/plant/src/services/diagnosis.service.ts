@@ -8,6 +8,8 @@ import { DiagnosisRepository } from '../repositories/diagnosis.repository';
 import { PlantCause } from '../resources/plant-cause';
 import { PlantSymptom } from '../resources/plant-symptom';
 import { PlantRepository } from '@app/plant';
+import { v4 as uuid4 } from 'uuid';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class DiagnosisService extends CommonService<
@@ -22,6 +24,7 @@ export class DiagnosisService extends CommonService<
     @Inject(forwardRef(() => PlantRepository))
     private readonly PlantRepository: PlantRepository,
     private readonly notiService: NotiService,
+    private readonly configService: ConfigService,
   ) {
     super(diagnosisRepository);
     this.symptomInfoMap = PlantSymptom;
@@ -44,6 +47,7 @@ export class DiagnosisService extends CommonService<
               ...this.symptomInfoMap[symptom.category],
               cause: [],
               ...symptom,
+              image_key: 'plant-doctor-' + uuid4() + '.jpg',
             };
         }
         const cause = this.symptomInfoMap[symptom.category].cause;
@@ -117,6 +121,14 @@ export class DiagnosisService extends CommonService<
         plant_id: plantId,
         symptoms: Object.values(plantSymptomAndCause),
         causes: plantCauseRet,
+        image_urls: Object.values(plantSymptomAndCause).map((s: any) => {
+          return (
+            'https://' +
+            this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+            '.s3.amazonaws.com/' +
+            s.image_key
+          );
+        }),
       });
       console.log(ret);
     }
