@@ -1,6 +1,7 @@
 import { SuccessResponse } from '@app/common/dto';
-import { GetPlantResDto } from '@app/plant';
 import { Species } from '../entities/species.entity';
+import { DiagnosisRes } from './diagnosis.dto';
+import { GetPlantResDto } from './plant.dto';
 
 export class GetPlantResponse extends SuccessResponse {
   data: GetPlantResDto;
@@ -21,4 +22,12 @@ export class UpdatePlantResponse extends SuccessResponse {
 
 export class GetSpeciesResponse extends SuccessResponse {
   data: Species[];
+}
+
+export class GetDiagnosisResponse extends SuccessResponse {
+  data: DiagnosisRes;
+}
+
+export class GetDiagnosesResponse extends SuccessResponse {
+  data: DiagnosisRes[];
 }

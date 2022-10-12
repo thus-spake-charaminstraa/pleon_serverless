@@ -21,7 +21,11 @@ import {
   UpdatePlantDto,
   UpdatePlantResponse,
   PlantMoodInfos,
+  GetDiagnosisResponse,
+  GetDiagnosesResponse,
+  GetDiagnosisQuery,
 } from '@app/plant';
+import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 import { PlantService } from '@app/plant/services/plant.service';
 import { SpeciesService } from '@app/plant/services/species.service';
 import {
@@ -60,6 +64,7 @@ export class PlantLambdaController {
     @Inject(forwardRef(() => PlantService))
     private readonly plantService: PlantService,
     private readonly speciesService: SpeciesService,
+    private readonly diagnosisService: DiagnosisService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
@@ -85,6 +90,59 @@ export class PlantLambdaController {
   @Post('species')
   async createSpecies(@Body() createSpeciesDto: CreateSpeciesDto) {
     return await this.speciesService.create(createSpeciesDto);
+  }
+
+  /**
+   * 식물 진단 결과를 아이디로 한 개 조회합니다.
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '식물 진단 정보 조회 성공',
+    type: GetDiagnosisResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('diagnosis/:id')
+  async findOneDiagnosis(@Param('id') id: string) {
+    return await this.diagnosisService.findOne(id);
+  }
+
+  /**
+   * 식물 진단 결과들을 조회합니다.
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '식물 진단 정보 조회 성공',
+    type: GetDiagnosesResponse,
+  })
+  @ApiQuery({
+    name: 'owner',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'plant_id',
+    required: false,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('diagnosis')
+  async findAllDiagnosis(
+    @Query('owner') owner: string,
+    @Query('plant_id') plantId: string,
+  ) {
+    const query: GetDiagnosisQuery = queryParser(
+      { owner, plantId },
+      GetDiagnosisQuery,
+    );
+    return await this.diagnosisService.findAll(query);
   }
 
   /**
