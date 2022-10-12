@@ -41,7 +41,6 @@ export const handler: Handler = async (
     // ]);
     ret.symptoms.forEach((s: any, index: number) => {
       // s.image_url = croppedImagesUrl[index].url;
-      delete s.box;
       delete s.score;
       delete s.category;
     });
@@ -57,7 +56,7 @@ export const handler: Handler = async (
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
       },
-      success: true,
+      success: ret.symptoms.length > 0,
     };
   } catch (e: unknown) {
     let statusCode = e instanceof HttpException ? e.getStatus() : 500;

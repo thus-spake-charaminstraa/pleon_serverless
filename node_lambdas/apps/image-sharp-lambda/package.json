@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.186.0",
+    "axios": "^1.1.2",
+    "sharp": "^0.31.1",
+    "uuid": "^9.0.0"
+  }
+}

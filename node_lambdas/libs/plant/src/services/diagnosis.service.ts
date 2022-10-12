@@ -1,12 +1,7 @@
 import { CommonService } from '@app/common/common.service';
 import { NotiKind } from '@app/noti';
 import { NotiService } from '@app/noti/noti.service';
-import {
-  Injectable,
-  BadRequestException,
-  Inject,
-  forwardRef,
-} from '@nestjs/common';
+import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { CreateDiagnosisDto } from '../dto/diagnosis.dto';
 import { Diagnosis } from '../entities/diagnosis.entity';
 import { DiagnosisRepository } from '../repositories/diagnosis.repository';
@@ -58,7 +53,11 @@ export class DiagnosisService extends CommonService<
       });
     });
     if (Object.values(plantSymptomAndCause).length === 0) {
-      throw new BadRequestException('No symptoms detected');
+      return {
+        symptoms: [],
+        causes: [],
+        plant: plantId ? await this.PlantRepository.findOne(plantId) : null,
+      };
     }
     const sortedPlantCause = Object.values(plantCause).sort(
       (a: any, b: any) => {
