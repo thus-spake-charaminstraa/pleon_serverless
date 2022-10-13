@@ -22,7 +22,7 @@ export class DiagnosisService extends CommonService<
   constructor(
     private readonly diagnosisRepository: DiagnosisRepository,
     @Inject(forwardRef(() => PlantRepository))
-    private readonly PlantRepository: PlantRepository,
+    private readonly plantRepository: PlantRepository,
     private readonly notiService: NotiService,
     private readonly configService: ConfigService,
   ) {
@@ -60,7 +60,7 @@ export class DiagnosisService extends CommonService<
       return {
         symptoms: [],
         causes: [],
-        plant: plantId ? await this.PlantRepository.findOne(plantId) : null,
+        plant: plantId ? await this.plantRepository.findOne(plantId) : null,
       };
     }
     const sortedPlantCause = Object.values(plantCause).sort(
@@ -115,7 +115,7 @@ export class DiagnosisService extends CommonService<
     });
     let plant = null;
     if (plantId) {
-      plant = await this.PlantRepository.findOne(plantId);
+      plant = await this.plantRepository.findOne(plantId);
       const ret = await this.create({
         owner: plant.owner.toString(),
         plant_id: plantId,

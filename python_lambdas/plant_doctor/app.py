@@ -29,7 +29,9 @@ def handler(event, context):
                 'Access-Control-Allow-Origin': '*',
                 'Access-Control-Allow-Methods': 'GET,HEAD,PUT,PATCH,POST,DELETE'
             },
-            'body': 'Warm up',
+            'body': json.dumps({
+                'message': 'Warm up'
+            })
         }
 
     image_urls: list = list(body['image_urls'])

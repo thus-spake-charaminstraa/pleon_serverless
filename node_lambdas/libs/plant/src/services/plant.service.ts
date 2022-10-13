@@ -9,6 +9,7 @@ import {
   forwardRef,
   Inject,
   Injectable,
+  NotFoundException,
 } from '@nestjs/common';
 import {
   CreatePlantApiDto,
@@ -101,6 +102,9 @@ export class PlantService extends CommonService<
 
   async findOne(id: string): Promise<GetPlantResDto> {
     const plant = await this.plantRepository.findOne(id);
+    if (!plant) {
+      throw new NotFoundException('Plant not found');
+    }
     const notis = await this.notiService.findNotisByPlantId(id);
     if (notis.some((noti) => noti.kind === NotiKind.water)) {
       plant.mood = this.plantMoodInfoMap.sad;
