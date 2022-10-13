@@ -61,6 +61,7 @@ import {
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
+import { GetDiagnosisQuery } from '@app/plant';
 
 @ApiTags('Feed')
 @Controller('feed')
@@ -227,11 +228,16 @@ export class FeedLambdaController {
     order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    if (publish_date)
+    let start: Date, end: Date;
+    if (publish_date) {
       publish_date = new Date(
         DateStrFormat(new Date(publish_date)),
       ).toISOString();
-    const query: GetFeedQuery = queryParser(
+      start = new Date(publish_date);
+      end = new Date(publish_date);
+      end.setDate(end.getDate() + 1);
+    }
+    const feedQuery: GetFeedQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
@@ -243,7 +249,7 @@ export class FeedLambdaController {
       },
       GetFeedQuery,
     );
-    const feeds = await this.feedService.findAll(query);
+    const feeds = await this.feedService.findAll(feedQuery);
     const result = feeds.map((feed) => ({
       viewType: FeedViewKind.feed,
       viewObject: feed,
@@ -272,6 +278,11 @@ export class FeedLambdaController {
     required: false,
   })
   @ApiQuery({
+    name: 'publish_date',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
     name: 'limit',
     description: '최대 개수이고, 기본값은 100000입니다. optional입니다.',
     type: Number,
@@ -297,6 +308,7 @@ export class FeedLambdaController {
   @Get('list')
   async findAllWithNoti(
     @Query('plant_id') plant_id: string,
+    @Query('publish_date') publish_date: string,
     @Query('limit', new DefaultValuePipe(100000), ParseIntPipe) limit: number,
     @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
     @Query(
@@ -307,25 +319,44 @@ export class FeedLambdaController {
     order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    const query: GetFeedQuery = queryParser(
+    let start: Date = undefined, end: Date = undefined;
+    if (publish_date) {
+      publish_date = new Date(
+        DateStrFormat(new Date(publish_date)),
+      ).toISOString();
+      start = new Date(publish_date);
+      end = new Date(publish_date);
+      end.setDate(end.getDate() + 1);
+    }
+    const feedQuery: GetFeedQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
+        publish_date,
         limit,
         offset,
         order_by,
       },
       GetFeedQuery,
     );
-    const feeds: any = await this.feedService.findAll(query);
-    const diagnosis: any = await this.diagnosisService.findAll({
-      owner: query.owner,
-      plant_id: query.plant_id,
-    });
+    const diagnosisQuery: GetDiagnosisQuery = queryParser(
+      {
+        owner: req.user.id,
+        plant_id,
+        start,
+        end,
+      },
+      GetDiagnosisQuery,
+    );
+    const feeds: any = await this.feedService.findAll(feedQuery);
+    const diagnosis: any = await this.diagnosisService.findAll(diagnosisQuery);
     const result: any[] = feeds
-      .map((item) => ({ viewType: 'feed', viewObject: item }))
+      .map((item: any) => ({ viewType: FeedViewKind.feed, viewObject: item }))
       .concat(
-        diagnosis.map((item) => ({ viewType: 'diagnosis', viewObject: item })),
+        diagnosis.map((item: any) => ({
+          viewType: FeedViewKind.diagnosis,
+          viewObject: item,
+        })),
       )
       .sort((a: any, b: any) => {
         if (a.viewObject.updated_at > b.viewObject.updated_at) return -1;

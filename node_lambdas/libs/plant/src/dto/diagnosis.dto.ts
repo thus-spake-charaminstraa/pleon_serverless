@@ -18,9 +18,15 @@ export class CreateDiagnosisDto {
 }
 
 export class GetDiagnosisQuery {
-  owner: string;
+  owner?: string;
 
-  plant_id: string;
+  plant_id?: string;
+
+  start?: Date;
+
+  end?: Date;
+
+  created_at?: any;
 }
 
 export class DiagnosisRes extends Diagnosis {

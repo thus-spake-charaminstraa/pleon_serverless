@@ -136,10 +136,10 @@ export class PlantLambdaController {
   @Get('diagnosis')
   async findAllDiagnosis(
     @Query('owner') owner: string,
-    @Query('plant_id') plantId: string,
+    @Query('plant_id') plant_id: string,
   ) {
     const query: GetDiagnosisQuery = queryParser(
-      { owner, plantId },
+      { owner, plant_id },
       GetDiagnosisQuery,
     );
     return await this.diagnosisService.findAll(query);

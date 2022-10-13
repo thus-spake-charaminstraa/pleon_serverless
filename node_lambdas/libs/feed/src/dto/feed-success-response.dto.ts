@@ -42,8 +42,8 @@ export class GetFeedsResponse extends SuccessResponse {
 }
 
 export enum FeedViewKind {
-  feed = 'feed',
-  diagnosis = 'diagnosis',
+  feed = 'FEED',
+  diagnosis = 'DIAGNOSIS',
 }
 
 export class FeedView {
@@ -70,7 +70,7 @@ class FeedsWithOtherStuffs {
           properties: {
             viewType: {
               type: 'string',
-              example: 'diagnosis',
+              example: 'DIAGNOSIS',
             },
             viewObject: {
               $ref: getSchemaPath(Diagnosis),
@@ -82,7 +82,7 @@ class FeedsWithOtherStuffs {
           properties: {
             viewType: {
               type: 'string',
-              example: 'feed',
+              example: 'FEED',
             },
             viewObject: {
               $ref: getSchemaPath(FeedRes),

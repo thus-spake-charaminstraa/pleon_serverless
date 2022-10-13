@@ -22,11 +22,12 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
       MongooseModule.forFeatureAsync([
         {
           name: Plant.name,
-          imports: [FeedModule, ScheduleModule, NotiModule],
+          imports: [PlantModule, FeedModule, ScheduleModule, NotiModule],
           useFactory: (
             feedRepository: FeedRepository,
             scheduleRepository: ScheduleRepository,
             notiRepository: NotiRepository,
+            diagnosisRepository: DiagnosisRepository,
           ) => {
             const schema = PlantSchema;
             schema.pre(
@@ -38,12 +39,18 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
                   feedRepository.deleteAll({ plant_id: id }),
                   scheduleRepository.deleteAll({ plant_id: id }),
                   notiRepository.deleteAll({ plant_id: id }),
+                  diagnosisRepository.deleteMany({ plant_id: id }),
                 ]);
               },
             );
             return schema;
           },
-          inject: [FeedRepository, ScheduleRepository, NotiRepository],
+          inject: [
+            FeedRepository,
+            ScheduleRepository,
+            NotiRepository,
+            DiagnosisRepository,
+          ],
         },
         {
           name: Species.name,
