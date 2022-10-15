@@ -25,4 +25,8 @@ export class SpeciesRepository extends CommonRepository<
       .exec();
     return ret;
   }
+
+  async findOneByName(name: string): Promise<Species> {
+    return await this.speciesModel.findOne({ name }).exec();
+  }
 }

@@ -1,23 +1,11 @@
 #!/bin/bash
 
-uploadCode() {
-  pwd=$(pwd)
-  aws lambda update-function-code \
-    --function-name $1 \
-    --zip-file fileb://$pwd/main.js.zip \
-    --region ap-northeast-2 \
-    > /dev/null
-}
-
-build() {
-  rm -rf ./dist/apps/$1
-  npx nest build --webpack $1
-}
-
-packageAndUploadCode() {
+deploy() {
   cd ./dist/apps/$1
-  zip main.js.zip main.js
-  uploadCode $1
+  pwd=$(pwd)
+  aws lambda publish-version \
+    --function-name $1 \
+    > /dev/null
   cd ../../..
 }
 
@@ -40,6 +28,5 @@ declare -a array=(
 )
 for i in "${array[@]}"
 do
-	build "$i"
-  packageAndUploadCode "$i"
+	deploy "$i"
 done

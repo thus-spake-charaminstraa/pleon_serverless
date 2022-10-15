@@ -7,9 +7,12 @@ import { Diagnosis } from '../entities/diagnosis.entity';
 import { DiagnosisRepository } from '../repositories/diagnosis.repository';
 import { PlantCause } from '../resources/plant-cause';
 import { PlantSymptom } from '../resources/plant-symptom';
-import { PlantRepository } from '@app/plant';
 import { v4 as uuid4 } from 'uuid';
 import { ConfigService } from '@nestjs/config';
+import { PlantService } from '@app/plant/services/plant.service';
+import { SpeciesService } from '@app/plant/services/species.service';
+import { Plant } from '../entities/plant.entity';
+import { PlantLight } from '../types';
 
 @Injectable()
 export class DiagnosisService extends CommonService<
@@ -21,8 +24,10 @@ export class DiagnosisService extends CommonService<
   symptomInfoMap: any;
   constructor(
     private readonly diagnosisRepository: DiagnosisRepository,
-    @Inject(forwardRef(() => PlantRepository))
-    private readonly plantRepository: PlantRepository,
+    @Inject(forwardRef(() => PlantService))
+    private readonly plantService: PlantService,
+    @Inject(forwardRef(() => SpeciesService))
+    private readonly speciesService: SpeciesService,
     private readonly notiService: NotiService,
     private readonly configService: ConfigService,
   ) {
@@ -60,7 +65,7 @@ export class DiagnosisService extends CommonService<
       return {
         symptoms: [],
         causes: [],
-        plant: plantId ? await this.plantRepository.findOne(plantId) : null,
+        plant: plantId ? await this.plantService.findOne(plantId) : null,
       };
     }
     const sortedPlantCause = Object.values(plantCause).sort(
@@ -76,46 +81,10 @@ export class DiagnosisService extends CommonService<
         plantCauseRet.push(cause);
       }
     });
+
+    let plant: Plant = null;
     if (plantId) {
-      const opposeCause = {
-        water_lack: -1,
-        water_excess: -1,
-        temperature_lack: -1,
-        temperature_excess: -1,
-        nutrition_lack: -1,
-        nutrition_excess: -1,
-      };
-      plantCauseRet.forEach((cause: any, idx: number) => {
-        if (cause.cause in Object.keys(opposeCause))
-          opposeCause[cause.cause] = idx;
-      });
-      const plantNotis = await this.notiService.findNotisByPlantId(plantId);
-      if (opposeCause.water_lack >= 0 && opposeCause.water_excess >= 0) {
-        if (plantNotis.some((noti) => noti.kind === NotiKind.water)) {
-          plantCauseRet.splice(opposeCause.water_excess, 1);
-        } else plantCauseRet.splice(opposeCause.water_lack, 1);
-      }
-      if (
-        opposeCause.nutrition_lack >= 0 &&
-        opposeCause.nutrition_excess >= 0
-      ) {
-        if (plantNotis.some((noti) => noti.kind === NotiKind.nutrition)) {
-          plantCauseRet.splice(opposeCause.nutrition_excess, 1);
-        } else plantCauseRet.splice(opposeCause.nutrition_lack, 1);
-      }
-    }
-    Object.values(plantSymptomAndCause).forEach((symptomAndCause: any) => {
-      symptomAndCause.cause = plantCauseRet
-        .map((cause) => {
-          if (cause.symptom.some((s) => symptomAndCause.symptom === s)) {
-            return cause.cause;
-          } else return undefined;
-        })
-        .filter((c) => c);
-    });
-    let plant = null;
-    if (plantId) {
-      plant = await this.plantRepository.findOne(plantId);
+      plant = await this.plantService.findOne(plantId);
       const ret = await this.create({
         owner: plant.owner.toString(),
         plant_id: plantId,
@@ -130,8 +99,46 @@ export class DiagnosisService extends CommonService<
           );
         }),
       });
-      console.log(ret);
+
+      const causeIdx: any = {};
+      plantCauseRet.forEach((cause: any, idx: number) => {
+        causeIdx[cause.cause] = idx;
+      });
+      const [plantNotis, plantSpecies] = await Promise.all([
+        this.notiService.findNotisByPlantId(plantId),
+        this.speciesService.findOneByName(plant.species),
+      ]);
+      if (causeIdx.water_lack && causeIdx.water_excess) {
+        if (plantNotis.some((noti) => noti.kind === NotiKind.water)) {
+          plantCauseRet.splice(causeIdx.water_excess, 1);
+        } else plantCauseRet.splice(causeIdx.water_lack, 1);
+      }
+      if (causeIdx.nutrition_lack && causeIdx.nutrition_excess) {
+        if (plantNotis.some((noti) => noti.kind === NotiKind.nutrition)) {
+          plantCauseRet.splice(causeIdx.nutrition_excess, 1);
+        } else plantCauseRet.splice(causeIdx.nutrition_lack, 1);
+      }
+      if (causeIdx.light_excess) {
+        if (
+          plantSpecies.proper_light.includes(PlantLight.bright) ||
+          (plantSpecies.proper_light.includes(PlantLight.half_bright) &&
+            plant.light != PlantLight.bright) ||
+          (plantSpecies.proper_light.includes(PlantLight.dark) &&
+            plant.light == PlantLight.dark)
+        )
+          plantCauseRet.splice(causeIdx.light_excess, 1);
+      }
     }
+    Object.values(plantSymptomAndCause).forEach((symptomAndCause: any) => {
+      symptomAndCause.cause = plantCauseRet
+        .map((cause) => {
+          if (cause.symptom.some((s) => symptomAndCause.symptom === s)) {
+            return cause.cause;
+          } else return undefined;
+        })
+        .filter((c) => c);
+    });
+
     return {
       symptoms: Object.values(plantSymptomAndCause) as any,
       causes: plantCauseRet,

@@ -18,4 +18,8 @@ export class SpeciesService extends CommonService<
   async findAllSpecies(): Promise<Species[]> {
     return await this.speciesRepository.findAllSpecies();
   }
+
+  async findOneByName(name: string) {
+    return await this.speciesRepository.findOneByName(name);
+  }
 }
