@@ -108,17 +108,18 @@ export class DiagnosisService extends CommonService<
         this.notiService.findNotisByPlantId(plantId),
         this.speciesService.findOneByName(plant.species),
       ]);
-      if (causeIdx.water_lack && causeIdx.water_excess) {
+      const causes = Object.keys(causeIdx);
+      if (causes.includes('water_lack') && causes.includes('water_excess')) {
         if (plantNotis.some((noti) => noti.kind === NotiKind.water)) {
           plantCauseRet.splice(causeIdx.water_excess, 1);
         } else plantCauseRet.splice(causeIdx.water_lack, 1);
       }
-      if (causeIdx.nutrition_lack && causeIdx.nutrition_excess) {
+      if (causes.includes('nutrition_lack') && causes.includes('nutrition_excess')) {
         if (plantNotis.some((noti) => noti.kind === NotiKind.nutrition)) {
           plantCauseRet.splice(causeIdx.nutrition_excess, 1);
         } else plantCauseRet.splice(causeIdx.nutrition_lack, 1);
       }
-      if (causeIdx.light_excess) {
+      if (causes.includes('light_excess')) {
         if (
           plantSpecies.proper_light.includes(PlantLight.bright) ||
           (plantSpecies.proper_light.includes(PlantLight.half_bright) &&
