@@ -1,12 +1,9 @@
 #!/bin/bash
 
 deploy() {
-  cd ./dist/apps/$1
-  pwd=$(pwd)
   aws lambda publish-version \
     --function-name $1 \
     > /dev/null
-  cd ../../..
 }
 
 declare -a array=(
@@ -25,6 +22,8 @@ declare -a array=(
   "chat-disconnect"
   "token-check"
   "plant-doctor-analysis"
+  "plant-detection"
+  "plant-doctor"
 )
 for i in "${array[@]}"
 do
