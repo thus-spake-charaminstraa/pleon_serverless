@@ -53,6 +53,7 @@ export class DiagnosisService extends CommonService<
               cause: [],
               ...symptom,
               image_key: 'plant-doctor-' + uuid4() + '.jpg',
+              origin_image_url: symptom.image_url,
             };
         }
         const cause = this.symptomInfoMap[symptom.category].cause;
@@ -85,20 +86,6 @@ export class DiagnosisService extends CommonService<
     let plant: Plant = null;
     if (plantId) {
       plant = await this.plantService.findOne(plantId);
-      const ret = await this.create({
-        owner: plant.owner.toString(),
-        plant_id: plantId,
-        symptoms: Object.values(plantSymptomAndCause),
-        causes: plantCauseRet,
-        image_urls: Object.values(plantSymptomAndCause).map((s: any) => {
-          return (
-            'https://' +
-            this.configService.get<string>('AWS_S3_BUCKET_NAME') +
-            '.s3.amazonaws.com/' +
-            s.image_key
-          );
-        }),
-      });
 
       const causeIdx: any = {};
       plantCauseRet.forEach((cause: any, idx: number) => {
@@ -114,7 +101,10 @@ export class DiagnosisService extends CommonService<
           plantCauseRet.splice(causeIdx.water_excess, 1);
         } else plantCauseRet.splice(causeIdx.water_lack, 1);
       }
-      if (causes.includes('nutrition_lack') && causes.includes('nutrition_excess')) {
+      if (
+        causes.includes('nutrition_lack') &&
+        causes.includes('nutrition_excess')
+      ) {
         if (plantNotis.some((noti) => noti.kind === NotiKind.nutrition)) {
           plantCauseRet.splice(causeIdx.nutrition_excess, 1);
         } else plantCauseRet.splice(causeIdx.nutrition_lack, 1);
@@ -139,6 +129,32 @@ export class DiagnosisService extends CommonService<
         })
         .filter((c) => c);
     });
+
+    if (plantId) {
+      const ret = await this.create({
+        owner: plant.owner.toString(),
+        plant_id: plantId,
+        symptoms: Object.values(plantSymptomAndCause).map((s: any) => {
+          return {
+            ...s,
+            image_url:
+              'https://' +
+              this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+              '.s3.amazonaws.com/' +
+              s.image_key,
+          };
+        }),
+        causes: plantCauseRet,
+        image_urls: Object.values(plantSymptomAndCause).map((s: any) => {
+          return (
+            'https://' +
+            this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+            '.s3.amazonaws.com/' +
+            s.image_key
+          );
+        }),
+      });
+    }
 
     return {
       symptoms: Object.values(plantSymptomAndCause) as any,

@@ -54,7 +54,7 @@ exports.handler = async (
   }
   const imageBuffers = await Promise.all([
     ...event.data.symptoms.map((s) =>
-      downloadImageByUrl(s.image_url),
+      downloadImageByUrl(s.origin_image_url),
     ),
   ]);
   const croppedImagesUrl = await Promise.all([
@@ -68,6 +68,7 @@ exports.handler = async (
   ]);
   event.data.symptoms.forEach((s, index) => {
     s.image_url = croppedImagesUrl[index].url;
+    delete s.origin_image_url;
     delete s.image_key;
     delete s.box;
   });
