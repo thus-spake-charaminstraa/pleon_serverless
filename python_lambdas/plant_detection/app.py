@@ -108,7 +108,7 @@ def handler(event, context):
 
         body['image_urls'] = result_image_urls
         return {
-            'statusCode': 200 if len(result_image_urls) > 0 else 400,
+            'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Allow-Origin': '*',
@@ -125,7 +125,7 @@ def handler(event, context):
         final_prediction = predict(image_url)
 
         return {
-            'statusCode': 200 if final_prediction['category'] >= 0 else 400,
+            'statusCode': 200,
             'headers': {
                 'Access-Control-Allow-Headers': 'Content-Type',
                 'Access-Control-Allow-Origin': '*',
