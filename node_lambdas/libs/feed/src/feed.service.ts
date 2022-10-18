@@ -1,17 +1,17 @@
 import { CreateScheduleDto, ScheduleKind } from '@app/schedule';
 import { ScheduleRepository } from '@app/schedule/schedule.repository';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { Feed } from './entities/feed.entity';
+import { FeedRepository } from './feed.repository';
+import { FeedKindInfos } from './resources/feed-kind-infos';
+import { FeedKind } from './types/feed-kind.type';
+import { CommonService } from '@app/common/common.service';
 import {
   CreateFeedDto,
   GetFeedCalendarQuery,
   GetFeedQuery,
   UpdateFeedDto,
-} from './dto';
-import { Feed } from './entities';
-import { FeedRepository } from './feed.repository';
-import { FeedKindInfos } from './resources/feed-kind-infos';
-import { FeedKind } from './types';
-import { CommonService } from '@app/common/common.service';
+} from './dto/feed.dto';
 
 @Injectable()
 export class FeedService extends CommonService<
@@ -22,6 +22,7 @@ export class FeedService extends CommonService<
 > {
   feedKindInfos: any;
   constructor(
+    @Inject(forwardRef(() => FeedRepository))
     private readonly feedRepository: FeedRepository,
     @Inject(forwardRef(() => ScheduleRepository))
     private readonly scheduleRepository: ScheduleRepository,

@@ -5,7 +5,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
-import { PlantRepository } from '@app/plant';
+import { PlantRepository } from '@app/plant/repositories/plant.repository';
 import { plantInfoForGuide } from '@app/common/types';
 import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';

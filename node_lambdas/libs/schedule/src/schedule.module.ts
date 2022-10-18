@@ -1,4 +1,4 @@
-import { PlantModule } from '@app/plant';
+import { PlantModule } from '@app/plant/plant.module';
 import { Module, forwardRef } from '@nestjs/common';
 import { ScheduleService } from './schedule.service';
 import { ScheduleRepository } from './schedule.repository';

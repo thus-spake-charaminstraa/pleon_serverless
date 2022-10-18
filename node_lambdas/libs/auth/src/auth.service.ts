@@ -13,7 +13,7 @@ import { User } from '@app/user';
 import { JwtService } from '@nestjs/jwt';
 import { v4 as uuid4 } from 'uuid';
 import { CreateTokenResDto } from './dto/token.dto';
-import { UserRepository } from '@app/user';
+import { UserRepository } from '@app/user/repositories/user.repository';
 
 const snsClient = new SNSClient({ region: 'ap-northeast-1' });
 

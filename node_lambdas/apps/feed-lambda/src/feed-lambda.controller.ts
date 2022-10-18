@@ -1,5 +1,37 @@
 import { JwtAuthGuard } from '@app/auth';
 import {
+  BadRequestResponse,
+  DateStrFormat,
+  ForbiddenResponse,
+  NotFoundResponse,
+  ParseDateInBodyPipe,
+  ParseMonthPipe,
+  ParseYearPipe,
+  queryParser,
+  SuccessResponse,
+  UnauthorizedResponse,
+} from '@app/common';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
+import {
+  CreateFeedDto,
+  CreateFeedResponse,
+  FeedByParamsIdInterceptor,
+  FeedKind,
+  FeedKindInfos,
+  FeedViewKind,
+  GetFeedCalendarQuery,
+  GetFeedCalendarResponse,
+  GetFeedOrderBy,
+  GetFeedQuery,
+  GetFeedResponse,
+  GetFeedsResponse,
+  GetFeedsWithOtherResponse,
+  UpdateFeedDto,
+  UpdateFeedResponse,
+} from '@app/feed';
+import { FeedService } from '@app/feed/feed.service';
+import { NotiService } from '@app/noti/noti.service';
+import {
   Body,
   Controller,
   DefaultValuePipe,
@@ -18,34 +50,112 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import {
-  CaslAbilityFactory,
-  DateStrFormat,
-  queryParser,
-  ParseDateInBodyPipe,
-} from '@app/common';
-import { NotiService } from '@app/noti';
-import {
-  FeedByParamsIdInterceptor,
-  FeedService,
-  CreateFeedDto,
-  FeedViewKind,
-  GetFeedOrderBy,
-  GetFeedQuery,
-  UpdateFeedDto,
-} from '@app/feed';
-import { FeedKind } from '@app/feed/types';
+  ApiBadRequestResponse,
+  ApiBearerAuth,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+  ApiQuery,
+  ApiTags,
+  ApiUnauthorizedResponse,
+} from '@nestjs/swagger';
+import { DiagnosisService } from '@app/plant/services/diagnosis.service';
+import { GetDiagnosisQuery } from '@app/plant';
 
-@Controller()
+@ApiTags('Feed')
+@Controller('feed')
 export class FeedLambdaController {
   constructor(
     private readonly feedService: FeedService,
-    private readonly notiService: NotiService,
+    private readonly diagnosisService: DiagnosisService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
   ) {}
 
+  /**
+   * 피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url, 피드 자동완성 텍스트입니다.
+   */
+  @ApiOkResponse({
+    description:
+      '피드 작성 시 피드 종류 정보입니다. 한글이름, 영어이름, 아이콘 url, 피드 자동완성 텍스트입니다.',
+    schema: {
+      example: {
+        data: FeedKindInfos,
+        success: true,
+      },
+    },
+  })
+  @HttpCode(HttpStatus.OK)
+  @Get('kind')
+  async getFeedKind() {
+    return await this.feedService.getFeedKindInfo();
+  }
+
+  /**
+   * 피드 캘린더 목록을 조회합니다.
+   */
+  @ApiOkResponse({
+    description: '피드 캘린더 조회 성공',
+    type: GetFeedCalendarResponse,
+  })
+  @ApiQuery({
+    name: 'plant_id',
+    description: '캘린더를 조회할 식물의 id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'year',
+    description: '캘린더를 조회할 년도, (예: 2020)',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'month',
+    description: '캘린더를 조회할 달, (1~12)로 주세요',
+    type: Date,
+    required: false,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('calendar')
+  async findFeedCalendar(
+    @Query('plant_id') plant_id: string,
+    @Query('year', ParseIntPipe, ParseYearPipe) year: number,
+    @Query('month', ParseIntPipe, ParseMonthPipe) month: number,
+  ) {
+    const start = new Date(year, 0, 1);
+    start.setMonth(month - 2);
+    const end = new Date(year, 0, 31);
+    end.setMonth(month);
+    const query: GetFeedCalendarQuery = queryParser(
+      { plant_id, year, month, start, end },
+      GetFeedCalendarQuery,
+    );
+    return await this.feedService.findAllAndGroupBy(query);
+  }
+
+  /**
+   * 주어진 정보로 식물 피드를 생성합니다. 피드 종류는 enum 값이며, 식물 id는 필수입니다.
+   * 유저의 id로 피드의 소유자를 설정합니다.
+   */
+  @ApiBadRequestResponse({
+    description: '유효하지 않은 요청입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiCreatedResponse({
+    description: '피드를 성공적으로 생성함',
+    type: CreateFeedResponse,
+  })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.CREATED)
-  @Post('feed')
+  @Post()
   async create(
     @Body(ParseDateInBodyPipe) createFeedDto: CreateFeedDto,
     @Req() req,
@@ -54,9 +164,56 @@ export class FeedLambdaController {
     return await this.feedService.create(createFeedDto);
   }
 
+  /**
+   * 피드 목록을 조회합니다.
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '피드들의 정보를 성공적으로 가져옴',
+    type: GetFeedsResponse,
+  })
+  @ApiQuery({
+    name: 'plant_id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'kind',
+    enum: FeedKind,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'publish_date',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'limit',
+    description: '최대 개수이고, 기본값은 100000입니다. optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'offset',
+    description:
+      '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'order_by',
+    description:
+      '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
+    enum: GetFeedOrderBy,
+    required: false,
+  })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
-  @Get('feed')
+  @Get()
   async findAll(
     @Query('plant_id') plant_id: string,
     @Query('kind') kind: FeedKind,
@@ -71,11 +228,16 @@ export class FeedLambdaController {
     order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    if (publish_date)
+    let start: Date, end: Date;
+    if (publish_date) {
       publish_date = new Date(
         DateStrFormat(new Date(publish_date)),
       ).toISOString();
-    const query: GetFeedQuery = queryParser(
+      start = new Date(publish_date);
+      end = new Date(publish_date);
+      end.setDate(end.getDate() + 1);
+    }
+    const feedQuery: GetFeedQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
@@ -87,9 +249,9 @@ export class FeedLambdaController {
       },
       GetFeedQuery,
     );
-    const feeds = await this.feedService.findAll(query);
+    const feeds = await this.feedService.findAll(feedQuery);
     const result = feeds.map((feed) => ({
-      viewType: FeedViewKind.feed,
+      viewType: 'feed',
       viewObject: feed,
     }));
     return {
@@ -99,11 +261,54 @@ export class FeedLambdaController {
     };
   }
 
+  /**
+   * 피드 화면에서 보여줄 목록을 조회합니다. 자신의 피드를 조회합니다.
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '피드들의 정보를 성공적으로 가져옴',
+    type: GetFeedsWithOtherResponse,
+  })
+  @ApiQuery({
+    name: 'plant_id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'publish_date',
+    type: Date,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'limit',
+    description: '최대 개수이고, 기본값은 100000입니다. optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'offset',
+    description:
+      '조회할 피드의 시작 위치입니다. 기본값은 0으로 설정되어있고, optional입니다.',
+    type: Number,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'order_by',
+    description:
+      '피드 발행 시간에 따른 정렬기준으로, 기본은 내림차순입니다. optional입니다.',
+    enum: GetFeedOrderBy,
+    required: false,
+  })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get('list')
   async findAllWithNoti(
     @Query('plant_id') plant_id: string,
+    @Query('publish_date') publish_date: string,
     @Query('limit', new DefaultValuePipe(100000), ParseIntPipe) limit: number,
     @Query('offset', new DefaultValuePipe(0), ParseIntPipe) offset: number,
     @Query(
@@ -114,37 +319,74 @@ export class FeedLambdaController {
     order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    const query: GetFeedQuery = queryParser(
+    let start: Date = undefined,
+      end: Date = undefined;
+    if (publish_date) {
+      publish_date = new Date(
+        DateStrFormat(new Date(publish_date)),
+      ).toISOString();
+      start = new Date(publish_date);
+      end = new Date(publish_date);
+      end.setDate(end.getDate() + 1);
+    }
+    const feedQuery: GetFeedQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
+        publish_date,
         limit,
         offset,
         order_by,
       },
       GetFeedQuery,
     );
-    const feeds = await this.feedService.findAll(query);
-    const notis = await this.notiService.findAll({
-      owner: req.user.id.toString(),
-    });
-    let result: any = notis.map((noti) => ({
-      viewType: FeedViewKind.noti,
-      viewObject: noti,
-    }));
-    result = result.concat(
-      feeds.map((feed) => ({
-        viewType: FeedViewKind.feed,
-        viewObject: feed,
-      })),
+    const diagnosisQuery: GetDiagnosisQuery = queryParser(
+      {
+        owner: req.user.id,
+        plant_id,
+        start,
+        end,
+      },
+      GetDiagnosisQuery,
     );
+    const feeds: any = await this.feedService.findAll(feedQuery);
+    const diagnosis: any = await this.diagnosisService.findAll(diagnosisQuery);
+    const result: any[] = feeds
+      .map((item: any) => ({ viewType: FeedViewKind.feed, viewObject: item }))
+      .concat(
+        diagnosis.map((item: any) => ({
+          viewType: FeedViewKind.diagnosis,
+          viewObject: item,
+        })),
+      )
+      .sort((a: any, b: any) => {
+        if (a.viewObject.updated_at > b.viewObject.updated_at) return -1;
+        if (a.viewObject.updated_at < b.viewObject.updated_at) return 1;
+        return 0;
+      });
     return {
       result,
-      count: result.length,
-      next_offset: offset + result.length,
+      count: feeds.length,
+      next_offset: offset + feeds.length,
     };
   }
 
+  /**
+   * 피드 하나를 아이디로 조회합니다.
+   */
+  @ApiNotFoundResponse({
+    description: '피드를 찾을 수 없습니다.',
+    type: NotFoundResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '피드의 정보를 성공적으로 가져옴',
+    type: GetFeedResponse,
+  })
+  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Get(':id')
@@ -152,6 +394,30 @@ export class FeedLambdaController {
     return await this.feedService.findOne(id);
   }
 
+  /**
+   * 피드를 주어진 정보로 수정합니다. 피드 소유자가 요청 유저의 아이디와 동일해야 합니다.
+   */
+  @ApiNotFoundResponse({
+    description: '피드를 찾을 수 없습니다.',
+    type: NotFoundResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBadRequestResponse({
+    description: '유효하지 않은 요청입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiForbiddenResponse({
+    description: '유저가 피드를 수정할 권한이 없습니다.',
+    type: ForbiddenResponse,
+  })
+  @ApiOkResponse({
+    description: '피드을 성공적으로 수정함',
+    type: UpdateFeedResponse,
+  })
+  @ApiBearerAuth()
   @UseInterceptors(FeedByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
@@ -166,6 +432,26 @@ export class FeedLambdaController {
     return await this.feedService.update(id, updateFeedDto);
   }
 
+  /**
+   * 주어진 아이디의 피드를 삭제합니다. 피드의 소유자가 요청 유저의 아이디와 동일해야 합니다.
+   */
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiForbiddenResponse({
+    description: '유저가 피드를 삭제할 권한이 없습니다.',
+    type: ForbiddenResponse,
+  })
+  @ApiNotFoundResponse({
+    description: '피드를 찾을 수 없습니다.',
+    type: NotFoundResponse,
+  })
+  @ApiOkResponse({
+    description: '피드를 성공적으로 삭제함',
+    type: SuccessResponse,
+  })
+  @ApiBearerAuth()
   @UseInterceptors(FeedByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)

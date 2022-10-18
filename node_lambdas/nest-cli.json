@@ -292,23 +292,6 @@
         "tsConfigPath": "libs/image/tsconfig.lib.json"
       }
     },
-    "guide": {
-      "type": "library",
-      "root": "libs/guide",
-      "entryFile": "index",
-      "sourceRoot": "libs/guide/src",
-      "compilerOptions": {
-        "plugins": [
-          {
-            "name": "@nestjs/swagger",
-            "options": {
-              "introspectComments": true
-            }
-          }
-        ],
-        "tsConfigPath": "libs/guide/tsconfig.lib.json"
-      }
-    },
     "noti": {
       "type": "library",
       "root": "libs/noti",

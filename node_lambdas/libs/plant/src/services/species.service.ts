@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Species } from '../entities';
 import { CreateSpeciesDto } from '../dto/species.dto';
 import { CommonService } from '@app/common/common.service';
-import { SpeciesRepository } from '../repositories';
+import { SpeciesRepository } from '../repositories/species.repository';
 
 @Injectable()
 export class SpeciesService extends CommonService<

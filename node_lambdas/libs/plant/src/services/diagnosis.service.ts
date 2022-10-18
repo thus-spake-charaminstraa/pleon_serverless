@@ -28,6 +28,7 @@ export class DiagnosisService extends CommonService<
     private readonly plantService: PlantService,
     @Inject(forwardRef(() => SpeciesService))
     private readonly speciesService: SpeciesService,
+    @Inject(forwardRef(() => NotiService))
     private readonly notiService: NotiService,
     private readonly configService: ConfigService,
   ) {

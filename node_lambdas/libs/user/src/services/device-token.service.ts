@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CommonService } from '@app/common';
+import { CommonService } from '@app/common/common.service';
 import { DeviceToken } from '../entities';
 import { DeviceTokenRepository } from '../repositories/device-token.repository';
 import {

@@ -11,7 +11,8 @@ import {
   UpdateUserDto,
 } from '../dto/user.dto';
 import { UserRepository } from '../repositories/user.repository';
-import { AuthService, TokenResDto } from '@app/auth';
+import { TokenResDto } from '@app/auth';
+import { AuthService } from '@app/auth/auth.service';
 import { parsePhoneNumber } from 'libphonenumber-js';
 import { User } from '../entities/user.entity';
 

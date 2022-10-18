@@ -7,7 +7,7 @@ import {
   GetFeedCalendarQuery,
   GetFeedQuery,
   UpdateFeedDto,
-} from './dto';
+} from './dto/feed.dto';
 import { Feed, FeedDocument } from './entities/feed.entity';
 
 @Injectable()
