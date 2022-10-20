@@ -22,7 +22,7 @@ import {
   GetFeedCalendarQuery,
   GetFeedCalendarResponse,
   GetFeedOrderBy,
-  GetFeedQuery,
+  GetFeedAndDiagnosisQuery,
   GetFeedResponse,
   GetFeedsResponse,
   GetFeedsWithOtherResponse,
@@ -30,7 +30,6 @@ import {
   UpdateFeedResponse,
 } from '@app/feed';
 import { FeedService } from '@app/feed/feed.service';
-import { NotiService } from '@app/noti/noti.service';
 import {
   Body,
   Controller,
@@ -237,7 +236,7 @@ export class FeedLambdaController {
       end = new Date(publish_date);
       end.setDate(end.getDate() + 1);
     }
-    const feedQuery: GetFeedQuery = queryParser(
+    const feedQuery: GetFeedAndDiagnosisQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
@@ -247,11 +246,11 @@ export class FeedLambdaController {
         offset,
         order_by,
       },
-      GetFeedQuery,
+      GetFeedAndDiagnosisQuery,
     );
     const feeds = await this.feedService.findAll(feedQuery);
     const result = feeds.map((feed) => ({
-      viewType: FeedViewKind.feed,
+      viewType: 'feed',
       viewObject: feed,
     }));
     return {
@@ -328,7 +327,7 @@ export class FeedLambdaController {
       end = new Date(publish_date);
       end.setDate(end.getDate() + 1);
     }
-    const feedQuery: GetFeedQuery = queryParser(
+    const feedQuery: GetFeedAndDiagnosisQuery = queryParser(
       {
         owner: req.user.id,
         plant_id,
@@ -336,33 +335,19 @@ export class FeedLambdaController {
         limit,
         offset,
         order_by,
-      },
-      GetFeedQuery,
-    );
-    const diagnosisQuery: GetDiagnosisQuery = queryParser(
-      {
-        owner: req.user.id,
-        plant_id,
         start,
         end,
       },
-      GetDiagnosisQuery,
+      GetFeedAndDiagnosisQuery,
     );
     const feeds: any = await this.feedService.findAll(feedQuery);
-    const diagnosis: any = await this.diagnosisService.findAll(diagnosisQuery);
     const result: any[] = feeds
-      .map((item: any) => ({ viewType: FeedViewKind.feed, viewObject: item }))
-      .concat(
-        diagnosis.map((item: any) => ({
-          viewType: FeedViewKind.diagnosis,
+      .map((item: any) => {
+        return {
+          viewType: !!item.symptoms ? FeedViewKind.diagnosis : FeedViewKind.feed,
           viewObject: item,
-        })),
-      )
-      .sort((a: any, b: any) => {
-        if (a.viewObject.updated_at > b.viewObject.updated_at) return -1;
-        if (a.viewObject.updated_at < b.viewObject.updated_at) return 1;
-        return 0;
-      });
+        };
+      })
     return {
       result,
       count: feeds.length,

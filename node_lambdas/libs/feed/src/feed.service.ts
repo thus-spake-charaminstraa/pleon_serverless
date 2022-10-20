@@ -9,7 +9,7 @@ import { CommonService } from '@app/common/common.service';
 import {
   CreateFeedDto,
   GetFeedCalendarQuery,
-  GetFeedQuery,
+  GetFeedAndDiagnosisQuery,
   UpdateFeedDto,
 } from './dto/feed.dto';
 
@@ -18,7 +18,7 @@ export class FeedService extends CommonService<
   Feed,
   CreateFeedDto,
   UpdateFeedDto,
-  GetFeedQuery
+  GetFeedAndDiagnosisQuery
 > {
   feedKindInfos: any;
   constructor(

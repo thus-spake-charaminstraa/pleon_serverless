@@ -43,12 +43,12 @@ export class UpdateFeedDto extends PartialType(
   PickType(CreateFeedDto, ['content', 'image_url', 'publish_date'] as const),
 ) {}
 
-export class GetFeedQuery {
+export class GetFeedAndDiagnosisQuery {
   owner?: string;
 
   plant_id?: string;
 
-  publish_date?: string;
+  publish_date?: Date;
 
   kind?: FeedKind;
 
@@ -57,6 +57,12 @@ export class GetFeedQuery {
   offset: number;
 
   order_by: GetFeedOrderBy;
+
+  start?: Date;
+
+  end?: Date;
+
+  created_at?: any;
 }
 
 export class GetFeedCalendarQuery {

@@ -5,7 +5,7 @@ import {
   CreateFeedDto,
   DeleteFeedQuery,
   GetFeedCalendarQuery,
-  GetFeedQuery,
+  GetFeedAndDiagnosisQuery,
   UpdateFeedDto,
 } from './dto/feed.dto';
 import { Feed, FeedDocument } from './entities/feed.entity';
@@ -22,20 +22,84 @@ export class FeedRepository {
     return await createdEntity.save();
   }
 
-  async findAll(query: GetFeedQuery): Promise<Feed[]> {
-    const { offset, limit, order_by, ...q } = query;
-    return await this.model
-      .find(q)
-      .sort({ publish_date: order_by === 'asc' ? 1 : -1, created_at: -1 })
+  async findAll(query: GetFeedAndDiagnosisQuery): Promise<Feed[]> {
+    const { offset, limit, order_by, publish_date, start, end, ...q } = query;
+    if (start && end)
+      q.created_at = {
+        $gte: start,
+        $lte: end,
+      };
+    const ret = await this.model
+      .aggregate()
+      .unionWith({
+        coll: 'diagnoses',
+      })
+      .match(q)
+      .sort({ created_at: -1 })
       .skip(offset)
       .limit(limit)
-      .populate('plant')
-      .populate({
-        path: 'comments',
-        populate: ['user', 'plant'],
+      .lookup({
+        from: 'plants',
+        localField: 'plant_id',
+        foreignField: 'id',
+        pipeline: [{ $limit: 1 }],
+        as: 'plant',
       })
-      .populate('user')
+      .unwind({
+        path: '$plant',
+        preserveNullAndEmptyArrays: true,
+      })
+      .lookup({
+        from: 'comments',
+        localField: 'id',
+        foreignField: 'feed_id',
+        pipeline: [
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'user_id',
+              foreignField: 'id',
+              pipeline: [{ $limit: 1 }],
+              as: 'user',
+            },
+          },
+          {
+            $lookup: {
+              from: 'plants',
+              localField: 'plant_id',
+              foreignField: 'id',
+              pipeline: [{ $limit: 1 }],
+              as: 'plant',
+            },
+          },
+          {
+            $unwind: {
+              path: '$user',
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $unwind: {
+              path: '$plant',
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+        ],
+        as: 'comments',
+      })
+      .lookup({
+        from: 'users',
+        localField: 'user_id',
+        foreignField: 'id',
+        pipeline: [{ $limit: 1 }],
+        as: 'user',
+      })
+      .unwind({
+        path: '$user',
+        preserveNullAndEmptyArrays: true,
+      })
       .exec();
+    return ret;
   }
 
   async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {
