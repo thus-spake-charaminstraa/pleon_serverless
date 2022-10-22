@@ -44,10 +44,6 @@ declare -a array=(
   "token-check"
   "plant-doctor-analysis"
 )
-for i in "${array[@]}"
-do
-done
-
 
 if [ $# -eq 0 ]
 then

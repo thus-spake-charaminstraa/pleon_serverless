@@ -45,7 +45,7 @@ export class UpdateFeedDto extends PartialType(
 ) {}
 
 export class GetFeedAndDiagnosisQuery {
-  owner?: string;
+  owner?: Types.ObjectId;
 
   plant_id?: Types.ObjectId;
 

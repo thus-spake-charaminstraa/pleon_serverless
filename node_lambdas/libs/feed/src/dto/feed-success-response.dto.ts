@@ -17,7 +17,7 @@ export class GetFeedResponse extends SuccessResponse {
 }
 
 export class FeedRes extends Feed {
-  comment_list: CommentRes[];
+  comments: CommentRes[];
   plant: Plant;
   user: User;
 }
@@ -37,6 +37,7 @@ export class GetFeedsResponse extends SuccessResponse {
     result: FeedView[];
     count: number;
     next_offset: number;
+    isLast: boolean;
   };
 }
 
@@ -96,6 +97,8 @@ class FeedsWithOtherStuffs {
   count: number;
 
   next_offset: number;
+
+  isLast: boolean;
 }
 
 export class GetFeedsWithOtherResponse extends SuccessResponse {

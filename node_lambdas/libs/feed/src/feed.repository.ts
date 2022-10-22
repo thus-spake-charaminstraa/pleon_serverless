@@ -23,10 +23,13 @@ export class FeedRepository {
     return await createdEntity.save();
   }
 
-  async findAll(query: GetFeedAndDiagnosisQuery): Promise<Feed[]> {
+  async findAll(query: GetFeedAndDiagnosisQuery): Promise<any> {
     const { offset, limit, order_by, publish_date, start, end, ...q } = query;
     if (q.plant_id) {
       q.plant_id = new Types.ObjectId(q.plant_id);
+    }
+    if (q.owner) {
+      q.owner = new Types.ObjectId(q.owner);
     }
     if (start && end)
       q.created_at = {
@@ -40,33 +43,11 @@ export class FeedRepository {
       })
       .match(q)
       .sort({ created_at: -1 })
-      .skip(offset)
-      .limit(limit)
-      .lookup({
-        from: 'plants',
-        localField: 'plant_id',
-        foreignField: 'id',
-        pipeline: [{ $limit: 1 }],
-        as: 'plant',
-      })
-      .unwind({
-        path: '$plant',
-        preserveNullAndEmptyArrays: true,
-      })
-      .lookup({
-        from: 'comments',
-        localField: 'id',
-        foreignField: 'feed_id',
-        pipeline: [
-          {
-            $lookup: {
-              from: 'users',
-              localField: 'user_id',
-              foreignField: 'id',
-              pipeline: [{ $limit: 1 }],
-              as: 'user',
-            },
-          },
+      .facet({
+        totalCount: [{ $count: 'count' }],
+        data: [
+          { $skip: offset },
+          { $limit: limit },
           {
             $lookup: {
               from: 'plants',
@@ -78,32 +59,73 @@ export class FeedRepository {
           },
           {
             $unwind: {
+              path: '$plant',
+              preserveNullAndEmptyArrays: true,
+            },
+          },
+          {
+            $lookup: {
+              from: 'users',
+              localField: 'owner',
+              foreignField: 'id',
+              pipeline: [{ $limit: 1 }],
+              as: 'user',
+            },
+          },
+          {
+            $unwind: {
               path: '$user',
               preserveNullAndEmptyArrays: true,
             },
           },
           {
-            $unwind: {
-              path: '$plant',
-              preserveNullAndEmptyArrays: true,
+            $lookup: {
+              from: 'comments',
+              localField: 'id',
+              foreignField: 'feed_id',
+              as: 'comments',
+              pipeline: [
+                {
+                  $lookup: {
+                    from: 'users',
+                    localField: 'user_id',
+                    foreignField: 'id',
+                    pipeline: [{ $limit: 1 }],
+                    as: 'user',
+                  },
+                },
+                {
+                  $lookup: {
+                    from: 'plants',
+                    localField: 'plant_id',
+                    foreignField: 'id',
+                    pipeline: [{ $limit: 1 }],
+                    as: 'plant',
+                  },
+                },
+                {
+                  $unwind: {
+                    path: '$user',
+                    preserveNullAndEmptyArrays: true,
+                  },
+                },
+                {
+                  $unwind: {
+                    path: '$plant',
+                    preserveNullAndEmptyArrays: true,
+                  },
+                },
+              ],
             },
           },
         ],
-        as: 'comments',
-      })
-      .lookup({
-        from: 'users',
-        localField: 'owner',
-        foreignField: 'id',
-        pipeline: [{ $limit: 1 }],
-        as: 'user',
       })
       .unwind({
-        path: '$user',
+        path: '$totalCount',
         preserveNullAndEmptyArrays: true,
       })
       .exec();
-    return ret;
+    return ret[0];
   }
 
   async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {

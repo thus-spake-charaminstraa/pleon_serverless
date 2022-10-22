@@ -252,14 +252,15 @@ export class FeedLambdaController {
       GetFeedAndDiagnosisQuery,
     );
     const feeds = await this.feedService.findAll(feedQuery);
-    const result = feeds.map((feed) => ({
+    const result = feeds.data.map((feed) => ({
       viewType: 'feed',
       viewObject: feed,
     }));
     return {
       result,
-      count: result.length,
-      next_offset: offset + result.length,
+      count: feeds.data.length,
+      next_offset: offset + feeds.data.length,
+      isLast: feeds.totalCount <= offset + feeds.data.length,
     };
   }
 
@@ -346,7 +347,7 @@ export class FeedLambdaController {
     );
     console.log(feedQuery);
     const feeds: any = await this.feedService.findAll(feedQuery);
-    const result: any[] = feeds.map((item: any) => {
+    const result: any[] = feeds.data.map((item: any) => {
       return {
         viewType: !!item.symptoms ? FeedViewKind.diagnosis : FeedViewKind.feed,
         viewObject: item,
@@ -354,8 +355,9 @@ export class FeedLambdaController {
     });
     return {
       result,
-      count: feeds.length,
-      next_offset: offset + feeds.length,
+      count: feeds.data.length,
+      next_offset: offset + feeds.data.length,
+      isLast: feeds.totalCount <= offset + feeds.data.length,
     };
   }
 

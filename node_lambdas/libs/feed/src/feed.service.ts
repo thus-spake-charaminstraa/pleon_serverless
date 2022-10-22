@@ -51,6 +51,12 @@ export class FeedService extends CommonService<
     return await this.feedRepository.create(createFeedDto);
   }
 
+  async findAll(query: GetFeedAndDiagnosisQuery): Promise<any> {
+    const ret = await this.feedRepository.findAll(query);
+    ret.totalCount = ret.totalCount.count;
+    return ret;
+  }
+
   async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {
     const ret = await this.feedRepository.findAllAndGroupBy(query);
     ret.forEach((item: any) => {
