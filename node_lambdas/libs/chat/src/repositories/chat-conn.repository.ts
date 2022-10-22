@@ -2,8 +2,8 @@ import { CommonRepository } from '@app/common/common.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateChatConnDto, GetChatConnQuery } from '../dto';
-import { ChatConn, ChatConnDocument } from '../entities';
+import { CreateChatConnDto, GetChatConnQuery } from '../dto/chat-conn.dto';
+import { ChatConn, ChatConnDocument } from '../entities/chat-conn.entity';
 
 @Injectable()
 export class ChatConnRepository extends CommonRepository<

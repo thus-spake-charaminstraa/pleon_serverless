@@ -8,7 +8,7 @@ import {
   DeleteScheduleQuery,
 } from './dto/schedule.dto';
 import { Schedule, ScheduleDocument } from './entities/schedule.entity';
-import { ScheduleKind } from './types';
+import { ScheduleKind } from './types/schedule-kind.enum';
 
 @Injectable()
 export class ScheduleRepository {

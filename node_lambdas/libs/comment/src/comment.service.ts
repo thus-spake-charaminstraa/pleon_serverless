@@ -5,7 +5,7 @@ import {
   GetCommentQuery,
   UpdateCommentDto,
 } from './dto/comment.dto';
-import { Comment } from '@app/comment/entities';
+import { Comment } from '@app/comment/entities/comment.entity';
 
 @Injectable()
 export class CommentService {

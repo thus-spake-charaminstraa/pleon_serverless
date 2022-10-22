@@ -2,12 +2,12 @@ import { FeedModule } from '@app/feed/feed.module';
 import { FeedRepository } from '@app/feed/feed.repository';
 import { NotiModule } from '@app/noti/noti.module';
 import { NotiRepository } from '@app/noti/noti.repository';
-import { ScheduleModule } from '@app/schedule/schedule.module';
-import { ScheduleRepository } from '@app/schedule/schedule.repository';
-import { DeviceToken, DeviceTokenSchema, User, UserSchema } from '@app/user';
+import {
+  DeviceToken,
+  DeviceTokenSchema,
+} from '@app/user/entities/device-token.entity';
 import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { Plant, PlantSchema, Species, SpeciesSchema } from './entities';
 import { PlantRepository } from './repositories/plant.repository';
 import { SpeciesRepository } from './repositories/species.repository';
 import { PlantService } from './services/plant.service';
@@ -15,6 +15,12 @@ import { SpeciesService } from './services/species.service';
 import { DiagnosisService } from './services/diagnosis.service';
 import { DiagnosisRepository } from './repositories/diagnosis.repository';
 import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
+import { CommentModule } from '@app/comment/comment.module';
+import { CommentRepository } from '@app/comment/comment.repository';
+import { GuideService } from './services/guide.service';
+import { Plant, PlantSchema } from './entities/plant.entity';
+import { Species, SpeciesSchema } from './entities/species.entity';
+import { User, UserSchema } from '@app/user/entities/user.entity';
 
 @Module({
   imports: [
@@ -22,12 +28,12 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
       MongooseModule.forFeatureAsync([
         {
           name: Plant.name,
-          imports: [PlantModule, FeedModule, ScheduleModule, NotiModule],
-          useFactory: (
+          imports: [PlantModule, FeedModule, NotiModule, CommentModule],
+          useFactory: async (
             feedRepository: FeedRepository,
-            scheduleRepository: ScheduleRepository,
             notiRepository: NotiRepository,
             diagnosisRepository: DiagnosisRepository,
+            commentRepository: CommentRepository,
           ) => {
             const schema = PlantSchema;
             schema.pre(
@@ -37,9 +43,9 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
                 const { id } = this.getFilter();
                 await Promise.all([
                   feedRepository.deleteAll({ plant_id: id }),
-                  scheduleRepository.deleteAll({ plant_id: id }),
-                  notiRepository.deleteAll({ plant_id: id }),
+                  notiRepository.deleteMany({ plant_id: id }),
                   diagnosisRepository.deleteMany({ plant_id: id }),
+                  commentRepository.deleteMany({ plant_id: id }),
                 ]);
               },
             );
@@ -47,9 +53,9 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
           },
           inject: [
             FeedRepository,
-            ScheduleRepository,
             NotiRepository,
             DiagnosisRepository,
+            CommentRepository,
           ],
         },
         {
@@ -70,8 +76,8 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
         },
       ]),
     ),
-    forwardRef(() => FeedModule),
-    forwardRef(() => NotiModule),
+    FeedModule,
+    NotiModule,
   ],
   providers: [
     PlantService,
@@ -80,6 +86,7 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
     SpeciesRepository,
     DiagnosisService,
     DiagnosisRepository,
+    GuideService,
   ],
   exports: [
     PlantService,
@@ -88,6 +95,7 @@ import { Diagnosis, DiagnosisSchema } from './entities/diagnosis.entity';
     SpeciesRepository,
     DiagnosisService,
     DiagnosisRepository,
+    GuideService,
   ],
 })
 export class PlantModule {}

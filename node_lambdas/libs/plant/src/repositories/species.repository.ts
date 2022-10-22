@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CommonRepository } from '@app/common/common.repository';
-import { Species, SpeciesDocument } from '../entities';
+import { Species, SpeciesDocument } from '../entities/species.entity';
 import { CreateSpeciesDto } from '../dto/species.dto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';

@@ -6,7 +6,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { NotiKind } from '../types';
+import { NotiKind } from '../types/noti-kind.type';
 
 export class CreateNotiDto {
   @ApiHideProperty()

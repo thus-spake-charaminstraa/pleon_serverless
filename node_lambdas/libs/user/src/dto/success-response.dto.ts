@@ -1,5 +1,7 @@
-import { SuccessResponse } from '@app/common/dto';
-import { CreateUserResDto, DeviceToken, User } from '@app/user';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { DeviceToken } from '../entities/device-token.entity';
+import { User } from '../entities/user.entity';
+import { CreateUserResDto } from './user.dto';
 
 export class GetUserResponse extends SuccessResponse {
   data: User;

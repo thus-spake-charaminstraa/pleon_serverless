@@ -1,4 +1,4 @@
-import { User } from '@app/user';
+import { User } from '@app/user/entities/user.entity';
 import { IsEmail, IsString } from 'class-validator';
 
 export class RefreshTokenDto {

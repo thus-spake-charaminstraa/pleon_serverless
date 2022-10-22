@@ -1,4 +1,4 @@
-import { GetUserDto } from '@app/user/dto';
+import { GetUserDto } from '@app/user/dto/user.dto';
 import { Schema as mongoSchema } from 'mongoose';
 
 export type plantInfoForGuide = {
@@ -11,4 +11,6 @@ export type plantInfoForGuide = {
   name: string;
 
   user: GetUserDto;
+
+  adopt_date: Date;
 };

@@ -1,3 +1,28 @@
+import { JwtAuthGuard, JwtCheckGuard } from '@app/auth/guards/jwt-auth.guard';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
+import {
+  BadRequestResponse,
+  ForbiddenResponse,
+  UnauthorizedResponse,
+} from '@app/common/dto/error-response.dto';
+import { PhonePipe } from '@app/common/pipes/phone.pipe';
+import {
+  CreateDeviceTokenDto,
+  UpdateDeviceTokenDto,
+} from '@app/user/dto/device-token.dto';
+import {
+  CreateDeviceTokenResponse,
+  CreateUserResponse,
+  UpdateDeviceTokenResponse,
+  UpdateUserResponse,
+} from '@app/user/dto/success-response.dto';
+import {
+  CreateUserDto,
+  CreateUserResDto,
+  UpdateUserDto,
+} from '@app/user/dto/user.dto';
+import { DeviceTokenService } from '@app/user/services/device-token.service';
+import { UserService } from '@app/user/services/user.service';
 import {
   Controller,
   Post,
@@ -14,19 +39,6 @@ import {
   Delete,
 } from '@nestjs/common';
 import {
-  UserService,
-  CreateUserDto,
-  CreateUserResDto,
-  UpdateUserDto,
-  DeviceTokenService,
-  CreateDeviceTokenResponse,
-  CreateUserResponse,
-  UpdateUserResponse,
-  CreateDeviceTokenDto,
-  UpdateDeviceTokenDto,
-  UpdateDeviceTokenResponse,
-} from '@app/user';
-import {
   ApiBadRequestResponse,
   ApiBearerAuth,
   ApiCreatedResponse,
@@ -37,14 +49,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { JwtAuthGuard, JwtCheckGuard } from '@app/auth';
-import {
-  CaslAbilityFactory,
-  BadRequestResponse,
-  UnauthorizedResponse,
-  ForbiddenResponse,
-  PhonePipe,
-} from '@app/common';
 
 @ApiTags('User')
 @Controller('user')

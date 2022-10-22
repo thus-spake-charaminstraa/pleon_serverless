@@ -6,11 +6,11 @@ import {
 } from '@nestjs/common';
 import { ScheduleRepository } from './schedule.repository';
 import { PlantRepository } from '@app/plant/repositories/plant.repository';
-import { plantInfoForGuide } from '@app/common/types';
+import { plantInfoForGuide } from '@app/common/types/plant-guide.type';
 import { CreateScheduleDto, GetScheduleQuery } from './dto/schedule.dto';
 import { Schedule } from './entities/schedule.entity';
-import { ScheduleKind } from './types';
-import { ScheduleRes } from './dto';
+import { ScheduleKind } from './types/schedule-kind.enum';
+import { ScheduleRes } from './dto/schedule-success-response.dto';
 
 @Injectable()
 export class ScheduleService {

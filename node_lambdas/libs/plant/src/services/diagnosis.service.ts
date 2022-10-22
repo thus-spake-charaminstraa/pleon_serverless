@@ -1,5 +1,5 @@
 import { CommonService } from '@app/common/common.service';
-import { NotiKind } from '@app/noti';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
 import { NotiService } from '@app/noti/noti.service';
 import { Injectable, Inject, forwardRef } from '@nestjs/common';
 import { CreateDiagnosisDto } from '../dto/diagnosis.dto';
@@ -12,7 +12,7 @@ import { ConfigService } from '@nestjs/config';
 import { PlantService } from '@app/plant/services/plant.service';
 import { SpeciesService } from '@app/plant/services/species.service';
 import { Plant } from '../entities/plant.entity';
-import { PlantLight } from '../types';
+import { PlantLight } from '../types/plant-env.type';
 
 @Injectable()
 export class DiagnosisService extends CommonService<
@@ -30,7 +30,7 @@ export class DiagnosisService extends CommonService<
     private readonly speciesService: SpeciesService,
     @Inject(forwardRef(() => NotiService))
     private readonly notiService: NotiService,
-    private readonly configService: ConfigService,
+    // private readonly configService: ConfigService,
   ) {
     super(diagnosisRepository);
     this.symptomInfoMap = PlantSymptom;
@@ -140,7 +140,7 @@ export class DiagnosisService extends CommonService<
             ...s,
             image_url:
               'https://' +
-              this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+              // this.configService.get<string>('AWS_S3_BUCKET_NAME') +
               '.s3.amazonaws.com/' +
               s.image_key,
           };
@@ -149,7 +149,7 @@ export class DiagnosisService extends CommonService<
         image_urls: Object.values(plantSymptomAndCause).map((s: any) => {
           return (
             'https://' +
-            this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+            // this.configService.get<string>('AWS_S3_BUCKET_NAME') +
             '.s3.amazonaws.com/' +
             s.image_key
           );

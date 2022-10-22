@@ -1,5 +1,3 @@
-import { CreateScheduleDto, ScheduleKind } from '@app/schedule';
-import { ScheduleRepository } from '@app/schedule/schedule.repository';
 import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { Feed } from './entities/feed.entity';
 import { FeedRepository } from './feed.repository';
@@ -24,8 +22,6 @@ export class FeedService extends CommonService<
   constructor(
     @Inject(forwardRef(() => FeedRepository))
     private readonly feedRepository: FeedRepository,
-    @Inject(forwardRef(() => ScheduleRepository))
-    private readonly scheduleRepository: ScheduleRepository,
   ) {
     super(feedRepository);
     this.feedKindInfos = FeedKindInfos;
@@ -37,19 +33,19 @@ export class FeedService extends CommonService<
   }
 
   async create(createFeedDto: CreateFeedDto, auto?: boolean): Promise<Feed> {
-    if (createFeedDto.kind in ScheduleKind) {
-      const kind: any = createFeedDto.kind;
-      const createScheduleDto: CreateScheduleDto = {
-        plant_id: createFeedDto.plant_id,
-        timestamp: createFeedDto.publish_date,
-        kind,
-      };
-      const ret = await this.scheduleRepository.create(createScheduleDto);
-      createFeedDto.schedule_id = ret.id.toString();
-    }
+    // if (createFeedDto.kind in ScheduleKind) {
+    //   const kind: any = createFeedDto.kind;
+    //   const createScheduleDto: CreateScheduleDto = {
+    //     plant_id: createFeedDto.plant_id,
+    //     timestamp: createFeedDto.publish_date,
+    //     kind,
+    //   };
+    //   const ret = await this.scheduleRepository.create(createScheduleDto);
+    //   createFeedDto.schedule_id = ret.id.toString();
+    // }
     if (auto) {
       createFeedDto.content = this.feedKindInfos.find(
-        (info) => info.name_en === createFeedDto.kind,
+        (info: any) => info.name_en === createFeedDto.kind,
       ).auto_content;
     }
     return await this.feedRepository.create(createFeedDto);
@@ -57,8 +53,8 @@ export class FeedService extends CommonService<
 
   async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {
     const ret = await this.feedRepository.findAllAndGroupBy(query);
-    ret.forEach((item) => {
-      item.kinds = item.kinds.map((kind) =>
+    ret.forEach((item: any) => {
+      item.kinds = item.kinds.map((kind: FeedKind) =>
         kind == FeedKind.water
           ? 'water'
           : kind == FeedKind.air
@@ -73,5 +69,14 @@ export class FeedService extends CommonService<
       );
     });
     return ret;
+  }
+
+  async findByPlantAndGroup(plantId: string): Promise<any> {
+    const ret = await this.feedRepository.findByPlantAndGroup(plantId);
+    const group = {};
+    ret.forEach((item: any) => {
+      group[item.kind] = item.feeds;
+    });
+    return group;
   }
 }

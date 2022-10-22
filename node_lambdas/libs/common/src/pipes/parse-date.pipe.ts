@@ -4,7 +4,7 @@ import {
   ArgumentMetadata,
   BadRequestException,
 } from '@nestjs/common';
-import { DateStrFormat } from '../utils';
+import { DateStrFormat } from '../utils/date-parser';
 
 @Injectable()
 export class ParseDateInBodyPipe implements PipeTransform {

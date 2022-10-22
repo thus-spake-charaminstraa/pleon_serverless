@@ -1,7 +1,7 @@
-import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
+import { ApiHideProperty } from '@nestjs/swagger';
 import { IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { SuccessResponse } from '@app/common/dto';
-import { ChatConn } from '../entities';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { ChatConn } from '../entities/chat-conn.entity';
 
 export class CreateChatConnDto {
   @ApiHideProperty()

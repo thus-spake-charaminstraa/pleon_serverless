@@ -1,35 +1,40 @@
-import { JwtAuthGuard } from '@app/auth';
+import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
 import {
   BadRequestResponse,
-  DateStrFormat,
   ForbiddenResponse,
   NotFoundResponse,
+  UnauthorizedResponse,
+} from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import {
   ParseDateInBodyPipe,
   ParseMonthPipe,
   ParseYearPipe,
-  queryParser,
-  SuccessResponse,
-  UnauthorizedResponse,
-} from '@app/common';
-import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
+} from '@app/common/pipes/parse-date.pipe';
+import { DateStrFormat } from '@app/common/utils/date-parser';
+import { queryParser } from '@app/common/utils/query-parser';
 import {
-  CreateFeedDto,
   CreateFeedResponse,
-  FeedByParamsIdInterceptor,
-  FeedKind,
-  FeedKindInfos,
   FeedViewKind,
-  GetFeedCalendarQuery,
   GetFeedCalendarResponse,
-  GetFeedOrderBy,
-  GetFeedAndDiagnosisQuery,
   GetFeedResponse,
   GetFeedsResponse,
   GetFeedsWithOtherResponse,
-  UpdateFeedDto,
   UpdateFeedResponse,
-} from '@app/feed';
+} from '@app/feed/dto/feed-success-response.dto';
+import {
+  CreateFeedDto,
+  GetFeedAndDiagnosisQuery,
+  GetFeedCalendarQuery,
+  GetFeedOrderBy,
+  UpdateFeedDto,
+} from '@app/feed/dto/feed.dto';
 import { FeedService } from '@app/feed/feed.service';
+import { FeedByParamsIdInterceptor } from '@app/feed/interceptors/feedById.interceptor';
+import { FeedKindInfos } from '@app/feed/resources/feed-kind-infos';
+import { FeedKind } from '@app/feed/types/feed-kind.type';
+import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 import {
   Body,
   Controller,
@@ -59,8 +64,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { DiagnosisService } from '@app/plant/services/diagnosis.service';
-import { GetDiagnosisQuery } from '@app/plant';
 
 @ApiTags('Feed')
 @Controller('feed')
@@ -318,7 +321,8 @@ export class FeedLambdaController {
     order_by: GetFeedOrderBy,
     @Req() req,
   ) {
-    let start: Date = undefined, end: Date = undefined;
+    let start: Date = undefined,
+      end: Date = undefined;
     if (publish_date) {
       publish_date = new Date(
         DateStrFormat(new Date(publish_date)),
@@ -340,14 +344,14 @@ export class FeedLambdaController {
       },
       GetFeedAndDiagnosisQuery,
     );
+    console.log(feedQuery);
     const feeds: any = await this.feedService.findAll(feedQuery);
-    const result: any[] = feeds
-      .map((item: any) => {
-        return {
-          viewType: !!item.symptoms ? FeedViewKind.diagnosis : FeedViewKind.feed,
-          viewObject: item,
-        };
-      })
+    const result: any[] = feeds.map((item: any) => {
+      return {
+        viewType: !!item.symptoms ? FeedViewKind.diagnosis : FeedViewKind.feed,
+        viewObject: item,
+      };
+    });
     return {
       result,
       count: feeds.length,

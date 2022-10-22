@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CommonService } from '@app/common';
-import { CreateChatConnDto, GetChatConnQuery } from '../dto';
-import { ChatConnRepository } from '../repositories';
-import { ChatConn } from '../entities';
+import { CommonService } from '@app/common/common.service';
+import { CreateChatConnDto, GetChatConnQuery } from '../dto/chat-conn.dto';
+import { ChatConnRepository } from '../repositories/chat-conn.repository';
+import { ChatConn } from '../entities/chat-conn.entity';
 
 @Injectable()
 export class ChatConnService extends CommonService<

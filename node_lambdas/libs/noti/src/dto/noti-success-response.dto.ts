@@ -1,6 +1,6 @@
-import { SuccessResponse } from '@app/common/dto';
-import { CreateFeedDto } from '@app/feed/dto';
-import { Noti } from '@app/noti/entities';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { CreateFeedDto } from '@app/feed/dto/feed.dto';
+import { Noti } from '@app/noti/entities/noti.entity';
 import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
 
 export class GetNotisResponse extends SuccessResponse {

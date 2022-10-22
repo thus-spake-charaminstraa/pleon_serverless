@@ -6,7 +6,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { FeedRepository } from '@app/feed';
+import { FeedRepository } from '@app/feed/feed.repository';
 
 @Injectable()
 export class FeedByParamsIdInterceptor implements NestInterceptor {

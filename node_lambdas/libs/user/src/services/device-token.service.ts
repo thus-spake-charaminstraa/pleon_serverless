@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { CommonService } from '@app/common/common.service';
-import { DeviceToken } from '../entities';
+import { DeviceToken } from '../entities/device-token.entity';
 import { DeviceTokenRepository } from '../repositories/device-token.repository';
 import {
   CreateDeviceTokenDto,

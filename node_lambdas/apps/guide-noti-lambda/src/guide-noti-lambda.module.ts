@@ -1,9 +1,8 @@
-import { NotiModule } from '@app/noti';
-import { PlantModule } from '@app/plant';
-import { ScheduleModule } from '@app/schedule';
+import { NotiModule } from '@app/noti/noti.module';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { PlantModule } from '@app/plant/plant.module';
 
 @Module({
   imports: [
@@ -19,8 +18,6 @@ import { MongooseModule } from '@nestjs/mongoose';
       inject: [ConfigService],
     }),
     PlantModule,
-    ScheduleModule,
-    NotiModule,
   ],
 })
 export class GuideNotiLambdaModule {}

@@ -1,8 +1,3 @@
-import {
-  ChatConnService,
-  ChatMessageService,
-  ChatRoomService,
-} from '@app/chat/services';
 import { Injectable } from '@nestjs/common';
 import { APIGatewayProxyWebsocketEventV2 } from 'aws-lambda';
 import { JwtService } from '@nestjs/jwt';
@@ -15,6 +10,9 @@ import {
   NotBeforeError,
   TokenExpiredError,
 } from 'jsonwebtoken';
+import { ChatConnService } from './chat-conn.service';
+import { ChatMessageService } from './chat-message.service';
+import { ChatRoomService } from './chat-room.service';
 
 const apiGatewayClient = new ApiGatewayManagementApiClient({
   region: process.env.AWS_REGION,
@@ -47,8 +45,7 @@ export class ChatLambdaService {
           message: 'Unauthorized',
         }),
       };
-    }
-    else {
+    } else {
       return {
         statusCode: 500,
         body: JSON.stringify({

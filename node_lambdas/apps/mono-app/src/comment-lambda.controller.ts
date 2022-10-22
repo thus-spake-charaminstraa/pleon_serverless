@@ -1,22 +1,25 @@
-import { JwtAuthGuard } from '@app/auth';
+import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
+import { CommentService } from '@app/comment/comment.service';
 import {
-  CommentService,
-  CreateCommentDto,
   CreateCommentResponse,
   GetCommentResponse,
   GetCommentsResponse,
-  UpdateCommentDto,
   UpdateCommentResponse,
-} from '@app/comment';
-import { CaslAbilityFactory } from '@app/common';
+} from '@app/comment/dto/comment-success-response.dto';
+import {
+  CreateCommentDto,
+  UpdateCommentDto,
+} from '@app/comment/dto/comment.dto';
+import { CommentByParamsIdInterceptor } from '@app/comment/interceptors/commentById.interceptor';
+import { CommentAuthorKind } from '@app/comment/types/comment-author-kind.type';
+import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
 import {
   BadRequestResponse,
   ForbiddenResponse,
   NotFoundResponse,
-  SuccessResponse,
   UnauthorizedResponse,
-} from '@app/common/dto';
-import { CommentByParamsIdInterceptor } from '@app/comment';
+} from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import {
   Body,
   Controller,
@@ -41,7 +44,6 @@ import {
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { CommentAuthorKind } from '@app/comment/types';
 
 @ApiTags('Comment')
 @Controller('comment')

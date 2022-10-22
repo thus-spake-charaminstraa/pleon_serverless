@@ -6,7 +6,7 @@ import {
   APIGatewayProxyWebsocketEventV2,
 } from 'aws-lambda';
 import { INestApplicationContext } from '@nestjs/common';
-import { ChatLambdaService } from '@app/chat/services';
+import { ChatLambdaService } from '@app/chat/services/chat-lambda.service';
 import { ChatDisconnectModule } from './chat-disconnect.module';
 
 let app: INestApplicationContext;

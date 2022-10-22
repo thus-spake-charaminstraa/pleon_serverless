@@ -9,7 +9,7 @@ import { ConfigService } from '@nestjs/config';
 import { AuthRepository } from './auth.repository';
 import { PublishCommand, SNSClient } from '@aws-sdk/client-sns';
 import { VerifySmsDto, SendSmsDto, VerifySmsResDto } from './dto/sms-auth.dto';
-import { User } from '@app/user';
+import { User } from '@app/user/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { v4 as uuid4 } from 'uuid';
 import { CreateTokenResDto } from './dto/token.dto';

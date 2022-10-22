@@ -1,6 +1,7 @@
-import { SuccessResponse } from '@app/common/dto';
-import { Plant } from '@app/plant';
-import { Schedule, ScheduleKind } from '@app/schedule';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { Plant } from '@app/plant/entities/plant.entity';
+import { Schedule } from '../entities/schedule.entity';
+import { ScheduleKind } from '../types/schedule-kind.enum';
 
 export class CreateScheduleResponse extends SuccessResponse {
   data: Schedule;

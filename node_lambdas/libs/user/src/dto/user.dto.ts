@@ -1,8 +1,8 @@
 import { IsString, IsPhoneNumber, IsOptional } from 'class-validator';
-import { TokenResDto } from '@app/auth';
+import { TokenResDto } from '@app/auth/dto/token.dto';
 import { User } from '../entities/user.entity';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
-import { DeviceToken } from '../entities';
+import { DeviceToken } from '../entities/device-token.entity';
 
 export class CreateUserDto {
   @IsString()

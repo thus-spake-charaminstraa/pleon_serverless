@@ -1,8 +1,5 @@
 import { ForbiddenException, Injectable } from '@nestjs/common';
-import { Plant } from '@app/plant';
-import { User } from '@app/user';
-import { Feed } from '@app/feed';
-import { Comment } from '@app/comment';
+import { User } from '@app/user/entities/user.entity';
 
 class EntityPolicy {
   checkCanModify(user: User, resource: any): void {

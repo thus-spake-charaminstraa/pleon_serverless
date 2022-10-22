@@ -1,4 +1,4 @@
-import { ImageUploadResDto } from '@app/image';
+import { ImageUploadResDto } from '@app/image/dto/image.dto';
 
 export class SuccessResponse {
   success = true;

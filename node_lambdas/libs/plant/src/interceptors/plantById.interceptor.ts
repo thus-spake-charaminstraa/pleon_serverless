@@ -6,7 +6,7 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { PlantRepository } from '@app/plant';
+import { PlantRepository } from '@app/plant/repositories/plant.repository';
 
 @Injectable()
 export class PlantByParamsIdInterceptor implements NestInterceptor {

@@ -7,7 +7,7 @@ import {
   IsString,
 } from 'class-validator';
 import { Plant } from '../entities/plant.entity';
-import { PlantAir, PlantLight } from '../types';
+import { PlantAir, PlantLight } from '../types/plant-env.type';
 
 export class CreatePlantDto {
   @IsString()

@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { configure as serverlessExpress } from '@vendia/serverless-express';
 import { Callback, Context, Handler } from 'aws-lambda';
 import { MonoAppModule } from './mono-app.module';
-import { TransformInterceptor } from '@app/common';
+import { TransformInterceptor } from '@app/common/interceptors/transform.interceptor';
 import { ValidationPipe } from '@nestjs/common';
 
 let server: Handler;

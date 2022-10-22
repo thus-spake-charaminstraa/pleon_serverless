@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
-import { FeedKind } from '../types';
+import { FeedKind } from '../types/feed-kind.type';
 
 export type FeedDocument = Feed & Document;
 

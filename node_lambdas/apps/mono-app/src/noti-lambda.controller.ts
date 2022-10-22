@@ -1,21 +1,23 @@
-import { JwtAuthGuard } from '@app/auth';
+import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
 import {
   BadRequestResponse,
-  queryParser,
   UnauthorizedResponse,
-} from '@app/common';
+} from '@app/common/dto/error-response.dto';
+import { queryParser } from '@app/common/utils/query-parser';
 import {
-  CreateNotiDto,
-  GetNotiQuery,
   GetNotiResponse,
   GetNotisResponse,
   ManageNotiResponse,
-  NotiKind,
-  NotiManageDto,
   NotiViewKind,
-} from '@app/noti';
+} from '@app/noti/dto/noti-success-response.dto';
+import {
+  CreateNotiDto,
+  GetNotiQuery,
+  NotiManageDto,
+} from '@app/noti/dto/noti.dto';
 import { NotiService } from '@app/noti/noti.service';
-import { GetPlantQuery } from '@app/plant';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
+import { GetPlantQuery } from '@app/plant/dto/plant.dto';
 import { PlantService } from '@app/plant/services/plant.service';
 import {
   Body,

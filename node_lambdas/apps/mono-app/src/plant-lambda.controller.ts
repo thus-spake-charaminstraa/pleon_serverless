@@ -1,30 +1,27 @@
-import { JwtAuthGuard } from '@app/auth';
-import {
-  ConflictResponse,
-  ForbiddenResponse,
-  NotFoundResponse,
-  ParseDateInBodyPipe,
-  queryParser,
-  SuccessResponse,
-  UnauthorizedResponse,
-} from '@app/common';
+import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
 import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
+import { ConflictResponse, ForbiddenResponse, NotFoundResponse, UnauthorizedResponse } from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { ParseDateInBodyPipe } from '@app/common/pipes/parse-date.pipe';
+import { queryParser } from '@app/common/utils/query-parser';
+import { GetDiagnosisQuery } from '@app/plant/dto/diagnosis.dto';
 import {
-  CreatePlantApiDto,
   CreatePlantResponse,
-  CreateSpeciesDto,
-  GetPlantQuery,
+  GetDiagnosesResponse,
+  GetDiagnosisResponse,
   GetPlantResponse,
   GetPlantsResponse,
   GetSpeciesResponse,
-  PlantByParamsIdInterceptor,
-  UpdatePlantDto,
   UpdatePlantResponse,
-  PlantMoodInfos,
-  GetDiagnosisResponse,
-  GetDiagnosesResponse,
-  GetDiagnosisQuery,
-} from '@app/plant';
+} from '@app/plant/dto/plant-success-response.dto';
+import {
+  CreatePlantApiDto,
+  GetPlantQuery,
+  UpdatePlantDto,
+} from '@app/plant/dto/plant.dto';
+import { CreateSpeciesDto } from '@app/plant/dto/species.dto';
+import { PlantByParamsIdInterceptor } from '@app/plant/interceptors/plantById.interceptor';
+import { PlantMoodInfos } from '@app/plant/resources/plant-mood';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 import { PlantService } from '@app/plant/services/plant.service';
 import { SpeciesService } from '@app/plant/services/species.service';

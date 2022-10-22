@@ -7,7 +7,8 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { FeedKind } from '../types';
+import { FeedKind } from '../types/feed-kind.type';
+import { Types } from 'mongoose';
 
 export class CreateFeedDto {
   @ApiHideProperty()
@@ -46,7 +47,7 @@ export class UpdateFeedDto extends PartialType(
 export class GetFeedAndDiagnosisQuery {
   owner?: string;
 
-  plant_id?: string;
+  plant_id?: Types.ObjectId;
 
   publish_date?: Date;
 

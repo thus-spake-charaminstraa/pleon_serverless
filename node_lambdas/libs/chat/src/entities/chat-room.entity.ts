@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as mongoSchema } from 'mongoose';
-import { ChatRoomKind } from '../types';
+import { ChatRoomKind } from '../types/chat-room.type';
 
 export type ChatRoomDocument = ChatRoom & Document;
 

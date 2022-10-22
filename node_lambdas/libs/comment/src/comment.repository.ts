@@ -6,22 +6,25 @@ import {
   DeleteCommentQuery,
   GetCommentQuery,
   UpdateCommentDto,
-} from './dto';
-import { CommentDocument, Comment } from './entities';
+} from './dto/comment.dto';
+import { CommentDocument, Comment } from './entities/comment.entity';
+import { CommonRepository } from '@app/common/common.repository';
 
 @Injectable()
-export class CommentRepository {
+export class CommentRepository extends CommonRepository<
+  Comment,
+  CreateCommentDto,
+  UpdateCommentDto,
+  GetCommentQuery
+> {
   constructor(
-    @InjectModel(Comment.name) private model: Model<CommentDocument>,
-  ) {}
-
-  async create(createCommentDto: CreateCommentDto): Promise<Comment> {
-    const createdEntity = new this.model(createCommentDto);
-    return await createdEntity.save();
+    @InjectModel(Comment.name) private commentModel: Model<CommentDocument>,
+  ) {
+    super(commentModel);
   }
 
   async findAll(query: GetCommentQuery): Promise<Comment[]> {
-    return await this.model
+    return await this.commentModel
       .find(query)
       .sort({ created_at: 1 })
       .populate('plant')
@@ -30,7 +33,7 @@ export class CommentRepository {
   }
 
   async findAllInFeed(feedId: string): Promise<Comment[]> {
-    return await this.model
+    return await this.commentModel
       .find({ feed_id: feedId })
       .sort({ created_at: 1 })
       .populate('plant')
@@ -38,24 +41,7 @@ export class CommentRepository {
       .exec();
   }
 
-  async findOne(id: string): Promise<Comment> {
-    return await this.model.findOne({ id }).exec();
-  }
-
-  async update(
-    id: string,
-    updateCommentDto: UpdateCommentDto,
-  ): Promise<Comment> {
-    return await this.model
-      .findOneAndUpdate({ id }, updateCommentDto, { new: true })
-      .exec();
-  }
-
-  async deleteOne(id: string): Promise<Comment> {
-    return await this.model.findOneAndDelete({ id }).exec();
-  }
-
   async deleteAll(query: DeleteCommentQuery): Promise<void> {
-    await this.model.deleteMany(query).exec();
+    await this.commentModel.deleteMany(query).exec();
   }
 }

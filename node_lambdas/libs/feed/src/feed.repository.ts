@@ -1,3 +1,4 @@
+import { ObjectIdentifierFilterSensitiveLog } from '@aws-sdk/client-s3';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
@@ -24,6 +25,9 @@ export class FeedRepository {
 
   async findAll(query: GetFeedAndDiagnosisQuery): Promise<Feed[]> {
     const { offset, limit, order_by, publish_date, start, end, ...q } = query;
+    if (q.plant_id) {
+      q.plant_id = new Types.ObjectId(q.plant_id);
+    }
     if (start && end)
       q.created_at = {
         $gte: start,
@@ -89,7 +93,7 @@ export class FeedRepository {
       })
       .lookup({
         from: 'users',
-        localField: 'user_id',
+        localField: 'owner',
         foreignField: 'id',
         pipeline: [{ $limit: 1 }],
         as: 'user',
@@ -115,6 +119,20 @@ export class FeedRepository {
         kinds: { $push: '$kind' },
       })
       .sort({ timestamp: 1 })
+      .exec();
+    return ret;
+  }
+
+  async findByPlantAndGroup(plantId: string): Promise<any> {
+    const ret = await this.model
+      .aggregate()
+      .match({ plant_id: new Types.ObjectId(plantId) })
+      .sort({ created_at: -1 })
+      .group({
+        _id: '$kind',
+        kind: { $first: '$kind' },
+        feeds: { $push: '$$ROOT' },
+      })
       .exec();
     return ret;
   }

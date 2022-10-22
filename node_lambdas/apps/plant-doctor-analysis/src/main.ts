@@ -3,7 +3,6 @@ import { Callback, Context, Handler } from 'aws-lambda';
 import { HttpException, INestApplicationContext } from '@nestjs/common';
 import { PlantDoctorAnalysisModule } from './plant-doctor-analysis.module';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
-import { ImageService } from '@app/image/image.service';
 
 let app: INestApplicationContext;
 

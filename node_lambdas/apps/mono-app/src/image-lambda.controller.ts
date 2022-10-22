@@ -5,15 +5,15 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ImageService } from '@app/image';
+import { ImageService } from '@app/image/image.service';
 import {
   ApiBody,
   ApiConsumes,
   ApiCreatedResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { ImageUploadDto } from '@app/image';
-import { UploadImageResponse } from '@app/common/dto';
+import { ImageUploadDto } from '@app/image/dto/image.dto';
+import { UploadImageResponse } from '@app/common/dto/success-response.dto';
 
 @ApiTags('Image')
 @Controller('image')

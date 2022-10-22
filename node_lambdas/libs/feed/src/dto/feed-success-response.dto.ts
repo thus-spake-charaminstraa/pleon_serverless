@@ -1,12 +1,11 @@
-import { Feed } from '@app/feed/entities/feed.entity';
-import { Noti } from '@app/noti';
-import { Plant } from '@app/plant/entities/plant.entity';
-import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
-import { CommentRes } from '@app/comment/dto';
-import { SuccessResponse } from '@app/common/dto';
-import { User } from '@app/user';
-import { FeedKind } from '../types/feed-kind.type';
+import { CommentRes } from '@app/comment/dto/comment-success-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { Diagnosis } from '@app/plant/entities/diagnosis.entity';
+import { Plant } from '@app/plant/entities/plant.entity';
+import { User } from '@app/user/entities/user.entity';
+import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
+import { Feed } from '../entities/feed.entity';
+import { FeedKind } from '../types/feed-kind.type';
 
 export class CreateFeedResponse extends SuccessResponse {
   data: Feed;

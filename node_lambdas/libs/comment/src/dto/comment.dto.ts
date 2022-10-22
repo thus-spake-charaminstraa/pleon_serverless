@@ -6,7 +6,7 @@ import {
   IsString,
 } from 'class-validator';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
-import { CommentAuthorKind } from '../types';
+import { CommentAuthorKind } from '../types/comment-author-kind.type';
 
 export class CreateCommentDto {
   @IsMongoId()

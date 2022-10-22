@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
-import { ScheduleKind } from '../types';
+import { ScheduleKind } from '../types/schedule-kind.enum';
 
 export type ScheduleDocument = Schedule & Document;
 

@@ -6,8 +6,8 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ChatRoom } from '../entities';
-import { ChatRoomKind } from '../types';
+import { ChatRoom } from '../entities/chat-room.entity';
+import { ChatRoomKind } from '../types/chat-room.type';
 
 export class CreateChatRoomDto {
   @IsString()

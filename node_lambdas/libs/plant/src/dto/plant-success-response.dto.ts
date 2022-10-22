@@ -1,4 +1,4 @@
-import { SuccessResponse } from '@app/common/dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { Species } from '../entities/species.entity';
 import { DiagnosisRes } from './diagnosis.dto';
 import { GetPlantResDto } from './plant.dto';

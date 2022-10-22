@@ -1,40 +1,43 @@
+import { AuthService } from '@app/auth/auth.service';
+import {
+  LoginResponse,
+  VerifySmsResponse,
+} from '@app/auth/dto/auth-success-response.dto';
+import {
+  SendSmsDto,
+  VerifySmsDto,
+  VerifySmsResDto,
+} from '@app/auth/dto/sms-auth.dto';
+import { CreateTokenResDto, RefreshTokenDto } from '@app/auth/dto/token.dto';
+import {
+  JwtAuthGuard,
+  RefreshJwtAuthGuard,
+} from '@app/auth/guards/jwt-auth.guard';
+import {
+  BadRequestResponse,
+  UnauthorizedResponse,
+} from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { PhonePipe } from '@app/common/pipes/phone.pipe';
+import { GetUserResponse } from '@app/user/dto/success-response.dto';
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
   Req,
   UseGuards,
-  Get,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
   ApiBearerAuth,
-  ApiBody,
   ApiHeader,
   ApiOkResponse,
   ApiTags,
   ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
-import { AuthService } from '@app/auth';
-import {
-  SendSmsDto,
-  VerifySmsDto,
-  VerifySmsResDto,
-  CreateTokenResDto,
-  RefreshTokenDto,
-  LoginResponse,
-  VerifySmsResponse,
-} from '@app/auth/dto';
-import { JwtAuthGuard, RefreshJwtAuthGuard } from '@app/auth';
-import { PhonePipe } from '@app/common/pipes';
-import {
-  BadRequestResponse,
-  UnauthorizedResponse,
-  SuccessResponse,
-} from '@app/common/dto';
-import { GetUserResponse } from '@app/user/dto';
 
 @ApiTags('Auth')
 @Controller('auth')

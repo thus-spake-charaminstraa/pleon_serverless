@@ -1,5 +1,9 @@
 import { IsEnum, IsString } from 'class-validator';
-import { PlantDifficulty, PlantHumidity, PlantLight } from '../types';
+import {
+  PlantDifficulty,
+  PlantHumidity,
+  PlantLight,
+} from '../types/plant-env.type';
 
 export class CreateSpeciesDto {
   @IsString()

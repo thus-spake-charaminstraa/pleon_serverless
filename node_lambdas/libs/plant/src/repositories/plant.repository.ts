@@ -11,9 +11,8 @@ import { CommonRepository } from '@app/common/common.repository';
 import {
   DeviceToken,
   DeviceTokenDocument,
-  User,
-  UserDocument,
-} from '@app/user/entities';
+} from '@app/user/entities/device-token.entity';
+import { User, UserDocument } from '@app/user/entities/user.entity';
 
 @Injectable()
 export class PlantRepository extends CommonRepository<
@@ -46,7 +45,7 @@ export class PlantRepository extends CommonRepository<
   async findAllInfo(): Promise<any[]> {
     return await this.plantModel
       .find()
-      .select({ id: 1, owner: 1, species: 1, name: 1 })
+      .select({ id: 1, owner: 1, species: 1, name: 1, adopt_date: 1 })
       .populate({
         path: 'user',
         model: this.userModel,

@@ -1,7 +1,7 @@
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import { IsMongoId, IsNotEmpty, IsOptional, IsString } from 'class-validator';
-import { SuccessResponse } from '@app/common/dto';
-import { ChatMessage } from '../entities';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { ChatMessage } from '../entities/chat-message.entity';
 
 export class CreateChatMessageDto {
   @IsMongoId()

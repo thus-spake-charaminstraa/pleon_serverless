@@ -1,8 +1,8 @@
-import { DateStrFormat } from '@app/common';
+import { DateStrFormat } from '@app/common/utils/date-parser';
 import { CommonService } from '@app/common/common.service';
-import { FeedKind } from '@app/feed';
+import { FeedKind } from '@app/feed/types/feed-kind.type';
 import { FeedService } from '@app/feed/feed.service';
-import { NotiKind } from '@app/noti';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
 import { NotiService } from '@app/noti/noti.service';
 import {
   ConflictException,
@@ -17,8 +17,8 @@ import {
   GetPlantQuery,
   GetPlantResDto,
   UpdatePlantDto,
-} from '../dto';
-import { Plant } from '../entities';
+} from '../dto/plant.dto';
+import { Plant } from '../entities/plant.entity';
 import { PlantRepository } from '../repositories/plant.repository';
 import { PlantMoodInfoMap, PlantMoodInfos } from '../resources/plant-mood';
 
@@ -114,5 +114,9 @@ export class PlantService extends CommonService<
       plant.mood = this.plantMoodInfoMap.happy;
     }
     return plant as GetPlantResDto;
+  }
+
+  async findAllInfo() {
+    return await this.plantRepository.findAllInfo();
   }
 }

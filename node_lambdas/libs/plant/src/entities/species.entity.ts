@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as mongoSchema } from 'mongoose';
-import { PlantDifficulty, PlantHumidity, PlantLight } from '../types';
+import { PlantDifficulty, PlantHumidity, PlantLight } from '../types/plant-env.type';
 
 export type SpeciesDocument = Species & Document;
 

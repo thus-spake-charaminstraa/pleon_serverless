@@ -1,4 +1,6 @@
-import { Cause, Plant, Species, Symptom } from '@app/plant';
+import { Plant } from '@app/plant/entities/plant.entity';
+import { Species } from '@app/plant/entities/species.entity';
+import { Cause, Symptom } from '@app/plant/types/plant-doctor.type';
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import {
   ApiTags,

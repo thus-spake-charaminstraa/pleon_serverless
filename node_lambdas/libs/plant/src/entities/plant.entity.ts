@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Schema as mongoSchema } from 'mongoose';
-import { PlantAir, PlantLight } from '../types';
+import { PlantAir, PlantLight } from '../types/plant-env.type';
 
 export class PlantMood {
   mood: string;
@@ -14,11 +14,11 @@ const toObjectOptions = {
   transform: (doc, ret) => {
     delete ret.__v;
     delete ret._id;
-    ret.d_day =
-      Math.round(
-        (Date.now() - new Date(ret.adopt_date).getTime()) /
-          (1000 * 60 * 60 * 24),
-      ) + 1;
+    // ret.d_day =
+    //   Math.round(
+    //     (Date.now() - new Date(ret.adopt_date).getTime()) /
+    //       (1000 * 60 * 60 * 24),
+    //   ) + 1;
     return ret;
   },
   virtuals: true,
@@ -69,4 +69,13 @@ PlantSchema.virtual('user', {
   localField: 'owner',
   foreignField: 'id',
   justOne: true,
+});
+
+PlantSchema.virtual('d_day').get(function () {
+  return (
+    Math.round(
+      (Date.now() - new Date(this.adopt_date).getTime()) /
+        (1000 * 60 * 60 * 24),
+    ) + 1
+  );
 });

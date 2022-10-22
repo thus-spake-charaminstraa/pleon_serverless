@@ -1,4 +1,4 @@
-import { CommentRepository } from '@app/comment';
+import { CommentRepository } from '@app/comment/comment.repository';
 import {
   CallHandler,
   ExecutionContext,

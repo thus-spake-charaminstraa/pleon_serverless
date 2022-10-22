@@ -1,7 +1,7 @@
-import { Comment } from '@app/comment/entities';
-import { SuccessResponse } from '@app/common/dto';
-import { Plant } from '@app/plant';
-import { User } from '@app/user';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
+import { Plant } from '@app/plant/entities/plant.entity';
+import { User } from '@app/user/entities/user.entity';
+import { Comment } from '../entities/comment.entity';
 
 export class CreateCommentResponse extends SuccessResponse {
   data: CommentRes;

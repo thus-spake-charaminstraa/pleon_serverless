@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory, SchemaOptions } from '@nestjs/mongoose';
 import { Schema as mongoSchema } from 'mongoose';
-import { CommentAuthorKind } from '../types';
+import { CommentAuthorKind } from '../types/comment-author-kind.type';
 
 export type CommentDocument = Comment & Document;
 
