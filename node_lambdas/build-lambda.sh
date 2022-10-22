@@ -21,6 +21,12 @@ packageAndUploadCode() {
   cd ../../..
 }
 
+publishVersion() {
+  aws lambda publish-version \
+    --function-name $1 \
+    > /dev/null
+}
+
 declare -a array=(
   "mono-app"
   # "auth-lambda"
@@ -40,6 +46,21 @@ declare -a array=(
 )
 for i in "${array[@]}"
 do
-	build "$i"
-  packageAndUploadCode "$i"
 done
+
+
+if [ $# -eq 0 ]
+then
+  for i in "${array[@]}"
+  do
+    build "$i"
+    packageAndUploadCode "$i"
+  done
+else
+  for i in "${array[@]}"
+  do
+    build "$i"
+    packageAndUploadCode "$i"
+    publishVersion "$i"
+  done
+fi

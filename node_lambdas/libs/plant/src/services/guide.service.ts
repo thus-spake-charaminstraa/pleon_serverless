@@ -26,7 +26,7 @@ export class GuideService {
         water: `${plantName}의 흙이 말라있나요?\n말라있다면 물을 주세요~!`,
         air: `${plantName}이가 신선한 공기를 필요로 해요.\n창문을 열어 환기를 시켜주세요~!`,
         spray: `${plantName} 잎이 바싹 말랐나요?\n${plantName}에게 분무를 해주세요!`,
-        repot: `화분 밑으로 뿌리가 나와있지는 않나요?\n나와있다면 새집으로 이사할 시간이에요.`,
+        repot: `${plantName}의 화분 밑으로 뿌리가 나와있지는 않나요?\n나와있다면 새집으로 이사할 시간이에요.`,
         nutrition: `${plantName} 집에 먹을 것이 없어요..\n화분에 액체 비료를 꽂아주세요.`,
         prune: `${plantName} 머리가 까치집이네요^^\n가지치기를 해주세요!`,
       };
@@ -34,9 +34,13 @@ export class GuideService {
     };
   }
 
-  getPlantGuide(species: any): any {
+  async getPlantGuide(speciesName: string) {
+    const speciesInfo = await this.speciesService.findOneByName(speciesName);
+    const ifWinter = new Date().getMonth() >= 11 || new Date().getMonth() <= 2;
     return {
-      water: new Date(7 * 24 * 60 * 60 * 1000),
+      water: ifWinter
+        ? new Date(speciesInfo.proper_watering_winter)
+        : new Date(speciesInfo.proper_watering_other),
       air: new Date(2 * 24 * 60 * 60 * 1000),
       repot: new Date(90 * 24 * 60 * 60 * 1000),
       prune: new Date(30 * 24 * 60 * 60 * 1000),
@@ -49,7 +53,7 @@ export class GuideService {
     const scheduleOfPlantByKind = await this.feedService.findByPlantAndGroup(
       plantInfo.id.toString(),
     );
-    const guide = this.getPlantGuide(plantInfo.species);
+    const guide = await this.getPlantGuide(plantInfo.species);
     const ret = {};
     for (const kind of Object.keys(ScheduleKind)) {
       let overdue = false;
@@ -95,6 +99,7 @@ export class GuideService {
           }),
           ...notiProms,
         ]);
+        console.log('send noti', kind);
       }
     }
   }

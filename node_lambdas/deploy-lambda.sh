@@ -1,8 +1,11 @@
 #!/bin/bash
 
 deploy() {
-  aws lambda publish-version \
+  VERSION=$(aws lambda publish-version --function-name $1 | jq -r .Version)
+  aws lambda update-alias \
     --function-name $1 \
+    --name "production" \
+    --function-version $VERSION \
     > /dev/null
 }
 
@@ -25,7 +28,14 @@ declare -a array=(
   "plant-detection"
   "plant-doctor"
 )
-for i in "${array[@]}"
-do
-	deploy "$i"
-done
+
+
+if [ $# -eq 0 ]
+then
+  for i in "${array[@]}"
+  do
+	  deploy "$i"
+  done
+else
+  deploy "$1"
+fi
