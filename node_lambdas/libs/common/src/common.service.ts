@@ -29,11 +29,12 @@ export abstract class CommonService<Entity, CreateDto, UpdateDto, GetQuery> {
     return ret;
   }
 
-  async deleteOne(id: string): Promise<void> {
+  async deleteOne(id: string): Promise<Entity> {
     const ret = await this.repository.deleteOne(id);
     if (!ret) {
       throw new NotFoundException('존재하지 않는 데이터입니다.');
     }
+    return ret;
   }
 
   async deleteMany(query: GetQuery): Promise<void> {

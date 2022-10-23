@@ -1,4 +1,4 @@
-import { Inject, Injectable, forwardRef } from '@nestjs/common';
+import { Inject, Injectable, forwardRef, BadRequestException } from '@nestjs/common';
 import { FeedService } from '@app/feed/feed.service';
 import { PlantService } from './plant.service';
 import { plantInfoForGuide } from '@app/common/types/plant-guide.type';
@@ -6,6 +6,9 @@ import { ScheduleKind } from '@app/schedule/types/schedule-kind.enum';
 import { SpeciesService } from './species.service';
 import { NotiService } from '@app/noti/noti.service';
 import { NotiKind } from '@app/noti/types/noti-kind.type';
+import { GuideManageDto } from '../dto/guide.dto';
+import { GuideManageKind } from '../types/guide-manage.type';
+import { DateStrFormat } from '@app/common/utils/date-parser';
 
 @Injectable()
 export class GuideService {
@@ -109,5 +112,34 @@ export class GuideService {
     const ret = await Promise.all(
       plantInfos.map((plant) => this.sendNotiForPlant(plant)),
     );
+  }
+
+  async completeManage(id: string): Promise<void> {
+    const ret = await this.notiService.deleteOne(id);
+    const kind: any = ret.kind;
+    const feed = await this.feedService.create(
+      {
+        owner: ret.owner.toString(),
+        plant_id: ret.plant_id.toString(),
+        publish_date: new Date(DateStrFormat(new Date())),
+        kind,
+        content: '오늘은 무엇을 해주었어요~?',
+      },
+      true,
+    );
+  }
+
+  async laterManage(id: string): Promise<void> {
+    await this.notiService.deleteOne(id);
+  }
+
+  async guideManage(guideManageDto: GuideManageDto): Promise<void> {
+    if (guideManageDto.type === GuideManageKind.complete) {
+      return await this.completeManage(guideManageDto.noti_id);
+    } else if (guideManageDto.type === GuideManageKind.later) {
+      return await this.laterManage(guideManageDto.noti_id);
+    } else {
+      throw new BadRequestException('guideManageDto.type is invalid');
+    }
   }
 }

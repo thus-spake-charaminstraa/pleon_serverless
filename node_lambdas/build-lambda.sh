@@ -57,6 +57,10 @@ else
   do
     build "$i"
     packageAndUploadCode "$i"
+  done
+
+  for i in "${array[@]}"
+  do
     publishVersion "$i"
   done
 fi

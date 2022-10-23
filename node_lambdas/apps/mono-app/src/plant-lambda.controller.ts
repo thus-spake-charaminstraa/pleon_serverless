@@ -1,6 +1,6 @@
 import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
 import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
-import { ConflictResponse, ForbiddenResponse, NotFoundResponse, UnauthorizedResponse } from '@app/common/dto/error-response.dto';
+import { BadRequestResponse, ConflictResponse, ForbiddenResponse, NotFoundResponse, UnauthorizedResponse } from '@app/common/dto/error-response.dto';
 import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { ParseDateInBodyPipe } from '@app/common/pipes/parse-date.pipe';
 import { queryParser } from '@app/common/utils/query-parser';
@@ -25,6 +25,8 @@ import { PlantMoodInfos } from '@app/plant/resources/plant-mood';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
 import { PlantService } from '@app/plant/services/plant.service';
 import { SpeciesService } from '@app/plant/services/species.service';
+import { GuideService } from '@app/plant/services/guide.service';
+import { GuideManageDto } from '../../../libs/plant/src/dto/guide.dto';
 import {
   Body,
   Controller,
@@ -43,6 +45,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import {
+  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiConflictResponse,
   ApiCreatedResponse,
@@ -63,6 +66,7 @@ export class PlantLambdaController {
     private readonly speciesService: SpeciesService,
     private readonly diagnosisService: DiagnosisService,
     private readonly caslAbilityFactory: CaslAbilityFactory,
+    private readonly guideService: GuideService,
   ) {}
 
   @ApiOkResponse({
@@ -140,6 +144,36 @@ export class PlantLambdaController {
       GetDiagnosisQuery,
     );
     return await this.diagnosisService.findAll(query);
+  }
+
+  /**
+   * 식물 관리 가이드를 처리합니다. 요청 바디에 noti_id, type을 지정합니다.
+   * type은 COMPLETE, LATER를 지정합니다.
+   */
+  @ApiBadRequestResponse({
+    description: '응답 바디의 type값이 잘못되었음',
+    type: BadRequestResponse,
+  })
+  @ApiNotFoundResponse({
+    description: '가이드 알림 정보 조회 실패',
+    type: NotFoundResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '가이드 관리 성공',
+    type: SuccessResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('guide/manage')
+  async guideManage(
+    @Body() guideManageDto: GuideManageDto,
+  ) {
+    return await this.guideService.guideManage(guideManageDto);
   }
 
   /**
