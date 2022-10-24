@@ -1,7 +1,5 @@
 import { SuccessResponse } from '@app/common/dto/success-response.dto';
-import { Plant } from '@app/plant/entities/plant.entity';
-import { User } from '@app/user/entities/user.entity';
-import { Comment } from '../entities/comment.entity';
+import { CommentRes } from './comment.dto';
 
 export class CreateCommentResponse extends SuccessResponse {
   data: CommentRes;
@@ -10,12 +8,6 @@ export class CreateCommentResponse extends SuccessResponse {
 
 export class UpdateCommentResponse extends SuccessResponse {
   data: CommentRes;
-}
-
-export class CommentRes extends Comment {
-  plant: Plant;
-
-  user: User;
 }
 
 export class GetCommentResponse extends SuccessResponse {

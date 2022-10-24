@@ -6,4 +6,5 @@ export enum NotiKind {
   spray = 'spray',
   nutrition = 'nutrition',
   photo = 'photo',
+  comment = 'comment',
 }

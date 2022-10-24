@@ -6,37 +6,51 @@ import {
   UpdateCommentDto,
 } from './dto/comment.dto';
 import { Comment } from '@app/comment/entities/comment.entity';
+import { CommonService } from '@app/common/common.service';
+import { NotiService } from '@app/noti/noti.service';
+import { DeviceTokenService } from '@app/user/services/device-token.service';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
 
 @Injectable()
-export class CommentService {
-  constructor(private readonly commentRepository: CommentRepository) {}
+export class CommentService extends CommonService<
+  Comment,
+  CreateCommentDto,
+  UpdateCommentDto,
+  GetCommentQuery
+> {
+  constructor(
+    private readonly commentRepository: CommentRepository,
+    private readonly notiService: NotiService,
+    private readonly deviceTokenService: DeviceTokenService,
+  ) {
+    super(commentRepository);
+  }
 
   async create(createCommentDto: CreateCommentDto): Promise<Comment> {
     const ret = await this.commentRepository.create(createCommentDto);
+    const comment = await this.commentRepository.findOne(ret.id.toString());
+    if (!ret.user_id) {
+      const deviceTokens = await this.deviceTokenService.findAllByUserId(
+        comment.feed.owner.toString(),
+      );
+      const notiRet = await Promise.all([
+        this.notiService.sendPushNotiToMultiDevices(
+          deviceTokens,
+          '식물이 댓글을 달았어요!',
+          `${comment.plant.name}: ` + ret.content,
+        ),
+        this.notiService.create({
+          owner: comment.feed.owner.toString(),
+          content: `${comment.plant.name}이 댓글을 달았어요!`,
+          kind: NotiKind.comment,
+        }),
+      ]);
+      console.log(notiRet);
+    }
     return ret;
-  }
-
-  async findAll(query: GetCommentQuery): Promise<Comment[]> {
-    return await this.commentRepository.findAll(query);
   }
 
   async findAllInFeed(feedId: string): Promise<Comment[]> {
     return await this.commentRepository.findAllInFeed(feedId);
-  }
-
-  async findOne(id: string): Promise<Comment> {
-    return await this.commentRepository.findOne(id);
-  }
-
-  async update(
-    id: string,
-    updateCommentDto: UpdateCommentDto,
-  ): Promise<Comment> {
-    const ret = await this.commentRepository.update(id, updateCommentDto);
-    return ret;
-  }
-
-  async deleteOne(id: string): Promise<Comment> {
-    return await this.commentRepository.deleteOne(id);
   }
 }

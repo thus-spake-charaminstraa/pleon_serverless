@@ -7,6 +7,10 @@ import {
 } from 'class-validator';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import { CommentAuthorKind } from '../types/comment-author-kind.type';
+import { Plant } from '@app/plant/entities/plant.entity';
+import { User } from '@app/user/entities/user.entity';
+import { Comment } from '../entities/comment.entity';
+import { Feed } from '@app/feed/entities/feed.entity';
 
 export class CreateCommentDto {
   @IsMongoId()
@@ -51,4 +55,12 @@ export class DeleteCommentQuery {
   plant_id: string;
 
   author_kind: CommentAuthorKind;
+}
+
+export class CommentRes extends Comment {
+  plant: Plant;
+
+  user: User;
+
+  feed: Feed;
 }

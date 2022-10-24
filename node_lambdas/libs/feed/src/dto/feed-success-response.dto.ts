@@ -1,4 +1,4 @@
-import { CommentRes } from '@app/comment/dto/comment-success-response.dto';
+import { CommentRes } from '@app/comment/dto/comment.dto';
 import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { Diagnosis } from '@app/plant/entities/diagnosis.entity';
 import { Plant } from '@app/plant/entities/plant.entity';

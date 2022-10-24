@@ -23,6 +23,10 @@ export class DeviceTokenService extends CommonService<
     return await this.deviceTokenRepository.create(createDeviceTokenDto);
   }
 
+  async findAllByUserId(userId: string) {
+    return await this.deviceTokenRepository.findAllByUserId(userId);
+  }
+
   async updateTimestampByToken(
     token: string,
     updateDeviceTokenDto: UpdateDeviceTokenDto,

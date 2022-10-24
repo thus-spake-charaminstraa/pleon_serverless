@@ -73,3 +73,10 @@ CommentSchema.virtual('user', {
   foreignField: 'id',
   justOne: true,
 });
+
+CommentSchema.virtual('feed', {
+  ref: 'Feed',
+  localField: 'feed_id',
+  foreignField: 'id',
+  justOne: true,
+});

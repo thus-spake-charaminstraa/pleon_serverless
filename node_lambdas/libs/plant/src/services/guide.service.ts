@@ -1,4 +1,9 @@
-import { Inject, Injectable, forwardRef, BadRequestException } from '@nestjs/common';
+import {
+  Inject,
+  Injectable,
+  forwardRef,
+  BadRequestException,
+} from '@nestjs/common';
 import { FeedService } from '@app/feed/feed.service';
 import { PlantService } from './plant.service';
 import { plantInfoForGuide } from '@app/common/types/plant-guide.type';
@@ -83,9 +88,10 @@ export class GuideService {
       if (overdue[kind]) {
         const notiProms = plantInfo.user?.device_tokens
           ? plantInfo.user.device_tokens.map((device) =>
-              this.notiService.sendPushNoti(
-                this.notiContentFormat(plantInfo.name, kind),
+              this.notiService.sendPushNotiToDevice(
                 device,
+                'PLeon 관리 가이드',
+                this.notiContentFormat(plantInfo.name, kind),
               ),
             )
           : [Promise.resolve(undefined)];

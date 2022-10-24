@@ -15,7 +15,8 @@ export class CreateNotiDto {
   owner: string;
 
   @IsMongoId()
-  plant_id: string;
+  @IsOptional()
+  plant_id?: string;
 
   @IsString()
   @IsNotEmpty()

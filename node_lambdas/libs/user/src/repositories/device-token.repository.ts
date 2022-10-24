@@ -26,6 +26,10 @@ export class DeviceTokenRepository extends CommonRepository<
     super(deviceTokenModel);
   }
 
+  async findAllByUserId(userId: string) {
+    return await this.deviceTokenModel.find({ owner: userId }).exec();
+  }
+
   async updateTimestampByToken(
     token: string,
     updateDeviceTokenDto: UpdateDeviceTokenDto,

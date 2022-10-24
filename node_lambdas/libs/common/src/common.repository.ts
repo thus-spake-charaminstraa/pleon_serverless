@@ -1,6 +1,8 @@
+import { Model } from 'mongoose';
+
 export abstract class CommonRepository<Entity, CreateDto, UpdateDto, GetQuery> {
-  private model: any;
-  constructor(model: any) {
+  private model: Model<any>;
+  constructor(model: Model<any>) {
     this.model = model;
   }
 

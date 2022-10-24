@@ -25,7 +25,7 @@ export class NotiService extends CommonService<
   Noti,
   CreateNotiDto,
   UpdateNotiDto,
-  any
+  GetNotiQuery
 > {
   private notiContentFormat: (name: string, kind: string) => string;
   private fcmMessaging: Messaging;
@@ -46,9 +46,13 @@ export class NotiService extends CommonService<
     this.fcmMessaging = getMessaging();
   }
 
-  async sendPushNoti(content: string, targetDevice: DeviceToken): Promise<any> {
+  async sendPushNotiToDevice(
+    targetDevice: DeviceToken,
+    title: string,
+    content: string,
+  ): Promise<any> {
     const GCMPayload = {
-      title: 'PLeon 관리 가이드',
+      title,
       body: content,
     };
     const message = {
@@ -66,8 +70,86 @@ export class NotiService extends CommonService<
     }
   }
 
+  async sendPushNotiToMultiDevices(
+    targetDevices: DeviceToken[],
+    title: string,
+    content: string,
+  ) {
+    const GCMPayload = {
+      title,
+      body: content,
+    };
+    const message = {
+      tokens: targetDevices.map((device: DeviceToken) => device.device_token),
+      notification: GCMPayload,
+    };
+    try {
+      const ret = await this.fcmMessaging.sendMulticast(message);
+      const failedTokenIds = [];
+      if (ret.failureCount > 0) {
+        ret.responses.forEach((response, index) => {
+          if (!response.success) {
+            failedTokenIds.push(targetDevices[index].id);
+          }
+        });
+        await this.deviceTokenRepository.deleteMany({ id: failedTokenIds });
+      }
+      return ret;
+    } catch (e) {
+      return await this.deviceTokenRepository.deleteMany({
+        id: targetDevices.map((device: DeviceToken) => device.id),
+      });
+    }
+  }
+
   async findNotisByPlantId(plantId: string): Promise<Noti[]> {
     return await this.notiRepository.findNotisByPlantId(plantId);
+  }
+
+  async subscribeTopic(
+    topic: string,
+    targetDeviceOrDevices: DeviceToken | DeviceToken[],
+  ): Promise<void> {
+    let tokenOrTokens: string | string[];
+    if (Array.isArray(targetDeviceOrDevices)) {
+      tokenOrTokens = targetDeviceOrDevices.map(
+        (device: DeviceToken) => device.device_token,
+      );
+    } else {
+      tokenOrTokens = targetDeviceOrDevices.device_token;
+    }
+    await this.fcmMessaging.subscribeToTopic(tokenOrTokens, topic);
+  }
+
+  async unsubscribeTopic(
+    topic: string,
+    targetDeviceOrDevices: DeviceToken | DeviceToken[],
+  ): Promise<void> {
+    let tokenOrTokens: string | string[];
+    if (Array.isArray(targetDeviceOrDevices)) {
+      tokenOrTokens = targetDeviceOrDevices.map(
+        (device: DeviceToken) => device.device_token,
+      );
+    } else {
+      tokenOrTokens = targetDeviceOrDevices.device_token;
+    }
+    await this.fcmMessaging.unsubscribeFromTopic(tokenOrTokens, topic);
+  }
+
+  async sendPushNotiToTopic(
+    topic: string,
+    title: string,
+    content: string,
+  ): Promise<any> {
+    const GCMPayload = {
+      title,
+      body: content,
+    };
+    const message = {
+      topic,
+      notification: GCMPayload,
+    };
+    return await this.fcmMessaging.send(message);
   }
 
   async completeManage(id: string): Promise<void> {
