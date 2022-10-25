@@ -46,6 +46,16 @@ export class GetNotiQuery {
   kind?: NotiKind;
 }
 
+export class GetGuideNotiQuery {
+  owner?: string;
+
+  plant_id?: string;
+
+  kinds?: NotiKind[];
+
+  kind?: any;
+}
+
 export class DeleteNotiQuery {
   owner?: string;
 

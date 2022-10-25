@@ -12,6 +12,7 @@ import { initializeApp } from 'firebase-admin/app';
 import { getMessaging, Messaging } from 'firebase-admin/messaging';
 import {
   CreateNotiDto,
+  GetGuideNotiQuery,
   GetNotiQuery,
   NotiManageDto,
   NotiManageKind,
@@ -19,6 +20,7 @@ import {
 } from './dto/noti.dto';
 import { Noti } from './entities/noti.entity';
 import { NotiRepository } from './noti.repository';
+import { NotiKind } from './types/noti-kind.type';
 
 @Injectable()
 export class NotiService extends CommonService<
@@ -44,6 +46,18 @@ export class NotiService extends CommonService<
       }),
     });
     this.fcmMessaging = getMessaging();
+  }
+
+  async findAllGuideNoti(query: GetGuideNotiQuery): Promise<Noti[]> {
+    query.kinds = [
+      NotiKind.water,
+      NotiKind.air,
+      NotiKind.prune,
+      NotiKind.nutrition,
+      NotiKind.repot,
+      NotiKind.spray,
+    ];
+    return await this.notiRepository.findAllGuideNoti(query);
   }
 
   async sendPushNotiToDevice(
@@ -75,6 +89,7 @@ export class NotiService extends CommonService<
     title: string,
     content: string,
   ) {
+    console.log('send noti');
     const GCMPayload = {
       title,
       body: content,

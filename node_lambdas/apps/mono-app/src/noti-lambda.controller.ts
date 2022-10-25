@@ -12,6 +12,7 @@ import {
 } from '@app/noti/dto/noti-success-response.dto';
 import {
   CreateNotiDto,
+  GetGuideNotiQuery,
   GetNotiQuery,
   NotiManageDto,
 } from '@app/noti/dto/noti.dto';
@@ -122,13 +123,13 @@ export class NotiLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get('feed')
   async findNotiList(@Req() req) {
-    const query: GetNotiQuery = queryParser(
+    const query: GetGuideNotiQuery = queryParser(
       {
         owner: req.user.id.toString(),
       },
-      GetNotiQuery,
+      GetGuideNotiQuery,
     );
-    const ret = await this.notiService.findAll(query);
+    const ret = await this.notiService.findAllGuideNoti(query);
     const viewTypeRet: any[] = ret.map((noti) => ({
       viewType: NotiViewKind.TWO_BTN,
       viewObject: noti,

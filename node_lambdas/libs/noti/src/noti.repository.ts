@@ -2,7 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Noti, NotiDocument } from './entities/noti.entity';
-import { CreateNotiDto, GetNotiQuery, UpdateNotiDto } from './dto/noti.dto';
+import {
+  CreateNotiDto,
+  GetGuideNotiQuery,
+  GetNotiQuery,
+  UpdateNotiDto,
+} from './dto/noti.dto';
 import { CommonRepository } from '@app/common/common.repository';
 
 @Injectable()
@@ -14,6 +19,14 @@ export class NotiRepository extends CommonRepository<
 > {
   constructor(@InjectModel(Noti.name) private notiModel: Model<NotiDocument>) {
     super(notiModel);
+  }
+
+  async findAllGuideNoti(query: GetGuideNotiQuery): Promise<Noti[]> {
+    const { kinds } = query;
+    if (kinds) {
+      query.kind = { $in: kinds };
+    }
+    return await this.notiModel.find(query).sort({ created_at: -1 }).exec();
   }
 
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
