@@ -53,7 +53,7 @@ export class FeedService extends CommonService<
 
   async findAll(query: GetFeedAndDiagnosisQuery): Promise<any> {
     const ret = await this.feedRepository.findAll(query);
-    ret.totalCount = ret.totalCount.count;
+    ret.totalCount = ret?.totalCount?.count;
     return ret;
   }
 
