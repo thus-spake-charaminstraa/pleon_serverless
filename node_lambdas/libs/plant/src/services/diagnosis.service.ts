@@ -30,7 +30,7 @@ export class DiagnosisService extends CommonService<
     private readonly speciesService: SpeciesService,
     @Inject(forwardRef(() => NotiService))
     private readonly notiService: NotiService,
-    // private readonly configService: ConfigService,
+    private readonly configService: ConfigService,
   ) {
     super(diagnosisRepository);
     this.symptomInfoMap = PlantSymptom;
@@ -140,7 +140,7 @@ export class DiagnosisService extends CommonService<
             ...s,
             image_url:
               'https://' +
-              // this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+              this.configService.get<string>('AWS_S3_BUCKET_NAME') +
               '.s3.amazonaws.com/' +
               s.image_key,
           };
@@ -149,7 +149,7 @@ export class DiagnosisService extends CommonService<
         image_urls: Object.values(plantSymptomAndCause).map((s: any) => {
           return (
             'https://' +
-            // this.configService.get<string>('AWS_S3_BUCKET_NAME') +
+            this.configService.get<string>('AWS_S3_BUCKET_NAME') +
             '.s3.amazonaws.com/' +
             s.image_key
           );
