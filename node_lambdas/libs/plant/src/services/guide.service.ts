@@ -71,7 +71,9 @@ export class GuideService {
         schedule[0].created_at.getTime() + guide[kind].getTime() <= Date.now()
       ) {
         overdue = true;
-      } else if (
+      }
+      if (
+        (!schedule) &&
         new Date(plantInfo.adopt_date).getTime() + guide[kind].getTime() <=
         Date.now()
       ) {
