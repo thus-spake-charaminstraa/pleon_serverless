@@ -19,6 +19,7 @@ export const handler: Handler = async (
     app = await bootstrap();
   }
   const deviceTokenService = app.get(DeviceTokenService);
+  await deviceTokenService.deleteDuplicated();
   const ret = await deviceTokenService.deleteManyExpired();
   return ret;
 };

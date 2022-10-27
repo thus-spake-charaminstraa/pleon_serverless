@@ -42,4 +42,14 @@ export class DeviceTokenService extends CommonService<
     criteria.setMonth(criteria.getMonth() - 2);
     return await this.deviceTokenRepository.deleteManyExpired(criteria);
   }
+
+  async deleteDuplicated() {
+    const duplicatedList = await this.deviceTokenRepository.findAllDuplicated();
+    return await Promise.all(duplicatedList.map((duplicated: any) => {
+      duplicated.dups.shift();
+      return Promise.all(duplicated.dups.map((id: string) => {
+        this.deviceTokenRepository.deleteOne(id);
+      }));
+    }))
+  }
 }

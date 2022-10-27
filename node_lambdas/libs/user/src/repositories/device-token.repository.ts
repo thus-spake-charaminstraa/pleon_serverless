@@ -46,4 +46,28 @@ export class DeviceTokenRepository extends CommonRepository<
       .deleteMany({ updated_at: { $lt: criteria } })
       .exec();
   }
+
+  async findAllDuplicated() {
+    const ret = await this.deviceTokenModel
+      .aggregate([
+        {
+          $group: {
+            _id: {
+              device_token: '$device_token',
+              owner: '$owner',
+            },
+            dups: { $addToSet: '$id' },
+            count: { $sum: 1 },
+          },
+        },
+        {
+          $match: {
+            count: { $gt: 1 },
+          },
+        },
+      ])
+      .exec();
+    console.log(ret);
+    return ret;
+  }
 }
