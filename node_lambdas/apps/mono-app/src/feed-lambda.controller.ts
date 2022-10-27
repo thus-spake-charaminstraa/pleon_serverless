@@ -353,11 +353,14 @@ export class FeedLambdaController {
         viewObject: item,
       };
     });
+    const count = feeds.data.length,
+      next_offset = offset + feeds.data.length;
+    const isLast = feeds.totalCount <= next_offset;
     return {
       result,
-      count: feeds.data.length,
-      next_offset: offset + feeds.data.length,
-      isLast: feeds.totalCount <= offset + feeds.data.length,
+      count,
+      next_offset,
+      isLast,
     };
   }
 
