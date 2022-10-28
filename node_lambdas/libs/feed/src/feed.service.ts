@@ -33,16 +33,6 @@ export class FeedService extends CommonService<
   }
 
   async create(createFeedDto: CreateFeedDto, auto?: boolean): Promise<Feed> {
-    // if (createFeedDto.kind in ScheduleKind) {
-    //   const kind: any = createFeedDto.kind;
-    //   const createScheduleDto: CreateScheduleDto = {
-    //     plant_id: createFeedDto.plant_id,
-    //     timestamp: createFeedDto.publish_date,
-    //     kind,
-    //   };
-    //   const ret = await this.scheduleRepository.create(createScheduleDto);
-    //   createFeedDto.schedule_id = ret.id.toString();
-    // }
     if (auto) {
       createFeedDto.content = this.feedKindInfos.find(
         (info: any) => info.name_en === createFeedDto.kind,
@@ -84,5 +74,10 @@ export class FeedService extends CommonService<
       group[item.kind] = item.feeds;
     });
     return group;
+  }
+
+  async findAllNotCommented(query: any) {
+    const ret = await this.feedRepository.findAllNotCommented(query);
+    return ret;
   }
 }

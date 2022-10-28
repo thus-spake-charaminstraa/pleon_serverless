@@ -19,11 +19,11 @@ export class CreateCommentDto {
   @ApiHideProperty()
   @IsOptional()
   @IsMongoId()
-  user_id: string;
+  user_id?: string;
 
   @IsOptional()
   @IsMongoId()
-  plant_id: string;
+  plant_id?: string;
 
   @IsEnum(CommentAuthorKind)
   author_kind: CommentAuthorKind;

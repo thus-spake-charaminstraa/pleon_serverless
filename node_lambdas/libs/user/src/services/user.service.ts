@@ -55,6 +55,14 @@ export class UserService {
     return await this.userRepository.findAll();
   }
 
+  async findOne(id: string): Promise<User> {
+    const user = await this.userRepository.findOne(id);
+    if (!user) {
+      throw new NotFoundException('사용자를 찾을 수 없습니다.');
+    }
+    return user;
+  }
+
   async deleteOne(id: string): Promise<void> {
     await this.userRepository.deleteOne(id);
   }

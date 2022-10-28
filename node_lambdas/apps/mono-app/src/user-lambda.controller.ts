@@ -155,6 +155,11 @@ export class UserLambdaController {
     return await this.deviceTokenService.create(createDeviceTokenDto);
   }
 
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.userService.findOne(id);
+  }
+    
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.userService.deleteOne(id);

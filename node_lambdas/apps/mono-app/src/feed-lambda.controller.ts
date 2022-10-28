@@ -365,6 +365,57 @@ export class FeedLambdaController {
   }
 
   /**
+   * 댓글이 안달린 피드를 조회합니다.
+   */
+  @ApiQuery({
+    name: 'plant_id',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'owner',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
+    name: 'publish_date',
+    type: Date,
+    required: false,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('not-commented')
+  async findAllNotCommented(
+    @Query('owner') owner: string,
+    @Query('plant_id') plant_id: string,
+    @Query('publish_date') publish_date: string,
+    @Req() req,
+  ) {
+    let start: Date = undefined,
+      end: Date = undefined;
+    if (publish_date) {
+      publish_date = new Date(
+        DateStrFormat(new Date(publish_date)),
+      ).toISOString();
+      start = new Date(publish_date);
+      end = new Date(publish_date);
+      end.setDate(end.getDate() + 1);
+    }
+    const feedQuery: any = queryParser(
+      {
+        owner,
+        plant_id,
+        publish_date,
+        start,
+        end,
+      },
+    );
+    const feeds: any = await this.feedService.findAllNotCommented(feedQuery);
+    return feeds;
+  }
+
+  /**
    * 피드 하나를 아이디로 조회합니다.
    */
   @ApiNotFoundResponse({

@@ -1,4 +1,3 @@
-import { ObjectIdentifierFilterSensitiveLog } from '@aws-sdk/client-s3';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
@@ -169,6 +168,60 @@ export class FeedRepository {
       })
       .populate('user')
       .exec();
+  }
+
+  async findAllNotCommented(query: any) {
+    const { start, end, publish_date, ...q } = query;
+    if (q.plant_id) {
+      q.plant_id = new Types.ObjectId(q.plant_id);
+    }
+    if (q.owner) {
+      q.owner = new Types.ObjectId(q.owner);
+    } else {
+      q.owner = { $ne: new Types.ObjectId('62c3dd65ff76f24d880331a9') };
+    }
+    if (start && end)
+      q.created_at = {
+        $gte: start,
+        $lte: end,
+      };
+    const ret = await this.model
+      .aggregate()
+      .match(q)
+      .lookup({
+        from: 'comments',
+        localField: 'id',
+        foreignField: 'feed_id',
+        as: 'comments',
+      })
+      .match({
+        comments: { $size: 0 },
+      })
+      .lookup({
+        from: 'users',
+        localField: 'owner',
+        foreignField: 'id',
+        pipeline: [{ $limit: 1 }],
+        as: 'user',
+      })
+      .unwind({
+        path: '$user',
+        preserveNullAndEmptyArrays: true,
+      })
+      .lookup({
+        from: 'plants',
+        localField: 'plant_id',
+        foreignField: 'id',
+        pipeline: [{ $limit: 1 }],
+        as: 'plant',
+      })
+      .unwind({
+        path: '$plant',
+        preserveNullAndEmptyArrays: true,
+      })
+      .sort({ created_at: -1 })
+      .exec();
+    return ret;
   }
 
   async update(id: string, updateFeedDto: UpdateFeedDto): Promise<Feed> {
