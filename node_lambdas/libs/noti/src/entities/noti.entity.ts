@@ -36,6 +36,12 @@ export class Noti {
   @Prop({ required: false, ref: 'Plant' })
   plant_id: mongoSchema.Types.ObjectId;
 
+  @Prop({ required: false, ref: 'Feed' })
+  feed_id: mongoSchema.Types.ObjectId;
+
+  @Prop({ required: false, ref: 'Comment' })
+  comment_id: mongoSchema.Types.ObjectId;
+
   @Prop({ required: true })
   content: string;
 
@@ -50,3 +56,24 @@ export class Noti {
 }
 
 export const NotiSchema = SchemaFactory.createForClass(Noti);
+
+NotiSchema.virtual('feed', {
+  ref: 'Feed',
+  localField: 'feed_id',
+  foreignField: 'id',
+  justOne: true,
+});
+
+NotiSchema.virtual('comment', {
+  ref: 'Comment',
+  localField: 'comment_id',
+  foreignField: 'id',
+  justOne: true,
+});
+
+NotiSchema.virtual('plant', {
+  ref: 'Plant',
+  localField: 'plant_id',
+  foreignField: 'id',
+  justOne: true,
+});

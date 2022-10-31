@@ -60,6 +60,12 @@ export class NotiService extends CommonService<
     return await this.notiRepository.findAllGuideNoti(query);
   }
 
+  async findAllCommentNotiGroupByDate(
+    query: GetNotiQuery,
+  ): Promise<any[]> {
+    return await this.notiRepository.findAllCommentNotiGroupByDate(query);
+  }
+
   async sendPushNotiToDevice(
     targetDevice: DeviceToken,
     title: string,

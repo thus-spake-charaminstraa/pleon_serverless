@@ -9,20 +9,24 @@ import {
   UpdateFeedDto,
 } from './dto/feed.dto';
 import { Feed, FeedDocument } from './entities/feed.entity';
+import { CommonRepository } from '@app/common/common.repository';
+import { GetDeviceTokenQuery } from '../../user/src/dto/device-token.dto';
 
 @Injectable()
-export class FeedRepository {
-  constructor(@InjectModel(Feed.name) private model: Model<FeedDocument>) {}
+export class FeedRepository extends CommonRepository<Feed, CreateFeedDto, UpdateFeedDto, GetFeedAndDiagnosisQuery> {
+  constructor(@InjectModel(Feed.name) private feedModel: Model<FeedDocument>) {
+    super(feedModel);
+  }
 
   async create(createFeedDto: CreateFeedDto): Promise<Feed> {
-    const createdEntity = new this.model({
+    const createdEntity = new this.feedModel({
       ...createFeedDto,
       publish_date: new Date(createFeedDto.publish_date).toISOString(),
     });
     return await createdEntity.save();
   }
 
-  async findAll(query: GetFeedAndDiagnosisQuery): Promise<any> {
+  async findAll(query: GetFeedAndDiagnosisQuery) {
     const { offset, limit, order_by, publish_date, start, end, ...q } = query;
     if (q.plant_id) {
       q.plant_id = new Types.ObjectId(q.plant_id);
@@ -35,7 +39,33 @@ export class FeedRepository {
         $gte: start,
         $lte: end,
       };
-    const ret = await this.model
+    const ret = await this.feedModel
+      .find(q)
+      .sort({ created_at: -1 })
+      .skip(offset)
+      .limit(limit)
+      .populate({
+        path: 'comments',
+        populate: ['user', 'plant'],
+      })
+      .exec();
+    return ret;
+  }
+
+  async findAllWithDiagnosis(query: GetFeedAndDiagnosisQuery): Promise<any> {
+    const { offset, limit, order_by, publish_date, start, end, ...q } = query;
+    if (q.plant_id) {
+      q.plant_id = new Types.ObjectId(q.plant_id);
+    }
+    if (q.owner) {
+      q.owner = new Types.ObjectId(q.owner);
+    }
+    if (start && end)
+      q.created_at = {
+        $gte: start,
+        $lte: end,
+      };
+    const ret = await this.feedModel
       .aggregate()
       .unionWith({
         coll: 'diagnoses',
@@ -128,7 +158,7 @@ export class FeedRepository {
   }
 
   async findAllAndGroupBy(query: GetFeedCalendarQuery): Promise<any> {
-    const ret = await this.model
+    const ret = await this.feedModel
       .aggregate()
       .match({
         plant_id: new Types.ObjectId(query.plant_id),
@@ -145,7 +175,7 @@ export class FeedRepository {
   }
 
   async findByPlantAndGroup(plantId: string): Promise<any> {
-    const ret = await this.model
+    const ret = await this.feedModel
       .aggregate()
       .match({ plant_id: new Types.ObjectId(plantId) })
       .sort({ created_at: -1 })
@@ -159,7 +189,7 @@ export class FeedRepository {
   }
 
   async findOne(id: string): Promise<Feed> {
-    return await this.model
+    return await this.feedModel
       .findOne({ id })
       .populate('plant')
       .populate({
@@ -185,7 +215,7 @@ export class FeedRepository {
         $gte: start,
         $lte: end,
       };
-    const ret = await this.model
+    const ret = await this.feedModel
       .aggregate()
       .match(q)
       .lookup({
@@ -225,16 +255,16 @@ export class FeedRepository {
   }
 
   async update(id: string, updateFeedDto: UpdateFeedDto): Promise<Feed> {
-    return await this.model
+    return await this.feedModel
       .findOneAndUpdate({ id }, updateFeedDto, { new: true })
       .exec();
   }
 
   async deleteOne(id: string): Promise<Feed> {
-    return await this.model.findOneAndDelete({ id }).exec();
+    return await this.feedModel.findOneAndDelete({ id }).exec();
   }
 
   async deleteAll(query: DeleteFeedQuery): Promise<void> {
-    await this.model.deleteMany(query).exec();
+    await this.feedModel.deleteMany(query).exec();
   }
 }

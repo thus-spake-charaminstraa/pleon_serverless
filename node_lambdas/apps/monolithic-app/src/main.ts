@@ -19,6 +19,14 @@ import { TransformInterceptor } from '@app/common/interceptors/transform.interce
 import { GuideService } from '@app/plant/services/guide.service';
 import { GetFeedOrderBy } from '@app/feed/dto/feed.dto';
 import { Types } from 'mongoose';
+import { CommentService } from '@app/comment/comment.service';
+import { FeedRes } from '@app/feed/dto/feed-success-response.dto';
+import { CommentAuthorKind } from '@app/comment/types/comment-author-kind.type';
+import { FeedKind } from '@app/feed/types/feed-kind.type';
+import { DeviceTokenService } from '@app/user/services/device-token.service';
+import { NotiService } from '@app/noti/noti.service';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
+import { NotiRes } from '@app/noti/dto/noti.dto';
 
 async function bootstrap() {
   const app = await NestFactory.create(MonolithicAppModule, {
@@ -56,7 +64,7 @@ async function bootstrap() {
       .addBearerAuth()
       .build(),
     {
-      extraModels: [SymptomRes, CauseRes, Diagnosis],
+      extraModels: [SymptomRes, CauseRes, Diagnosis, NotiRes],
     },
   );
   const swaggerCustomOptions: SwaggerCustomOptions = {
@@ -101,16 +109,73 @@ async function bootstrap() {
   });
   console.log(species.length);
 
-  // const guideService = app.get(GuideService);
-  // await guideService.sendNotiForPlants();
-
   const feedService = app.get(FeedService);
-  // const ret = await feedService.findAll({
+  const commentService = app.get(CommentService);
+  const deviceTokenService = app.get(DeviceTokenService);
+  const notiService = app.get(NotiService);
+
+  // await notiService.deleteMany({ kind: NotiKind.comment });
+
+  // const feedlist = await feedService.findAll({
   //   owner: new Types.ObjectId('62c3dd65ff76f24d880331a9'),
-  //   offset: 0,
-  //   limit: 10,
+  //   limit: 1000000,
   //   order_by: GetFeedOrderBy.DESC,
+  //   offset: 0,
+  //   start: new Date('2022-09-01'),
+  //   end: new Date('2022-09-30'),
   // });
-  // console.log(util.inspect(ret, false, null, true));
+  // console.log(feedlist);
+  // await Promise.all(
+  //   feedlist.map((feed: any) => {
+  //     return Promise.all(
+  //       feed.comments.map((comment: any) => {
+  //         return commentService.deleteOne(comment.id);
+  //       }),
+  //     );
+  //   }),
+  // );
+
+  // const feeds = await feedService.findAllNotCommented({
+  //   owner: new Types.ObjectId('62c3dd65ff76f24d880331a9'),
+  //   start: new Date('2022-09-01'),
+  //   end: new Date('2022-09-30'),
+  // });
+  // console.log(feeds);
+  // const comments = await Promise.all(feeds.map((feed: FeedRes) => {
+  //   let content = '댓글입니다.';
+  //   switch (feed.kind) {
+  //     case FeedKind.water:
+  //       content = '와 물이 너무 시원해요~';
+  //       break;
+  //     case FeedKind.spray:
+  //       content = '잎이 촉촉해졌어요.';
+  //       break;
+  //     case FeedKind.air:
+  //       content = '바깥 공기가 상쾌해요.';
+  //       break;
+  //     case FeedKind.nutrition:
+  //       content = '집이 풍족해졌어요!';
+  //       break;
+  //     case FeedKind.repot:
+  //       content = '집이 새로워졌어요!';
+  //       break;
+  //     case FeedKind.prune:
+  //       content = '새로 단장하니 기분이 좋아요!';
+  //       break;
+  //     default:
+  //       content = '';
+  //       break;
+  //   }
+  //   if (content != '') {
+  //     return commentService.create({
+  //       feed_id: feed.id.toString(),
+  //       plant_id: feed.plant_id.toString(),
+  //       author_kind: CommentAuthorKind.plant,
+  //       content,
+  //     });
+  //   }
+  //   return Promise.resolve();
+  // }))
+  // console.log(comments);
 }
 bootstrap();

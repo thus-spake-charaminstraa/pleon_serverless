@@ -9,6 +9,8 @@ import {
   UpdateNotiDto,
 } from './dto/noti.dto';
 import { CommonRepository } from '@app/common/common.repository';
+import { NotiKind } from '@app/noti/types/noti-kind.type';
+import { Types } from 'mongoose';
 
 @Injectable()
 export class NotiRepository extends CommonRepository<
@@ -32,6 +34,58 @@ export class NotiRepository extends CommonRepository<
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
     const { ...q } = query;
     return await this.notiModel.find(q).sort({ created_at: -1 }).exec();
+  }
+
+  async findAllCommentNotiGroupByDate(query: GetNotiQuery): Promise<Noti[]> {
+    const { owner, ...q } = query;
+    return await this.notiModel
+      .aggregate()
+      .match({
+        kind: NotiKind.comment,
+        owner: new Types.ObjectId(owner),
+      })
+      .lookup({
+        from: 'feeds',
+        localField: 'feed_id',
+        foreignField: 'id',
+        as: 'feed',
+      })
+      .unwind({ path: '$feed', preserveNullAndEmptyArrays: true })
+      .lookup({
+        from: 'comments',
+        localField: 'comment_id',
+        foreignField: 'id',
+        as: 'comment',
+      })
+      .unwind({ path: '$comment', preserveNullAndEmptyArrays: true })
+      .lookup({
+        from: 'plants',
+        localField: 'plant_id',
+        foreignField: 'id',
+        as: 'plant',
+      })
+      .unwind({ path: '$plant', preserveNullAndEmptyArrays: true })
+      .group({
+        _id: {
+          $dateToString: {
+            format: '%Y.%m.%d',
+            date: '$created_at',
+          },
+        },
+        date: {
+          $first: {
+            $dateToString: {
+              format: '%Y.%m.%d',
+              date: '$created_at',
+            },
+          },
+        },
+        notis: {
+          $push: '$$ROOT',
+        },
+      })
+      .sort({ date: -1 })
+      .exec();
   }
 
   async findNotisByPlantId(plant_id: string): Promise<Noti[]> {

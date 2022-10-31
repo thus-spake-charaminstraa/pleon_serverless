@@ -37,12 +37,15 @@ export class CommentService extends CommonService<
         this.notiService.sendPushNotiToMultiDevices(
           deviceTokens,
           '식물이 댓글을 달았어요!',
-          `${comment.plant.name}: ` + ret.content,
+          `${comment.plant?.name}: ` + ret.content,
         ),
         this.notiService.create({
           owner: comment.feed.owner.toString(),
           content: `${comment.plant.name}이 댓글을 달았어요!`,
           kind: NotiKind.comment,
+          feed_id: comment.feed?.id.toString(),
+          comment_id: comment.id.toString(),
+          plant_id: comment.plant?.id.toString(),
         }),
       ]);
       console.log(notiRet);

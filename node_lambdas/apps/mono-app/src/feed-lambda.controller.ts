@@ -251,7 +251,7 @@ export class FeedLambdaController {
       },
       GetFeedAndDiagnosisQuery,
     );
-    const feeds = await this.feedService.findAll(feedQuery);
+    const feeds = await this.feedService.findAllWithDiagnosis(feedQuery);
     const result = feeds.data.map((feed) => ({
       viewType: 'feed',
       viewObject: feed,
@@ -346,7 +346,7 @@ export class FeedLambdaController {
       GetFeedAndDiagnosisQuery,
     );
     console.log(feedQuery);
-    const feeds: any = await this.feedService.findAll(feedQuery);
+    const feeds: any = await this.feedService.findAllWithDiagnosis(feedQuery);
     const result: any[] = feeds.data.map((item: any) => {
       return {
         viewType: !!item.symptoms ? FeedViewKind.diagnosis : FeedViewKind.feed,

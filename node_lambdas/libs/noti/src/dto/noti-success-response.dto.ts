@@ -2,6 +2,7 @@ import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { CreateFeedDto } from '@app/feed/dto/feed.dto';
 import { Noti } from '@app/noti/entities/noti.entity';
 import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
+import { NotiListKind, NotiRes } from './noti.dto';
 
 export class GetNotisResponse extends SuccessResponse {
   data: Noti[];
@@ -41,7 +42,7 @@ export class NotiDefaultView {
 
 type ViewObject = NotiTwoBtnView | NotiOneBtnView | NotiDefaultView;
 
-export class GetNotiResponse extends SuccessResponse {
+export class GetNotiInFeedResponse extends SuccessResponse {
   @ApiProperty({
     type: 'array',
     items: {
@@ -98,4 +99,52 @@ export class GetNotiResponse extends SuccessResponse {
     },
   })
   data: ViewObject[];
+}
+
+export class GetNotiInListResponse extends SuccessResponse {
+  @ApiProperty({
+    type: 'array',
+    items: {
+      oneOf: [
+        {
+          type: 'object',
+          properties: {
+            viewType: {
+              type: 'string',
+              example: NotiListKind.DATE,
+            },
+            viewObject: {
+              type: 'string',
+              example: '2022.10.31',
+            },
+          },
+        },
+        {
+          type: 'object',
+          properties: {
+            viewType: {
+              type: 'string',
+              example: NotiListKind.IMAGE,
+            },
+            viewObject: {
+              $ref: getSchemaPath(NotiRes),
+            },
+          },
+        },
+        {
+          type: 'object',
+          properties: {
+            viewType: {
+              type: 'string',
+              example: NotiListKind.TEXT,
+            },
+            viewObject: {
+              $ref: getSchemaPath(NotiRes),
+            },
+          },
+        },
+      ],
+    },
+  })
+  data: any[];
 }
