@@ -148,7 +148,9 @@ export class NotiLambdaController {
     commentNotis.forEach((notisByDate) => {
       result.push({
         viewType: NotiListKind.DATE,
-        viewObject: notisByDate.date,
+        viewObject: {
+          text: notisByDate.date
+        }
       });
       notisByDate.notis.forEach((noti: NotiRes) => {
         result.push({

@@ -114,8 +114,13 @@ export class GetNotiInListResponse extends SuccessResponse {
               example: NotiListKind.DATE,
             },
             viewObject: {
-              type: 'string',
-              example: '2022.10.31',
+              type: 'object',
+              properties: {
+                text: {
+                  type: 'string',
+                  example: '2022.10.31',
+                }
+              }
             },
           },
         },
