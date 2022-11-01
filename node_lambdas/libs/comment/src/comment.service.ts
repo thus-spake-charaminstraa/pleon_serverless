@@ -34,11 +34,13 @@ export class CommentService extends CommonService<
         comment.feed.owner.toString(),
       );
       const notiRet = await Promise.all([
-        this.notiService.sendPushNotiToMultiDevices(
-          deviceTokens,
-          '식물이 댓글을 달았어요!',
-          `${comment.plant?.name}: ` + ret.content,
-        ),
+        comment.user?.comment_push_noti
+          ? this.notiService.sendPushNotiToMultiDevices(
+              deviceTokens,
+              '식물이 댓글을 달았어요!',
+              `${comment.plant.name}: ` + ret.content,
+            )
+          : Promise.resolve(),
         this.notiService.create({
           owner: comment.feed.owner.toString(),
           content: `${comment.plant.name}이 댓글을 달았어요!`,

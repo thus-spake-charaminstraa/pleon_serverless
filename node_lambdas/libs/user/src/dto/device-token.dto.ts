@@ -26,4 +26,6 @@ export class UpdateDeviceTokenDto {
 
 export class GetDeviceTokenQuery {
   owner?: string;
+
+  token?: string;
 }

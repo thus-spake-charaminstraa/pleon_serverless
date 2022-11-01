@@ -31,6 +31,7 @@ export class NotiService extends CommonService<
 > {
   private notiContentFormat: (name: string, kind: string) => string;
   private fcmMessaging: Messaging;
+  private dryRun = true;
 
   constructor(
     private readonly notiRepository: NotiRepository,
@@ -80,7 +81,7 @@ export class NotiService extends CommonService<
       notification: GCMPayload,
     };
     try {
-      return await this.fcmMessaging.send(message);
+      return await this.fcmMessaging.send(message, this.dryRun);
     } catch (e) {
       if (e.errorInfo.code === 'messaging/registration-token-not-registered') {
         return await this.deviceTokenRepository.deleteOne(
@@ -105,7 +106,7 @@ export class NotiService extends CommonService<
       notification: GCMPayload,
     };
     try {
-      const ret = await this.fcmMessaging.sendMulticast(message);
+      const ret = await this.fcmMessaging.sendMulticast(message, this.dryRun);
       const failedTokenIds = [];
       if (ret.failureCount > 0) {
         ret.responses.forEach((response, index) => {
@@ -170,7 +171,7 @@ export class NotiService extends CommonService<
       topic,
       notification: GCMPayload,
     };
-    return await this.fcmMessaging.send(message);
+    return await this.fcmMessaging.send(message, this.dryRun);
   }
 
   async completeManage(id: string): Promise<void> {

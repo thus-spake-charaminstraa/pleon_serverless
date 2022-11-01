@@ -5,6 +5,7 @@ import {
   ForbiddenResponse,
   UnauthorizedResponse,
 } from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { PhonePipe } from '@app/common/pipes/phone.pipe';
 import {
   CreateDeviceTokenDto,
@@ -159,7 +160,7 @@ export class UserLambdaController {
   async findOne(@Param('id') id: string) {
     return await this.userService.findOne(id);
   }
-    
+
   @Delete(':id')
   async delete(@Param('id') id: string) {
     return this.userService.deleteOne(id);
@@ -198,7 +199,7 @@ export class UserLambdaController {
   }
 
   /**
-   * 유저의 디바이스 토큰을 업데이트 합니다. 유저 자신만 업데이트할 수 있습니다.
+   * 유저의 디바이스 토큰을 업데이트 합니다. 
    */
   @ApiNotFoundResponse({
     description: '해당 유저가 존재하지 않습니다.',
@@ -229,12 +230,43 @@ export class UserLambdaController {
     @Body() updateDeviceTokenDto: UpdateDeviceTokenDto,
     @Req() req,
   ) {
-    const id = req.user.id;
-    const ability = this.caslAbilityFactory.createForUser(req.user);
-    ability.checkCanModify(id);
     return await this.deviceTokenService.updateTimestampByToken(
       token,
       updateDeviceTokenDto,
     );
+  }
+
+  /**
+   * 유저의 디바이스 토큰을 삭제합니다. 로그아웃할 때 디바이스 토큰을 삭제해주세요.
+   */
+  @ApiNotFoundResponse({
+    description: '해당 유저가 존재하지 않습니다.',
+    type: BadRequestResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유저 확인 실패',
+    type: UnauthorizedResponse,
+  })
+  @ApiBadRequestResponse({
+    description: '적절하지 않은 입력입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiForbiddenResponse({
+    description: '이 유저는 수정할 수 없습니다.',
+    type: ForbiddenResponse,
+  })
+  @ApiOkResponse({
+    description: '토큰을 성공적으로 수정합니다.',
+    type: SuccessResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Delete(':id/token/:token')
+  async deleteToken(
+    @Param('token') token: string,
+    @Req() req,
+  ) {
+    return await this.deviceTokenService.deleteMany({ token });
   }
 }

@@ -88,15 +88,14 @@ export class GuideService {
     const overdue = await this.checkScheduleOverdue(plantInfo);
     for (const kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        const notiProms = plantInfo.user?.device_tokens
-          ? plantInfo.user.device_tokens.map((device) =>
-              this.notiService.sendPushNotiToDevice(
-                device,
+        const notiPromise =
+          plantInfo.user?.device_tokens && plantInfo.user.guide_push_noti
+            ? this.notiService.sendPushNotiToMultiDevices(
+                plantInfo.user.device_tokens,
                 'PLeon 관리 가이드',
                 this.notiContentFormat(plantInfo.name, kind),
-              ),
             )
-          : [Promise.resolve(undefined)];
+            : Promise.resolve();
         await this.notiService.deleteMany({
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
@@ -108,9 +107,8 @@ export class GuideService {
             kind: NotiKind[kind],
             content: this.notiContentFormat(plantInfo.name, kind),
           }),
-          ...notiProms,
+          notiPromise,
         ]);
-        console.log('send noti', kind);
       }
     }
   }

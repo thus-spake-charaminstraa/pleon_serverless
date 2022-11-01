@@ -41,6 +41,18 @@ export class User {
       'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/default_user_img.png',
   })
   thumbnail: string;
+
+  @Prop({
+    required: true,
+    default: true,
+  })
+  comment_push_noti: boolean;
+
+  @Prop({
+    required: true,
+    default: true,
+  })
+  guide_push_noti: boolean;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

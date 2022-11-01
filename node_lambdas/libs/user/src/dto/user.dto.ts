@@ -1,4 +1,9 @@
-import { IsString, IsPhoneNumber, IsOptional } from 'class-validator';
+import {
+  IsString,
+  IsPhoneNumber,
+  IsOptional,
+  IsBoolean,
+} from 'class-validator';
 import { TokenResDto } from '@app/auth/dto/token.dto';
 import { User } from '../entities/user.entity';
 import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
@@ -19,6 +24,12 @@ export class UpdateUserDto extends PartialType(
 ) {
   @IsString()
   thumbnail: string;
+
+  @IsBoolean()
+  comment_push_noti: boolean;
+
+  @IsBoolean()
+  guide_push_noti: boolean;
 }
 
 export class CreateUserResDto {
