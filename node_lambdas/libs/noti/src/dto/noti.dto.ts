@@ -74,6 +74,8 @@ export class GetNotiQuery {
   plant_id?: string;
 
   kind?: NotiKind;
+
+  feed_id?: string;
 }
 
 export class GetGuideNotiQuery {

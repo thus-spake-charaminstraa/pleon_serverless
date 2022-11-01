@@ -38,23 +38,23 @@ export class UpdateCommentDto extends PartialType(
 ) {}
 
 export class GetCommentQuery {
-  feed_id: string;
+  feed_id?: string;
 
-  user_id: string;
+  user_id?: string;
 
-  plant_id: string;
+  plant_id?: string;
 
-  author_kind: CommentAuthorKind;
+  author_kind?: CommentAuthorKind;
 }
 
 export class DeleteCommentQuery {
-  feed_id: string;
+  feed_id?: string;
 
-  user_id: string;
+  user_id?: string;
 
-  plant_id: string;
+  plant_id?: string;
 
-  author_kind: CommentAuthorKind;
+  author_kind?: CommentAuthorKind;
 }
 
 export class CommentRes extends Comment {

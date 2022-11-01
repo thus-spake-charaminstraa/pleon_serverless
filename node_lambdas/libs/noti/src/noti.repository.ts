@@ -37,12 +37,15 @@ export class NotiRepository extends CommonRepository<
   }
 
   async findAllCommentNotiGroupByDate(query: GetNotiQuery): Promise<Noti[]> {
-    const { owner, ...q } = query;
+    const { owner, ...q }: any = query;
+    if (owner) {
+      q.owner = new Types.ObjectId(owner);
+    }
     return await this.notiModel
       .aggregate()
       .match({
         kind: NotiKind.comment,
-        owner: new Types.ObjectId(owner),
+        ...q,
       })
       .lookup({
         from: 'feeds',
