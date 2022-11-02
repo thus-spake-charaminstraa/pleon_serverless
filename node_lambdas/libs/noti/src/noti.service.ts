@@ -31,7 +31,7 @@ export class NotiService extends CommonService<
 > {
   private notiContentFormat: (name: string, kind: string) => string;
   private fcmMessaging: Messaging;
-  private dryRun = true;
+  private dryRun = false;
 
   constructor(
     private readonly notiRepository: NotiRepository,
