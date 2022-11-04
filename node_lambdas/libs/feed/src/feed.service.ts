@@ -77,7 +77,32 @@ export class FeedService extends CommonService<
   }
 
   async findAllNotCommented(query: any) {
-    const ret = await this.feedRepository.findAllNotCommented(query);
+    const feeds = await this.feedRepository.findAllNotCommented(query);
+    const ret = [];
+    feeds.forEach((feed: any) => {
+      const {
+        id: feed_id,
+        plant_id,
+        owner,
+        kind,
+        content,
+        created_at,
+        comments,
+        diagnosis,
+        notis,
+      } = feed;
+      ret.push({
+        feed_id,
+        plant_id,
+        owner,
+        kind,
+        content,
+        created_at,
+        comments,
+        diagnosis,
+        notis,
+      });
+    });
     return ret;
   }
 }

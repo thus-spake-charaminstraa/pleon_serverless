@@ -43,6 +43,8 @@ declare -a array=(
   "chat-disconnect"
   "token-check"
   "plant-doctor-analysis"
+  "plant-comment-get-feed"
+  "plant-comment-create-comment"
 )
 
 if [ $# -eq 0 ]

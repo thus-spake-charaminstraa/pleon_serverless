@@ -10,7 +10,7 @@ deploy() {
 }
 
 declare -a array=(
-  "mono-app"
+  # "mono-app"
   # "auth-lambda"
   # "comment-lambda"
   # "feed-lambda"
@@ -19,14 +19,14 @@ declare -a array=(
   # "plant-lambda"
   # "schedule-lambda"
   # "user-lambda"
-  "guide-noti-lambda"
-  "chat-lambda"
-  "chat-connect"
-  "chat-disconnect"
-  "token-check"
-  "plant-doctor-analysis"
-  "plant-detection"
-  "plant-doctor"
+  # "guide-noti-lambda"
+  # "chat-lambda"
+  # "chat-connect"
+  # "chat-disconnect"
+  # "token-check"
+  # "plant-doctor-analysis"
+  # "plant-detection"
+  # "plant-doctor"
 )
 
 

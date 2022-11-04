@@ -3,9 +3,3 @@ docker build -t plant_doctor_x86 . --platform=linux/amd64
 docker tag plant_doctor_x86 305106164225.dkr.ecr.ap-northeast-2.amazonaws.com/lambda-plant-doctor:latest
 docker push 305106164225.dkr.ecr.ap-northeast-2.amazonaws.com/lambda-plant-doctor:latest
 docker rmi -f 305106164225.dkr.ecr.ap-northeast-2.amazonaws.com/lambda-plant-doctor:latest
-
-# aws lambda update-function-code \
-#   --function-name "plant-doctor" \
-#   --image-uri \
-#   --region ap-northeast-2 \
-#   > /dev/null

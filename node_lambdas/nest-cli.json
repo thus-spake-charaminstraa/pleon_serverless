@@ -173,6 +173,26 @@
         "tsConfigPath": "apps/plant-doctor-analysis/tsconfig.app.json"
       }
     },
+    "plant-comment-get-feed": {
+      "type": "application",
+      "root": "apps/plant-comment-get-feed",
+      "entryFile": "main",
+      "sourceRoot": "apps/plant-comment-get-feed/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/plant-comment-get-feed/tsconfig.app.json"
+      }
+    },
+    "plant-comment-create-comment": {
+      "type": "application",
+      "root": "apps/plant-comment-create-comment",
+      "entryFile": "main",
+      "sourceRoot": "apps/plant-comment-create-comment/src",
+      "compilerOptions": {
+        "webpack": true,
+        "tsConfigPath": "apps/plant-comment-create-comment/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",
