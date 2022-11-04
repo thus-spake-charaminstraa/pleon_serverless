@@ -32,8 +32,8 @@ export const handler: Handler = async (
         feed_id: commentResponse.feed_id,
         author_kind: CommentAuthorKind.plant,
       }
-      // return commentService.create(createCommentdto);
-      return Promise.resolve();
+      console.log(createCommentdto);
+      return commentService.create(createCommentdto);
     }));
 
     return {

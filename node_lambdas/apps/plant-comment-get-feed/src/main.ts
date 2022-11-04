@@ -29,7 +29,7 @@ export const handler: Handler = async (
     else feeds = await feedService.findAllNotCommented({});
     
     return {
-      data: feeds,
+      body: JSON.stringify({ data: feeds }),
       statusCode: 200,
       headers: {
         'Access-Control-Allow-Headers': 'Content-Type',

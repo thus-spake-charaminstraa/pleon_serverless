@@ -5,7 +5,8 @@ import torch
 import json
 import os
 if os.environ.get('LAMBDA_TASK_ROOT'):
-    os.environ['TRANSFORMERS_CACHE'] = '/tmp/'
+    print('cache path change')
+    os.environ['TRANSFORMERS_CACHE'] = '/tmp/cache'
 
 ko_doctor_dict = {}
 ko_feed_dict = {}
@@ -41,7 +42,7 @@ ko_noti_dict['prune'] = '그리고 나는 가지치기 하고 싶어요.'
 ko_noti_dict['spray'] = '그리고 나는 수분으로 촉촉하고 싶어요.'
 ko_noti_dict['nutrition'] = '그리고 나는 영양제를 먹고 싶어요.'
 
-ko_user_content_dict['water'] = '물 많이 마셔서 좋지?'
+ko_user_content_dict['water'] = '물 마셔서 어때?'
 ko_user_content_dict['air'] = '오늘 너에게 환기해줬어. 신선한 공기 마시니까 어때?'
 ko_user_content_dict['repot'] = '오늘 너를 새 화분으로 분갈이했어. 새 화분으로 이사하니까 좋지?'
 ko_user_content_dict['prune'] = '오늘 가지를 정리해줬어.'
@@ -53,8 +54,13 @@ ko_user_content_dict['flower'] = '너한테 이쁜 꽃이 피었어!'
 ko_user_content_dict['fruit'] = '너한테 열매가 열려서 기분이 좋지? '
 ko_user_content_dict['etc'] = '너는 오늘 어때?'
 
-tokenizer = AutoTokenizer.from_pretrained('gpt2_saved_model')
-model = AutoModelWithLMHead.from_pretrained('gpt2_saved_model')
+model_path = os.getcwd() + '/gpt2_saved_model'
+print(model_path)
+
+tokenizer = AutoTokenizer.from_pretrained(
+    './gpt2_saved_model/')
+model = AutoModelWithLMHead.from_pretrained(
+    './gpt2_saved_model/')
 
 
 def preprocess_feed_content(feed) -> Tuple[str, str]:
@@ -86,6 +92,7 @@ def preprocess_comments(comments: list) -> list:
             turn['content'] += ' ' + comment['content']
     ret.append(turn)
     return ret
+
 
 def preprocess_diagnosis(diagnosis: list) -> str:
     ret = ''
@@ -130,14 +137,12 @@ def handler(event, context):
     result = []
     for feed in feeds:
         feed_context, feed_user_content_context = preprocess_feed_content(feed)
-        # feed_context = ''
         comment_turn_list = preprocess_comments(feed['comments'])
-        # noti_context = preprocess_notis(feed['notis'])
-        noti_context = ''
+        noti_context = preprocess_notis(feed['notis'])
         # diagnosis_context = preprocess_diagnosis(feed['diagnosis'])
         diagnosis_context = ''
         bot_response = ''
-        
+
         if len(comment_turn_list) > 7:
             comment_turn_list = comment_turn_list[-8:]
             chat_history_str = ''
@@ -181,7 +186,8 @@ def handler(event, context):
         })
 
         print(comment_turn_list)
-        print('plant: ', feed_context, diagnosis_context, noti_context, '|| user : ', feed_user_content_context)
+        print('plant: ', feed_context, diagnosis_context,
+              noti_context, '|| user : ', feed_user_content_context)
         print('bot : ' + bot_response, end='\n')
 
     return {

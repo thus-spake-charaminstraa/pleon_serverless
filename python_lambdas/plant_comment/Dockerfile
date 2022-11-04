@@ -11,10 +11,14 @@ RUN yum groupinstall "Development Tools" -y
 RUN python3.8 -m pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
 # Load the model and store it 
-COPY ./gpt2_saved_model "${LAMBDA_TASK_ROOT}"
+COPY ./gpt2_saved_model/ "${LAMBDA_TASK_ROOT}/gpt2_saved_model/"
+
+# RUN ls -la "${LAMBDA_TASK_ROOT}/gpt2_saved_model"
 
 # Copy index.py file to the container
 COPY ./app.py "${LAMBDA_TASK_ROOT}"
+
+ENV TRANSFORMERS_CACHE="/tmp/cache"
 
 # Set the CMD to your handler
 CMD ["app.handler"]
