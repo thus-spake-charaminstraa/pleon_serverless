@@ -10,6 +10,7 @@ import { CommonService } from '@app/common/common.service';
 import { NotiService } from '@app/noti/noti.service';
 import { DeviceTokenService } from '@app/user/services/device-token.service';
 import { NotiKind } from '@app/noti/types/noti-kind.type';
+import { UserService } from '@app/user/services/user.service';
 
 @Injectable()
 export class CommentService extends CommonService<
@@ -22,6 +23,7 @@ export class CommentService extends CommonService<
     private readonly commentRepository: CommentRepository,
     private readonly notiService: NotiService,
     private readonly deviceTokenService: DeviceTokenService,
+    private readonly userService: UserService,
   ) {
     super(commentRepository);
   }
@@ -30,11 +32,12 @@ export class CommentService extends CommonService<
     const ret = await this.commentRepository.create(createCommentDto);
     const comment = await this.commentRepository.findOne(ret.id.toString());
     if (!ret.user_id) {
-      const deviceTokens = await this.deviceTokenService.findAllByUserId(
-        comment.feed.owner.toString(),
-      );
+      const [deviceTokens, user] = await Promise.all([
+        this.deviceTokenService.findAllByUserId(comment.feed.owner.toString()),
+        this.userService.findOne(comment.feed.owner.toString()),
+      ]);
       const notiRet = await Promise.all([
-        comment.user?.comment_push_noti
+        user?.comment_push_noti
           ? this.notiService.sendPushNotiToMultiDevices(
               deviceTokens,
               '식물이 댓글을 달았어요!',

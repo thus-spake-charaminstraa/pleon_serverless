@@ -25,15 +25,15 @@ export class UpdateUserDto extends PartialType(
 ) {
   @IsOptional()
   @IsString()
-  thumbnail: string;
+  thumbnail?: string;
 
   @IsOptional()
   @IsBoolean()
-  comment_push_noti: boolean;
+  comment_push_noti?: boolean;
 
   @IsOptional()
   @IsBoolean()
-  guide_push_noti: boolean;
+  guide_push_noti?: boolean;
 }
 
 export class CreateUserResDto {

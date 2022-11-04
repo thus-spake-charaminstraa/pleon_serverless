@@ -24,7 +24,7 @@ export const handler: Handler = async (
     console.log('bootstrap time: ', new Date().getTime() - t, 'ms');
   }
   return {
-    body: await guideService.sendNotiForPlants(),
+    body: await guideService.sendNotiForPlants({}),
     statusCode: HttpStatus.OK,
   };
 };
