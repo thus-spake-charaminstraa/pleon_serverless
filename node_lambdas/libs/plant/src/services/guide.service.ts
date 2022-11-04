@@ -50,7 +50,9 @@ export class GuideService {
         ? new Date(speciesInfo.proper_watering_winter)
         : new Date(speciesInfo.proper_watering_other),
       air: new Date(2 * 24 * 60 * 60 * 1000),
-      repot: new Date(90 * 24 * 60 * 60 * 1000),
+      repot: ifWinter
+        ? new Date(1000 * 24 * 60 * 60 * 1000)
+        : new Date(90 * 24 * 60 * 60 * 1000),
       prune: new Date(30 * 24 * 60 * 60 * 1000),
       spray: new Date(3 * 24 * 60 * 60 * 1000),
       nutrition: new Date(30 * 24 * 60 * 60 * 1000),
