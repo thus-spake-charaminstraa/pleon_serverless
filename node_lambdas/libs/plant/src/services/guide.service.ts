@@ -115,8 +115,8 @@ export class GuideService {
     }
   }
 
-  async sendNotiForPlants(): Promise<void> {
-    const plantInfos = await this.plantService.findAllInfo();
+  async sendNotiForPlants(query: any): Promise<void> {
+    const plantInfos = await this.plantService.findAllInfo(query);
     const ret = await Promise.all(
       plantInfos.map((plant) => this.sendNotiForPlant(plant)),
     );

@@ -116,7 +116,7 @@ export class PlantService extends CommonService<
     return plant as GetPlantResDto;
   }
 
-  async findAllInfo() {
-    return await this.plantRepository.findAllInfo();
+  async findAllInfo(query: any) {
+    return await this.plantRepository.findAllInfo(query);
   }
 }

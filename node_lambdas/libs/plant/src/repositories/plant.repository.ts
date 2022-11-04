@@ -42,9 +42,9 @@ export class PlantRepository extends CommonRepository<
     return await this.plantModel.find(query).populate('user').exec();
   }
 
-  async findAllInfo(): Promise<any[]> {
+  async findAllInfo(query: any): Promise<any[]> {
     return await this.plantModel
-      .find()
+      .find(query)
       .select({ id: 1, owner: 1, species: 1, name: 1, adopt_date: 1 })
       .populate({
         path: 'user',

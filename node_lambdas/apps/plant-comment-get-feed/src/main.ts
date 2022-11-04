@@ -22,6 +22,7 @@ export const handler: Handler = async (
   try {
     const body = JSON.parse(event.body);
     let feeds;
+    console.log(body);
     if (body.owner) {
       feeds = await feedService.findAllNotCommented({ owner: body.owner });
     }
