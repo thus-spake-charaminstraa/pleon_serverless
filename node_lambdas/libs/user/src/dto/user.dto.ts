@@ -10,6 +10,7 @@ import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
 import { DeviceToken } from '../entities/device-token.entity';
 
 export class CreateUserDto {
+  @IsOptional()
   @IsString()
   nickname: string;
 
@@ -22,12 +23,15 @@ export class CreateUserDto {
 export class UpdateUserDto extends PartialType(
   PickType(CreateUserDto, ['nickname'] as const),
 ) {
+  @IsOptional()
   @IsString()
   thumbnail: string;
 
+  @IsOptional()
   @IsBoolean()
   comment_push_noti: boolean;
 
+  @IsOptional()
   @IsBoolean()
   guide_push_noti: boolean;
 }
