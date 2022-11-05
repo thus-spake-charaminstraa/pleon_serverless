@@ -3,6 +3,7 @@ import {
   IsPhoneNumber,
   IsOptional,
   IsBoolean,
+  IsEmail,
 } from 'class-validator';
 import { TokenResDto } from '@app/auth/dto/token.dto';
 import { User } from '../entities/user.entity';
@@ -18,6 +19,16 @@ export class CreateUserDto {
   @IsOptional()
   @IsPhoneNumber('KR')
   phone: string;
+
+  @ApiHideProperty()
+  @IsOptional()
+  @IsEmail()
+  email: string;
+
+  @ApiHideProperty()
+  @IsOptional()
+  @IsString()
+  kakao_id: string;
 }
 
 export class UpdateUserDto extends PartialType(

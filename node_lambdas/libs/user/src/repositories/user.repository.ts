@@ -24,6 +24,13 @@ export class UserRepository {
       .exec();
   }
 
+  async findByKakaoId(kakaoId: string): Promise<User> {
+    return await this.userModel
+      .findOne({ kakao_id: kakaoId })
+      .populate('device_tokens')
+      .exec();
+  }
+
   async findOne(id: string): Promise<User> {
     return await this.userModel
       .findOne({ id })

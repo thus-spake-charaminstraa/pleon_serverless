@@ -8,12 +8,13 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { AuthRepository } from './auth.repository';
 import { PublishCommand, SNSClient } from '@aws-sdk/client-sns';
-import { VerifySmsDto, SendSmsDto, VerifySmsResDto } from './dto/sms-auth.dto';
+import { VerifySmsDto, SendSmsDto, VerifyAuthResDto, VerifyKakaoDto } from './dto/sms-auth.dto';
 import { User } from '@app/user/entities/user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { v4 as uuid4 } from 'uuid';
 import { CreateTokenResDto } from './dto/token.dto';
 import { UserRepository } from '@app/user/repositories/user.repository';
+import { HttpService } from '@nestjs/axios';
 
 const snsClient = new SNSClient({ region: 'ap-northeast-1' });
 
@@ -25,6 +26,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
     private readonly configService: ConfigService,
     private readonly authRepository: AuthRepository,
+    private readonly httpService: HttpService,
   ) {}
 
   async login(user: User): Promise<CreateTokenResDto> {
@@ -77,7 +79,7 @@ export class AuthService {
     return result;
   }
 
-  async verifySms(verifySmsDto: VerifySmsDto): Promise<VerifySmsResDto> {
+  async verifySms(verifySmsDto: VerifySmsDto): Promise<VerifyAuthResDto> {
     const savedCode = await this.authRepository.find(verifySmsDto.phone);
     if (
       verifySmsDto.code !== '777777' && // TODO: remove this line: bypass sms auth
@@ -87,6 +89,26 @@ export class AuthService {
     }
     const existUser = await this.userRepository.findByPhone(verifySmsDto.phone);
     const sub = !!existUser ? existUser.id : verifySmsDto.phone;
+    return {
+      isExist: !!existUser,
+      verify_token: this.jwtService.sign({ sub }),
+    };
+  }
+
+  async verifyKakao(verifyKakaoDto: VerifyKakaoDto): Promise<VerifyAuthResDto> {
+    const kakaoRes: any = (await this.httpService.axiosRef.get(
+      'https://kapi.kakao.com/v2/user/me',
+      {
+        headers: {
+          Authorization: `Bearer ${verifyKakaoDto.access_token}`,
+        },
+      },
+    )).data;
+    console.log(kakaoRes);
+    const kakaoId = kakaoRes.id;
+    const kakaoEmail = kakaoRes.kakao_account.email;
+    const existUser = await this.userRepository.findByKakaoId(kakaoId);
+    const sub = !!existUser ? existUser.id : kakaoId;
     return {
       isExist: !!existUser,
       verify_token: this.jwtService.sign({ sub }),

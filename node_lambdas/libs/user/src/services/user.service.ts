@@ -40,6 +40,18 @@ export class UserService {
     return ret;
   }
 
+  async createKakao(createUserDto: CreateUserDto, kakaoId: string) {
+    if (await this.checkKakaoIdDuplicate(kakaoId)) {
+      throw new BadRequestException('이미 존재하는 카카오 아이디입니다.');
+    }
+    const user = await this.userRepository.create({
+      ...createUserDto,
+      kakao_id: kakaoId,
+    });
+    const ret = await this.authService.login(user);
+    return ret;
+  }
+
   async update(id: string, updateUserDto: UpdateUserDto): Promise<User> {
     if (updateUserDto.thumbnail === '')
       updateUserDto.thumbnail =
@@ -69,6 +81,11 @@ export class UserService {
 
   async checkPhoneDuplicate(phone: string): Promise<boolean> {
     const user = await this.userRepository.findByPhone(phone);
+    return !!user;
+  }
+
+  async checkKakaoIdDuplicate(kakaoId: string): Promise<boolean> {
+    const user = await this.userRepository.findByKakaoId(kakaoId);
     return !!user;
   }
 }

@@ -92,6 +92,37 @@ export class UserLambdaController {
     return await this.userService.create(createUserDto, req.user.sub);
   }
 
+  /*
+   * 카카오 새 유저를 생성합니다. 이미 존재하는 유저로 생성하려고 하면 BadRequestException을 던집니다.
+   */
+  @ApiBadRequestResponse({
+    description: '중복된 유저입니다.',
+    type: BadRequestResponse,
+  })
+  @ApiOkResponse({
+    description: '유저 생성을 성공합니다.',
+    type: CreateUserResponse,
+  })
+  @ApiUnauthorizedResponse({
+    description: '유효하지 않은 verify token입니다.',
+    type: UnauthorizedResponse,
+  })
+  @ApiHeader({
+    name: 'Authorization',
+    description:
+      'Bearer token으로 /auth/verify-kakao에서 받은 token을 전달합니다.',
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtCheckGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('kakao')
+  async createKakao(
+    @Body() createUserDto: CreateUserDto,
+    @Req() req,
+  ): Promise<CreateUserResDto> {
+    return await this.userService.createKakao(createUserDto, req.user.sub);
+  }
+
   @Get()
   async findAll() {
     return await this.userService.findAll();
@@ -199,7 +230,7 @@ export class UserLambdaController {
   }
 
   /**
-   * 유저의 디바이스 토큰을 업데이트 합니다. 
+   * 유저의 디바이스 토큰을 업데이트 합니다.
    */
   @ApiNotFoundResponse({
     description: '해당 유저가 존재하지 않습니다.',
@@ -263,10 +294,7 @@ export class UserLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id/token/:token')
-  async deleteToken(
-    @Param('token') token: string,
-    @Req() req,
-  ) {
+  async deleteToken(@Param('token') token: string, @Req() req) {
     return await this.deviceTokenService.deleteMany({ token });
   }
 }

@@ -13,7 +13,12 @@ export class VerifySmsDto {
   code: string;
 }
 
-export class VerifySmsResDto {
+export class VerifyKakaoDto {
+  @IsString()
+  access_token: string;
+}
+
+export class VerifyAuthResDto {
   isExist: boolean;
   verify_token: string;
 }

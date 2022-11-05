@@ -12,7 +12,7 @@ import { AuthService } from '@app/auth';
 import {
   SendSmsDto,
   VerifySmsDto,
-  VerifySmsResDto,
+  VerifyAuthResDto,
   CreateTokenResDto,
   RefreshTokenDto,
   JwtAuthGuard,
@@ -51,7 +51,7 @@ export class AuthLambdaController {
   @Post('verify-sms')
   async verifySms(
     @Body(PhonePipe) verifySmsDto: VerifySmsDto,
-  ): Promise<VerifySmsResDto> {
+  ): Promise<VerifyAuthResDto> {
     return await this.authService.verifySms(verifySmsDto);
   }
 

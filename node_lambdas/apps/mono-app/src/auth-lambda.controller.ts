@@ -6,7 +6,8 @@ import {
 import {
   SendSmsDto,
   VerifySmsDto,
-  VerifySmsResDto,
+  VerifyAuthResDto,
+  VerifyKakaoDto,
 } from '@app/auth/dto/sms-auth.dto';
 import { CreateTokenResDto, RefreshTokenDto } from '@app/auth/dto/token.dto';
 import {
@@ -127,8 +128,28 @@ export class AuthLambdaController {
   @Post('verify-sms')
   async verifySms(
     @Body(PhonePipe) verifySmsDto: VerifySmsDto,
-  ): Promise<VerifySmsResDto> {
+  ): Promise<VerifyAuthResDto> {
     return await this.authService.verifySms(verifySmsDto);
+  }
+
+  /**
+   * 주어진 카카오 액세스 토큰을 검증합니다. 
+   * 카카오 토큰 검증이 성공하면 인증 토큰을 반환합니다.
+   */
+  @ApiOkResponse({
+    type: VerifySmsResponse,
+    description: '카카오 인증 성공',
+  })
+  @ApiUnauthorizedResponse({
+    type: UnauthorizedResponse,
+    description: '인증 토큰이 일치하지 않습니다.',
+  })
+  @HttpCode(HttpStatus.OK)
+  @Post('verify-kakao')
+  async verifyKakao(
+    @Body() verifyKakaoDto: VerifyKakaoDto,
+  ): Promise<VerifyAuthResDto> {
+    return await this.authService.verifyKakao(verifyKakaoDto);
   }
 
   /**

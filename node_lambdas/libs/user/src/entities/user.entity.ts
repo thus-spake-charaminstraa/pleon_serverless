@@ -32,8 +32,14 @@ export class User {
   @Prop({ required: true })
   nickname: string;
 
-  @Prop({ required: true, unique: true })
+  @Prop({ required: false, unique: true })
   phone: string;
+
+  @Prop({ required: false, unique: true })
+  email: string;
+
+  @Prop({ required: false, unique: true })
+  kakao_id: string;
 
   @Prop({
     required: true,

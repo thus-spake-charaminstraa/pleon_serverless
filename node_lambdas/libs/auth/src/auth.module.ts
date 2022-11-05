@@ -10,6 +10,7 @@ import {
   JwtStrategy,
   RefreshJwtStrategy,
 } from './strategies/jwt.strategy';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import {
       inject: [ConfigService],
     }),
     CacheModule.register(),
+    HttpModule,
   ],
   providers: [
     AuthService,
