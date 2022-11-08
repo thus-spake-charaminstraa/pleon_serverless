@@ -25,6 +25,7 @@ export const handler: Handler = async (
   const commentService = app.get(CommentService);
   try {
     const data = JSON.parse(event.body).data;
+    console.log(data);
     const ret = await Promise.all(data.map((commentResponse: any) => {
       const createCommentdto: CreateCommentDto = {
         plant_id: commentResponse.plant_id,
@@ -32,7 +33,6 @@ export const handler: Handler = async (
         feed_id: commentResponse.feed_id,
         author_kind: CommentAuthorKind.plant,
       }
-      console.log(createCommentdto);
       return commentService.create(createCommentdto);
     }));
 
@@ -47,6 +47,7 @@ export const handler: Handler = async (
       success: true,
     };
   } catch (e) {
+    console.log(e);
     let statusCode = e instanceof HttpException ? e.getStatus() : 500;
     const error =
       e instanceof HttpException

@@ -68,6 +68,7 @@ export class NotiRepository extends CommonRepository<
         as: 'plant',
       })
       .unwind({ path: '$plant', preserveNullAndEmptyArrays: true })
+      .sort({ created_at: -1 })
       .group({
         _id: {
           $dateToString: {

@@ -48,10 +48,10 @@ ko_user_content_dict['repot'] = '오늘 너를 새 화분으로 분갈이했어.
 ko_user_content_dict['prune'] = '오늘 가지를 정리해줬어.'
 ko_user_content_dict['spray'] = '오늘 너를 촉촉하게 해줬어. 너 몸을 촉촉하게 해주니까 어때?'
 ko_user_content_dict['nutrition'] = '오늘 너에게 영양제 줬어. 맛있어?'
-ko_user_content_dict['today'] = '요즘 행복하지!'
+ko_user_content_dict['today'] = '요즘 행복해?'
 ko_user_content_dict['leaf'] = '너한테 새 잎이 생겼어!'
 ko_user_content_dict['flower'] = '너한테 이쁜 꽃이 피었어!'
-ko_user_content_dict['fruit'] = '너한테 열매가 열려서 기분이 좋지? '
+ko_user_content_dict['fruit'] = '너한테 열매가 열려서 기분이 좋지?'
 ko_user_content_dict['etc'] = '너는 오늘 어때?'
 
 model_path = os.getcwd() + '/gpt2_saved_model'
@@ -141,6 +141,7 @@ def handler(event, context):
         noti_context = preprocess_notis(feed['notis'])
         # diagnosis_context = preprocess_diagnosis(feed['diagnosis'])
         diagnosis_context = ''
+        feed_content = feed['content']
         bot_response = ''
 
         if len(comment_turn_list) > 7:
@@ -159,7 +160,7 @@ def handler(event, context):
                 chat_generated_history[:, chat_history.shape[-1]:][0], skip_special_tokens=True)
         else:
             context = f'나는 식물이고 너가 내 주인이야. {feed_context} {diagnosis_context} {noti_context} {tokenizer.eos_token}'
-            context += f'{tokenizer.cls_token} {feed_user_content_context}'
+            context += f'{tokenizer.cls_token} {feed_content} {feed_user_content_context}'
             if len(comment_turn_list) > 0:
                 if comment_turn_list[0]['author_kind'] == 'user':
                     context += f'{comment_turn_list[0]["content"]}'
@@ -187,7 +188,7 @@ def handler(event, context):
 
         print(comment_turn_list)
         print('plant: ', feed_context, diagnosis_context,
-              noti_context, '|| user : ', feed_user_content_context)
+              noti_context, '|| user : ', feed_content, feed_user_content_context)
         print('bot : ' + bot_response, end='\n')
 
     return {
@@ -201,3 +202,12 @@ def handler(event, context):
             'data': result,
         })
     }
+
+# data = {
+#     "data": inp["data"]
+# }
+# event = {
+#     "body": json.dumps(data)
+# }
+
+# handler(event, None)

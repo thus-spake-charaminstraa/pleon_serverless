@@ -116,11 +116,13 @@ export class NotiService extends CommonService<
         });
         await this.deviceTokenRepository.deleteMany({ id: failedTokenIds });
       }
+      console.log('send noti success');
       return ret;
     } catch (e) {
-      return await this.deviceTokenRepository.deleteMany({
-        id: targetDevices.map((device: DeviceToken) => device.id),
-      });
+      console.log('send noti fail');
+      // return await this.deviceTokenRepository.deleteMany({
+      //   id: targetDevices.map((device: DeviceToken) => device.id),
+      // });
     }
   }
 

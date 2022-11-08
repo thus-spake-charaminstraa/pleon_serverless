@@ -32,13 +32,13 @@ export class User {
   @Prop({ required: true })
   nickname: string;
 
-  @Prop({ required: false, unique: true })
+  @Prop({ required: false })
   phone: string;
 
-  @Prop({ required: false, unique: true })
+  @Prop({ required: false })
   email: string;
 
-  @Prop({ required: false, unique: true })
+  @Prop({ required: false })
   kakao_id: string;
 
   @Prop({

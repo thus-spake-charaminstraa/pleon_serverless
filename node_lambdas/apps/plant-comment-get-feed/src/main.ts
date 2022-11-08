@@ -20,10 +20,10 @@ export const handler: Handler = async (
   }
   const feedService = app.get(FeedService);
   try {
-    const body = JSON.parse(event.body);
+    const body = JSON.parse(event?.body);
     let feeds;
     console.log(body);
-    if (body.owner) {
+    if (body?.owner) {
       feeds = await feedService.findAllNotCommented({ owner: body.owner });
     }
     else feeds = await feedService.findAllNotCommented({});
