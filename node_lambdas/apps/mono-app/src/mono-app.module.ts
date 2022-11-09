@@ -20,6 +20,7 @@ import { NotiLambdaController } from './noti-lambda.controller';
 import { PlantLambdaController } from './plant-lambda.controller';
 import { ScheduleLambdaController } from './schedule-lambda.controller';
 import { UserLambdaController } from './user-lambda.controller';
+import { GuideNotiController } from './guide-noti.controller';
 
 @Module({
   imports: [
@@ -53,6 +54,7 @@ import { UserLambdaController } from './user-lambda.controller';
     ScheduleLambdaController,
     NotiLambdaController,
     CommentLambdaController,
+    GuideNotiController,
   ],
   providers: [
     {

@@ -295,6 +295,6 @@ export class UserLambdaController {
   @HttpCode(HttpStatus.OK)
   @Delete(':id/token/:token')
   async deleteToken(@Param('token') token: string, @Req() req) {
-    // return await this.deviceTokenService.deleteMany({ token });
+    // return await this.deviceTokenService.deleteMany({ device_token: token });
   }
 }

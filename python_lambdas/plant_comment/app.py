@@ -24,6 +24,7 @@ ko_feed_dict['leaf'] = '나는 잎이 더 많아졌어요'
 ko_feed_dict['flower'] = '나는 새 꽃이 생겼어요'
 ko_feed_dict['fruit'] = '나는 열매가 생겼어.'
 ko_feed_dict['etc'] = ''
+ko_feed_dict['event'] = ''
 
 ko_doctor_dict['water_lack'] = '그리고 나는 목이 말라요.'
 ko_doctor_dict['water_excess'] = '그리고 나는 물을 너무 많이 마셨어요.'
@@ -53,6 +54,7 @@ ko_user_content_dict['leaf'] = '너한테 새 잎이 생겼어!'
 ko_user_content_dict['flower'] = '너한테 이쁜 꽃이 피었어!'
 ko_user_content_dict['fruit'] = '너한테 열매가 열려서 기분이 좋지?'
 ko_user_content_dict['etc'] = '너는 오늘 어때?'
+ko_user_content_dict['event'] = '우리 같이 찍은 사진이야.'
 
 model_path = os.getcwd() + '/gpt2_saved_model'
 print(model_path)

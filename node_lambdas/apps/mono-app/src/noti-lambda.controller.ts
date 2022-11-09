@@ -188,6 +188,7 @@ export class NotiLambdaController {
       GetGuideNotiQuery,
     );
     const ret = await this.notiService.findAllGuideNoti(query);
+    console.log(ret);
     let viewTypeRet: any[] = [
       {
         viewType: NotiViewKind.DEFAULT,
@@ -197,7 +198,7 @@ export class NotiLambdaController {
         },
       },
     ];
-    viewTypeRet.concat(
+    viewTypeRet = viewTypeRet.concat(
       ret.map((noti) => ({
         viewType: NotiViewKind.TWO_BTN,
         viewObject: noti,
