@@ -1,5 +1,12 @@
 export const FeedKindInfos = [
   {
+    name_kr: '이벤트',
+    name_en: 'event',
+    icon_uri:
+      'https://pleon-image-main.s3.ap-northeast-2.amazonaws.com/icon_event.png',
+    auto_content: '당신의 식물과 셀카 한장을 찍어보세요!',
+  },
+  {
     name_kr: '오늘의모습',
     name_en: 'today',
     icon_uri:

@@ -149,8 +149,8 @@ export class NotiLambdaController {
       result.push({
         viewType: NotiListKind.DATE,
         viewObject: {
-          text: notisByDate.date
-        }
+          text: notisByDate.date,
+        },
       });
       notisByDate.notis.forEach((noti: NotiRes) => {
         result.push({
@@ -188,10 +188,21 @@ export class NotiLambdaController {
       GetGuideNotiQuery,
     );
     const ret = await this.notiService.findAllGuideNoti(query);
-    const viewTypeRet: any[] = ret.map((noti) => ({
-      viewType: NotiViewKind.TWO_BTN,
-      viewObject: noti,
-    }));
+    let viewTypeRet: any[] = [
+      {
+        viewType: NotiViewKind.DEFAULT,
+        viewObject: {
+          content:
+            '"#이벤트" 를 태그하고 식물과 찍은 셀카를 올려주시면 추첨을 통해 3명에게 "스타벅스 아메리카노"를 드립니다.\n~11월 22일까지',
+        },
+      },
+    ];
+    viewTypeRet.concat(
+      ret.map((noti) => ({
+        viewType: NotiViewKind.TWO_BTN,
+        viewObject: noti,
+      })),
+    );
     if (
       (
         await this.plantService.findAll({
