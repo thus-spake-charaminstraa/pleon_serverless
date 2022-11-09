@@ -102,7 +102,7 @@ export class GuideService {
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
         });
-        const ret = await Promise.all([
+        const ret = await Promise.any([
           this.notiService.create({
             owner: plantInfo.owner.toString(),
             plant_id: plantInfo.id.toString(),
@@ -117,7 +117,7 @@ export class GuideService {
 
   async sendNotiForPlants(query: any): Promise<void> {
     const plantInfos = await this.plantService.findAllInfo(query);
-    const ret = await Promise.all(
+    const ret = await Promise.any(
       plantInfos.map((plant) => this.sendNotiForPlant(plant)),
     );
   }

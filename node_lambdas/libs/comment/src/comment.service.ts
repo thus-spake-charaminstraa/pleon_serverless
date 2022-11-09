@@ -36,7 +36,7 @@ export class CommentService extends CommonService<
         this.deviceTokenService.findAllByUserId(comment.feed.owner.toString()),
         this.userService.findOne(comment.feed.owner.toString()),
       ]);
-      const notiRet = await Promise.all([
+      const notiRet = await Promise.any([
         user?.comment_push_noti
           ? this.notiService.sendPushNotiToMultiDevices(
               deviceTokens,

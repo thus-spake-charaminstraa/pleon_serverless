@@ -10,4 +10,5 @@ export enum FeedKind {
   flower = 'flower',
   fruit = 'fruit',
   etc = 'etc',
+  event = 'event',
 }

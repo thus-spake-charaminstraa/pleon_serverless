@@ -20,13 +20,17 @@ export const handler: Handler = async (
   }
   const feedService = app.get(FeedService);
   try {
-    const body = JSON.parse(event?.body);
+    let body = undefined;
+    if (event.body) {
+      body = JSON.parse(event.body);
+    }
     let feeds;
     console.log(body);
     if (body?.owner) {
       feeds = await feedService.findAllNotCommented({ owner: body.owner });
     }
     else feeds = await feedService.findAllNotCommented({});
+    console.log(feeds);
     
     return {
       body: JSON.stringify({ data: feeds }),
@@ -39,6 +43,7 @@ export const handler: Handler = async (
       success: feeds.length > 0,
     };
   } catch (e) {
+    console.log(e);
     let statusCode = e instanceof HttpException ? e.getStatus() : 500;
     const error =
       e instanceof HttpException
