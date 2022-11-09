@@ -24,10 +24,11 @@ import { CommentModule } from '@app/comment/comment.module';
             { document: false, query: true },
             async function () {
               const { id } = this.getFilter();
-              await Promise.all([
+              const ret = await Promise.allSettled([
                 commentService.deleteMany({ feed_id: id }),
                 notiService.deleteMany({ feed_id: id }),
               ]);
+              console.log('feed cascade delete', ret);
             },
           );
           return schema;

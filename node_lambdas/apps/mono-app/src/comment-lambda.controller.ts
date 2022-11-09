@@ -143,7 +143,7 @@ export class CommentLambdaController {
     type: UpdateCommentResponse,
   })
   @ApiBearerAuth()
-  @UseInterceptors(CommentByParamsIdInterceptor)
+  // @UseInterceptors(CommentByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Patch(':id')
@@ -152,8 +152,6 @@ export class CommentLambdaController {
     @Body() updateCommentDto: UpdateCommentDto,
     @Req() req,
   ) {
-    const ability = this.caslAbilityFactory.createForEntity();
-    ability.checkCanModify(req.user, req.entity);
     return await this.commentService.update(id, updateCommentDto);
   }
 
@@ -177,13 +175,11 @@ export class CommentLambdaController {
     type: SuccessResponse,
   })
   @ApiBearerAuth()
-  @UseInterceptors(CommentByParamsIdInterceptor)
+  // @UseInterceptors(CommentByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
   async deleteOne(@Param('id') id: string, @Req() req) {
-    const ability = this.caslAbilityFactory.createForEntity();
-    ability.checkCanModify(req.user, req.entity);
     return await this.commentService.deleteOne(id);
   }
 }

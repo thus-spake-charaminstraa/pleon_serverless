@@ -33,7 +33,13 @@ export class NotiRepository extends CommonRepository<
 
   async findAll(query: GetNotiQuery): Promise<Noti[]> {
     const { ...q } = query;
-    return await this.notiModel.find(q).sort({ created_at: -1 }).exec();
+    return await this.notiModel
+      .find(q)
+      .populate('feed')
+      .populate('comment')
+      .populate('plant')
+      .sort({ created_at: -1 })
+      .exec();
   }
 
   async findAllCommentNotiGroupByDate(query: GetNotiQuery): Promise<Noti[]> {

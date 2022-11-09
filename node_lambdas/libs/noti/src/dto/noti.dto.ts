@@ -76,6 +76,8 @@ export class GetNotiQuery {
   kind?: NotiKind;
 
   feed_id?: string;
+
+  comment_id?: string;
 }
 
 export class GetGuideNotiQuery {

@@ -102,7 +102,7 @@ export class GuideService {
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
         });
-        const ret = await Promise.any([
+        const ret = await Promise.allSettled([
           this.notiService.create({
             owner: plantInfo.owner.toString(),
             plant_id: plantInfo.id.toString(),
@@ -111,15 +111,17 @@ export class GuideService {
           }),
           notiPromise,
         ]);
+        console.log(ret);
       }
     }
   }
 
   async sendNotiForPlants(query: any): Promise<void> {
     const plantInfos = await this.plantService.findAllInfo(query);
-    const ret = await Promise.any(
+    const ret = await Promise.allSettled(
       plantInfos.map((plant) => this.sendNotiForPlant(plant)),
     );
+    console.log(ret);
   }
 
   async completeManage(id: string): Promise<void> {

@@ -26,7 +26,7 @@ export const handler: Handler = async (
   try {
     const data = JSON.parse(event.body).data;
     console.log(data);
-    const ret = await Promise.any(data.map((commentResponse: any) => {
+    const ret = await Promise.allSettled(data.map((commentResponse: any) => {
       const createCommentdto: CreateCommentDto = {
         plant_id: commentResponse.plant_id,
         content: commentResponse.bot_response,
@@ -35,6 +35,7 @@ export const handler: Handler = async (
       }
       return commentService.create(createCommentdto);
     }));
+    console.log(ret);
 
     return {
       data: ret,
