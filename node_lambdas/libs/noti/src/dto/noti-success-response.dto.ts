@@ -2,6 +2,7 @@ import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { CreateFeedDto } from '@app/feed/dto/feed.dto';
 import { Noti } from '@app/noti/entities/noti.entity';
 import { ApiProperty, getSchemaPath } from '@nestjs/swagger';
+import { NotiModal } from '../resources/noti-modal';
 import { NotiListKind, NotiRes } from './noti.dto';
 
 export class GetNotisResponse extends SuccessResponse {
@@ -119,8 +120,8 @@ export class GetNotiInListResponse extends SuccessResponse {
                 text: {
                   type: 'string',
                   example: '2022.10.31',
-                }
-              }
+                },
+              },
             },
           },
         },
@@ -149,6 +150,33 @@ export class GetNotiInListResponse extends SuccessResponse {
           },
         },
       ],
+    },
+  })
+  data: any[];
+}
+
+export class GetFeedModalNotiResponse extends SuccessResponse {
+  @ApiProperty({
+    type: 'object',
+    properties: {
+      ifExist: {
+        type: 'boolean',
+        example: true,
+      },
+      notices: {
+        type: 'array',
+        items: {
+          $ref: getSchemaPath(NotiModal),
+        },
+        example: [
+          {
+            name: 'event',
+            title: '이벤트',
+            content:
+              '"#이벤트" 를 태그하고 식물과 찍은 셀카를 올려주시면 추첨을 통해 3명에게 "스타벅스 아메리카노"를 드립니다.\n~11월 22일까지',
+          },
+        ],
+      },
     },
   })
   data: any[];

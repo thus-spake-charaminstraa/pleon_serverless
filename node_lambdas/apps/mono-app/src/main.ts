@@ -4,6 +4,7 @@ import { Callback, Context, Handler } from 'aws-lambda';
 import { MonoAppModule } from './mono-app.module';
 import { TransformInterceptor } from '@app/common/interceptors/transform.interceptor';
 import { ValidationPipe } from '@nestjs/common';
+import cookieParser from 'cookie-parser';
 
 let server: Handler;
 
@@ -27,6 +28,9 @@ async function bootstrap(): Promise<Handler> {
 
   // use response interceptor
   app.useGlobalInterceptors(new TransformInterceptor());
+
+  // use http cookie
+  app.use(cookieParser());
 
   await app.init();
   const expressApp = app.getHttpAdapter().getInstance();

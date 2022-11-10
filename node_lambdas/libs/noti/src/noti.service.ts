@@ -21,6 +21,7 @@ import {
 import { Noti } from './entities/noti.entity';
 import { NotiRepository } from './noti.repository';
 import { NotiKind } from './types/noti-kind.type';
+import { notiModalContent } from './resources/noti-modal';
 
 @Injectable()
 export class NotiService extends CommonService<
@@ -49,6 +50,20 @@ export class NotiService extends CommonService<
     this.fcmMessaging = getMessaging();
   }
 
+  async findAllModalNoti(
+    modalNotDisplayExpireDate?: Date,
+  ): Promise<any> {
+    let notices;
+    if (modalNotDisplayExpireDate && modalNotDisplayExpireDate > new Date()) {
+      notices = [];
+    }
+    else notices = notiModalContent;
+    return {
+      ifExist: notices.length > 0,
+      notices,
+    };
+  }
+
   async findAllGuideNoti(query: GetGuideNotiQuery): Promise<Noti[]> {
     query.kinds = [
       NotiKind.water,
@@ -61,9 +76,7 @@ export class NotiService extends CommonService<
     return await this.notiRepository.findAllGuideNoti(query);
   }
 
-  async findAllCommentNotiGroupByDate(
-    query: GetNotiQuery,
-  ): Promise<any[]> {
+  async findAllCommentNotiGroupByDate(query: GetNotiQuery): Promise<any[]> {
     return await this.notiRepository.findAllCommentNotiGroupByDate(query);
   }
 

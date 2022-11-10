@@ -3,8 +3,10 @@ import {
   BadRequestResponse,
   UnauthorizedResponse,
 } from '@app/common/dto/error-response.dto';
+import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { queryParser } from '@app/common/utils/query-parser';
 import {
+  GetFeedModalNotiResponse,
   GetNotiInFeedResponse,
   GetNotiInListResponse,
   GetNotisResponse,
@@ -19,7 +21,6 @@ import {
   NotiManageDto,
   NotiRes,
 } from '@app/noti/dto/noti.dto';
-import { Noti } from '@app/noti/entities/noti.entity';
 import { NotiService } from '@app/noti/noti.service';
 import { NotiKind } from '@app/noti/types/noti-kind.type';
 import { GetPlantQuery } from '@app/plant/dto/plant.dto';
@@ -34,6 +35,7 @@ import {
   Post,
   Query,
   Req,
+  Res,
   UseGuards,
 } from '@nestjs/common';
 import {
@@ -225,6 +227,54 @@ export class NotiLambdaController {
       },
     });
     return viewTypeRet;
+  }
+
+  @ApiUnauthorizedResponse({
+    description: '유저 인증정보가 없습니다.',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '알림 모달 정보입니다.',
+    type: GetFeedModalNotiResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Get('feed-modal')
+  async findAllModalNoti(@Req() req) {
+    const expireDateStr = req.cookies.feed_modal_expired_date;
+    let expireDate;
+    if (expireDateStr) {
+      expireDate = new Date(expireDateStr);
+    }
+    console.log(expireDate);
+    return await this.notiService.findAllModalNoti(expireDate);
+  }
+
+  @ApiUnauthorizedResponse({
+    description: '유저 인증정보가 없습니다.',
+    type: UnauthorizedResponse,
+  })
+  @ApiOkResponse({
+    description: '알림이 성공적으로 하루동안 보이지 않게 됨',
+    type: SuccessResponse,
+  })
+  @ApiBearerAuth()
+  @UseGuards(JwtAuthGuard)
+  @HttpCode(HttpStatus.OK)
+  @Post('feed-modal/one-day')
+  async createOneDayNotiNotDisplay(@Res({ passthrough: true }) res) {
+    const tommorrow = new Date(Date.now() + 1000 * 60 * 60 * 24);
+    const expireDate = new Date(
+      tommorrow.getFullYear(),
+      tommorrow.getMonth(),
+      tommorrow.getDate(),
+      0,
+      0,
+      0,
+    );
+    console.log(tommorrow, expireDate);
+    res.cookie('feed_modal_expired_date', expireDate.toISOString());
   }
 
   /**
