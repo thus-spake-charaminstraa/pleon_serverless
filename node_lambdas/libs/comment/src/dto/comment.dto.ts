@@ -16,7 +16,6 @@ export class CreateCommentDto {
   @IsMongoId()
   feed_id: string;
 
-  @ApiHideProperty()
   @IsOptional()
   @IsMongoId()
   user_id?: string;

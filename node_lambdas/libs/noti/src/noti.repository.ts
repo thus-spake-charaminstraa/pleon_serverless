@@ -47,6 +47,11 @@ export class NotiRepository extends CommonRepository<
     if (owner) {
       q.owner = new Types.ObjectId(owner);
     }
+    const ret = await this.notiModel.updateMany(
+      { owner, is_confirmed: false },
+      { is_confirmed: true },
+    );
+    console.log('comment noti confirm updated', ret);
     return await this.notiModel
       .aggregate()
       .match({
@@ -95,6 +100,14 @@ export class NotiRepository extends CommonRepository<
         },
       })
       .sort({ date: -1 })
+      .exec();
+  }
+
+  async countNotConfirmedCommentNoti(query: GetNotiQuery) {
+    const { owner, ...q } = query;
+    return await this.notiModel
+      .find({ owner, kind: NotiKind.comment, is_confirmed: false })
+      .count()
       .exec();
   }
 

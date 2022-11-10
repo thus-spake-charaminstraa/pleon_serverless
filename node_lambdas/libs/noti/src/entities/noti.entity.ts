@@ -48,6 +48,9 @@ export class Noti {
   @Prop({ required: true, type: String, enum: NotiKind })
   kind: NotiKind;
 
+  @Prop({ required: true, type: Boolean, default: false })
+  is_confirmed: Boolean;
+
   @Prop({ required: false })
   created_at: Date;
 

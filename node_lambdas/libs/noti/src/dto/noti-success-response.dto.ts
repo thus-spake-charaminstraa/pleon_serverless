@@ -181,3 +181,7 @@ export class GetFeedModalNotiResponse extends SuccessResponse {
   })
   data: any[];
 }
+
+export class GetIfNotConfirmedCommentNotiExist extends SuccessResponse {
+  data = true;
+}

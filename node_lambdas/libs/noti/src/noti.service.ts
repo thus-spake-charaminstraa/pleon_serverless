@@ -64,6 +64,11 @@ export class NotiService extends CommonService<
     };
   }
 
+  async checkNotConfirmedCommentNotiExist(query: GetNotiQuery) {
+    const ret = await this.notiRepository.countNotConfirmedCommentNoti(query);
+    return ret > 0;
+  }
+
   async findAllGuideNoti(query: GetGuideNotiQuery): Promise<Noti[]> {
     query.kinds = [
       NotiKind.water,
