@@ -10,7 +10,21 @@ import { NotiService } from './noti.service';
     MongooseModule.forFeature([{ name: Noti.name, schema: NotiSchema }]),
     forwardRef(() => UserModule),
   ],
-  providers: [NotiService, NotiRepository],
-  exports: [NotiService, NotiRepository],
+  providers: [
+    NotiService,
+    NotiRepository,
+    {
+      provide: 'NOTI_SCHEMA',
+      useValue: NotiSchema,
+    },
+  ],
+  exports: [
+    NotiService,
+    NotiRepository,
+    {
+      provide: 'NOTI_SCHEMA',
+      useValue: NotiSchema,
+    },
+  ],
 })
 export class NotiModule {}

@@ -462,7 +462,6 @@ export class FeedLambdaController {
     type: UpdateFeedResponse,
   })
   @ApiBearerAuth()
-  @UseInterceptors(FeedByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Patch(':id')
@@ -471,8 +470,6 @@ export class FeedLambdaController {
     @Body() updateFeedDto: UpdateFeedDto,
     @Req() req,
   ) {
-    const ability = this.caslAbilityFactory.createForEntity();
-    ability.checkCanModify(req.user, req.entity);
     return await this.feedService.update(id, updateFeedDto);
   }
 
@@ -496,13 +493,10 @@ export class FeedLambdaController {
     type: SuccessResponse,
   })
   @ApiBearerAuth()
-  @UseInterceptors(FeedByParamsIdInterceptor)
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
   async deleteOne(@Param('id') id: string, @Req() req) {
-    const ability = this.caslAbilityFactory.createForEntity();
-    ability.checkCanModify(req.user, req.entity);
     return await this.feedService.deleteOne(id);
   }
 }

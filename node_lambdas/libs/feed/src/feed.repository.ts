@@ -52,6 +52,8 @@ export class FeedRepository extends CommonRepository<
         path: 'comments',
         populate: ['user', 'plant'],
       })
+      .populate('plant')
+      .populate('user')
       .exec();
     return ret;
   }
