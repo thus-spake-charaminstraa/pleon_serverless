@@ -229,13 +229,13 @@ export class NotiLambdaController {
     const ret = await this.notiService.findAllGuideNoti(query);
     console.log(ret);
     let viewTypeRet: any[] = [
-      {
-        viewType: NotiViewKind.DEFAULT,
-        viewObject: {
-          content:
-            '"#이벤트" 를 태그하고 식물과 찍은 셀카를 올려주시면 추첨을 통해 3명에게 "스타벅스 아메리카노"를 드립니다.\n~11월 22일까지',
-        },
-      },
+      // {
+      //   viewType: NotiViewKind.DEFAULT,
+      //   viewObject: {
+      //     content:
+      //       '"#이벤트" 를 태그하고 식물과 찍은 셀카를 올려주시면 추첨을 통해 3명에게 "스타벅스 아메리카노"를 드립니다.\n~11월 22일까지',
+      //   },
+      // },
     ];
     viewTypeRet = viewTypeRet.concat(
       ret.map((noti) => ({
@@ -284,6 +284,7 @@ export class NotiLambdaController {
   @Get('feed-modal')
   async findAllModalNoti(@Req() req: Request) {
     const expireDateStr = req.cookies?.feed_modal_expired_date;
+    console.log('cookie is : ', expireDateStr);
     let expireDate;
     if (expireDateStr) {
       expireDate = new Date(expireDateStr);
@@ -319,7 +320,10 @@ export class NotiLambdaController {
       0,
       0,
     );
-    console.log(tommorrow, expireDate);
+    // const expireDate = new Date(
+    //   Date.now() + 1000 * 60,
+    // ); // for test
+    console.log(expireDate);
     res.cookie('feed_modal_expired_date', expireDate.toISOString(), {
       maxAge: 1000 * 60 * 60 * 24,
       httpOnly: true,
