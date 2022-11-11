@@ -11,7 +11,7 @@ export class GuideNotiController {
     name: 'user_id',
     description: '알림을 보낼 유저의 id',
     type: String,
-    required: false,
+    required: true,
   })
   @Post(':user_id')
   async sendGuideNoti(@Param('user_id') userId: string) {

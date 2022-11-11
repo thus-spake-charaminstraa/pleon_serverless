@@ -362,6 +362,33 @@
         ],
         "tsConfigPath": "libs/chat/tsconfig.lib.json"
       }
+    },
+    "event-notice-lambda": {
+      "type": "application",
+      "root": "apps/event-notice-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/event-notice-lambda/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/event-notice-lambda/tsconfig.app.json"
+      }
+    },
+    "comment-notice-lambda": {
+      "type": "application",
+      "root": "apps/comment-notice-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/comment-notice-lambda/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/comment-notice-lambda/tsconfig.app.json"
+      }
+    },
+    "plant-register-notice-lambda": {
+      "type": "application",
+      "root": "apps/plant-register-notice-lambda",
+      "entryFile": "main",
+      "sourceRoot": "apps/plant-register-notice-lambda/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/plant-register-notice-lambda/tsconfig.app.json"
+      }
     }
   }
 }
