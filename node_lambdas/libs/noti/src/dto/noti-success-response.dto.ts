@@ -159,7 +159,7 @@ export class GetFeedModalNotiResponse extends SuccessResponse {
   @ApiProperty({
     type: 'object',
     properties: {
-      ifExist: {
+      isExist: {
         type: 'boolean',
         example: true,
       },

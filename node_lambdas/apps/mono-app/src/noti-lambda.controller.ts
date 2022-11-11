@@ -268,7 +268,7 @@ export class NotiLambdaController {
 
   /**
    * 피드 화면에서 보여줄 공지 모달 목록을 가져옵니다.
-   * 응답 값 중에 ifExist 가 false이면 그냥 모달을 안보여주면 됩니다.
+   * 응답 값 중에 isExist 가 false이면 그냥 모달을 안보여주면 됩니다.
    */
   @ApiUnauthorizedResponse({
     description: '유저 인증정보가 없습니다.',
@@ -294,7 +294,7 @@ export class NotiLambdaController {
 
   /**
    * 피드 화면에서 보여줄 공지 모달을 하루동안 0개로 만듭니다.
-   * 공지 모달을 가져오는 GET /noti/feed-modal api 의 응답값 중 ifExist를
+   * 공지 모달을 가져오는 GET /noti/feed-modal api 의 응답값 중 isExist를
    * 그날 자정까지 항상 false로 만듭니다.
    */
   @ApiUnauthorizedResponse({
