@@ -15,6 +15,7 @@ import { v4 as uuid4 } from 'uuid';
 import { CreateTokenResDto } from './dto/token.dto';
 import { UserRepository } from '@app/user/repositories/user.repository';
 import { HttpService } from '@nestjs/axios';
+import { parsePhoneNumber } from 'libphonenumber-js';
 
 const snsClient = new SNSClient({ region: 'ap-northeast-1' });
 
@@ -83,6 +84,11 @@ export class AuthService {
     const savedCode = await this.authRepository.find(verifySmsDto.phone);
     if (
       verifySmsDto.code !== '777777' && // TODO: remove this line: bypass sms auth
+      !(
+        verifySmsDto.code === '999999' &&
+        verifySmsDto.phone ===
+          parsePhoneNumber('010-9999-9999', 'KR').format('E.164')
+      ) && // TODO: remove this line: bypass sms auth
       (!savedCode || savedCode !== verifySmsDto.code)
     ) {
       throw new UnauthorizedException();
