@@ -59,7 +59,7 @@ export class NotiService extends CommonService<
     }
     else notices = notiModalContent;
     return {
-      ifExist: notices.length > 0,
+      isExist: notices.length > 0,
       notices,
     };
   }
