@@ -3,6 +3,7 @@ import { Plant } from '@app/plant/entities/plant.entity';
 import { Comment } from '@app/comment/entities/comment.entity';
 import { ApiHideProperty, PartialType } from '@nestjs/swagger';
 import {
+  IsBoolean,
   IsEnum,
   IsMongoId,
   IsNotEmpty,
@@ -36,6 +37,11 @@ export class CreateNotiDto {
 
   @IsEnum(NotiKind)
   kind: NotiKind;
+
+  @ApiHideProperty()
+  @IsOptional()
+  @IsBoolean()
+  is_confirmed?: boolean;
 }
 
 export class UpdateNotiDto extends PartialType(CreateNotiDto) {}

@@ -5,7 +5,7 @@ import {
   IsOptional,
   IsString,
 } from 'class-validator';
-import { ApiHideProperty, PartialType, PickType } from '@nestjs/swagger';
+import { PartialType, PickType } from '@nestjs/swagger';
 import { CommentAuthorKind } from '../types/comment-author-kind.type';
 import { Plant } from '@app/plant/entities/plant.entity';
 import { User } from '@app/user/entities/user.entity';

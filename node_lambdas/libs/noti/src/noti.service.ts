@@ -50,6 +50,12 @@ export class NotiService extends CommonService<
     this.fcmMessaging = getMessaging();
   }
 
+  async create(createNotiDto: CreateNotiDto): Promise<Noti> {
+    createNotiDto.is_confirmed = false;
+    const noti = await this.notiRepository.create(createNotiDto);
+    return noti;
+  }
+
   async findAllModalNoti(
     modalNotDisplayExpireDate?: Date,
   ): Promise<any> {
