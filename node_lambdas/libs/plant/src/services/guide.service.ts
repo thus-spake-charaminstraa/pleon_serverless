@@ -75,9 +75,9 @@ export class GuideService {
         overdue = true;
       }
       if (
-        (!schedule) &&
+        !schedule &&
         new Date(plantInfo.adopt_date).getTime() + guide[kind].getTime() <=
-        Date.now()
+          Date.now()
       ) {
         overdue = true;
       }
@@ -87,32 +87,35 @@ export class GuideService {
   }
 
   async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
+    let isGuide = false;
     const overdue = await this.checkScheduleOverdue(plantInfo);
     for (const kind of Object.keys(NotiKind)) {
       if (overdue[kind]) {
-        const notiPromise =
-          plantInfo.user?.device_tokens && plantInfo.user.guide_push_noti
-            ? this.notiService.sendPushNotiToMultiDevices(
-                plantInfo.user.device_tokens,
-                'PLeon 관리 가이드',
-                this.notiContentFormat(plantInfo.name, kind),
-            )
-            : Promise.resolve();
+        isGuide = true;
         await this.notiService.deleteMany({
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
         });
-        const ret = await Promise.allSettled([
-          this.notiService.create({
-            owner: plantInfo.owner.toString(),
-            plant_id: plantInfo.id.toString(),
-            kind: NotiKind[kind],
-            content: this.notiContentFormat(plantInfo.name, kind),
-          }),
-          notiPromise,
-        ]);
+        const ret = await this.notiService.create({
+          owner: plantInfo.owner.toString(),
+          plant_id: plantInfo.id.toString(),
+          kind: NotiKind[kind],
+          content: this.notiContentFormat(plantInfo.name, kind),
+        });
         console.log(ret);
       }
+    }
+    if (
+      isGuide &&
+      plantInfo.user?.device_tokens &&
+      plantInfo.user.guide_push_noti
+    ) {
+      const ret = await this.notiService.sendPushNotiToMultiDevices(
+        plantInfo.user.device_tokens,
+        'PLeon 관리 가이드',
+        `Dr.PLeon이 ${plantInfo.name} 관리 가이드를 보내드렸어요! 지금 확인해보세요 :)`,
+      );
+      console.log(ret);
     }
   }
 

@@ -1,16 +1,14 @@
 import { GuideService } from '@app/plant/services/guide.service';
-import { HttpStatus } from '@nestjs/common';
+import { HttpStatus, INestApplicationContext } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { Callback, Context, Handler } from 'aws-lambda';
 import { GuideNotiLambdaModule } from './guide-noti-lambda.module';
+import { DeviceTokenService } from '@app/user/services/device-token.service';
 
-let guideService: GuideService;
+let app: INestApplicationContext;
 
 async function bootstrap() {
-  const app = await NestFactory.createApplicationContext(GuideNotiLambdaModule);
-  await app.init();
-  const guideService = app.get(GuideService);
-  return guideService;
+  return await NestFactory.createApplicationContext(GuideNotiLambdaModule);
 }
 
 export const handler: Handler = async (
@@ -18,11 +16,15 @@ export const handler: Handler = async (
   context: Context,
   callback: Callback,
 ) => {
-  if (!guideService) {
+  if (!app) {
     const t = new Date().getTime();
-    guideService = await bootstrap();
+    app = await bootstrap();
     console.log('bootstrap time: ', new Date().getTime() - t, 'ms');
   }
+  const guideService = app.get(GuideService);
+  const deviceTokenService = app.get(DeviceTokenService)
+
+  await deviceTokenService.deleteDuplicated();
   return {
     body: await guideService.sendNotiForPlants({}),
     statusCode: HttpStatus.OK,
