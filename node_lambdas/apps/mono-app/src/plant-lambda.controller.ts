@@ -1,6 +1,12 @@
 import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
 import { CaslAbilityFactory } from '@app/common/casl-ability.factory';
-import { BadRequestResponse, ConflictResponse, ForbiddenResponse, NotFoundResponse, UnauthorizedResponse } from '@app/common/dto/error-response.dto';
+import {
+  BadRequestResponse,
+  ConflictResponse,
+  ForbiddenResponse,
+  NotFoundResponse,
+  UnauthorizedResponse,
+} from '@app/common/dto/error-response.dto';
 import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { ParseDateInBodyPipe } from '@app/common/pipes/parse-date.pipe';
 import { queryParser } from '@app/common/utils/query-parser';
@@ -170,9 +176,7 @@ export class PlantLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Post('guide/manage')
-  async guideManage(
-    @Body() guideManageDto: GuideManageDto,
-  ) {
+  async guideManage(@Body() guideManageDto: GuideManageDto) {
     return await this.guideService.guideManage(guideManageDto);
   }
 

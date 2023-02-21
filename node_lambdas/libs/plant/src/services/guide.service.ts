@@ -130,7 +130,7 @@ export class GuideService {
   async completeManage(id: string): Promise<void> {
     const ret = await this.notiService.deleteOne(id);
     const kind: any = ret.kind;
-    const feed = await this.feedService.create(
+    await this.feedService.create(
       {
         owner: ret.owner.toString(),
         plant_id: ret.plant_id.toString(),

@@ -22,7 +22,7 @@ export class CreatePlantDto {
   species: string;
 
   @IsDateString()
-  adopt_date: Date;
+  adopt_date: string | Date;
 
   @IsString()
   thumbnail: string;
@@ -47,13 +47,12 @@ export class UpdatePlantDto extends PartialType(
     'air',
     'adopt_date',
   ] as const),
-) { }
+) {}
 
 export class GetPlantResDto extends Plant {
   d_day: number;
 }
 
 export class GetPlantQuery {
-  owner: string;
+  owner?: string;
 }
-

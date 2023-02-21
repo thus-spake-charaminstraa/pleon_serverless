@@ -104,7 +104,7 @@ export class NotiRepository extends CommonRepository<
   }
 
   async countNotConfirmedCommentNoti(query: GetNotiQuery) {
-    const { owner, ...q } = query;
+    const { owner } = query;
     return await this.notiModel
       .find({ owner, kind: NotiKind.comment, is_confirmed: false })
       .count()
@@ -115,6 +115,23 @@ export class NotiRepository extends CommonRepository<
     return await this.notiModel
       .find({ plant_id })
       .sort({ created_at: -1 })
+      .exec();
+  }
+
+  async findNotisGroupByUser() {
+    return await this.notiModel
+      .aggregate()
+      .match({
+        kind: {
+          $ne: 'comment',
+        },
+      })
+      .group({
+        _id: '$owner',
+        count: {
+          $sum: 1,
+        },
+      })
       .exec();
   }
 }
