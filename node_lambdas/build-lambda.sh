@@ -1,5 +1,10 @@
 #!/bin/bash
 
+build() {
+  rm -rf ./dist/apps/$1
+  npx nest build --webpack $1
+}
+
 uploadCode() {
   pwd=$(pwd)
   aws lambda update-function-code \
@@ -7,11 +12,6 @@ uploadCode() {
     --zip-file fileb://$pwd/main.js.zip \
     --region ap-northeast-2 \
     > /dev/null
-}
-
-build() {
-  rm -rf ./dist/apps/$1
-  npx nest build --webpack $1
 }
 
 packageAndUploadCode() {
@@ -27,42 +27,79 @@ publishVersion() {
     > /dev/null
 }
 
+deploy() {
+  VERSION=$(aws lambda publish-version --function-name $1 | jq -r .Version)
+  aws lambda update-alias \
+    --function-name $1 \
+    --name "production" \
+    --function-version $VERSION \
+    > /dev/null
+}
+
 declare -a array=(
   "mono-app"
-  # "auth-lambda"
-  # "comment-lambda"
-  # "feed-lambda"
-  # "image-lambda"
-  # "noti-lambda"
-  # "plant-lambda"
-  # "schedule-lambda"
-  # "user-lambda"
   "guide-noti-lambda"
-  "chat-lambda"
-  "chat-connect"
-  "chat-disconnect"
+  # "chat-lambda"
+  # "chat-connect"
+  # "chat-disconnect"
   "token-check"
   "plant-doctor-analysis"
   "plant-comment-get-feed"
   "plant-comment-create-comment"
+  "event-notice-lambda"
+  "comment-notice-lambda"
+  "plant-register-notice-lambda"
+  # "plant-detection"
+  # "plant-doctor"
 )
 
-if [ $# -eq 0 ]
-then
-  for i in "${array[@]}"
-  do
-    build "$i"
-    packageAndUploadCode "$i"
-  done
-else
-  for i in "${array[@]}"
-  do
-    build "$i"
-    packageAndUploadCode "$i"
-  done
+build=0
+upload=0
+publish=0
+deploy=0
 
-  for i in "${array[@]}"
-  do
+while [[ $# -gt 0 ]]
+do
+  case $1 in
+    -b|--build)
+      build=1
+      shift
+      ;;
+    -u|--upload)
+      upload=1
+      shift
+      ;;
+    -p|--publish)
+      publish=1
+      shift
+      ;;
+    -d|--deploy)
+      deploy=1
+      shift 
+      ;;
+    *)
+      ;;
+  esac
+done
+
+
+
+for i in "${array[@]}"
+do
+  if [ $build -eq 1 ]
+  then
+    build "$i"
+  fi
+  if [ $upload -eq 1 ]
+  then
+    packageAndUploadCode "$i"
+  fi
+  if [ $publish -eq 1 ]
+  then
     publishVersion "$i"
-  done
-fi
+  fi
+  if [ $deploy -eq 1 ]
+  then
+    deploy "$i"
+  fi
+done
