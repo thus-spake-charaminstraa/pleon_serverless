@@ -1,12 +1,7 @@
 import { CommonService } from '@app/common/common.service';
 import { DeviceToken } from '@app/user/entities/device-token.entity';
 import { DeviceTokenRepository } from '@app/user/repositories/device-token.repository';
-import {
-  BadRequestException,
-  forwardRef,
-  Inject,
-  Injectable,
-} from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { credential } from 'firebase-admin';
 import { initializeApp } from 'firebase-admin/app';
 import { getMessaging, Messaging } from 'firebase-admin/messaging';
@@ -14,8 +9,6 @@ import {
   CreateNotiDto,
   GetGuideNotiQuery,
   GetNotiQuery,
-  NotiManageDto,
-  NotiManageKind,
   UpdateNotiDto,
 } from './dto/noti.dto';
 import { Noti } from './entities/noti.entity';
@@ -56,14 +49,11 @@ export class NotiService extends CommonService<
     return noti;
   }
 
-  async findAllModalNoti(
-    modalNotDisplayExpireDate?: Date,
-  ): Promise<any> {
+  async findAllModalNoti(modalNotDisplayExpireDate?: Date): Promise<any> {
     let notices;
     if (modalNotDisplayExpireDate && modalNotDisplayExpireDate > new Date()) {
       notices = [];
-    }
-    else notices = notiModalContent;
+    } else notices = notiModalContent;
     return {
       isExist: notices.length > 0,
       notices,
@@ -125,6 +115,7 @@ export class NotiService extends CommonService<
       title,
       body: content,
     };
+    if (targetDevices.length === 0) return 'no device';
     const message = {
       tokens: targetDevices.map((device: DeviceToken) => device.device_token),
       notification: GCMPayload,
@@ -138,15 +129,15 @@ export class NotiService extends CommonService<
             failedTokenIds.push(targetDevices[index].id);
           }
         });
-        // await this.deviceTokenRepository.deleteMany({ id: failedTokenIds });
+        await this.deviceTokenRepository.deleteMany({ id: failedTokenIds });
       }
       console.log('send noti success');
       return ret;
     } catch (e) {
       console.log('send noti fail');
-      // return await this.deviceTokenRepository.deleteMany({
-      //   id: targetDevices.map((device: DeviceToken) => device.id),
-      // });
+      return await this.deviceTokenRepository.deleteMany({
+        id: targetDevices.map((device: DeviceToken) => device.id),
+      });
     }
   }
 
@@ -198,34 +189,5 @@ export class NotiService extends CommonService<
       notification: GCMPayload,
     };
     return await this.fcmMessaging.send(message, this.dryRun);
-  }
-
-  async completeManage(id: string): Promise<void> {
-    const ret = await this.notiRepository.deleteOne(id);
-    const kind: any = ret.kind;
-    // const feed = await this.feedService.create(
-    //   {
-    //     owner: ret.owner.toString(),
-    //     plant_id: ret.plant_id.toString(),
-    //     publish_date: new Date(DateStrFormat(new Date())),
-    //     kind,
-    //     content: '오늘은 무엇을 해주었어요~?',
-    //   },
-    //   true,
-    // );
-  }
-
-  async laterManage(id: string): Promise<void> {
-    await this.notiRepository.deleteOne(id);
-  }
-
-  async notiManage(id: string, notiManageDto: NotiManageDto): Promise<void> {
-    if (notiManageDto.type === NotiManageKind.complete) {
-      return await this.completeManage(id);
-    } else if (notiManageDto.type === NotiManageKind.later) {
-      return await this.laterManage(id);
-    } else {
-      throw new BadRequestException('notiManageDto.type is invalid');
-    }
   }
 }

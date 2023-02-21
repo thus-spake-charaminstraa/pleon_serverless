@@ -1,8 +1,5 @@
 import { JwtAuthGuard } from '@app/auth/guards/jwt-auth.guard';
-import {
-  BadRequestResponse,
-  UnauthorizedResponse,
-} from '@app/common/dto/error-response.dto';
+import { UnauthorizedResponse } from '@app/common/dto/error-response.dto';
 import { SuccessResponse } from '@app/common/dto/success-response.dto';
 import { queryParser } from '@app/common/utils/query-parser';
 import {
@@ -11,7 +8,6 @@ import {
   GetNotiInFeedResponse,
   GetNotiInListResponse,
   GetNotisResponse,
-  ManageNotiResponse,
   NotiViewKind,
 } from '@app/noti/dto/noti-success-response.dto';
 import {
@@ -19,7 +15,6 @@ import {
   GetGuideNotiQuery,
   GetNotiQuery,
   NotiListKind,
-  NotiManageDto,
   NotiRes,
 } from '@app/noti/dto/noti.dto';
 import { NotiService } from '@app/noti/noti.service';
@@ -32,7 +27,6 @@ import {
   Get,
   HttpCode,
   HttpStatus,
-  Param,
   Post,
   Query,
   Req,
@@ -40,7 +34,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import {
-  ApiBadRequestResponse,
   ApiBearerAuth,
   ApiOkResponse,
   ApiQuery,
@@ -148,7 +141,7 @@ export class NotiLambdaController {
     const commentNotis = await this.notiService.findAllCommentNotiGroupByDate(
       query,
     );
-    let result = [];
+    const result = [];
     commentNotis.forEach((notisByDate) => {
       result.push({
         viewType: NotiListKind.DATE,
@@ -328,33 +321,5 @@ export class NotiLambdaController {
       maxAge: 1000 * 60 * 60 * 24,
       httpOnly: true,
     });
-  }
-
-  /**
-   * 알림을 처리합니다.
-   * 알림 처리 타입을 req body로 전달하면, 알림을 처리합니다.
-   * 피드를 생성하는 schedule 관련 알림은 피드 생성 dto를 생성하여 res로 전달해줍니다.
-   */
-  @ApiBadRequestResponse({
-    description: '입력 데이터가 올바르지 않음',
-    type: BadRequestResponse,
-  })
-  @ApiOkResponse({
-    description: '알림을 성공적으로 처리함',
-    type: ManageNotiResponse,
-  })
-  @ApiUnauthorizedResponse({
-    description: '유저 인증정보가 없습니다.',
-    type: UnauthorizedResponse,
-  })
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
-  @HttpCode(HttpStatus.OK)
-  @Post(':id')
-  async notiManage(
-    @Body() notiManageDto: NotiManageDto,
-    @Param('id') id: string,
-  ) {
-    return await this.notiService.notiManage(id, notiManageDto);
   }
 }
