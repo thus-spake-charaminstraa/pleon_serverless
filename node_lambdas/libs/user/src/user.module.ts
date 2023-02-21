@@ -27,12 +27,20 @@ import { DeviceToken, DeviceTokenSchema } from './entities/device-token.entity';
     UserRepository,
     DeviceTokenService,
     DeviceTokenRepository,
+    {
+      provide: 'USER_SCHEMA',
+      useValue: UserSchema,
+    },
   ],
   exports: [
     UserService,
     UserRepository,
     DeviceTokenService,
     DeviceTokenRepository,
+    {
+      provide: 'USER_SCHEMA',
+      useValue: UserSchema,
+    },
   ],
 })
 export class UserModule {}
