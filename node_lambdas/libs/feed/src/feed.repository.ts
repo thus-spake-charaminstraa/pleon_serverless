@@ -31,7 +31,7 @@ export class FeedRepository extends CommonRepository<
   }
 
   async findAll(query: GetFeedAndDiagnosisQuery) {
-    const { offset, limit, order_by, publish_date, start, end, ...q } = query;
+    const { offset, limit, start, end, ...q } = query;
     if (q.plant_id) {
       q.plant_id = new Types.ObjectId(q.plant_id);
     }
@@ -59,7 +59,7 @@ export class FeedRepository extends CommonRepository<
   }
 
   async findAllWithDiagnosis(query: GetFeedAndDiagnosisQuery): Promise<any> {
-    const { offset, limit, order_by, publish_date, start, end, ...q } = query;
+    const { offset, limit, start, end, ...q } = query;
     if (q.plant_id) {
       q.plant_id = new Types.ObjectId(q.plant_id);
     }
@@ -207,14 +207,12 @@ export class FeedRepository extends CommonRepository<
   }
 
   async findAllNotCommented(query: any) {
-    const { start, end, publish_date, ...q } = query;
+    const { start, end, ...q } = query;
     if (q.plant_id) {
       q.plant_id = new Types.ObjectId(q.plant_id);
     }
     if (q.owner) {
       q.owner = new Types.ObjectId(q.owner);
-    } else {
-      // q.owner = { $ne: new Types.ObjectId('62c3dd65ff76f24d880331a9') };
     }
     if (start && end)
       q.created_at = {

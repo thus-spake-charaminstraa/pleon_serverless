@@ -31,7 +31,6 @@ import {
   UpdateFeedDto,
 } from '@app/feed/dto/feed.dto';
 import { FeedService } from '@app/feed/feed.service';
-import { FeedByParamsIdInterceptor } from '@app/feed/interceptors/feedById.interceptor';
 import { FeedKindInfos } from '@app/feed/resources/feed-kind-infos';
 import { FeedKind } from '@app/feed/types/feed-kind.type';
 import { DiagnosisService } from '@app/plant/services/diagnosis.service';
@@ -51,7 +50,6 @@ import {
   Query,
   Req,
   UseGuards,
-  UseInterceptors,
 } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
@@ -178,6 +176,11 @@ export class FeedLambdaController {
     type: GetFeedsResponse,
   })
   @ApiQuery({
+    name: 'owner',
+    type: String,
+    required: false,
+  })
+  @ApiQuery({
     name: 'plant_id',
     type: String,
     required: false,
@@ -217,6 +220,7 @@ export class FeedLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get()
   async findAll(
+    @Query('owner') owner: string,
     @Query('plant_id') plant_id: string,
     @Query('kind') kind: FeedKind,
     @Query('publish_date') publish_date: string,
@@ -241,10 +245,11 @@ export class FeedLambdaController {
     }
     const feedQuery: GetFeedAndDiagnosisQuery = queryParser(
       {
-        owner: req.user.id,
+        owner: owner || req.user.id,
         plant_id,
         kind,
-        publish_date,
+        start,
+        end,
         limit,
         offset,
         order_by,
@@ -274,6 +279,11 @@ export class FeedLambdaController {
   @ApiOkResponse({
     description: '피드들의 정보를 성공적으로 가져옴',
     type: GetFeedsWithOtherResponse,
+  })
+  @ApiQuery({
+    name: 'owner',
+    type: String,
+    required: false,
   })
   @ApiQuery({
     name: 'plant_id',
@@ -310,6 +320,7 @@ export class FeedLambdaController {
   @HttpCode(HttpStatus.OK)
   @Get('list')
   async findAllWithNoti(
+    @Query('owner') owner: string,
     @Query('plant_id') plant_id: string,
     @Query('publish_date') publish_date: string,
     @Query('limit', new DefaultValuePipe(100000), ParseIntPipe) limit: number,
@@ -334,7 +345,7 @@ export class FeedLambdaController {
     }
     const feedQuery: GetFeedAndDiagnosisQuery = queryParser(
       {
-        owner: req.user.id,
+        owner: owner || req.user.id,
         plant_id,
         publish_date,
         limit,
@@ -390,7 +401,6 @@ export class FeedLambdaController {
     @Query('owner') owner: string,
     @Query('plant_id') plant_id: string,
     @Query('publish_date') publish_date: string,
-    @Req() req,
   ) {
     let start: Date = undefined,
       end: Date = undefined;
@@ -402,15 +412,13 @@ export class FeedLambdaController {
       end = new Date(publish_date);
       end.setDate(end.getDate() + 1);
     }
-    const feedQuery: any = queryParser(
-      {
-        owner,
-        plant_id,
-        publish_date,
-        start,
-        end,
-      },
-    );
+    const feedQuery: any = queryParser({
+      owner,
+      plant_id,
+      publish_date,
+      start,
+      end,
+    });
     const feeds: any = await this.feedService.findAllNotCommented(feedQuery);
     return feeds;
   }
@@ -465,11 +473,7 @@ export class FeedLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Patch(':id')
-  async update(
-    @Param('id') id: string,
-    @Body() updateFeedDto: UpdateFeedDto,
-    @Req() req,
-  ) {
+  async update(@Param('id') id: string, @Body() updateFeedDto: UpdateFeedDto) {
     return await this.feedService.update(id, updateFeedDto);
   }
 
@@ -496,7 +500,7 @@ export class FeedLambdaController {
   @UseGuards(JwtAuthGuard)
   @HttpCode(HttpStatus.OK)
   @Delete(':id')
-  async deleteOne(@Param('id') id: string, @Req() req) {
+  async deleteOne(@Param('id') id: string) {
     return await this.feedService.deleteOne(id);
   }
 }
