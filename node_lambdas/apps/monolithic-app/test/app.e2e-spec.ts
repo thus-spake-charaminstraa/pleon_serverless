@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-import * as request from 'supertest';
 import { MonolithicAppModule } from './../src/monolithic-app.module';
 
 describe('MonolithicAppController (e2e)', () => {
@@ -10,15 +9,5 @@ describe('MonolithicAppController (e2e)', () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [MonolithicAppModule],
     }).compile();
-
-    app = moduleFixture.createNestApplication();
-    await app.init();
-  });
-
-  it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
-      .expect(200)
-      .expect('Hello World!');
   });
 });

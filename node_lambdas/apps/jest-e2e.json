@@ -1,0 +1,22 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@app/common(|/.*)$": "<rootDir>/libs/common/src/$1",
+    "^@app/user(|/.*)$": "<rootDir>/libs/user/src/$1",
+    "^@app/auth(|/.*)$": "<rootDir>/libs/auth/src/$1",
+    "^@app/plant(|/.*)$": "<rootDir>/libs/plant/src/$1",
+    "^@app/schedule(|/.*)$": "<rootDir>/libs/schedule/src/$1",
+    "^@app/feed(|/.*)$": "<rootDir>/libs/feed/src/$1",
+    "^@app/image(|/.*)$": "<rootDir>/libs/image/src/$1",
+    "^@app/guide(|/.*)$": "<rootDir>/libs/guide/src/$1",
+    "^@app/noti(|/.*)$": "<rootDir>/libs/noti/src/$1",
+    "^@app/comment(|/.*)$": "<rootDir>/libs/comment/src/$1",
+    "^@app/chat(|/.*)$": "<rootDir>/libs/chat/src/$1"
+  }
+}
