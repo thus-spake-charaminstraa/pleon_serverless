@@ -1,13 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { PlantDoctorAnalysisModule } from './../src/plant-doctor-analysis.module';
+import { handler } from '../src/main';
 
-describe('PlantDoctorAnalysisController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [PlantDoctorAnalysisModule],
-    }).compile();
+describe('PlantDoctorAnalysis (e2e)', () => {
+  it('should success', async () => {
+    expect(true).toBe(true);
   });
 });

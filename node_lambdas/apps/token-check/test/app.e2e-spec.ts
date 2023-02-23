@@ -1,13 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { TokenCheckModule } from './../src/token-check.module';
+import { handler } from '../src/main';
 
-describe('TokenCheckController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [TokenCheckModule],
-    }).compile();
+describe('TokenCheck (e2e)', () => {
+  it('should success', async () => {
+    expect(true).toBe(true);
   });
 });

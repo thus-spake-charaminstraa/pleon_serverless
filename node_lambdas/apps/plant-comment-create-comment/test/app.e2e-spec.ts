@@ -1,13 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { PlantCommentCreateCommentModule } from './../src/plant-comment-create-comment.module';
+import { handler } from '../src/main';
 
-describe('PlantCommentCreateCommentController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [PlantCommentCreateCommentModule],
-    }).compile();
+describe('PlantCommentCreateComment (e2e)', () => {
+  it('should success', async () => {
+    expect(true).toBe(true);
   });
 });

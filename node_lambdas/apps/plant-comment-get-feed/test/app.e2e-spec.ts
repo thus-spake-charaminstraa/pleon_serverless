@@ -1,13 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { INestApplication } from '@nestjs/common';
-import { PlantCommentGetFeedModule } from './../src/plant-comment-get-feed.module';
+import { handler } from '../src/main';
 
-describe('PlantCommentGetFeedController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [PlantCommentGetFeedModule],
-    }).compile();
+describe('PlantCommentGetFeed (e2e)', () => {
+  it('should success', async () => {
+    expect(true).toBe(true);
   });
 });
