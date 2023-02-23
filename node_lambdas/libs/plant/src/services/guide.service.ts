@@ -86,7 +86,7 @@ export class GuideService {
     return ret;
   }
 
-  async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<void> {
+  async sendNotiForPlant(plantInfo: plantInfoForGuide): Promise<boolean> {
     let isGuide = false;
     const overdue = await this.checkScheduleOverdue(plantInfo);
     for (const kind of Object.keys(NotiKind)) {
@@ -96,13 +96,12 @@ export class GuideService {
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
         });
-        const ret = await this.notiService.create({
+        await this.notiService.create({
           owner: plantInfo.owner.toString(),
           plant_id: plantInfo.id.toString(),
           kind: NotiKind[kind],
           content: this.notiContentFormat(plantInfo.name, kind),
         });
-        console.log(ret);
       }
     }
     if (
@@ -110,21 +109,24 @@ export class GuideService {
       plantInfo.user?.device_tokens &&
       plantInfo.user.guide_push_noti
     ) {
-      const ret = await this.notiService.sendPushNotiToMultiDevices(
+      await this.notiService.sendPushNotiToMultiDevices(
         plantInfo.user.device_tokens,
         'PLeon 관리 가이드',
         `Dr.PLeon이 ${plantInfo.name} 관리 가이드를 보내드렸어요! 지금 확인해보세요 :)`,
       );
-      console.log(ret);
+      return true;
     }
+    return false;
   }
 
-  async sendNotiForPlants(query: any): Promise<void> {
+  async sendNotiForPlants(
+    query: any,
+  ): Promise<PromiseSettledResult<boolean>[]> {
     const plantInfos = await this.plantService.findAllInfo(query);
     const ret = await Promise.allSettled(
       plantInfos.map((plant) => this.sendNotiForPlant(plant)),
     );
-    console.log(ret);
+    return ret;
   }
 
   async completeManage(id: string): Promise<void> {

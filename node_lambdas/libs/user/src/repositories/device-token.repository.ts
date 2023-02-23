@@ -67,7 +67,6 @@ export class DeviceTokenRepository extends CommonRepository<
         },
       ])
       .exec();
-    console.log(ret);
     return ret;
   }
 }

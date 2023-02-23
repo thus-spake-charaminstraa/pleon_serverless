@@ -18,5 +18,6 @@
     "^@app/noti(|/.*)$": "<rootDir>/libs/noti/src/$1",
     "^@app/comment(|/.*)$": "<rootDir>/libs/comment/src/$1",
     "^@app/chat(|/.*)$": "<rootDir>/libs/chat/src/$1"
-  }
+  },
+  "setupFilesAfterEnv": ["jest-extended/all"]
 }

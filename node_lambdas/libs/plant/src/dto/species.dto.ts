@@ -1,4 +1,4 @@
-import { IsEnum, IsString } from 'class-validator';
+import { IsEnum, IsNumber, IsString } from 'class-validator';
 import {
   PlantDifficulty,
   PlantHumidity,
@@ -50,4 +50,13 @@ export class CreateSpeciesDto {
 
   @IsString()
   tip: string;
+
+  @IsNumber()
+  class_label: number;
+
+  @IsNumber()
+  proper_watering_other: number;
+
+  @IsNumber()
+  proper_watering_winter: number;
 }

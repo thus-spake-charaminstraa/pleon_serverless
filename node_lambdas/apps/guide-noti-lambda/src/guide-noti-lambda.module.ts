@@ -7,7 +7,7 @@ import { UserModule } from '@app/user/user.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: '.env.dev',
+      envFilePath: process.env.NODE_ENV === 'test' ? '.env.test' : '.env.dev',
       isGlobal: true,
     }),
     MongooseModule.forRootAsync({

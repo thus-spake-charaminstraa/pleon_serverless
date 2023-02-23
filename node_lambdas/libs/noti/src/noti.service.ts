@@ -110,7 +110,6 @@ export class NotiService extends CommonService<
     title: string,
     content: string,
   ) {
-    console.log('send noti');
     const GCMPayload = {
       title,
       body: content,

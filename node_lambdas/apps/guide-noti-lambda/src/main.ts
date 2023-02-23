@@ -8,7 +8,9 @@ import { DeviceTokenService } from '@app/user/services/device-token.service';
 let app: INestApplicationContext;
 
 async function bootstrap() {
-  return await NestFactory.createApplicationContext(GuideNotiLambdaModule);
+  return await NestFactory.createApplicationContext(GuideNotiLambdaModule, {
+    logger: process.env.NODE_ENV === 'test' ? ['error', 'warn'] : ['error'],
+  });
 }
 
 export const handler: Handler = async (
@@ -17,16 +19,19 @@ export const handler: Handler = async (
   callback: Callback,
 ) => {
   if (!app) {
-    const t = new Date().getTime();
     app = await bootstrap();
-    console.log('bootstrap time: ', new Date().getTime() - t, 'ms');
   }
   const guideService = app.get(GuideService);
-  const deviceTokenService = app.get(DeviceTokenService)
+  const deviceTokenService = app.get(DeviceTokenService);
 
   await deviceTokenService.deleteDuplicated();
   return {
     body: await guideService.sendNotiForPlants({}),
     statusCode: HttpStatus.OK,
   };
+};
+
+export const testHandler = (testingApp: INestApplicationContext) => {
+  app = testingApp;
+  return handler;
 };
