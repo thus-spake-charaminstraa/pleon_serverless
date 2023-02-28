@@ -11,6 +11,7 @@ import {
   RefreshJwtStrategy,
 } from './strategies/jwt.strategy';
 import { HttpModule } from '@nestjs/axios';
+import { SNSClient } from '@aws-sdk/client-sns';
 
 @Module({
   imports: [
@@ -34,6 +35,12 @@ import { HttpModule } from '@nestjs/axios';
     JwtStrategy,
     JwtCheckStrategy,
     RefreshJwtStrategy,
+    {
+      provide: 'SNS_CLIENT',
+      useFactory: () => {
+        return new SNSClient({ region: 'ap-northeast-1' });
+      },
+    },
   ],
   exports: [AuthService, AuthRepository],
 })
