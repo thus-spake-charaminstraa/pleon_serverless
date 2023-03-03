@@ -36,7 +36,7 @@ export class CommentService extends CommonService<
         this.deviceTokenService.findAllByUserId(comment.feed.owner.toString()),
         this.userService.findOne(comment.feed.owner.toString()),
       ]);
-      const notiRet = await Promise.allSettled([
+      await Promise.allSettled([
         user?.comment_push_noti
           ? this.notiService.sendPushNotiToMultiDevices(
               deviceTokens,
@@ -53,7 +53,6 @@ export class CommentService extends CommonService<
           plant_id: comment.plant?.id.toString(),
         }),
       ]);
-      console.log(notiRet);
     }
     return ret;
   }
